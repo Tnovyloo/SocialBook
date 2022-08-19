@@ -1,0 +1,1388 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-color: rgb(0, 0, 0, 0.1);
+    --header-color: rgb(245, 245, 245);
+    --users-follow-color: rgb(240, 240, 240);
+    --user-card-color: white;
+    --follow-button-color: rgb(235, 235, 235);
+    --posts-header-color: rgb(240, 240, 240);
+    --reactions-color: rgb(240, 240, 240);
+    --interactions-color: rgb(240, 240, 240);
+    --comments-color: rgb(245, 245, 245);
+    --enter-comment-color: rgb(235, 235, 235);
+    --comment-color: rgb(235, 235, 235);
+    --upload-file-color: rgb(235, 235, 235);
+    --search-color: rgb(235, 235, 235);
+    --header-font: 'Kanit', sans-serif;
+}
+
+html {
+    font-size: 62.5%
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--background-color);
+    font-size: 5rem;
+}
+
+#bold {
+    font-weight: bold;
+}
+
+/* header style */
+
+#background header {
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    background: var(--header-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 2rem;
+    z-index: 2;
+    padding-left: 28rem;
+}
+
+#background header input[type="text"] {
+    width: 225px;
+    height: 45px;
+    border: none;
+    border-radius: 60px;
+    padding-left: 3.6rem;
+    padding-right: 2rem;
+    font-size: 1.8rem;
+    outline: none;
+    background-color: var(--search-color);
+    font-family: var(--header-font);
+}
+
+#background header label[for="search"] {
+    position: absolute;
+    width: 35px;
+    height: 45px;
+    border-radius: 90px;
+    cursor: default; 
+    left: 28.0rem;
+}
+
+#background header label[for="search"] i {
+    position: absolute;
+    left: 1.2rem;
+    font-size: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+}
+
+#background header input[type="file"] {
+    display: none;
+}
+
+#background header ul {
+    display: flex;
+    gap: 6rem;
+    list-style: none;
+}
+
+#background header ul .fas {
+    font-size: 3rem;
+    position: relative;
+    top: -0.4rem;
+    right: 2.5rem;
+    cursor: pointer;
+}
+
+#background header h3 {
+    position: absolute;
+    left: 2rem;
+    font-size: 5.2rem;
+}
+
+/* NOTIFICATION PANEL */
+
+#background header .fas.fa-bell {
+    position: relative;
+}
+
+#background header #info {
+    position: absolute;
+    width: 250px;
+    background-color: white;
+    right: 23rem;
+    font-size: 1.7rem;
+    border-radius: 20px 20px 10px 10px;
+    padding: 1rem;
+    display: none;
+}
+
+#background header #info i {
+    position: absolute;
+    right: 1.4rem;
+    top: 0.8rem;
+    font-weight: bold;
+    font-size: 3rem;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#background header #info h2 {
+    margin-bottom: 0.7rem;
+}
+
+#background header #info .info-text {
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    padding-inline: 0.9rem;
+    padding-bottom: 0.7rem;
+    border-radius: 5px;
+    padding-top: 0.6rem;
+}
+
+#background header #info .info-text .profile-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#background header #info .info-text p {
+    font-size: 1.5rem;
+    margin-top: -3.7rem;
+    margin-left: 4.5rem;
+}
+
+#background header #info .info-text .circle-notification {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: blue;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%)
+}
+
+#background header #notification-icon {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: red;
+        font-size: 1.7rem;
+        color: white;
+        font-family: consolas;
+        text-align: center;
+        top: -0.5rem;
+        right: -0.5rem;
+}
+
+/* NOTIFICATION PANEL EFFECTS */
+
+#background header #info .info-text:hover {
+    background-color: hsl(240, 0%, 93%)
+}
+
+/*MESSAGE PANEL*/
+
+#background header #notification {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: red;
+    font-size: 1.7rem;
+    color: white;
+    font-family: consolas;
+    text-align: center;
+    top: -1rem;
+    right: -1rem;
+}
+
+#background header #messages {
+    position: absolute;
+    width: 250px;
+    background-color: white;
+    border-radius: 20px 20px 10px 10px;
+    right: 15rem;
+    top: 6.8rem;
+    padding: 1rem;
+    font-size: 2rem;
+    font-family: none;
+    display: none;
+}
+
+#background header #messages i {
+    position: absolute;
+    right: 1.4rem;
+    top: 1rem;
+    font-weight: bold;
+    font-size: 3rem;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#background header #messages .message {
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    padding-inline: 0.9rem;
+    padding-bottom: 0.7rem;
+    border-radius: 5px;
+    padding-top: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+#background header #messages h2 {
+    margin-bottom: 0.7rem;
+}
+
+#background header #messages .message #profile-wrapper {
+    width: 40px;
+    height: 40px;
+}
+
+#background header #messages .message h4 {
+    position: absolute;
+    top: 0.9rem;
+    left: 5.7rem;
+}
+
+#background header #messages .message p {
+    margin-top: -2.3rem;
+    margin-left: 4.7rem;
+    font-size: 1.4rem;
+    color: blue;
+}
+
+#background header #messages .message .circle-message {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: blue;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%)
+}
+
+/* MESSAGES ANIMATIONS */
+
+#background header #messages .message:hover {
+    background-color: hsl(240, 0%, 93%)
+}
+
+/* UPLOAD BUTTON EFFECTS AND APPEARANCE */
+
+#background header label[for="photo-video"] {
+    position: absolute;
+    background-color: var(--upload-file-color);
+    width: 225px;
+    height: 45px;
+    border-radius: 50px;
+    right: 30rem;
+    transition: 0.5s;
+    font-size: 2rem;
+    padding-top: 0.5rem;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    font-family: var(--header-font)
+}
+
+#background header label[for="photo-video"]::before {
+    position: absolute;
+    content: '';
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent 50%, hsl(240, 0%, 80%));
+    top: 0;
+    left: -100%;
+}
+
+#background header label[for="photo-video"]::after {
+    position: absolute;
+    content: '';
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, hsl(240, 0%, 80%), transparent 50%);
+    bottom: 0;
+    right: -100%;
+}
+
+#background header label[for="photo-video"]:hover::after {
+    right: 100% ;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+
+#background header label[for="photo-video"]:hover::before {
+    left: 100% ;
+    transition: 1s;
+}
+
+#background header label[for="photo-video"]:hover {
+    transition-delay: 0.6s;
+    box-shadow: 0px 0px 5px 1px hsl(240, 0%, 80%),
+    0px 0px 10px 2px hsl(240, 0%, 80%);
+    background-color: hsl(240, 0%, 80%);
+    letter-spacing: 0.5px;
+}
+
+/* END OF CHANGES IN UPLOAD BUTTON */
+
+#photo-wrapper, .photo-wrapper, #profile-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#photo-wrapper img, .photo-wrapper img, #profile-wrapper img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+}
+
+#background header ul #photo-wrapper {
+    position: relative;
+    top: 1rem;
+    right: 2.5rem;
+}
+
+#background header ul #photo-wrapper img {
+    width: 100%;
+    border-radius: 50px;
+    height: 100%;
+    position: absolute;
+}
+
+/* FOLLOW USERS SECTION */
+
+#follow-users {
+    width: 400px;
+    height: 350px;
+    position: absolute;
+    top: 16rem;
+    background-color: var(--users-follow-color);
+    border-radius: 2rem;
+    padding: 1rem;
+    left: 115rem;
+    box-shadow: 0px 0px 15px black;
+    font-family: 'Kanit', sans-serif;
+}
+
+#follow-users h3, #follow-users p {
+    color: gray;
+}
+
+#follow-users h3 {
+    font-size: 2.5rem;
+    padding-left: 1rem;
+    margin-top: -0.5rem;
+}
+
+#follow-users p[id="refresh"]{
+    font-size: 2rem;
+    display: block;
+    position: absolute;
+    right: 4rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
+#follow-users #users-card {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 300px;
+    width: 100%;
+    border-radius: 0px 0px 2rem 2rem;
+    background-color: var(--user-card-color);
+    bottom: 0rem;
+    right: 0.05rem;
+    padding-bottom: 0.5rem;
+}
+
+#follow-users #users-card hr {
+    background-color: gray;
+    border-color: gray;
+    opacity: 0.2;
+}
+
+#follow-users #users-card .photo-wrapper {
+    position: relative;
+    top: 50%;
+    transform: translate(50%, -50%)
+}
+
+#follow-users #users-card p[id="name"] {
+    position: relative;
+    font-size: 2rem;
+    color: black;
+    bottom: 28%;
+    left: 3%;
+    transform: translate(18%, 10%);
+    transition: 0.5s;
+    cursor: default;
+    width: 85%;
+}
+
+#follow-users #users-card .user {
+    height: 25%;
+}
+
+#follow-users #users-card .followers {
+    font-size: 1.5rem;
+    position: relative;
+    bottom: 50%;
+    left: 18.7%;
+    cursor: default;
+    font-weight: bold;
+    color: black;
+    transition: 0.5s;
+    opacity: 0;
+    width: 80%
+}
+
+#follow-users #users-card .user button {
+    position: absolute;
+    width: 11rem;
+    height: 3.5rem;
+    left: 65%;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    border-radius: 2rem;
+    border: none;
+    opacity: 0;
+    transition-duration: 0.5s;
+    background-color: var(--follow-button-color);
+}
+
+#follow-users #users-card .user.first button {
+    top: 2rem;
+}
+
+#follow-users #users-card .user.second button {
+    top: 9.7rem
+}
+
+#follow-users #users-card .user.third button {
+    bottom: 9.3rem;
+}
+
+#follow-users #users-card .user.fourth button {
+    bottom: 1.6rem;
+}
+
+/* FOLLOW-USERS EFFECTS*/
+
+#follow-users #users-card .user:hover p[id="name"] {
+    bottom: 50%;
+}
+
+#follow-users #users-card .user:hover .followers {
+    opacity: 1;
+}
+
+#follow-users #users-card .user:hover button {
+    opacity: 1;
+}
+
+#follow-users #users-card .user button:hover {
+    cursor: pointer;
+    letter-spacing: 0.2rem;
+    box-shadow: 0px 0px 5px 2px gray,
+    0px 0px 6px 4px gray; 
+}
+
+/* POSTS SECTION */
+
+#posts-container {
+    position: absolute;
+    width: 550px;
+    left: 48rem;
+    top: 16rem;
+    border-radius: 1rem;
+}
+
+#posts-container header {
+    width: 100%;
+    height: 5rem;
+    padding: 1.3rem;
+    background-color: var(--posts-header-color);
+}
+
+#posts-container header p {
+    font-size: 1.8rem;
+    margin-top: -2.8rem;
+    margin-left: 4rem;
+    font-family: var(--header-font)
+}
+
+#posts-container header .fas.fa-ellipsis {
+    position: absolute;
+    font-size: 3rem;
+    right: 3rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
+#posts-container #image-wrapper {
+    height: 450px;
+    overflow: hidden;
+}
+
+#posts-container #image-wrapper img {
+    object-position: 0px -250px;
+    width: 100%;
+}
+
+#posts-container #reactions {
+    position: relative;
+    width: 100%;
+    background-color: var(--reactions-color);
+    height: 5rem;
+    border-bottom: 0.2px solid hsl(240, 5%, 85%);
+    padding-top: 1.3rem;
+    margin-top: -1.1rem;
+}
+
+#posts-container #profiles-wrapper {
+    display: flex;
+    margin-left: 1rem;
+}
+
+#posts-container #profile-wrapper {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    bottom: 1px;
+}
+
+#posts-container #profile-wrapper:nth-child(2) {
+    left: -1rem;
+}
+
+#posts-container #profile-wrapper:nth-child(3) {
+    left: -2rem;
+}
+
+#posts-container p {
+    position: absolute;
+    font-size: 2rem;
+    margin-left: 7.5rem;
+}
+
+/* INTERACTIONS SECTION */
+
+#posts-container #interactions {
+    display: flex;
+    width: 100%;
+    height: 4.5rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--interactions-color);
+    font-size: 2.5rem;
+    padding-inline: 2rem;
+    position: relative;
+}
+
+#posts-container #interactions .fa-message {
+    position: absolute;
+    left: 8rem;
+    transform: translate(0, -50%);
+    font-size: 2.3rem;
+    cursor: pointer;
+}
+
+/* COMMENTS SECTION */
+
+#posts-container #comments {
+    width: 100%;
+    height: 22rem;
+    background-color: var(--comments-color);
+    position: relative;
+    border-radius: 0px 0px 1rem 1rem;
+}
+
+#posts-container #comments input[type='text'] {
+    position: absolute;
+    width: 90%;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%, -6%);
+    height: 4rem;
+    padding: 1.8rem;
+    border-radius: 1.5rem;
+    font-size: 1.7rem;
+    background-color: var(--enter-comment-color);
+    border: none;
+}
+
+#posts-container #comments #comment-messages {
+    width: 100%;
+    height: 15.4rem;
+    display: flex;
+    flex-flow: column;
+    overflow-y: scroll;
+    padding-bottom: 4rem;
+    gap: 3rem;
+    position: relative;
+}
+
+#posts-container #comments #comment-messages::-webkit-scrollbar {
+    display: none;
+}
+
+#posts-container #comments input[type="file"] {
+    display: none;
+}
+
+#posts-container #comments input[id="image"] {
+    right: 8rem;
+}
+
+#posts-container #comments input[id="video"] {
+    right: 4rem;
+}
+
+#posts-container #comments .fas {
+    position: absolute;
+    bottom: 2.2rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#posts-container #comments .fa-image {
+    right: 8rem;
+}
+
+#posts-container #comments .fa-video {
+    right: 4rem;
+}
+
+/* COMMENTS */
+
+#comment-content #profile-wrapper {
+    position: relative;
+    bottom: -2.7rem;
+    margin-left: 2.5rem;
+}
+
+#comments #comment-messages #comment #comment-content p{
+    z-index: 1;
+}
+
+#comments #comment-messages #comment #comment-content p::before{
+    content: '';
+    position: absolute;
+    background-color: var(--comment-color);
+    width: calc(100% + 2rem);
+    left: -1rem;
+    height: calc(100% + 0.5rem);
+    z-index: -1;
+    bottom: -0.25rem;
+    border-radius: 10px;
+    border-top: 1px solid gray;
+}
+
+/* APPEARING WINDOW - POST1*/
+
+#posts-container #post .post-options {
+    position: absolute;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+    top: 6rem;
+    right: 2.6rem;
+    display: none;
+}
+
+#posts-container #post .post-options i {
+    color: rgb(240, 240, 240);
+    position: absolute;
+    right: 1rem;
+    font-size: 2rem;
+    transform: rotate(-90deg);
+    top: -1rem;
+}
+
+#posts-container #post .post-options .close-sign {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 3rem;
+    font-weight: bold;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#posts-container #post .post-options button {
+    cursor: pointer;
+    position: absolute;
+    left: 40%;
+    transform: translate(-50%, 0%);
+    border: none;
+    border-radius: 20px;
+    padding: 1rem;
+    font-size: 1.8rem;
+    width: 107px;
+    background-color: transparent;
+}
+
+#posts-container #post {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+#report-background {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 200vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    z-index: 2;
+    display: none;
+    padding-top: 32rem
+}
+
+#report-message {
+    text-align: center;
+    width: 350px;
+    height: 180px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+}
+
+#report-background #report-message i {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translate(-50%)
+}
+
+#report-background #report-message p {
+    margin-top: 6.6rem;
+    cursor: default;
+    font-size: 4rem;
+}
+
+/* ANIMATION OF LIKE */
+
+#posts-container #interactions .fa-thumbs-up {
+    cursor: pointer;
+    color: black;
+    transform-origin: center left;
+}
+
+.animation-like {
+    animation-name: like-animation;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes like-animation {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    50% {
+        transform: rotate(-20deg) scale(1.1)
+    }
+
+    100% {
+        transform: rotate(0deg);
+        color: blue;
+    }
+}
+
+/**/
+
+/* RESPONSIVE WEBPAGE*/
+
+@media screen and (max-width: 1574px) {
+    #posts-container {
+        left: 22rem;
+    }
+    #follow-users {
+        left: 87rem;
+    }
+}
+
+@media screen and (max-width: 1310px) {
+    #posts-container {
+        left: 5rem;
+    }
+
+    #follow-users {
+        left: 70rem;
+    }
+}
+
+@media screen and (max-width: 1145px) {
+    #background header #notification-icon, #background header #notification {
+        width: 15px;
+        height: 15px;
+        font-size: 1.4rem;
+        padding: 0.2rem;
+        padding-top: 0.1rem;
+    }
+
+    #background header #notification {
+        right: -0.7rem;
+        top: -0.7rem;
+    }
+
+    #background header #messages {
+        right: 12rem;
+        width: 220px;
+        font-size: 1.5rem;
+    }
+
+    #background header #messages #close-messages{
+        top: 0.8rem;
+        font-size: 2.6rem;
+    }
+
+    #background header #messages .message #profile-wrapper{
+        width: 30px;
+        height: 30px;
+    }
+
+    #background header #messages .message p {
+        margin-top: -1.8rem;
+        margin-left: 3.7rem;
+        font-size: 1.4rem;
+        color: blue;
+    }
+
+    #background header #messages .message h4 {
+        margin-left: -1.2rem;
+    }
+
+    #background header #messages .message .circle-message {
+        right: 0.7rem;
+        width: 8px;
+        height: 8px;
+    }
+
+    #background header #info {
+        width: 220px;
+        font-size: 1.5rem;
+        right: 18rem;
+    }
+
+    #background header #info .info-text .profile-wrapper {
+        width: 30px;
+        height: 30px;
+    }
+
+    #background header #info .info-text p {
+        font-size: 1.5rem;
+        margin-left: 3.7rem;
+        margin-top: -3.55rem;
+    }
+
+    #background header #info .info-text .circle-notification {
+        font-size: 1.5rem;
+        right: 3rem;
+    }
+
+    #background header #info #close-notifications {
+        top: 0.8rem;
+        font-size: 2.6rem;
+    }
+
+    #posts-container {
+        left: 10rem;
+        width: 350px;
+        position: relative;
+        top: 14rem;
+    }
+
+    #posts-container #image-wrapper {
+        height: 280px;
+    }
+
+    #posts-container #image-wrapper img {
+        object-position: 0px -165px;
+    }
+
+    #follow-users {
+        top: 14.2rem;
+        left: 55rem;
+        width: 300px;
+        height: 250px;
+    }
+
+    #follow-users header h3 {
+        font-size: 1.9rem;
+        margin-left: -0.5rem;
+        margin-top: -0.3rem;
+    }
+
+    #follow-users header #refresh {
+        top: 0.74rem;
+        font-size: 1.9rem;
+        right: 2rem;
+    }
+
+    #follow-users #users-card {
+        height: 83%;
+    }
+
+    #follow-users .photo-wrapper {
+        width: 25px;
+        height: 25px;
+    }
+
+    #follow-users #users-card #name {
+        font-size: 1.6rem;
+        left: 0;
+    }
+    
+    #follow-users #users-card .followers {
+        font-size: 1.3rem;
+        left: 4.7rem;
+    }
+
+    #follow-users #users-card .user button {
+        width: 80px;
+        height: 25px;
+        font-size: 1.5rem;
+    }
+
+    #follow-users #users-card .user.first button{
+        top: 1.5rem;
+    }
+
+    #follow-users #users-card .user.second button{
+        top: 6.6rem;
+    }
+
+    #follow-users #users-card .user.third button{
+        bottom: 6.3rem;
+    }
+
+    #follow-users #users-card .user.fourth button{
+        bottom: 1.2rem;
+    }
+
+    #follow-users #users-card button:hover {
+        box-shadow: 0px 0px 10px 1px gray!important; 
+    }
+
+    #background header label[for="photo-video"] {
+        width: 180px;
+        font-size: 1.7rem;
+        right: 23rem;
+        padding-top: 0.9rem;
+    }
+
+    #background header ul .fas {
+        font-size: 2.4rem;
+    }
+
+    #background header h3 {
+        font-size: 4rem;
+    }
+
+    #background header input[type="text"] {
+        height: 40px;
+        font-size: 1.7rem;
+        margin-left: -7rem;
+        width: 190px;
+    }
+    
+    #background header label[for="search"] {
+        left: 21rem;
+    }
+
+    #background header ul .fas {
+        top: -0.8rem;
+        margin-right: -3rem;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    #posts-container {
+        left: 3rem;
+    }
+
+    #follow-users {
+        left: 44rem;
+    }
+
+    #background header #messages {
+        right: 6rem;
+    }
+
+    #background header #info {
+        width: 220px;
+        font-size: 1.5rem;
+        right: 10rem;
+    }
+
+    #background header label[for="photo-video"] {
+        width: 145px;
+        font-size: 1.4rem;
+        height: 40px;  
+        right: 14.5rem;
+    }
+
+    #background header input[type="text"] {
+        width: 160px;
+        height: 40px;
+        font-size: 1.4rem;
+        padding-left: 2.8rem;
+        margin-left: -8.5rem;
+    }
+    
+    #background header label[for="search"] {
+        left: 19.5rem;
+        height: 40px;
+        width: 25px;
+    }
+
+    #background header label[for="search"] i{
+        font-size: 1.2rem;
+        left: 1rem;
+    }
+
+    #background header ul .fas {
+        font-size: 2.4rem;
+        top: -0.7rem;
+        right: 2.5rem;
+        cursor: pointer;
+    }
+
+    #background header ul {
+        gap: 4rem;
+        margin-right: -3.5rem;
+    }
+    
+    #report-message {
+        width: 350px;
+        height: 175px;
+    }
+
+    #report-message p {
+        font-size: 2.7rem;
+    }
+
+    #report-message i {
+        font-size: 4.5rem;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    #posts-container {
+        top: 44rem;
+        left: 20%;
+        width: 430px;
+    }
+
+    #posts-container #image-wrapper img {
+        object-position: 0px -200px;
+    }
+
+    #background header input[type="text"] {
+        margin-left: -8.3rem;
+        width: 160px;
+    }
+
+    #background header label[for="search"] {
+        left: 19.7rem;
+        height: 40px;
+    }
+
+    #follow-users {
+        top: 11.5rem;
+        left: 28%; /* 23.5 rem*/
+        width: 320px;
+        height: 280px;
+    }
+
+    #follow-users header #refresh {
+        top: 1rem;
+    }
+
+    #follow-users header h3 {
+        margin-top: 0;
+    }
+
+    #follow-users #users-card #name {
+        bottom: 35%;
+        left: 0.3rem;
+        font-size: 1.8rem;
+    }
+
+    #follow-users #users-card .user:hover #name {
+        bottom: 53%;
+    }
+
+    #follow-users #users-card .user:hover .followers {
+        transition-delay: 0.2s;
+    }
+    
+    #follow-users #users-card .followers {
+        font-size: 1.3rem;
+        left: 5.3rem;
+    }
+
+    #follow-users #users-card .user button {
+        width: 90px;
+        height: 30px;
+        left: 66%
+    }
+
+    #follow-users #users-card .user.first button{
+        top: 1.5rem;
+    }
+
+    #follow-users #users-card .user.second button{
+        top: 7.4rem;
+    }
+
+    #follow-users #users-card .user.third button{
+        bottom: 7rem;
+    }
+
+    #follow-users #users-card .user.fourth button{
+        bottom: 1.4rem;
+    }
+
+    #follow-users #users-card .photo-wrapper {
+        width: 30px;
+        height: 30px;
+    }
+
+    #report-message {
+        width: 300px;
+        height: 125px;
+    }
+
+    #report-background #report-message p {
+        font-size: 2.3rem;
+    }
+
+    #report-message i {
+        font-size: 3.8rem;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    #background header input[type="text"] {
+        margin-left: -13rem;
+        width: 160px;
+    }
+
+    #background header label[for='search'] {
+        left: 15.3rem;
+        height: 36px;
+    }
+
+    #background header label[for="search"] i {
+        left: 0.7rem;
+    }
+
+    #background header label[for='photo-video'] {
+        right: 12.5rem;
+    }
+
+    #background header h3 {
+        font-size: 3.2rem;
+        margin-left: -1.4rem;
+    }
+
+    #background header ul .fas {
+        font-size: 2.1rem;
+    }
+
+    #background header #photo-wrapper {
+        width: 25px;
+        height: 25px;
+        margin-top: 0.8rem;
+    }
+
+    #background header #notification-icon, #background header #notification {
+        width: 13px;
+        height: 13px;
+        font-size: 1rem;
+        padding-right: 0.3rem;
+    }
+
+    #background header #notification {
+        padding-right: 0.2rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #posts-container {
+        left: 7%;
+        top: 42rem;
+    }
+
+    #follow-users {
+        left: 8.5rem;
+        top: 9.5rem;
+    }
+
+    #background header #messages {
+        font-size: 1.4rem;
+        right: 4rem;
+        width: 170px;
+        top: 5rem;
+    }
+
+    #background header #messages #close-messages{
+        top: 0.8rem;
+        font-size: 2.6rem;
+    }
+
+    #background header #messages .message #profile-wrapper{
+        width: 25px;
+        height: 25px;
+        margin-left: -1rem;
+    }
+
+    #background header #messages .message p {
+        font-size: 1.15rem;
+        margin-left: 2.2rem;
+        margin-top: -1.6rem;
+    }
+
+    #background header #messages .message h4 {
+        margin-left: -2.3rem;
+        margin-top: -0.2rem;
+    }
+
+    #background header #messages .message .circle-message {
+        right: 0.3rem;
+        width: 7px;
+        height: 7px;
+    }
+
+    #background header #info {
+        width: 170px;
+        font-size: 1.4rem;
+        right: 8rem;
+        top: 5rem;
+    }
+
+    #background header #messages .message {
+        width: 102%;
+        padding-left: 1.2rem;
+    }
+
+    #background header #info .info-text .profile-wrapper {
+        width: 25px;
+        height: 25px;
+        margin-left: -0.6rem;
+    }
+
+    #background header #info .info-text p {
+        font-size: 1.3rem;
+        margin-left: 2.6rem;
+        margin-top: -3.2rem;
+    }
+
+    #background header #info .info-text .circle-notification {
+        font-size: 1.5rem;
+        right: 1rem;
+        width: 8px;
+        height: 8px;
+    }
+
+    #background header #info #close-notifications {
+        top: 0.8rem;
+        font-size: 2.6rem;
+    }
+
+    #background header {
+        height: 60px;
+    }
+
+    #background header h3 {
+        font-size: 2.3rem;
+    }
+
+    #background header label[for="photo-video"] {
+        width: 123px;
+        font-size: 1.2rem;
+        height: 30px;  
+        right: 11rem;
+        padding-top: 0.5rem;
+        }
+
+    #background header input[type="text"] {
+        width: 124px;
+        height: 30px;
+        font-size: 1.2rem;
+        padding-left: 2rem;
+        margin-left: -16.5rem;
+        padding-right: 1rem;
+    }
+    
+    #background header label[for="search"] {
+        left: 11.5rem;
+        height: 30px;
+        width: 20px;
+    }
+
+    #background header label[for="search"] i {
+        font-size: 1rem;
+    }
+
+    #background header ul .fas {
+        font-size: 2rem;
+        top: -0.8rem;
+        right: 1.5rem;
+        cursor: pointer;
+    }
+
+    #background header ul .fas {
+        margin-right: -0.5rem;
+    }
+
+    #background header ul {
+        gap: 2.7rem;
+        margin-right: -4rem;
+    }
+
+    #background header #photo-wrapper {
+        width: 25px;
+        height: 25px;
+        margin-top: 0.7rem; 
+    }
+
+    #background header #photo-wrapper img{
+        width: 25px;
+        height: 25px;
+    }
+
+    #report-message {
+        width: 270px;
+        height: 125px;
+    }
+
+    #report-message p {
+        font-size: 2.3rem;
+    }
+
+    #report-message i {
+        font-size: 3.8rem;
+        margin-top: 0.6rem;
+    }
+}

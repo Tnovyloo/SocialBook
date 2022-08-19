@@ -1,0 +1,879 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+:root {
+    --posts-header-color: rgb(240, 240, 240);
+    --reactions-color: rgb(240, 240, 240);
+    --interactions-color: rgb(240, 240, 240);
+    --comments-color: rgb(251, 251, 251);
+    --enter-comment-color: rgb(235, 235, 235);
+    --comment-color: rgb(235, 235, 235);
+    --upload-file-color: rgb(235, 235, 235);
+}
+
+.bold {
+    font-weight: 800;
+}
+
+#background-image {
+    width: 100%;
+    margin-inline: auto;
+    height: 250px;
+}
+
+#background-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+#foreground-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: relative;
+    left: 25rem;
+    top: -5rem;
+    border: 5px solid white;
+}
+
+#foreground-image img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+#informations {
+    position: absolute;
+    left: 45rem;
+    width: 300px;
+    top: 26rem;
+    font-size: 2.5rem;
+}
+
+#informations p {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+}
+
+#informations #profiles-wrapper {
+    display: flex;
+    margin-top: 1rem;
+    width: 163px;
+    position: relative;
+}
+
+#informations #profiles-wrapper .fas.fa-ellipsis-vertical {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    transform: rotate(90deg);
+    color: gray;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#informations .profile-friend {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+#informations .profile-friend #curtain {
+    position: absolute;
+    width: 100%;
+}
+
+#informations .profile-friend:not(:first-of-type) {
+    margin-left: -1rem;
+}
+
+#first-header button[type="submit"] {
+    position: absolute;
+    right: 25rem;
+    top: 30rem;
+    width: 215px;
+    height: 50px;
+    background-color: hsl(0, 0%, 92%);
+    border-radius: 10px;
+    font-size: 2.6rem;
+    cursor: pointer;
+    border: none;
+}
+
+#first-header button[type="submit"]:hover {
+    background-color: hsl(0, 0%, 88%)
+}
+
+#first-header hr {
+    width: 80%;
+    margin-inline: auto;
+    margin-top: -2.5rem;
+}
+
+#first-header #sections {
+    display: flex;
+    gap: 5rem;
+    font-size: 2.8rem;
+    margin-left: 23rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+#first-header #sections p {
+    cursor: pointer;
+    padding: 0.5rem;
+    font-weight: bold;
+}
+
+#first-header #sections hr {
+    position: absolute;
+    width: 115px;
+    height: 5px;
+    background-color: hsl(220, 60%, 35%);
+    bottom: -19px;
+    border-radius: 100px;
+}
+
+#first-header #sections hr:nth-of-type(1), header #sections hr:nth-of-type(2), header #sections hr:nth-of-type(3) {
+    display: none;
+}
+
+#first-header #sections hr:nth-of-type(1) {
+    left: -20px;
+}
+
+#first-header #sections hr:nth-of-type(2) {
+    left: 111px;
+}
+
+#first-header #sections hr:nth-of-type(3) {
+    left: 250px;
+}
+
+#first-header #sections p:active {
+    border-radius: 10px;
+    background-color: hsl(240, 0%, 90%);
+}
+
+#first-header {
+    border-bottom: 1px solid gray;
+    padding-bottom: 1.6rem;
+}
+
+#container-posts-section {
+    position: relative;
+    width: 1200px;
+    margin-inline: auto;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+#container-posts-section #user-info {
+    width: 450px;
+    padding: 2rem;
+    border-radius: 10px;
+    padding-bottom: 2.5rem;
+    background-color: white;
+    box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
+}
+
+#container-posts-section #user-info h2 {
+    font-size: 3rem;
+    margin-bottom: -1rem;
+}
+
+#container-posts-section #user-info p {
+    font-size: 2.3rem;
+    margin-top: 0.8rem;
+    margin-left: 3.5rem;
+}
+
+#container-posts-section #user-info .fas {
+    font-size: 2rem;
+    position: relative;
+    top: 3rem;
+}
+
+#container-posts-section #user-info .fas.fa-location-dot {
+    left: 0.55rem;
+}
+
+#container-posts-section #user-info .fas.fa-house {
+    left: 0.2rem;
+}
+
+#container-posts-section #user-info .fas.fa-scroll {
+    left: 0.2rem;
+}
+
+#container-posts-section #add-post {
+    position: absolute;
+    right: 10rem;
+    top: 2rem;
+    padding-inline: 2.7rem;
+    padding-bottom: 2rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 0.9px 2px 1px hsl(0, 0%, 80%);
+}
+
+#container-posts-section #add-post #profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    bottom: -2rem;
+    right: 1rem;
+}
+
+#container-posts-section #add-post input[type="text"] {
+    width: 430px;
+    height: 45px;
+    border-radius: 30px;
+    padding-inline: 1rem;
+    font-size: 1.7rem;
+    outline: none;
+    border: none;
+    background-color: hsl(0, 10%, 95%);
+}
+
+#container-posts-section #add-post input[type="text"]:hover {
+    background-color: hsl(0, 0%, 92%)
+}
+
+#container-posts-section #add-post hr {
+    width: 113%;
+    margin-left: -2.7rem;
+    margin-block: 1.5rem;
+}
+
+#container-posts-section #add-interactions {
+    width: 69%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    height: 15px;
+}
+
+#container-posts-section #add-interactions label {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+#container-posts-section #add-post i {
+    font-size: 2.4rem;
+}
+
+#container-posts-section #add-post p {
+    font-size: 2.4rem;
+}
+
+#container-posts-section input[type="file"] {
+    display: none;
+}
+
+#container-posts-section #user-posts {
+    position: absolute;
+    right: 10rem;
+    background-color: pink;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+/* PHOTOS */
+
+#photo-wrapper, .photo-wrapper, #profile-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#photo-wrapper img, .photo-wrapper img, #profile-wrapper img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* POSTS-SECTION */
+
+#posts-container {
+    position: absolute;
+    width: 542px;
+    right: 9.7rem;
+    border-radius: 1rem;
+    top: 19rem;
+    overflow: visible;
+    float: right;
+}
+
+#posts-container header {
+    width: 100%;
+    padding: 1.3rem;
+    background-color: var(--posts-header-color);
+}
+
+#posts-container header p {
+    font-size: 1.8rem;
+    margin-top: -2.4rem;
+    margin-left: 4rem;
+}
+
+#posts-container header .fas.fa-ellipsis {
+    position: absolute;
+    font-size: 3rem;
+    right: 3rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
+#posts-container #image-wrapper {
+    height: 450px;
+    overflow: hidden;
+}
+
+#posts-container #image-wrapper img {
+    object-position: 0px -250px;
+    width: 100%;
+}
+
+#posts-container #reactions {
+    height: 5rem;
+    border-bottom: 0.2px solid hsl(240, 5%, 85%);
+    padding-top: 1.3rem;
+    background-color: var(--reactions-color)
+}
+
+#posts-container #profiles-wrapper {
+    display: flex;
+    margin-left: 1rem;
+}
+
+#posts-container #profile-wrapper {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    bottom: 1px;
+}
+
+#posts-container #profile-wrapper:nth-child(2) {
+    left: -1rem;
+}
+
+#posts-container #profile-wrapper:nth-child(3) {
+    left: -2rem;
+}
+
+#posts-container p {
+    position: absolute;
+    font-size: 2rem;
+    margin-left: 7.5rem;
+}
+
+/* INTERACTIONS SECTION */
+
+#posts-container #interactions {
+    display: flex;
+    width: 100%;
+    height: 4.5rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--interactions-color);
+    font-size: 2.5rem;
+    padding-inline: 2rem;
+}
+
+#posts-container #interactions .fa-message {
+    position: absolute;
+    left: 8rem;
+    transform: translate(0, -50%);
+    font-size: 2.3rem;
+    cursor: pointer;
+}
+
+/* COMMENTS SECTION */
+
+#posts-container #comments {
+    width: 100%;
+    height: 22rem;
+    background-color: var(--comments-color);
+}
+
+#posts-container #comments input[type='text'] {
+    position: absolute;
+    width: 90%;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%, -6%);
+    height: 4rem;
+    padding: 1.8rem;
+    border-radius: 1.5rem;
+    font-size: 1.7rem;
+    background-color: var(--enter-comment-color);
+    border: none;
+}
+
+#posts-container #comments #comment-messages {
+    width: 100%;
+    height: 15.4rem;
+    display: flex;
+    flex-flow: column;
+    overflow-y: scroll;
+    padding-bottom: 4rem;
+    gap: 3rem;
+    position: relative;
+}
+
+#posts-container #comments #comment-messages::-webkit-scrollbar {
+    display: none;
+}
+
+#posts-container #comments input[type="file"] {
+    display: none;
+}
+
+#posts-container #comments .fas {
+    position: absolute;
+    bottom: 2.2rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#posts-container #comments .fa-image {
+    right: 8rem;
+}
+
+#posts-container #comments .fa-video {
+    right: 4rem;
+}
+
+/* COMMENTS */
+
+#comment-content #profile-wrapper {
+    position: relative;
+    bottom: -2.7rem;
+    margin-left: 2.5rem;
+}
+
+#comments #comment-messages #comment #comment-content p{
+    z-index: 1;
+}
+
+#comments #comment-messages #comment #comment-content p::before{
+    content: '';
+    position: absolute;
+    background-color: var(--comment-color);
+    width: calc(100% + 2rem);
+    left: -1rem;
+    height: calc(100% + 0.5rem);
+    z-index: -1;
+    bottom: -0.25rem;
+    border-radius: 10px;
+    border-top: 1px solid gray;
+}
+
+#posts-container #post .post-options {
+    position: absolute;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+    top: 6rem;
+    right: 2.6rem;
+    display: none;
+}
+
+#posts-container #post .post-options i {
+    color: rgb(240, 240, 240);
+    position: absolute;
+    right: 1rem;
+    font-size: 2rem;
+    transform: rotate(-90deg);
+    top: -1rem;
+}
+
+#posts-container #post .post-options .close-sign {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 3rem;
+    font-weight: bold;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#posts-container #post .post-options button {
+    cursor: pointer;
+    position: absolute;
+    left: 40%;
+    transform: translate(-50%, 0%);
+    border: none;
+    padding: 1rem;
+    font-size: 1.8rem;
+    width: 107px;
+    background-color: transparent;
+}
+
+#posts-container #post {
+    margin-bottom: 3rem;
+    position: relative;
+    box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
+}
+
+#report-background {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    padding-top: 32rem;
+    z-index: 2;
+    inset: 0;
+}
+
+#report-message {
+    text-align: center;
+    width: 350px;
+    height: 180px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+}
+
+#report-background #report-message i {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translate(-50%)
+}
+
+#report-background #report-message p {
+    margin-top: 6.6rem;
+    cursor: default;
+    font-size: 4rem;
+}
+
+/* ANIMATION OF LIKE */
+
+#posts-container #interactions .fa-thumbs-up {
+    cursor: pointer;
+    color: black;
+    transform-origin: center left;
+}
+
+.animation-like {
+    animation-name: like-animation;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes like-animation {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    50% {
+        transform: rotate(-20deg) scale(1.1)
+    }
+
+    100% {
+        transform: rotate(0deg);
+        color: blue;
+    }
+}
+
+/* ABOUT SECTION APPEARANCE */
+
+#about-section {
+    width: 100%;
+}
+
+#about-section #personal-info {
+    width: 65%;
+    box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
+    margin-inline: auto;
+    border-radius: 10px;
+    margin-top: 2.3rem;
+    padding-inline: 1rem;
+    padding-top: 1.5rem;
+}
+
+#about-section #personal-info h2 {
+    font-size: 3rem;
+    margin-bottom: -1.5rem;
+    margin-left: 1rem;
+}
+
+.fas {
+    font-size: 3rem;
+    position: relative;
+}
+
+#about-section #personal-info .left {
+    left: 6.3rem;
+    bottom: -2.5rem;
+}
+
+#about-section #personal-info .right {
+    left: 110rem;
+    background-color: hsl(0, 0%, 91%);
+    padding: 0.8rem;
+    border-radius: 50%;
+    top: -3.2rem;
+    font-size: 2.2rem;
+    cursor: pointer;
+}
+
+#about-section #personal-info .fas.fa-location-dot {
+    left: 2.8rem;
+    bottom: -3.2rem;
+}
+
+#about-section #personal-info .fas.fa-envelope {
+    left: 2.1rem;
+    bottom: -3.35rem;
+}
+
+#about-section #personal-info .fas.fa-cake-candles {
+    left: 1.95rem;
+    bottom: -4rem;
+}
+
+#about-section #personal-info .fas.fa-children {
+    bottom: -3.3rem;
+    left: 1.45rem;
+}
+
+#about-section #personal-info .fas.fa-person {
+    left: 6.5rem;
+}
+
+#about-section #personal-info #birth {
+    top: -4.4rem;
+}
+
+#about-section #personal-info #school {
+    top: -2.9rem;
+}
+
+#about-section #personal-info #email {
+    top: -2.9rem;
+}
+
+#about-section #personal-info #number {
+    top: -3.7rem;
+}
+
+#about-section #personal-info p {
+    font-size: 2rem;
+    margin-left: 11.6rem;
+}
+
+#about-section #personal-info span {
+    margin-left: 0.1rem;
+}
+
+#about-section #personal-info h3 {
+    font-size: 2.5rem;
+    margin-top: 4rem;
+    margin-bottom: -1rem;
+    margin-left: 4rem;
+}
+
+/* ABOUT SECTION EDIT EFFECT */
+
+#about-section #personal-info .right:hover {
+    background-color: hsl(0, 0%, 86%)
+}
+
+/**/
+
+#friends-about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 65%;
+    box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
+    margin-inline: auto;
+    border-radius: 10px;
+    margin-top: 2.3rem;
+    padding: 5rem 0 2rem 3rem
+}
+
+#friends-about-section h2 {
+    position: absolute;
+    font-size: 3rem;
+    margin-left: -1.7rem;
+    margin-top: -3.5rem;
+}
+
+#friends-about-section #friends-num {
+    position: absolute;
+    font-size: 1.7rem;
+    margin-left: -1.7rem;
+    margin-top: 0rem;
+    color: gray;
+}
+
+#friends-about-section #all {
+    color: hsl(220, 100%, 65%);
+    position: absolute;
+    margin-left: 56%;
+    margin-top: -1.7rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#friends-about-section .friend {
+    position: relative;
+    width: 550px;
+    margin-top: 3.5rem;
+}
+
+#friends-about-section .friend img {
+    width: 85px;
+    height: 75px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 0px hsla(0, 0%, 20%, 0.8);
+}
+
+#friends-about-section .friend h4 {
+    position: absolute;
+    font-size: 2.3rem;
+    left: 10rem;
+    top: 20%
+}
+
+#friends-about-section .friend p {
+    position: absolute;
+    font-size: 1.4rem;
+    left: 9.9rem;
+    top: 55%;
+    color: hsl(0, 0%, 60%);
+}
+
+#friends-about-section .fas.fa-ellipsis-vertical {
+    position: absolute;
+    right: 0rem;
+    transform: rotate(90deg);
+    top: 2.5rem;
+    font-size: 2.4rem;
+    cursor: pointer;
+}
+
+#photos-about-section {
+    display: flex;
+    width: 65%;
+    box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
+    padding-top: 7.5rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-inline: auto;
+    margin-top: 2.3rem;
+    border-radius: 5px;
+    padding-left: 3.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+}
+
+#photos-about-section h2 {
+    position: absolute;
+    font-size: 3rem;
+    margin-top: -6rem;
+    margin-left: -1.7rem;
+}
+
+#photos-about-section img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px 0px hsla(0, 0%, 20%, 0.8);
+}
+
+#photos-about-section span {
+    position: relative;
+    width: 23%;
+    cursor: pointer;
+}
+
+#photos-about-section span::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    inset: 0;
+}
+
+#photos-about-section span:hover::after {
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+#container-posts-section #photos-about-section {
+    width: 450px;
+    margin-left: 0;
+}
+
+#container-posts-section #photos-about-section span {
+    width: 115px;
+}
+
+#container-posts-section #friends-about-section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 450px;
+    margin-left: 0;
+    column-gap: 1.4rem;
+    padding-bottom: 3rem;
+    top: 80rem;
+}
+
+#container-posts-section #friends-about-section .friend {
+    position: relative;
+    width: 120px;    
+    margin-top: 3rem;
+}
+
+#container-posts-section #friends-about-section #all {
+    margin-left: 23%;
+}
+
+#container-posts-section #friends-about-section .friend img {
+    width: 120px;
+    height: 125px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 0px hsla(0, 0%, 20%, 0.8);
+    object-fit: cover;
+}
+
+#container-posts-section #friends-about-section .friend h4 {
+    position: absolute;
+    font-size: 1.5rem;
+    left: 0.5rem;
+    top: 13rem;
+}
+
+#container-posts-section #friends-about-section .friend p {
+    display: none;
+}
+
+#container-posts-section #friends-about-section .fas.fa-ellipsis-vertical {
+    display: none;
+}

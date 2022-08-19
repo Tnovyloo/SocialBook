@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="profile.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a18d53579f.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header id="first-header">
+            <div id="background-image"><img src="https://tipsmake.com/data/images/50-black-facebook-cover-photos-for-people-in-a-sad-mood-picture-8-W6ph3xBkS.jpg"></div>
+            <div id="foreground-image"><img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.6435-9/67308354_2076925369277865_5351762411705597952_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=LuBWMhRIEgsAX--RB1L&_nc_ht=scontent-waw1-1.xx&oh=00_AT_SH1Dt-tsFuxR73JcJM9nKRp3luHI1MY_JFZ9LiitsXw&oe=631E362E"></div>
+            <div id="informations">
+                <h3>Szymon Gryz</h3>
+                <p>1.1k friends</p>
+                <div id="profiles-wrapper">
+                    <img class="profile-friend" src="/images/pexels-andrea-piacquadio-837358.jpg">
+                    <img class="profile-friend" src="/images/pexels-djordje-petrovic-2102416.jpg">
+                    <img class="profile-friend" src="/images/pexels-pixabay-39866.jpg">
+                    <img class="profile-friend" src="/images/pexels-natalie-12502186.jpg">
+                    <img class="profile-friend" src="/images/pexels-charles-1851164.jpg">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </div>
+            <button type="submit">Edit profile</button>
+            <hr>
+            <div id="sections">
+                <p id="posts">Posts</p>
+                <hr id="posts-underline" class="underline">
+                <p id="photos">Photos</p>
+                <hr id="photos-underline" class="underline">
+                <p id="about">About</p>
+                <hr id="about-underline" class="underline">
+            </div>
+        </header>
+        <!-- REPORT MESSAGE TO APPEAR -->
+        <div id="report-background">
+            <div id="report-message">
+                <i class="fas fa-user-secret"></i>
+                <p>Thank you! We will check this problem.</p>
+            </div>
+        </div>
+
+        <!--POSTS SECTION -->
+        <div id="container-posts-section">
+            <div id="user-info">
+                <h2>User info</h2>
+                <i class="fas fa-house"></i>
+                <p>Lives in <span id="live-place" class="bold">Pilcza Żelichowska</span></p>
+                <i class="fas fa-location-dot"></i>
+                <p>From <span id="from-place" class="bold">Pilcza Żelichowska</span></p>
+                <i class="fas fa-scroll"></i>
+                <p>Hobbies: <span id="from-place" class="bold">football, gaming</span></p>
+            </div>
+
+            <div id="photos-about-section">
+                <h2>Photos</h2>
+                <span><img src="/images/pexels-andrea-piacquadio-837358.jpg"></span>
+                <span><img src="/images/pexels-charles-1851164.jpg"></span>
+                <span><img src="/images/pexels-pixabay-39866.jpg"></span>
+                <span><img src="/images/pexels-djordje-petrovic-2102416.jpg"></span>
+                <span><img src="/images/pexels-natalie-12502186.jpg"></span>
+            </div>
+
+            <div id="friends-about-section">
+                <h2>Friends</h2>
+                <p id="friends-num">1.192 friends</p>
+                <p id="all">See All Friends</p>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p>100 mutual friends</p>
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p>100 mutual friends</p>
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p>100 mutual friends</p>
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p>100 mutual friends</p>
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </div>
+
+            <div id="add-post">
+                <img id="profile" src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.6435-9/67308354_2076925369277865_5351762411705597952_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=LuBWMhRIEgsAX--RB1L&_nc_ht=scontent-waw1-1.xx&oh=00_AT_SH1Dt-tsFuxR73JcJM9nKRp3luHI1MY_JFZ9LiitsXw&oe=631E362E">
+                <input type="text" placeholder="Do you want to write something?">
+                <hr>
+                <div id="add-interactions">
+                    <label for="image">
+                        <i class="fas fa-image"></i>
+                        <p>Image</p>
+                    </label>
+                    <label for="video">
+                        <i class="fas fa-video"></i>
+                        <p>Video</p>
+                    </labeL>
+                    <input type="file" accept=".jpg" id="image">
+                    <input type="file" accept=".mp4" id="video">
+                </div>
+            </div>
+
+            <div id="posts-container">
+                <div id="post">
+                    <header>
+                        <div id="profile-wrapper"><img src="/images/pexels-natalie-12502186.jpg"></div>
+                        <p>Natalie White</p>
+                        <i class="fas fa-ellipsis"></i>
+                    </header>
+                    <div class="post-options">
+                        <i class="fas fa-play"></i>
+                        <div class="close-sign">+</div>
+                        <button class="report">report post</button>
+                    </div>
+                    <div id="image-wrapper">
+                        <img src="/images/pexels-natalie-12502186.jpg">
+                    </div>
+                    <div id="reactions">
+                        <p>Liked <span class="bold">name</span> and <span class="bold">111 others</span></p>
+                        <div id="profiles-wrapper">
+                            <div id="profile-wrapper"><img src="/images/Gryz-Szymon.jpeg"></div>
+                            <div id="profile-wrapper"><img src="/images/pexels-charles-1851164.jpg"></div>
+                            <div id="profile-wrapper"><img src="/images/pexels-djordje-petrovic-2102416.jpg"></div>
+                        </div>
+                    </div>
+                    <div id="interactions">
+                        <i class="fas fa-thumbs-up"></i>
+                        <label for="comment-input"><i class="fas fa-message"></i></label>
+                        <i class="fas fa-share"></i>
+                    </div>
+                    <div id="comments">
+                        <div id="comment-messages">
+                            <div id="comment">
+                                <div id="comment-content">
+                                    <div id="profile-wrapper"><img src="/images/pexels-charles-1851164.jpg"></div>
+                                    <p>💕</p>
+                                </div>
+                            </div>
+                            <div id="comment">
+                                <div id="comment-content">
+                                    <div id="profile-wrapper"><img src="/images/Gryz-Szymon.jpeg"></div>
+                                    <p>😎</p>
+                                </div>
+                            </div>
+                            <div id="comment">
+                                <div id="comment-content">
+                                    <div id="profile-wrapper"><img src="/images/pexels-pixabay-39866.jpg"></div>
+                                    <p>Looks good!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" placeholder="post a comment" id="comment-input">
+                        <input type="file" accept=".jpg" id="image">
+                        <input type="file" accept=".mp4" id="video">
+                        <label for="image"><i class="fas fa-image"></i></label>
+                        <label for="video"><i class="fas fa-video"></i></label>
+                    </div>
+                </div>
+
+                <div id="post">
+                    <header>
+                        <div id="profile-wrapper"><img src="/images/pexels-djordje-petrovic-2102416.jpg"></div>
+                        <p>Djordje Petrovic</p>
+                        <i class="fas fa-ellipsis"></i>
+                    </header>
+                    <div class="post-options">
+                        <i class="fas fa-play"></i>
+                        <div class="close-sign">+</div>
+                        <button class="report">report post</button>
+                    </div>
+                    <div id="image-wrapper">
+                        <img src="/images/pexels-djordje-petrovic-2102416.jpg">
+                    </div>
+                    <div id="reactions">
+                        <p>Liked <span class="bold">name</span> and <span class="bold">111 others</span></p>
+                        <div id="profiles-wrapper">
+                            <div id="profile-wrapper"><img src="/images/Gryz-Szymon.jpeg"></div>
+                            <div id="profile-wrapper"><img src="/images/pexels-charles-1851164.jpg"></div>
+                            <div id="profile-wrapper"><img src="/images/pexels-djordje-petrovic-2102416.jpg"></div>
+                        </div>
+                    </div>
+                    <div id="interactions">
+                        <i class="fas fa-thumbs-up"></i>
+                        <label for="comment-input2"><i class="fas fa-message"></i></label>
+                        <i class="fas fa-share"></i>
+                    </div>
+                    <div id="comments">
+                        <div id="comment-messages">
+                            <div id="comment">
+                                <div id="comment-content">
+                                    <div id="profile-wrapper"><img src="/images/pexels-natalie-12502186.jpg"></div>
+                                    <p>Nice!</p>
+                                </div>
+                            </div>
+                            <div id="comment">
+                                <div id="comment-content">
+                                    <div id="profile-wrapper"><img src="/images/Gryz-Szymon.jpeg"></div>
+                                    <p>🐱‍👤</p>
+                                </div>
+                            </div>
+                            <div id="comment">
+                                <div id="comment-content">
+                                    <div id="profile-wrapper"><img src="/images/pexels-pixabay-39866.jpg"></div>
+                                    <p>Cool!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" placeholder="post a comment" id="comment-input2">
+                        <input type="file" accept=".jpg" id="image">
+                        <input type="file" accept=".mp4" id="video">
+                        <label for="image"><i class="fas fa-image"></i></label>
+                        <label for="video"><i class="fas fa-video"></i></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABOUT SECTION -->
+
+        <div id="about-section">
+            <div id="personal-info">
+                <h2>About</h2>
+
+                <h3>Places lived</h3>
+
+                <i class="fas fa-house left"></i>
+                <p>Live in <span class="bold">Pilcza Żelichowska</span></p>
+                <i class="fas fa-pencil right" id="live"></i>
+
+                <i class="fas fa-location-dot left"></i>
+                <p>From <span class="bold">Pilcza Żelichowska</span></p>
+                <i class="fas fa-pencil right" id="from"></i>
+
+                <h3>Education</h3>
+                <i class="fas fa-school left"></i>
+                <p>Current school <span class="bold">Jagiellonian University</span></p>
+                <i class="fas fa-pencil right" id="school"></i>
+                
+                <h3>Contact info</h3>
+                <i class="fas fa-phone left"></i>
+                <p>Number <span class="bold">999 888 777</span></p>
+                <i class="fas fa-pencil right" id="number"></i>
+
+                <i class="fas fa-envelope left"></i>
+                <p>E-mail <span class="bold">szymongryz@interia.pl </span></p>
+                <i class="fas fa-pencil right" id="email"></i>
+
+                <h3>Basic info</h3>
+                
+                <i class="fas fa-person left"></i>
+                <p>Gender <span class="bold"> Male</span></p>
+                <i class="fas fa-pencil right" id="gender"></i>
+                
+                <i class="fas fa-cake-candles left"></i>
+                <p>Birth date <span class="bold">20 February</span></p>
+                <p>Birth year <span class="bold">2003</span></p>
+                <i class="fas fa-pencil right" id="birth"></i>
+                
+                <i class="fas fa-children left"></i>
+                <p>Relationship <span class="bold">in a relationship</span></p>
+                <i class="fas fa-pencil right" id="relation"></i>
+            </div>
+
+            <div id="friends-about-section">
+                <h2>Friends</h2>
+                <p id="friends-num">1.192 friends</p>
+                <p id="all">See All Friends</p>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p>100 mutual friends</p>
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p>100 mutual friends</p>
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p>100 mutual friends</p>
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p>100 mutual friends</p>
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </div>
+
+            <div id="photos-about-section">
+                <h2>Photos</h2>
+                <span><img src="/images/pexels-andrea-piacquadio-837358.jpg"></span>
+                <span><img src="/images/pexels-charles-1851164.jpg"></span>
+                <span><img src="/images/pexels-pixabay-39866.jpg"></span>
+                <span><img src="/images/pexels-djordje-petrovic-2102416.jpg"></span>
+                <span><img src="/images/pexels-natalie-12502186.jpg"></span>
+                <span><img src="/images/pexels-amber-janssens-7327624.jpg"></span>
+                <span><img src="/images/pexels-jeandaniel-francoeur-12913355.jpg"></span>
+                <span><img src="/images/pexels-kristian-thomas-13146110.jpg"></span>
+                <span><img src="/images/pexels-kássia-melo-13048774.jpg"></span>
+                <span><img src="/images/pexels-letticia-massari-13037433.jpg"></span>
+                <span><img src="/images/pexels-santiago-sauceda-gonzález-13122942.jpg"></span>
+            </div>
+        </div>
+
+        <!-- PHOTOS SECTION -->
+        <div id="photos-section">
+            <div id="photos-about-section">
+                <h2>Photos</h2>
+                <span><img src="/images/pexels-andrea-piacquadio-837358.jpg"></span>
+                <span><img src="/images/pexels-charles-1851164.jpg"></span>
+                <span><img src="/images/pexels-pixabay-39866.jpg"></span>
+                <span><img src="/images/pexels-djordje-petrovic-2102416.jpg"></span>
+                <span><img src="/images/pexels-natalie-12502186.jpg"></span>
+                <span><img src="/images/pexels-amber-janssens-7327624.jpg"></span>
+                <span><img src="/images/pexels-jeandaniel-francoeur-12913355.jpg"></span>
+                <span><img src="/images/pexels-kristian-thomas-13146110.jpg"></span>
+                <span><img src="/images/pexels-kássia-melo-13048774.jpg"></span>
+                <span><img src="/images/pexels-letticia-massari-13037433.jpg"></span>
+                <span><img src="/images/pexels-santiago-sauceda-gonzález-13122942.jpg"></span>
+            </div>
+        </div>
+        <script type="text/javascript" src="profile.js"></script>
+    </body>
+</html>
