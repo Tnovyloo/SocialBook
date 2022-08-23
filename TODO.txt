@@ -1,8 +1,6 @@
 #TODO FRONTEND Current tasks.
 Could add something like 'bio' on facebook
-- settigns page with all of informations from 'about'.
-- login page
-- register page
+- settings page with all of informations from 'about'.
 
 #TODO BACKEND Current tasks.
 - create profile, posts, comments, following, like_posts databases
