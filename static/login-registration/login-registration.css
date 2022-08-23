@@ -100,6 +100,10 @@ header h1 {
     border: none;
 }
 
+#background #login-section input:first-of-type {
+    margin-top: 1rem;
+}
+
 /* LOGIN / REGISTER TITLES */
 
 #background #login-section label {
@@ -108,7 +112,7 @@ header h1 {
     cursor: pointer;
     font-size: 1rem;
     transition: 0.7s;
-    margin-top: -16.8rem;
+    margin-top: -15.8rem;
     margin-bottom: 2rem;
 }
 
@@ -131,9 +135,10 @@ header h1 {
 }
 
 #on-off:checked ~ #login-section label {
-    font-size: 1.5rem;
-    margin-top: -14rem
+    font-size: 1.7rem;
+    margin-top: -13rem
 }
+
 
 input[type='checkbox'] {
     display: none;
