@@ -6,4 +6,5 @@ Could add something like 'bio' on facebook
 - create profile, posts, comments, following, like_posts databases
 - create views feed_posts and other.
 - create superuser.
-
+- create users registration on database.
+- do connections with posts and comments.

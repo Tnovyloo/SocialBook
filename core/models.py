@@ -25,7 +25,7 @@ class Profile(models.Model):
     school = models.CharField(max_length=100, blank=True)
 
     #Contact info
-    number = models.IntegerField(max_length=9, blank=True)
+    number = models.IntegerField(blank=True, null=True)
     email = models.EmailField(max_length=254, blank=True)
 
     #Basic info
