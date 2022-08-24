@@ -8,7 +8,7 @@
         <title>Settings page</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Open Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Open Sans&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -18,16 +18,16 @@
                 <input type="text" id="search" placeholder="Search fakebook">
             </div>
             <i class="fas fa-bell"></i>
-            <img class="profile" src="/images/Gryz-Szymon.jpeg">
+            <img class="profile" src="">
         </header>
         <main>
             <div id="settings-content">
                 <div id="navigation">
-                    <h3>Basic Info</h3>
-                    <h3>Location</h3>
-                    <h3>Hobby and education</h3>
-                    <h3>Contact</h3>
-                    <h3>People</h3>
+                    <h3 class="activate-form">Basic Info</h3>
+                    <h3 class="activate-form">Location</h3>
+                    <h3 class="activate-form">Hobby and education</h3>
+                    <h3 class="activate-form">Contact</h3>
+                    <h3 class="activate-form">People</h3>
                 </div>
 
                 <form id="change-profile">
@@ -37,84 +37,93 @@
                         <p>Change your profile</p>
                     </div>
                 </form>
-
-                <form id="basic-info">
+                <form id="basic-info" class="forms">
 
                     <div class="info">
-                        <p>First Name</p>
-                        <input type="text">
+                        <p class='info-to-change-basic'>First Name</p>
+                        <input type="text" placeholder="First name">
                     </div>
                     
                     <div class="info">
-                        <p>Last Name</p>
-                        <input type="text">
+                        <p class='info-to-change-basic'>Last Name</p>
+                        <input type="text" placeholder="Last name">
                     </div>
 
                     <div class="info">
-                        <p>Gender</p>
-                        <input type="text">
+                        <p class='info-to-change-basic'>Gender</p>
+                        <input type="text" placeholder="Gender">
                     </div>
 
                     <div class="info">
-                        <p>Birth date</p>
-                        <input type="text">
+                        <p class='info-to-change-basic'>Birth date</p>
+                        <input type="text" placeholder="Birth date">
                     </div>
+
+                    <input type="submit" class="submit-button">
 
                 </form>
 
-                <form id="live-places">
+                <form id="live-places" class="forms">
 
                     <div class="info">
-                        <p>Live place</p>
-                        <input type="text">
+                        <p class='info-to-change-places'>Live place</p>
+                        <input type="text" placeholder="Live place">
                     </div>
 
                     <div class="info">
-                        <p>From</p>
-                        <input type="text">
+                        <p class='info-to-change-places'>From</p>
+                        <input type="text" placeholder="From">
                     </div>
+
+                    <input type="submit" class="submit-button">
 
                 </form>
 
-                <form id="hobby-education">
+                <form id="hobby-education" class="forms">
 
                     <div class="info">
-                        <p>Hobby</p>
-                        <input type="text">
+                        <p class='info-to-change-hobby-education'>Hobby</p>
+                        <input type="text" placeholder="Hobby">
                     </div>
 
                     <div class="info">
-                        <p>School</p>
-                        <input type="text">
+                        <p class='info-to-change-hobby-education'>School</p>
+                        <input type="text" placeholder="School">
                     </div>
+
+                    <input type="submit" class="submit-button">
 
                 </form>
 
-                <form id="contact">
+                <form id="contact" class="forms">
 
                     <div class="info">
-                        <p>Number</p>
-                        <input type="text">
+                        <p class='info-to-change-contact'>Number</p>
+                        <input type="number" placeholder="Number">
                     </div>
 
                     <div class="info">
-                        <p>E-mail</p>
-                        <input type="text">
+                        <p class='info-to-change-contact'>E-mail</p>
+                        <input type="email" placeholder="E-mail">
                     </div>
+
+                    <input type="submit" class="submit-button">
 
                 </form>
                 
-                <form id="close-people">
+                <form id="close-people" class="forms">
                     
                     <div class="info">
-                        <p>Relationship</p>
-                        <input type="text">
+                        <p class='info-to-change-people'>Relationship</p>
+                        <input type="text" placeholder="Relationship">
                     </div>
 
                     <div class="info">
-                        <p>Family members</p>
-                        <input type="text">
+                        <p class='info-to-change-people'>Family members</p>
+                        <input type="text" placeholder="Family members">
                     </div>
+
+                    <input type="submit" class="submit-button">
 
                 </form>
 

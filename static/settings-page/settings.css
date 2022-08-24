@@ -79,6 +79,7 @@ main {
     position: relative;
     padding-left: 28rem;
     font-size: 2.4rem;
+    min-height: 280px;
 }
 
 #settings-content #change-profile {
@@ -128,9 +129,20 @@ main {
 }
 
 #settings-content #navigation h3 {
+    display: inline-block;
     cursor: pointer;
-    margin-top: 1rem;
-    margin-left: 0.4rem;
+    width: 280px;
+    height: 50px;
+    margin-top: -1rem;
+    margin-left: -1rem;
+    margin-right: -1.5rem;
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    font-weight: 400;
+}
+
+#settings-content #navigation h3:hover {
+    background-color: hsl(0, 0%, 92%)
 }
 
 #settings-content form {
@@ -142,21 +154,38 @@ main {
 }
 
 #settings-content .info p {
-    font-family: 'Open Sans';
+    font-family: 'Lato';
     display: inline-block;
-    width: 140px;
     vertical-align: top;
     margin-bottom: 2rem;
+    font-weight: 700;
+    font-size: 1.9rem;
 }
 
 #settings-content .info input {
-    padding-inline: 1.5rem;
+    padding-inline: 1rem;
     vertical-align: top;
-    margin-top: 0.3rem;
     width: 200px;
     height: 30px;
     border: none;
     outline: none;
-    background-color: hsl(0, 0%, 87%);
-    border-radius: 5px;
+    background-color: white;
+    border-radius: 2px;
+    border: 1px solid rgb(220, 220, 220);
+}
+
+#settings-content .info input[type='number']::-webkit-inner-spin-button {
+    display: none;
+}
+
+#settings-content form input[type='submit'] {
+    padding-inline: 1rem;
+    width: 80px;
+    height: 30px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    background-color: hsla(200, 100%, 55%, 0.5);
+    margin-left: 117px; 
+    margin-bottom: min(20px)
 }
