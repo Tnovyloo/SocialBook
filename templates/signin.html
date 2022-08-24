@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="sign-in.css" rel="stylesheet">
+        <title>Registration page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1>Fakebook</h1>
+            <h1><a href="/signup">Sign-Up</a></h1>
+        </header>
+        <main id="background">
+            <fieldset>
+                <form action="" method="POST" id="login-section">
+                    {% csrf_token %}
+                    <input type="text" name="username" required maxlength="50" placeholder="Username">
+                    <input type="password" name="password" required maxlength="50" placeholder="Password">
+                    <button type="submit">Login</button>
+                </form>
+            </fieldset>
+            <div>
+                    <style>
+                        h5{
+                            color:red;
+                        }
+                    </style>
+                    {% for message in messages%}
+                    <h5>{{message}}</h5>
+                    {% endfor %}
+            </div>
+        </main>
+    </body>
+</html>

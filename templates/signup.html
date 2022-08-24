@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="sign-in.css" rel="stylesheet">
+        <title>Registration page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1>Fakebook</h1>
+            <h1><a href="/signin">Sign-In</a></h1>
+        </header>
+        <main id="background">
+            <fieldset>
+                <input type="checkbox" id="on-off">
+                <form action="" method="POST" id="registration-section">
+                    {% csrf_token %}
+                    <h1>Register</h1>
+                    <input type="text" required minlength='4' maxlength="50" placeholder="Username" name="username">
+                    <input type="text" required minlength='8' maxlength="50" placeholder="Email" name="email">
+                    <input type="password" required minlength='6' maxlength="50" placeholder="Password" name="password1">
+                    <input type="password" required minlength='6' maxlength="50" placeholder="Repeat Password" name="password2">
+                    <button type="submit">Register</button>
+                </form>
+            </fieldset>
+            <div>
+                    <style>
+                        h5{
+                            color:red;
+                        }
+                    </style>
+                    {% for message in messages%}
+                    <h5>{{message}}</h5>
+                    {% endfor %}
+            </div>
+        </main>
+    </body>
+</html>
