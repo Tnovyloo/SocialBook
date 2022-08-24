@@ -18,7 +18,10 @@
                 <header>
                     <h3>Fakebook</h3>
                     <input type="text" placeholder="Search fakebook" id="search"><label for="search"><i class="fas fa-magnifying-glass"></i></label>
-                    <input type="file" accept=".jpg, .mp4" id="photo-video"><label for="photo-video">Upload photo/video</label>
+                    <form action="upload" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <input type="file" name="image_upload" accept=".jpg, .mp4" id="photo-video"><label for="photo-video">Upload photo/video</label>
+                    </form>
                     <ul>
                         <li>
                             <i class="fas fa-bell" id="notification-open"><span id="notification-icon"></span></i>                            

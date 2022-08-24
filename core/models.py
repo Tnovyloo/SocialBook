@@ -35,3 +35,14 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Post(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4())
+    user_id = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='post_media')
+    created_at = models.DateTimeField(default=datetime.now())
+    number_of_likes = models.IntegerField(default=0)
+    caption = models.TextField()
+
+    def __str__(self):
+        return self.username
