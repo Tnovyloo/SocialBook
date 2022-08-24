@@ -34,9 +34,12 @@ def profile(request, pk):
     # user_followers = len(FollowersCount.objects.filter(user=pk))
     # user_following = len(FollowersCount.objects.filter(follower=pk))
 
+    posts = Post.objects.all()
+
     context = {
         'user_object': user_object,
-        'user_profile': user_profile
+        'user_profile': user_profile,
+        'posts': posts
     }
 
     return render(request, 'profile.html', context)
@@ -98,6 +101,7 @@ def signin(request):
 
         if user is not None:
             auth.login(request, user)
+            return redirect('/')
         else:
             messages.info(request, 'Credentials Invalid')
             return redirect('signin')
