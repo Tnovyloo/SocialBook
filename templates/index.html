@@ -20,8 +20,8 @@
                     <input type="text" placeholder="Search fakebook" id="search"><label for="search"><i class="fas fa-magnifying-glass"></i></label>
                     <form action="upload" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-
-                    <input type="file" name="image_upload" accept=".jpg, .mp4" id="photo-video"><label for="photo-video">Upload photo/video</label>
+                        <input type="file" name="image_upload" accept=".jpg, .mp4" id="photo-video"><label for="photo-video">Upload photo/video</label>
+                        <button type="submit">Upload</button>
                     </form>
                     <ul>
                         <li>
@@ -135,7 +135,7 @@
                 </div>
             </div>
 <!--        Posts-->
-                {% for post in posts reversed %}
+                {% for post in posts %}
                 <div id="posts-container">
                     <div id="post">
                         <header>
@@ -150,7 +150,9 @@
                         </div>
                         <div id="image-wrapper">
                             <a href="#">
-                            <img src="{{post.image.url}}">
+                                {% if post.image %}
+                                <img src="{{post.image.url}}" alt="">
+                                {% endif %}
                             </a>
                         </div>
                         <div id="reactions">
@@ -196,7 +198,6 @@
                     </div>
                 </div>
             {% endfor %}
-
 
         </main>
         <script type="text/javascript" src="{% static '/main-page/script.js' %}"></script>
