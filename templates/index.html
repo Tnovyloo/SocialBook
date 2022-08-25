@@ -20,6 +20,7 @@
                     <input type="text" placeholder="Search fakebook" id="search"><label for="search"><i class="fas fa-magnifying-glass"></i></label>
                     <form action="upload" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
+
                     <input type="file" name="image_upload" accept=".jpg, .mp4" id="photo-video"><label for="photo-video">Upload photo/video</label>
                     </form>
                     <ul>
@@ -133,7 +134,8 @@
                     <p>Thank you! We will check this problem.</p>
                 </div>
             </div>
-
+<!--        Posts-->
+                {% for post in posts reversed %}
                 <div id="posts-container">
                     <div id="post">
                         <header>
@@ -147,7 +149,9 @@
                             <button class="report">report post</button>
                         </div>
                         <div id="image-wrapper">
-                            <img src="{% static 'images/pexels-natalie-12502186.jpg' %}">
+                            <a href="#">
+                            <img src="{{post.image.url}}">
+                            </a>
                         </div>
                         <div id="reactions">
                             <p>Liked <span id="bold">name</span> and <span id="bold">111 others</span></p>
@@ -191,6 +195,9 @@
                         </div>
                     </div>
                 </div>
+            {% endfor %}
+
+
         </main>
         <script type="text/javascript" src="{% static '/main-page/script.js' %}"></script>
     </body>
