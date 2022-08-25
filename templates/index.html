@@ -140,7 +140,8 @@
                     <div id="post">
                         <header>
                             <div id="profile-wrapper"><img src="{% static 'images/pexels-natalie-12502186.jpg' %}"></div>
-                            <p>Natalie White</p>
+<!--                            TODO user profile img-->
+                            <p>{{post.user_id}}</p>
                             <i class="fas fa-ellipsis"></i>
                         </header>
                         <div class="post-options">
@@ -197,7 +198,7 @@
                         </div>
                     </div>
                 </div>
-            {% endfor %}
+                {% endfor %}
 
         </main>
         <script type="text/javascript" src="{% static '/main-page/script.js' %}"></script>
