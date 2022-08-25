@@ -17,8 +17,24 @@
                 <i class='fas fa-magnifying-glass'></i>
                 <input type="text" id="search" placeholder="Search fakebook">
             </div>
-            <i class="fas fa-bell"></i>
-            <img class="profile" src="">
+            <i class="fas fa-bell" id="notification-open"><span id="notification-icon"></span></i>
+
+            <div id="info">
+                <h2>Notifications</h2>
+                <i id="close-notifications">+</i>                               
+                <div class="info-text">                                   
+                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">
+                    <p class="info-content">Charles has a birthday today.</p>
+                    <i class="circle-notification"></i>
+                </div>
+                <div class="info-text">                                   
+                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">
+                    <p class="info-content">Charles has a birthday today.</p>
+                    <i class="circle-notification"></i>
+                </div>
+            </div>
+
+            <img class="profile" src="/images/Gryz-Szymon.jpeg">
         </header>
         <main>
             <div id="settings-content">
@@ -28,6 +44,7 @@
                     <h3 class="activate-form">Hobby and education</h3>
                     <h3 class="activate-form">Contact</h3>
                     <h3 class="activate-form">People</h3>
+                    <h3 class="activate-form">Password</h3>
                 </div>
 
                 <form id="change-profile">
@@ -125,6 +142,26 @@
 
                     <input type="submit" class="submit-button">
 
+                </form>
+
+                <form id="change-password" class="forms">
+
+                    <div class="info">
+                        <p class="change-password-info">Old password</p>
+                        <input placeholder="Old password">
+                    </div>
+                    
+                    <div class="info">
+                        <p class="change-password-info">New password</p>
+                        <input placeholder="New password" minlength = '6'>
+                    </div>
+
+                    <div class="info">
+                        <p class="change-password-info">Repeat password</p>
+                        <input placeholder="Repeat password">
+                    </div>
+
+                    <input type="submit" class="submit-button" value="Change password">
                 </form>
 
             </div>

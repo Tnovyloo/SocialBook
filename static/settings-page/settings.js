@@ -77,6 +77,21 @@ for (let i = 0 ; i < peopleInfoToChange.length; i++) {
 
 submitButton[4].style.marginLeft = `${Math.max(...elementLength) + 15}px`
 
+// for change password
+
+let changePasswordInfo = document.getElementsByClassName('change-password-info')
+elementLength = []
+
+for (let i = 0; i < changePasswordInfo.length; i++) {
+    elementLength.push(changePasswordInfo[i].offsetWidth)
+}
+
+for (let i = 0 ; i < changePasswordInfo.length; i++) {
+    changePasswordInfo[i].style.width = `${Math.max(...elementLength) + 10}px`
+}
+
+submitButton[5].style.marginLeft = `${Math.max(...elementLength) + 15}px`
+
 // DISPLAYING DIFFERENT PARTS OF PAGE AT ONE TIME
 
 let basicInfo = document.getElementById('basic-info')
@@ -84,6 +99,7 @@ let places = document.getElementById('live-places')
 let hobbyEducation = document.getElementById('hobby-education')
 let contact = document.getElementById('contact')
 let closePeople = document.getElementById('close-people')
+let changePassword = document.getElementById('change-password')
 let forms = document.getElementsByClassName('forms')
 let activateForm = document.getElementsByClassName('activate-form')
 
@@ -92,6 +108,7 @@ places.style.display = 'none'
 hobbyEducation.style.display = 'none'
 contact.style.display = 'none'
 closePeople.style.display = 'none'
+changePassword.style.display = 'none'
 activateForm[0].style.borderLeft = '2px solid black'
 activateForm[0].style.fontWeight = 'bold'
 
@@ -107,3 +124,54 @@ for (let i = 0 ; i < forms.length; i++) {
         activateForm[i].style.fontWeight = 'bold'
     })
 }
+
+// COUNT NUMBER OF NOTIFICATIONS
+
+let numOfNotifications = 0
+// 
+let notificationNumber = document.getElementsByClassName('info-content')
+
+for (let i = 0; i < notificationNumber.length; i++) {
+    notificationNumber[i].style.fontWeight = 'bold'
+}
+
+for(let i = 0; i < notificationNumber.length; i++) {
+    if (notificationNumber[i].style.fontWeight === 'bold') {
+        numOfNotifications += 1 
+    }
+}
+
+document.getElementById('notification-icon').innerText = numOfNotifications
+
+// NOTIFICATIONS WINDOW AT INDEX.HTML
+
+const notificationSign = document.getElementById('notification-open') 
+const infoTexts = document.getElementsByClassName('info-text')
+const infoContent = document.getElementsByClassName('info-content')
+const circlesNotification = document.getElementsByClassName('circle-notification')
+
+// displaying window
+
+notificationSign.addEventListener('click', () => {
+    document.getElementById('info').style.display = 'block'
+    document.getElementById('notification-icon').style.display = 'none'
+    notificationSign.style.color = 'gray'
+})
+
+// closing window
+
+document.getElementById('close-notifications').addEventListener('click', () => {
+    document.querySelector('#info').style.display = 'none'
+    notificationSign.style.color = "black"
+})
+
+for (let i = 0; i < infoTexts.length; i++) {
+    infoTexts[i].addEventListener('click', () => {
+        circlesNotification[i].style.display = 'none'
+        infoContent[i].style.fontWeight = 'normal'
+        if (numOfNotifications > 0) {
+        numOfNotifications -= 1
+        }
+    })
+}
+
