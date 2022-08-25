@@ -5,11 +5,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{% static '/styles.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static '/main-page/styles.css' %}" rel="stylesheet" type="text/css">
         <script src="https://kit.fontawesome.com/a18d53579f.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&family=Kanit&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
         <title>Posts</title>
     </head>
     <body>
@@ -67,8 +67,26 @@
                                 </div>
                             </div>
                         </li>
-                        <li><div id="photo-wrapper"><a href="/profile/{{user.username}}"><img src="{% static 'images/Gryz-Szymon.jpeg' %}"></a></div></li>
+                        <li><button id="photo-wrapper-onclick"><img src="/images/Gryz-Szymon.jpeg"></button></li>
                     </ul>
+
+                    <div id="other-pages">
+                        <i class="fas fa-caret-up"></i>
+                        <a href="/static/settings-page/settings.html">
+                            <div class="window" id="first-window">
+                                <i class='fas fa-gear'></i>
+                                <p>settings</p>
+                            </div>
+                        </a>
+
+                        <a href="/profile/{{user.username}}">
+                            <div class="window" id="last-window">
+                                <i class="fas fa-user"></i>
+                                <p>profile</p>
+                            </div>
+                        </a>
+                    </div>
+
                 </header>
             </div>
 
@@ -174,6 +192,6 @@
                     </div>
                 </div>
         </main>
-        <script type="text/javascript" src="{% static '/script.js' %}"></script>
+        <script type="text/javascript" src="{% static '/main-page/script.js' %}"></script>
     </body>
 </html>

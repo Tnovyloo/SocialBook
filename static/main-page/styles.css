@@ -336,7 +336,7 @@ body {
 
 /* END OF CHANGES IN UPLOAD BUTTON */
 
-#photo-wrapper, .photo-wrapper, #profile-wrapper {
+#photo-wrapper, .photo-wrapper, #profile-wrapper, #photo-wrapper-onclick {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -349,18 +349,78 @@ body {
     border-radius: 50%;
 }
 
-#background header ul #photo-wrapper {
+#background header ul #photo-wrapper-onclick {
     position: relative;
-    top: 1rem;
+    top: -1.5rem;
     right: 2.5rem;
+    border: none;
+    cursor: pointer;
 }
 
-#background header ul #photo-wrapper img {
+#background header ul #photo-wrapper-onclick img {
     width: 100%;
     border-radius: 50px;
     height: 100%;
     position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
 }
+
+/* CHANGE PAGE OPTION */
+
+#background header #other-pages {
+    position: absolute;
+    width: 130px;
+    font-size: 2rem;
+    right: 4.75rem;
+    top: 8rem;
+    position: absolute;
+    display: none;
+}
+
+#background header #other-pages .window {
+    width: 130px;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    background-color: white;
+}
+
+#background header #other-pages #first-window {
+    border-radius: 5px 5px 0 0
+}
+
+#background header #other-pages #last-window {
+    border-radius: 0 0 5px 5px;
+}
+
+#background header #other-pages .window:hover {
+    background-color: hsl(0, 0%, 90%)
+}
+
+#background header #other-pages .fas.fa-caret-up {
+    position: absolute;
+    right: 0.5rem;
+    top: -1.3rem;
+    font-size: 2.2rem;
+    color: white;
+}
+
+#background header #other-pages p {
+    display: inline-block;
+    font-family: 'Lato'
+}
+
+#background header a {
+    text-decoration: none;
+    color: black;
+}
+
+#background header #other-pages i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+   
 
 /* FOLLOW USERS SECTION */
 
@@ -904,6 +964,23 @@ body {
         font-size: 2.6rem;
     }
 
+    #background header ul #photo-wrapper-onclick {
+        width: 30px;
+        height: 30px;
+        top: -1.7rem;
+    }
+
+    #background header #other-pages {
+        right: 4.2rem;
+        top: 7rem;
+        font-size: 1.7rem;
+        width: 120px;
+    }
+
+    #background header #other-pages .window {
+        width: 120px;
+    }
+
     #posts-container {
         left: 10rem;
         width: 350px;
@@ -1071,6 +1148,16 @@ body {
         gap: 4rem;
         margin-right: -3.5rem;
     }
+
+    #background header #other-pages {
+        right: 0.7rem;
+        font-size: 1.5rem;
+        width: 110px;
+    }
+
+    #background header #other-pages .window {
+        width: 110px;
+    }
     
     #report-message {
         width: 350px;
@@ -1210,10 +1297,10 @@ body {
         font-size: 2.1rem;
     }
 
-    #background header #photo-wrapper {
+    #background header ul #photo-wrapper-onclick {
         width: 25px;
         height: 25px;
-        margin-top: 0.8rem;
+        top: -1.5rem;
     }
 
     #background header #notification-icon, #background header #notification {
@@ -1361,15 +1448,30 @@ body {
         margin-right: -4rem;
     }
 
-    #background header #photo-wrapper {
+    #background header #photo-wrapper-onclick {
         width: 25px;
         height: 25px;
         margin-top: 0.7rem; 
     }
 
-    #background header #photo-wrapper img{
+    #background header #photo-wrapper-onclick img{
         width: 25px;
         height: 25px;
+    }
+
+    #background header #other-pages {
+        font-size: 1.3rem;
+        width: 100px;
+        right: 0.2rem;
+        top: 6rem
+    }
+
+    #background header #other-pages .window {
+        width: 100px;
+    }
+
+    #background header #other-pages i {
+        font-size: 1.2rem;
     }
 
     #report-message {
