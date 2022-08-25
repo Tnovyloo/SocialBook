@@ -58,6 +58,54 @@ header .fas.fa-bell {
     cursor: pointer;
 }
 
+header .fas.fa-house {
+    position: absolute;
+    right: 19rem;
+    font-size: 3rem;
+    cursor: pointer;
+    top: 2.5rem;
+}
+
+header #main-page-connection {
+    text-decoration: none;
+    color: black;
+}
+
+header #main-page-connection:hover {
+    color: rgba(0, 0, 0, 0.65)
+}
+
+header #main-page-connection:hover ~ #hover-house {
+    opacity: 1;
+}
+
+header #notification-open:hover ~ #hover-notifications {
+    opacity: 1;
+}
+
+header #hover-house, header #hover-notifications {
+    font-size: 1.5rem;
+    background-color: black;
+    color: hsl(0, 0%, 84%);
+    padding-inline: 0.7rem;
+    padding-block: 0.4rem;
+    border-radius: 5px;
+    position: absolute;
+    top: 7rem;
+    opacity: 0;
+    transition: 0.5s;
+    transition-timing-function: cubic-bezier(0.26, 0.78, 0.8, 0.99);
+}
+
+header #hover-notifications {
+    right: 8.5rem;
+}
+
+header #hover-house {
+    right: 18rem;
+}
+
+
 header .profile {
     position: absolute;
     width: 35px;
