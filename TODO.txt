@@ -2,9 +2,11 @@
 Could add something like 'bio' on facebook
 - settings page with all of informations from 'about'.
 
+
 #TODO BACKEND Current tasks.
 - create profile, posts, comments, following, like_posts databases
 - create views feed_posts and other.
-- create superuser.
+- create superuser. - admin admin
 - create users registration on database.
 - do connections with posts and comments.
+- django nie widzi bazy danych z postami :) zajebiscie pogchanmp woo hoooo
