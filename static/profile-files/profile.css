@@ -49,6 +49,42 @@ html {
     border-radius: 50%;
 }
 
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+.navigation {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    right: 4rem;
+    height: 53.75px;
+    width: 53.75px;
+    background-color: hsl(0, 0%, 80%);
+    border-radius: 25px;
+    padding-inline: 1rem;
+    overflow: hidden;
+    transition-duration: 0.5s;
+}
+
+#home {
+    top: 27rem;
+}
+
+#settings {
+    top: 34rem;
+}
+
+.navigation p {
+    font-size: 2rem;
+    margin-left: 1.5rem;
+}
+
+.navigation:hover {
+    width: 130px;
+}
+
 #informations {
     position: absolute;
     left: 45rem;
