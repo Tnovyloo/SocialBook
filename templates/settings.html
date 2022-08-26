@@ -19,7 +19,7 @@
                 <input type="text" id="search" placeholder="Search fakebook">
             </div>
 
-            <a href="/templates/index.html" id="main-page-connection"><i class="fas fa-house"></i></a>
+            <a href="/" id="main-page-connection"><i class="fas fa-house"></i></a>
 
             <span id="hover-house">Home</span>
 
@@ -54,119 +54,120 @@
                     <h3 class="activate-form">People</h3>
                     <h3 class="activate-form">Password</h3>
                 </div>
-
+<!--                Change profile picture.-->
                 <form id="change-profile">
-                    <img src="" class="profile">
+                    <img src="{{user_profile.profile_image.url}}" class="profile">
                     <div id="change-profile-info">
-                        <p>Username</p>
+                        <p>{{user.username}}</p>
                         <p>Change your profile</p>
                     </div>
                 </form>
+<!--                Basic info.-->
                 <form id="basic-info" class="forms">
 
                     <div class="info">
                         <p class='info-to-change-basic'>First Name</p>
-                        <input type="text" placeholder="First name">
+                        <input type="text" placeholder="First name" name="firstname">
                     </div>
-                    
+
                     <div class="info">
                         <p class='info-to-change-basic'>Last Name</p>
-                        <input type="text" placeholder="Last name">
+                        <input type="text" placeholder="Last name" name="lastname">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-basic'>Gender</p>
-                        <input type="text" placeholder="Gender">
+                        <input type="text" placeholder="Gender" name="gender">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-basic'>Birth date</p>
-                        <input type="text" placeholder="Birth date">
+                        <input type="text" placeholder="Birth date" name="birthdate">
                     </div>
 
                     <input type="submit" class="submit-button">
 
                 </form>
-
+<!--                Location -live place, from-->
                 <form id="live-places" class="forms">
 
                     <div class="info">
                         <p class='info-to-change-places'>Live place</p>
-                        <input type="text" placeholder="Live place">
+                        <input type="text" placeholder="Live place" name="liveplace">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-places'>From</p>
-                        <input type="text" placeholder="From">
+                        <input type="text" placeholder="From" name="from">
                     </div>
 
                     <input type="submit" class="submit-button">
 
                 </form>
-
+<!--            Hobby and education-->
                 <form id="hobby-education" class="forms">
 
                     <div class="info">
                         <p class='info-to-change-hobby-education'>Hobby</p>
-                        <input type="text" placeholder="Hobby">
+                        <input type="text" placeholder="Hobby" name="hobby">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-hobby-education'>School</p>
-                        <input type="text" placeholder="School">
+                        <input type="text" placeholder="School" name="school">
                     </div>
 
                     <input type="submit" class="submit-button">
 
                 </form>
-
+<!--            contact.-->
                 <form id="contact" class="forms">
 
                     <div class="info">
                         <p class='info-to-change-contact'>Number</p>
-                        <input type="number" placeholder="Number">
+                        <input type="number" placeholder="Number" name="number">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-contact'>E-mail</p>
-                        <input type="email" placeholder="E-mail">
+                        <input type="email" placeholder="E-mail" name="email">
                     </div>
 
                     <input type="submit" class="submit-button">
 
                 </form>
-                
-                <form id="close-people" class="forms">
-                    
+<!--            Relationship-->
+                <form id="close-people" class="forms" >
+
                     <div class="info">
                         <p class='info-to-change-people'>Relationship</p>
-                        <input type="text" placeholder="Relationship">
+                        <input type="text" placeholder="Relationship" name="relationship">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-people'>Family members</p>
-                        <input type="text" placeholder="Family members">
+                        <input type="text" placeholder="Family members" name="family">
                     </div>
 
                     <input type="submit" class="submit-button">
 
                 </form>
-
+<!--            Password section-->
                 <form id="change-password" class="forms">
 
                     <div class="info">
                         <p class="change-password-info">Old password</p>
-                        <input placeholder="Old password">
+                        <input placeholder="Old password" name="old_password">
                     </div>
                     
                     <div class="info">
                         <p class="change-password-info">New password</p>
-                        <input placeholder="New password" minlength = '6'>
+                        <input placeholder="New password" minlength = '6' name="new_password1">
                     </div>
 
                     <div class="info">
                         <p class="change-password-info">Repeat password</p>
-                        <input placeholder="Repeat password">
+                        <input placeholder="Repeat password" name="new_password2">
                     </div>
 
                     <input type="submit" class="submit-button" value="Change password">

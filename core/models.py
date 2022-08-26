@@ -32,6 +32,8 @@ class Profile(models.Model):
     gender = models.CharField(max_length=100, blank=True)
     birthday = models.CharField(max_length=50, blank=True)
     birthyear = models.CharField(max_length=4, blank=True)
+    first_name = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.user.username

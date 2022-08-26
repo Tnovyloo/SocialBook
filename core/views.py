@@ -66,7 +66,33 @@ def upload(request):
 
 @login_required(login_url='signin')
 def settings(request):
-    return render(request, 'settings.html')
+    user_profile = Profile.objects.get(user=request.user)
+
+    return render(request, 'settings.html', {'user_profile': user_profile})
+
+@login_required(login_url='signin')
+def profile_basic_info(request):
+    pass
+
+@login_required(login_url='signin')
+def profile_location(request):
+    pass
+
+@login_required(login_url='signin')
+def profile_hobby(request):
+    pass
+
+@login_required(login_url='signin')
+def profile_contact(request):
+    pass
+
+@login_required(login_url='signin')
+def profile_relationship(request):
+    pass
+
+@login_required(login_url='signin')
+def profile_password(request):
+    pass
 
 
 def signup(request):
@@ -75,7 +101,9 @@ def signup(request):
         email = request.POST['email']
         password = request.POST['password1']
         password2 = request.POST['password2']
-        if password == password2:
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
+        if password == password2 and first_name is not None and last_name is not None:
             if User.objects.filter(email=email).exists():
                 messages.info(request, 'Email was taken.')
                 return redirect('signup')
@@ -85,7 +113,9 @@ def signup(request):
             else:
                 user = User.objects.create_user(username=username,
                                                 email=email,
-                                                password=password)
+                                                password=password,
+                                                first_name=first_name,
+                                                last_name=last_name)
                 user.save()
 
                 #Login user and redirect to settings page.
@@ -97,9 +127,9 @@ def signup(request):
                 user_model = User.objects.get(username=username)
                 new_profile = Profile.objects.create(user=user_model, id_user=user_model.id)
                 new_profile.save()
-                return redirect('/') # TODO redirect to settings
+                return redirect('settings') # TODO redirect to settings
         else:
-            messages.info(request, 'Password is not matching')
+            messages.info(request, "Password is not matching / First name and last name cannot be empty!")
             return redirect('signup')
     else:
         return render(request, 'signup.html')

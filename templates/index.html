@@ -73,7 +73,7 @@
 
                     <div id="other-pages">
                         <i class="fas fa-caret-up"></i>
-                        <a href="/static/settings-page/settings.html">
+                        <a href="settings">
                             <div class="window" id="first-window">
                                 <i class='fas fa-gear'></i>
                                 <p>settings</p>
@@ -139,7 +139,7 @@
                 <div id="posts-container">
                     <div id="post">
                         <header>
-                            <div id="profile-wrapper"><img src="{% static 'images/pexels-natalie-12502186.jpg' %}"></div>
+                            <div id="profile-wrapper"><img src="{{post.user.profile_img.url}}"></div>
 <!--                            TODO user profile img-->
                             <p>{{post.user_id}}</p>
                             <i class="fas fa-ellipsis"></i>

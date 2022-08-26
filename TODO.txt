@@ -1,7 +1,7 @@
 #TODO FRONTEND Current tasks.
 Could add something like 'bio' on facebook
 - settings page with all of informations from 'about'.
-
+- h3 with profile picture and wallpaper
 
 #TODO BACKEND Current tasks.
 - create profile, posts, comments, following, like_posts databases
@@ -9,4 +9,4 @@ Could add something like 'bio' on facebook
 - create superuser. - admin admin
 - create users registration on database.
 - do connections with posts and comments.
-- django nie widzi bazy danych z postami :) zajebiscie pogchanmp woo hoooo
+- forward user after sign up to settings.
