@@ -127,8 +127,24 @@ openPagesWindow.onclick = function() {
     otherPagesWindow.style.display = 'block'
 }
 
+// UPLOADING PHOTO/VIDEO
+
+let uploadButton = document.getElementById('upload')
+let uploadWindow = document.getElementById('upload-files')
+
+uploadButton.onclick = function() {
+    uploadWindow.style.display = 'block'
+}
+
 window.onclick = function(event) {
-    if(event.target != openPagesWindow) {
+    if (event.target !== openPagesWindow) {
         otherPagesWindow.style.display = 'none'
+    } 
+    if (event.target !== uploadButton && 
+        event.target !== document.getElementsByTagName('textarea')[0] &&
+        event.target !== document.getElementsByTagName('form')[0] &&
+        event.target !== document.getElementsByTagName('input')[1] &&
+        event.target !== uploadWindow) {
+        uploadWindow.style.display = 'none'
     }
 }

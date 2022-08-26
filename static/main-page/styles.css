@@ -82,10 +82,6 @@ body {
     color: gray;
 }
 
-#background header input[type="file"] {
-    display: none;
-}
-
 #background header ul {
     display: flex;
     gap: 6rem;
@@ -334,7 +330,38 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* END OF CHANGES IN UPLOAD BUTTON */
+/* WINDOW AFTER CLICKING UPLOAD BUTTON */
+
+#background header #upload-files {
+    background-color: hsl(0, 0%, 85%);
+    padding: 1rem;
+    border-radius: 5px;
+    position: absolute;
+    right: 30rem;
+    top: 7.5rem;
+    display: none;
+}
+
+#background header #upload-files form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#background header #upload-files form textarea {
+    width: 200px;
+    height: 75px;
+    padding: 0.4rem;
+}
+
+#background header #upload-files form button[type='submit'] {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+}
 
 #photo-wrapper, .photo-wrapper, #profile-wrapper, #photo-wrapper-onclick {
     width: 40px;
