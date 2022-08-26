@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{% static '/main-page/styles.css' %}" rel="stylesheet" type="text/css">
+        <link href="/static/main-page/styles.css" rel="stylesheet" type="text/css">
         <script src="https://kit.fontawesome.com/a18d53579f.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +18,10 @@
                 <header>
                     <h3>Fakebook</h3>
                     <input type="text" placeholder="Search fakebook" id="search"><label for="search"><i class="fas fa-magnifying-glass"></i></label>
+                    <button id="upload">Upload photo/video</button>
                     <form action="upload" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
 
-                    <input type="file" name="image_upload" accept=".jpg, .mp4" id="photo-video"><label for="photo-video">Upload photo/video</label>
                     </form>
                     <ul>
                         <li>
@@ -199,6 +199,6 @@
 
 
         </main>
-        <script type="text/javascript" src="{% static '/main-page/script.js' %}"></script>
+        <script type="text/javascript" src="/static/main-page/script.js"></script>
     </body>
 </html>

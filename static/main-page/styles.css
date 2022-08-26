@@ -279,7 +279,7 @@ body {
 
 /* UPLOAD BUTTON EFFECTS AND APPEARANCE */
 
-#background header label[for="photo-video"] {
+#background header button[id="upload"] {
     position: absolute;
     background-color: var(--upload-file-color);
     width: 225px;
@@ -288,14 +288,14 @@ body {
     right: 30rem;
     transition: 0.5s;
     font-size: 2rem;
-    padding-top: 0.5rem;
     text-align: center;
     overflow: hidden;
     cursor: pointer;
-    font-family: var(--header-font)
+    font-family: var(--header-font);
+    border: none;
 }
 
-#background header label[for="photo-video"]::before {
+#background header button[id="upload"]::before {
     position: absolute;
     content: '';
     height: 3px;
@@ -305,7 +305,7 @@ body {
     left: -100%;
 }
 
-#background header label[for="photo-video"]::after {
+#background header button[id="upload"]::after {
     position: absolute;
     content: '';
     height: 3px;
@@ -315,18 +315,18 @@ body {
     right: -100%;
 }
 
-#background header label[for="photo-video"]:hover::after {
+#background header button[id="upload"]:hover::after {
     right: 100% ;
     transition: 1s;
     transition-delay: 0.25s;
 }
 
-#background header label[for="photo-video"]:hover::before {
+#background header button[id="upload"]:hover::before {
     left: 100% ;
     transition: 1s;
 }
 
-#background header label[for="photo-video"]:hover {
+#background header button[id="upload"]:hover {
     transition-delay: 0.6s;
     box-shadow: 0px 0px 5px 1px hsl(240, 0%, 80%),
     0px 0px 10px 2px hsl(240, 0%, 80%);
@@ -352,7 +352,7 @@ body {
 #background header ul #photo-wrapper-onclick {
     position: relative;
     top: -1.5rem;
-    right: 2.5rem;
+    right: 3rem;
     border: none;
     cursor: pointer;
 }
@@ -395,7 +395,7 @@ body {
 }
 
 #background header #other-pages .window:hover {
-    background-color: hsl(0, 0%, 90%)
+    background-color: hsl(0, 0%, 95%)
 }
 
 #background header #other-pages .fas.fa-caret-up {
@@ -408,7 +408,8 @@ body {
 
 #background header #other-pages p {
     display: inline-block;
-    font-family: 'Lato'
+    font-family: 'Lato';
+    vertical-align: top;
 }
 
 #background header a {
@@ -419,8 +420,55 @@ body {
 #background header #other-pages i {
     font-size: 1.5rem;
     margin-right: 0.5rem;
+    vertical-align: middle;
 }
-   
+
+#background header #other-pages .fas.fa-door-open {
+    margin-right: 0.3rem;
+    margin-left: -0.15rem;
+}
+
+/* HOVER ICONS APPEARING WINDOWS */
+
+#background header #hover-notifications, #background header #hover-messages, #background header #hover-account {
+    font-size: 1.5rem;
+    background-color: black;
+    color: hsl(0, 0%, 84%);
+    padding-inline: 0.7rem;
+    padding-block: 0.4rem;
+    border-radius: 5px;
+    position: absolute;
+    top: 6.5rem;
+    transition: 0.5s;
+    transition-timing-function: cubic-bezier(0.26, 0.78, 0.8, 0.99);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#background header #hover-notifications {
+    right: 20rem;
+}
+
+#background header #hover-messages {
+    right: 12rem;
+}
+
+#background header #hover-account {
+    right: 4rem;
+}
+
+#background header #notification-open:hover ~ #hover-notifications {
+    opacity: 1;
+}
+
+#background header #message-icon:hover ~ #hover-messages {
+    opacity: 1;
+}
+
+#background header #photo-wrapper-onclick:hover ~ #hover-account {
+    opacity: 1;
+}
+
 
 /* FOLLOW USERS SECTION */
 
@@ -811,7 +859,8 @@ body {
     position: absolute;
     z-index: 2;
     display: none;
-    padding-top: 32rem
+    padding-top: 32rem;
+    position: fixed;
 }
 
 #report-message {
@@ -963,7 +1012,7 @@ body {
         top: 0.8rem;
         font-size: 2.6rem;
     }
-
+    
     #background header ul #photo-wrapper-onclick {
         width: 30px;
         height: 30px;
@@ -1060,7 +1109,7 @@ body {
         box-shadow: 0px 0px 10px 1px gray!important; 
     }
 
-    #background header label[for="photo-video"] {
+    #background header button[id="upload"] {
         width: 180px;
         font-size: 1.7rem;
         right: 23rem;
@@ -1111,7 +1160,7 @@ body {
         right: 10rem;
     }
 
-    #background header label[for="photo-video"] {
+    #background header button[id="upload"] {
         width: 145px;
         font-size: 1.4rem;
         height: 40px;  
@@ -1284,7 +1333,7 @@ body {
         left: 0.7rem;
     }
 
-    #background header label[for='photo-video'] {
+    #background header button[id="upload"] {
         right: 12.5rem;
     }
 
@@ -1313,6 +1362,7 @@ body {
     #background header #notification {
         padding-right: 0.2rem;
     }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -1405,7 +1455,7 @@ body {
         font-size: 2.3rem;
     }
 
-    #background header label[for="photo-video"] {
+    #background header label[id="upload"] {
         width: 123px;
         font-size: 1.2rem;
         height: 30px;  
