@@ -55,7 +55,8 @@
                     <h3 class="activate-form">Password</h3>
                 </div>
 <!--                Change profile picture.-->
-                <form id="change-profile">
+                <form id="change-profile" action="" method="POST">
+                    {% csrf_token %}
                     <img src="{{user_profile.profile_image.url}}" class="profile">
                     <div id="change-profile-info">
                         <p>{{user.username}}</p>
@@ -63,8 +64,9 @@
                     </div>
                 </form>
 <!--                Basic info.-->
-                <form id="basic-info" class="forms">
-
+                <form id="basic-info" class="forms" action="profile_basic_info" method="POST">
+<!--TODO placeholder could be a {{}} with current data from database.-->
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-basic'>First Name</p>
                         <input type="text" placeholder="First name" name="firstname">
@@ -89,8 +91,8 @@
 
                 </form>
 <!--                Location -live place, from-->
-                <form id="live-places" class="forms">
-
+                <form id="live-places" class="forms" action="profile_location" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-places'>Live place</p>
                         <input type="text" placeholder="Live place" name="liveplace">
@@ -105,8 +107,8 @@
 
                 </form>
 <!--            Hobby and education-->
-                <form id="hobby-education" class="forms">
-
+                <form id="hobby-education" class="forms" action="profile_hobby" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-hobby-education'>Hobby</p>
                         <input type="text" placeholder="Hobby" name="hobby">
@@ -121,8 +123,8 @@
 
                 </form>
 <!--            contact.-->
-                <form id="contact" class="forms">
-
+                <form id="contact" class="forms" action="profile_contact" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-contact'>Number</p>
                         <input type="number" placeholder="Number" name="number">
@@ -137,8 +139,8 @@
 
                 </form>
 <!--            Relationship-->
-                <form id="close-people" class="forms" >
-
+                <form id="close-people" class="forms" action="profile_relationship"  method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-people'>Relationship</p>
                         <input type="text" placeholder="Relationship" name="relationship">
@@ -153,8 +155,8 @@
 
                 </form>
 <!--            Password section-->
-                <form id="change-password" class="forms">
-
+                <form id="change-password" class="forms" action="profile_password" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class="change-password-info">Old password</p>
                         <input placeholder="Old password" name="old_password">

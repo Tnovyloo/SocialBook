@@ -67,11 +67,21 @@ def upload(request):
 @login_required(login_url='signin')
 def settings(request):
     user_profile = Profile.objects.get(user=request.user)
-
     return render(request, 'settings.html', {'user_profile': user_profile})
 
 @login_required(login_url='signin')
 def profile_basic_info(request):
+    user_profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
+        gender = request.POST['gender']
+        birthdate = request.POST['birthdate']
+
+        post_data = (first_name, last_name, gender, birthdate)
+        profile_data = (user_profile.first_name, user_profile.last_name,
+                        user_profile.gender, user_profile.birthdate)
+
     pass
 
 @login_required(login_url='signin')
