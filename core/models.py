@@ -23,6 +23,7 @@ class Profile(models.Model):
 
     #Education
     school = models.CharField(max_length=100, blank=True)
+    hobby = models.CharField(max_length=100, blank=True)
 
     #Contact info
     number = models.IntegerField(blank=True, null=True)
@@ -34,6 +35,9 @@ class Profile(models.Model):
     birthyear = models.CharField(max_length=4, blank=True)
     first_name = models.CharField(max_length=50, blank=True)
     last_name = models.CharField(max_length=50, blank=True)
+    relationship = models.CharField(max_length=50, blank=True)
+    family = models.CharField(max_length=50, blank=True)
+
 
     def __str__(self):
         return self.user.username

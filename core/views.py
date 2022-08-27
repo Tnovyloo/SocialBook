@@ -78,32 +78,105 @@ def profile_basic_info(request):
         gender = request.POST['gender']
         birthdate = request.POST['birthdate']
 
-        post_data = (first_name, last_name, gender, birthdate)
-        profile_data = (user_profile.first_name, user_profile.last_name,
-                        user_profile.gender, user_profile.birthdate)
+        if first_name is not None:
+            user_profile.first_name = first_name
+        if last_name is not None:
+            user_profile.last_name = last_name
+        if gender is not None:
+            user_profile.gender = gender
+        # if birthdate is not None:
+        #     day = str(birthdate).split('-')[0:1]
+        #     year = str(birthdate).split('-')[2]
+        #     user_profile.birthday = day
+        #     user_profile.year = year
 
-    pass
+        user_profile.save()
+        return redirect('settings')
+    else:
+        return render(request, 'settings.html', {'user_profile': user_profile})
 
 @login_required(login_url='signin')
 def profile_location(request):
-    pass
+    user_profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        live_place = request.POST['liveplace']
+        from_place = request.POST['from']
+        if live_place is not None:
+            user_profile.current_location = live_place
+        if from_place is not None:
+            user_profile.location = from_place
+
+        user_profile.save()
+        return redirect('settings')
+    else:
+        return render(request, 'settings.html', {'user_profile': user_profile})
+
 
 @login_required(login_url='signin')
 def profile_hobby(request):
-    pass
+    user_profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        hobby = request.POST['hobby']
+        school = request.POST['school']
+        if hobby is not None:
+            user_profile.hobby = hobby
+        if school is not None:
+            user_profile.school = school
+
+        user_profile.save()
+        return redirect('settings')
+    else:
+        return render(request, 'settings.html', {'user_profile': user_profile})
 
 @login_required(login_url='signin')
 def profile_contact(request):
-    pass
+    user_profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        number = request.POST['number']
+        email = request.POST['email']
+        if number is not None:
+            user_profile.number = number
+        if email is not None:
+            user_profile.email = email
+
+        user_profile.save()
+        return redirect('settings')
+    else:
+        return render(request, 'settings.html', {'user_profile': user_profile})
 
 @login_required(login_url='signin')
 def profile_relationship(request):
-    pass
+    user_profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        relationship = request.POST['relationship']
+        family = request.POST['family']
+        if relationship is not None:
+            user_profile.relationship = relationship
+        if family is not None:
+            user_profile.family = family
+
+        user_profile.save()
+        return redirect('settings')
+    else:
+        return render(request, 'settings.html', {'user_profile': user_profile})
 
 @login_required(login_url='signin')
 def profile_password(request):
-    pass
+    user_profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        old_password = request.POST['old_password']
+        new_password = request.POST['new_password1']
+        new_password2 = request.POST['new_password2']
 
+        user = auth.authenticate(username=request.user.username, password=old_password)
+        if user is not None and new_password == new_password2:
+            u.User.objects.get(username=request.user.username)
+            u.set_password(new_password)
+            u.save()
+            return redirect('settings')
+        else:
+            return redirect('/')
+    return render(request, 'settings.html', {'user_profile': user_profile})
 
 def signup(request):
     if request.method == "POST":

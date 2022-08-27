@@ -57,7 +57,7 @@
 <!--                Change profile picture.-->
                 <form id="change-profile" action="" method="POST">
                     {% csrf_token %}
-                    <img src="{{user_profile.profile_image.url}}" class="profile">
+                    <img src="{{user_image.profile_image.url}}" class="profile">
                     <div id="change-profile-info">
                         <p>{{user.username}}</p>
                         <p>Change your profile</p>
@@ -65,26 +65,26 @@
                 </form>
 <!--                Basic info.-->
                 <form id="basic-info" class="forms" action="profile_basic_info" method="POST">
-<!--TODO placeholder could be a {{}} with current data from database.-->
+<!--TODO placeholder could be a {} with current data from database.-->
                     {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-basic'>First Name</p>
-                        <input type="text" placeholder="First name" name="firstname">
+                        <input type="text" placeholder="{{user_profile.first_name}}" name="firstname">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-basic'>Last Name</p>
-                        <input type="text" placeholder="Last name" name="lastname">
+                        <input type="text" placeholder="{{user_profile.last_name}}" name="lastname">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-basic'>Gender</p>
-                        <input type="text" placeholder="Gender" name="gender">
+                        <input type="text" placeholder="{{user_profile.gender}}" name="gender">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-basic'>Birth date</p>
-                        <input type="text" placeholder="Birth date" name="birthdate">
+                        <input type="text" placeholder="DD-MM-YYYY" name="birthdate">
                     </div>
 
                     <input type="submit" class="submit-button">
@@ -95,12 +95,12 @@
                     {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-places'>Live place</p>
-                        <input type="text" placeholder="Live place" name="liveplace">
+                        <input type="text" placeholder="{{user_profile.current_location}}" name="liveplace">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-places'>From</p>
-                        <input type="text" placeholder="From" name="from">
+                        <input type="text" placeholder="{{user_profile.location}}" name="from">
                     </div>
 
                     <input type="submit" class="submit-button">
@@ -111,12 +111,12 @@
                     {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-hobby-education'>Hobby</p>
-                        <input type="text" placeholder="Hobby" name="hobby">
+                        <input type="text" placeholder="{{user_profile.hobby}}" name="hobby">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-hobby-education'>School</p>
-                        <input type="text" placeholder="School" name="school">
+                        <input type="text" placeholder="{{user_profile.school}}" name="school">
                     </div>
 
                     <input type="submit" class="submit-button">
@@ -127,12 +127,12 @@
                     {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-contact'>Number</p>
-                        <input type="number" placeholder="Number" name="number">
+                        <input type="number" placeholder="{{user_profile.number}}" name="number">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-contact'>E-mail</p>
-                        <input type="email" placeholder="E-mail" name="email">
+                        <input type="email" placeholder="{{user_profile.email}}" name="email">
                     </div>
 
                     <input type="submit" class="submit-button">
@@ -143,12 +143,12 @@
                     {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-people'>Relationship</p>
-                        <input type="text" placeholder="Relationship" name="relationship">
+                        <input type="text" placeholder="{{user_profile.relationship}}" name="relationship">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-people'>Family members</p>
-                        <input type="text" placeholder="Family members" name="family">
+                        <input type="text" placeholder="{{user_profile.family}}" name="family">
                     </div>
 
                     <input type="submit" class="submit-button">
