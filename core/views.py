@@ -5,6 +5,8 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from .models import Profile, Post
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordResetForm
 
 # Create your views here.
 @login_required(login_url='signin')
@@ -168,14 +170,15 @@ def profile_password(request):
         new_password = request.POST['new_password1']
         new_password2 = request.POST['new_password2']
 
-        user = auth.authenticate(username=request.user.username, password=old_password)
-        if user is not None and new_password == new_password2:
-            u.User.objects.get(username=request.user.username)
-            u.set_password(new_password)
-            u.save()
-            return redirect('settings')
+        if new_password == new_password2:
+            form = PasswordResetForm()
+            if form.is_valid():
+                user = form.save()
+                update_session_auth_hash(request, user)
+                # messages.success(request, 'Your password was successfilyy updated!')
+                return redirect('settings')
         else:
-            return redirect('/')
+            messages.error(request, 'Passwords dont match.')
     return render(request, 'settings.html', {'user_profile': user_profile})
 
 def signup(request):
