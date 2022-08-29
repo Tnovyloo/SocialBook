@@ -1,11 +1,10 @@
 {% load static %}
-<!--TODO PROBLEM WITH IMAGES-->
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/static/main-page/styles.css" rel="stylesheet" type="text/css">
+        <link href="{% static '/main-page/styles.css' %}" rel="stylesheet" type="text/css">
         <script src="https://kit.fontawesome.com/a18d53579f.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,8 +24,9 @@
 
                     <div id="upload-files">
                         <form action="upload" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
                             <label for="photo-video">
-                                <input id="photo-video" type="file" accept=".jpg, .mp4">
+                                <input name="image_upload" id="photo-video" type="file" accept=".jpg, .mp4">
                             </label>
                             <textarea placeholder="Caption..." style="resize: none;"></textarea>
                             <button type="submit">Upload</button>
@@ -210,6 +210,6 @@
                 {% endfor %}
             </div>
         </main>
-        <script type="text/javascript" src="/static/main-page/script.js"></script>
+        <script type="text/javascript" src="{% static '/main-page/script.js' %}"></script>
     </body>
 </html>
