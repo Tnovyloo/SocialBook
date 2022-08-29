@@ -1,12 +1,12 @@
 #TODO FRONTEND Current tasks.
 Could add something like 'bio' on facebook
-- settings page with all of informations from 'about'.
 - h3 with profile picture and wallpaper
 
 #TODO BACKEND Current tasks.
 - create profile, posts, comments, following, like_posts databases
-- create views feed_posts and other.
-- create superuser. - admin admin
-- create users registration on database.
 - do connections with posts and comments.
-- forward user after sign up to settings.
+- create logout
+- create like-post and comments
+- create follow and unfollow user.
+- update post feed.
+- search user, user suggestions.

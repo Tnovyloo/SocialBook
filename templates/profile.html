@@ -253,40 +253,40 @@
                 <h3>Places lived</h3>
 
                 <i class="fas fa-house left"></i>
-                <p>Live in <span class="bold">Pilcza Żelichowska</span></p>
+                <p>Live in <span class="bold">{{user_profile.current_location}}</span></p>
                 <i class="fas fa-pencil right" id="live"></i>
 
                 <i class="fas fa-location-dot left"></i>
-                <p>From <span class="bold">Pilcza Żelichowska</span></p>
+                <p>From <span class="bold">{{user_profile.location}}</span></p>
                 <i class="fas fa-pencil right" id="from"></i>
 
                 <h3>Education</h3>
                 <i class="fas fa-school left"></i>
-                <p>Current school <span class="bold">Jagiellonian University</span></p>
+                <p>Current school <span class="bold">{{user_profile.school}}</span></p>
                 <i class="fas fa-pencil right" id="school"></i>
                 
                 <h3>Contact info</h3>
                 <i class="fas fa-phone left"></i>
-                <p>Number <span class="bold">999 888 777</span></p>
+                <p>Number <span class="bold">{{user_profile.number}}</span></p>
                 <i class="fas fa-pencil right" id="number"></i>
 
                 <i class="fas fa-envelope left"></i>
-                <p>E-mail <span class="bold">szymongryz@interia.pl </span></p>
+                <p>E-mail <span class="bold">{{user_profile.email}}</span></p>
                 <i class="fas fa-pencil right" id="email"></i>
 
                 <h3>Basic info</h3>
                 
                 <i class="fas fa-person left"></i>
-                <p>Gender <span class="bold"> Male</span></p>
+                <p>Gender <span class="bold">{{user_profile.gender}}</span></p>
                 <i class="fas fa-pencil right" id="gender"></i>
                 
                 <i class="fas fa-cake-candles left"></i>
-                <p>Birth date <span class="bold">20 February</span></p>
-                <p>Birth year <span class="bold">2003</span></p>
+                <p>Birth date <span class="bold">{{user_profile.birthday}}</span></p>
+                <p>Birth year <span class="bold">{{user_profile.birthyear}}</span></p>
                 <i class="fas fa-pencil right" id="birth"></i>
                 
                 <i class="fas fa-children left"></i>
-                <p>Relationship <span class="bold">in a relationship</span></p>
+                <p>Relationship <span class="bold">{{user_profile.relationship}}</span></p>
                 <i class="fas fa-pencil right" id="relation"></i>
             </div>
 

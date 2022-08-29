@@ -13,7 +13,7 @@ class Profile(models.Model):
 
     #Profile images
     profile_img = models.ImageField(upload_to='profile_images',
-                                    default='pexels-charles-1851164.jpg')
+                                    default='profile_images/user-profile-icon.png')
     wallpaper_img = models.ImageField(upload_to='wallpaper_images',
                                       default='pexels-amber-janssens-7327624.jpg')
 
@@ -43,7 +43,7 @@ class Profile(models.Model):
         return self.user.username
 
 class Post(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4())
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     user_id = models.CharField(max_length=100)
     image = models.ImageField(upload_to='post_media')
     created_at = models.DateTimeField(default=datetime.now())

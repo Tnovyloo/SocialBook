@@ -57,7 +57,7 @@
 <!--                Change profile picture.-->
                 <form id="change-profile" action="" method="POST">
                     {% csrf_token %}
-                    <img src="{{user_image.profile_image.url}}" class="profile">
+                    <img src="{{user_profile.profile_image.url}}" class="profile">
                     <div id="change-profile-info">
                         <p>{{user.username}}</p>
                         <p>Change your profile</p>
