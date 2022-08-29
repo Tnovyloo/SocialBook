@@ -19,7 +19,7 @@
                 <input type="text" id="search" placeholder="Search fakebook">
             </div>
 
-            <a href="/templates/index.html" id="main-page-connection"><i class="fas fa-house"></i></a>
+            <a href="/" id="main-page-connection"><i class="fas fa-house"></i></a>
 
             <span id="hover-house">Home</span>
 
@@ -54,119 +54,122 @@
                     <h3 class="activate-form">People</h3>
                     <h3 class="activate-form">Password</h3>
                 </div>
-
-                <form id="change-profile">
-                    <img src="" class="profile">
+<!--                Change profile picture.-->
+                <form id="change-profile" action="" method="POST">
+                    {% csrf_token %}
+                    <img src="{{user_profile.profile_image.url}}" class="profile">
                     <div id="change-profile-info">
-                        <p>Username</p>
+                        <p>{{user.username}}</p>
                         <p>Change your profile</p>
                     </div>
                 </form>
-                <form id="basic-info" class="forms">
-
+<!--                Basic info.-->
+                <form id="basic-info" class="forms" action="profile_basic_info" method="POST">
+<!--TODO placeholder could be a {} with current data from database.-->
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-basic'>First Name</p>
-                        <input type="text" placeholder="First name">
+                        <input type="text" placeholder="{{user_profile.first_name}}" name="firstname">
                     </div>
-                    
+
                     <div class="info">
                         <p class='info-to-change-basic'>Last Name</p>
-                        <input type="text" placeholder="Last name">
+                        <input type="text" placeholder="{{user_profile.last_name}}" name="lastname">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-basic'>Gender</p>
-                        <input type="text" placeholder="Gender">
+                        <input type="text" placeholder="{{user_profile.gender}}" name="gender">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-basic'>Birth date</p>
-                        <input type="text" placeholder="Birth date">
+                        <input type="text" placeholder="DD-MM-YYYY" name="birthdate">
                     </div>
 
                     <input type="submit" class="submit-button">
 
                 </form>
-
-                <form id="live-places" class="forms">
-
+<!--                Location -live place, from-->
+                <form id="live-places" class="forms" action="profile_location" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-places'>Live place</p>
-                        <input type="text" placeholder="Live place">
+                        <input type="text" placeholder="{{user_profile.current_location}}" name="liveplace">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-places'>From</p>
-                        <input type="text" placeholder="From">
+                        <input type="text" placeholder="{{user_profile.location}}" name="from">
                     </div>
 
                     <input type="submit" class="submit-button">
 
                 </form>
-
-                <form id="hobby-education" class="forms">
-
+<!--            Hobby and education-->
+                <form id="hobby-education" class="forms" action="profile_hobby" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-hobby-education'>Hobby</p>
-                        <input type="text" placeholder="Hobby">
+                        <input type="text" placeholder="{{user_profile.hobby}}" name="hobby">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-hobby-education'>School</p>
-                        <input type="text" placeholder="School">
+                        <input type="text" placeholder="{{user_profile.school}}" name="school">
                     </div>
 
                     <input type="submit" class="submit-button">
 
                 </form>
-
-                <form id="contact" class="forms">
-
+<!--            contact.-->
+                <form id="contact" class="forms" action="profile_contact" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-contact'>Number</p>
-                        <input type="number" placeholder="Number">
+                        <input type="number" placeholder="{{user_profile.number}}" name="number">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-contact'>E-mail</p>
-                        <input type="email" placeholder="E-mail">
+                        <input type="email" placeholder="{{user_profile.email}}" name="email">
                     </div>
 
                     <input type="submit" class="submit-button">
 
                 </form>
-                
-                <form id="close-people" class="forms">
-                    
+<!--            Relationship-->
+                <form id="close-people" class="forms" action="profile_relationship"  method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-people'>Relationship</p>
-                        <input type="text" placeholder="Relationship">
+                        <input type="text" placeholder="{{user_profile.relationship}}" name="relationship">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-people'>Family members</p>
-                        <input type="text" placeholder="Family members">
+                        <input type="text" placeholder="{{user_profile.family}}" name="family">
                     </div>
 
                     <input type="submit" class="submit-button">
 
                 </form>
-
-                <form id="change-password" class="forms">
-
+<!--            Password section-->
+                <form id="change-password" class="forms" action="profile_password" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class="change-password-info">Old password</p>
-                        <input placeholder="Old password">
+                        <input placeholder="Old password" name="old_password">
                     </div>
                     
                     <div class="info">
                         <p class="change-password-info">New password</p>
-                        <input placeholder="New password" minlength = '6'>
+                        <input placeholder="New password" minlength = '6' name="new_password1">
                     </div>
 
                     <div class="info">
                         <p class="change-password-info">Repeat password</p>
-                        <input placeholder="Repeat password">
+                        <input placeholder="Repeat password" name="new_password2">
                     </div>
 
                     <input type="submit" class="submit-button" value="Change password">
