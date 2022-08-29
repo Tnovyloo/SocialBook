@@ -11,14 +11,21 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)
+    posts = Post.objects.all()
 
-    return render(request, 'index.html', {'user_profile': user_profile})
+    context = {
+        'user_profile': user_profile,
+        'posts': posts,
+    }
+
+    return render(request, 'index.html', context)
 
 @login_required(login_url='signin')
 def profile(request, pk):
     user_object = User.objects.get(username=pk)
     user_profile = Profile.objects.get(user=user_object)
     #TODO
+
     # user_posts = Post.objects.filter(user_id=pk)
     # user_posts = Post.objects.filter(user_id=pk)
     # user_post_length = len(user_posts)
@@ -34,12 +41,12 @@ def profile(request, pk):
     # user_followers = len(FollowersCount.objects.filter(user=pk))
     # user_following = len(FollowersCount.objects.filter(follower=pk))
 
-    posts = Post.objects.all()
+    # posts = Post.objects.all() #todo user posts
 
     context = {
         'user_object': user_object,
         'user_profile': user_profile,
-        'posts': posts
+        # 'posts': posts
     }
 
     return render(request, 'profile.html', context)
@@ -56,6 +63,11 @@ def upload(request):
         return redirect('/')
     else:
         return redirect('/')
+
+@login_required(login_url='signin')
+def settings(request):
+    return render(request, 'settings.html')
+
 
 def signup(request):
     if request.method == "POST":
