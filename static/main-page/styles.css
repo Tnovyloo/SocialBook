@@ -675,6 +675,11 @@ body {
     border-radius: 1rem;
 }
 
+#posts-container #post a {
+    text-decoration: none !important;
+    color: black !important;
+}
+
 #posts-container header {
     width: 100%;
     height: 5rem;
