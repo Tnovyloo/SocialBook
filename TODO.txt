@@ -4,6 +4,8 @@ Could add something like 'bio' on facebook
 - set up posting on profile page.
 - add logout button
 - on settings create a direction on fakebook to home.
+- problem with about section
+- do a button on like button in html
 
 #TODO BACKEND Current tasks.
 - create profile, posts, comments, following, like_posts databases
