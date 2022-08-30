@@ -1,13 +1,16 @@
 #TODO FRONTEND Current tasks.
 Could add something like 'bio' on facebook
-- h3 with profile picture and wallpaper
+- h3 with profile picture and wallpaper on settings
+- set up posting on profile page.
+- add logout button
+- on settings create a direction on fakebook to home.
 
 #TODO BACKEND Current tasks.
 - create profile, posts, comments, following, like_posts databases
 - do connections with posts and comments.
 - create logout
 - create like-post and comments
-- create follow and unfollow user.
-- update post feed.
+- update post feed where posts is only from friends.
 - search user, user suggestions.
-- when you rae on the someone profile dont show settings
+- when you rae on the someone profile dont show settings - DONE
+- Add on profile right posts.

@@ -45,7 +45,7 @@
             <button type="submit"><a href="/settings">Edit profile</a></button>
             {% else %}
             <button type="submit"><a href="/send_friend_request/{{user_profile.id}}">Send friend request.</a></button>
-<!--            TODO Check if this work.-->
+<!--            TODO Check if this sending invitations work.-->
             {% endif %}
             <hr>
             <div id="sections">
@@ -135,9 +135,11 @@
             </div>
 
             <div id="posts-container">
+                {% for post in user_posts reversed %}
                 <div id="post">
                     <header>
-                        <div id="profile-wrapper"><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></div>
+                        <div id="profile-wrapper"><img src="{{user_profile.profile_image.url}}"></div>
+<!--                        <div id="profile-wrapper"><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></div>-->
                         <p>Natalie White</p>
                         <i class="fas fa-ellipsis"></i>
                     </header>
@@ -147,7 +149,7 @@
                         <button class="report">report post</button>
                     </div>
                     <div id="image-wrapper">
-                        <img src="{% static '/images/pexels-natalie-12502186.jpg' %}">
+                        <img src="{{post.image.url}}">
                     </div>
                     <div id="reactions">
                         <p>Liked <span class="bold">name</span> and <span class="bold">111 others</span></p>
@@ -190,63 +192,64 @@
                         <label for="video"><i class="fas fa-video"></i></label>
                     </div>
                 </div>
+                {% endfor %}
 
-                <div id="post">
-                    <header>
-                        <div id="profile-wrapper"><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></div>
-                        <p>Djordje Petrovic</p>
-                        <i class="fas fa-ellipsis"></i>
-                    </header>
-                    <div class="post-options">
-                        <i class="fas fa-play"></i>
-                        <div class="close-sign">+</div>
-                        <button class="report">report post</button>
-                    </div>
-                    <div id="image-wrapper">
-                        <img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}">
-                    </div>
-                    <div id="reactions">
-                        <p>Liked <span class="bold">name</span> and <span class="bold">111 others</span></p>
-                        <div id="profiles-wrapper">
-                            <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>
-                            <div id="profile-wrapper"><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></div>
-                            <div id="profile-wrapper"><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></div>
-                        </div>
-                    </div>
-                    <div id="interactions">
-                        <i class="fas fa-thumbs-up"></i>
-                        <label for="comment-input2"><i class="fas fa-message"></i></label>
-                        <i class="fas fa-share"></i>
-                    </div>
-                    <div id="comments">
-                        <div id="comment-messages">
-                            <div id="comment">
-                                <div id="comment-content">
-                                    <div id="profile-wrapper"><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></div>
-                                    <p>Nice!</p>
-                                </div>
-                            </div>
-                            <div id="comment">
-                                <div id="comment-content">
-                                    <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>
-                                    <p>🐱‍👤</p>
-                                </div>
-                            </div>
-                            <div id="comment">
-                                <div id="comment-content">
-                                    <div id="profile-wrapper"><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></div>
-                                    <p>Cool!</p>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="text" placeholder="post a comment" id="comment-input2">
-                        <input type="file" accept=".jpg" id="image">
-                        <input type="file" accept=".mp4" id="video">
-                        <label for="image"><i class="fas fa-image"></i></label>
-                        <label for="video"><i class="fas fa-video"></i></label>
-                    </div>
-                </div>
-            </div>
+<!--                <div id="post">-->
+<!--                    <header>-->
+<!--                        <div id="profile-wrapper"><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></div>-->
+<!--                        <p>Djordje Petrovic</p>-->
+<!--                        <i class="fas fa-ellipsis"></i>-->
+<!--                    </header>-->
+<!--                    <div class="post-options">-->
+<!--                        <i class="fas fa-play"></i>-->
+<!--                        <div class="close-sign">+</div>-->
+<!--                        <button class="report">report post</button>-->
+<!--                    </div>-->
+<!--                    <div id="image-wrapper">-->
+<!--                        <img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}">-->
+<!--                    </div>-->
+<!--                    <div id="reactions">-->
+<!--                        <p>Liked <span class="bold">name</span> and <span class="bold">111 others</span></p>-->
+<!--                        <div id="profiles-wrapper">-->
+<!--                            <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>-->
+<!--                            <div id="profile-wrapper"><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></div>-->
+<!--                            <div id="profile-wrapper"><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div id="interactions">-->
+<!--                        <i class="fas fa-thumbs-up"></i>-->
+<!--                        <label for="comment-input2"><i class="fas fa-message"></i></label>-->
+<!--                        <i class="fas fa-share"></i>-->
+<!--                    </div>-->
+<!--                    <div id="comments">-->
+<!--                        <div id="comment-messages">-->
+<!--                            <div id="comment">-->
+<!--                                <div id="comment-content">-->
+<!--                                    <div id="profile-wrapper"><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></div>-->
+<!--                                    <p>Nice!</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div id="comment">-->
+<!--                                <div id="comment-content">-->
+<!--                                    <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>-->
+<!--                                    <p>🐱‍👤</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div id="comment">-->
+<!--                                <div id="comment-content">-->
+<!--                                    <div id="profile-wrapper"><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></div>-->
+<!--                                    <p>Cool!</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <input type="text" placeholder="post a comment" id="comment-input2">-->
+<!--                        <input type="file" accept=".jpg" id="image">-->
+<!--                        <input type="file" accept=".mp4" id="video">-->
+<!--                        <label for="image"><i class="fas fa-image"></i></label>-->
+<!--                        <label for="video"><i class="fas fa-video"></i></label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
         <!-- ABOUT SECTION -->

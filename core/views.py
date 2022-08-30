@@ -26,6 +26,7 @@ def index(request):
 def profile(request, pk):
     user_object = User.objects.get(username=pk)
     user_profile = Profile.objects.get(user=user_object)
+    user_posts = Post.objects.filter(user_id=pk)
     #TODO
 
     # user_posts = Post.objects.filter(user_id=pk)
@@ -48,7 +49,7 @@ def profile(request, pk):
     context = {
         'user_object': user_object,
         'user_profile': user_profile,
-        # 'posts': posts,
+        'user_posts': user_posts,
         # 'button_text': button_text
     }
 
