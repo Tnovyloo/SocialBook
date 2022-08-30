@@ -30,7 +30,7 @@
             </a>
 
             <div id="informations">
-                <h3>{{user_profile.first_name}} {{user_profile.last_name}}</h3>
+                <h3>{{user_profile.first_name}} {{user_profile.last_name}}  @{{user_profile.user}}</h3>
                 <p>1.1k friends</p>
                 <div id="profiles-wrapper">
                     <img class="profile-friend" src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}">
@@ -41,7 +41,12 @@
                     <i class="fas fa-ellipsis-vertical"></i>
                 </div>
             </div>
-            <button type="submit">Edit profile</button>
+            {% if user_object.username == user.username %}
+            <button type="submit"><a href="/settings">Edit profile</a></button>
+            {% else %}
+            <button type="submit"><a href="/send_friend_request/{{user_profile.id}}">Send friend request.</a></button>
+<!--            TODO Check if this work.-->
+            {% endif %}
             <hr>
             <div id="sections">
                 <p id="posts">Posts</p>

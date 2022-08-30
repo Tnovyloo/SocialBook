@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile, Post
+from .models import Profile, Post, Friend_Request
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordResetForm
@@ -34,8 +34,8 @@ def profile(request, pk):
     #
     # follower = request.user.username
     # user = pk
-
-    # if FollowersCount.objects.filter(follower=follower, user=user).first():
+    # user = User.objects.get(username=request.username)
+    # if user.objects.friends.filter()
     #     button_text = 'Unfollow'
     # else:
     #     button_text = 'Follow'
@@ -48,7 +48,8 @@ def profile(request, pk):
     context = {
         'user_object': user_object,
         'user_profile': user_profile,
-        # 'posts': posts
+        # 'posts': posts,
+        # 'button_text': button_text
     }
 
     return render(request, 'profile.html', context)
@@ -70,6 +71,31 @@ def upload(request):
 def settings(request):
     user_profile = Profile.objects.get(user=request.user)
     return render(request, 'settings.html', {'user_profile': user_profile})
+
+def friend_request(request):
+    user_profile = Profile.objects.get(user=request.user)
+    return render(request, 'friend_request.html')
+
+@login_required(login_url='signin')
+def send_friend_request(request, userID):
+    from_user = request.user
+    to_user = User.objects.get(id=userID)
+    friend_request, created = Friend_Request.objects.get_or_create(from_user=from_user, to_user=to_user)
+    if created:
+        return HttpResponse('friend request sent')
+    else:
+        return HttpResponse('friend request was already sent')
+
+@login_required(login_url='signin')
+def accept_friend_request(request, requestID):
+    friend_request = Friend_Request.objects.get(id=requestID)
+    if friend_request.to_user == request.user:
+        friend_request.to_user.friends.add(friend_request.from_user)
+        friend_request.from_user.friends.add(friend_request.to_user)
+        friend_request.delete()
+        return HttpResponse('friend request accepted')
+    else:
+        return HttpResponse('friend request not accepted')
 
 @login_required(login_url='signin')
 def profile_basic_info(request):

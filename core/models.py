@@ -7,7 +7,9 @@ User = get_user_model()
 
 # Create your models here.
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='topic_content_type')
+    friends = models.ManyToManyField(User, blank=True)
+
     id_user = models.IntegerField()
     # bio = models.TextField(blank=True)
 
@@ -41,6 +43,13 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Friend_Request(models.Model):
+    from_user = models.ForeignKey(
+        User, related_name='from_user', on_delete=models.CASCADE)
+    to_user = models.ForeignKey(
+        User, related_name='to_user', on_delete=models.CASCADE
+    )
 
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)

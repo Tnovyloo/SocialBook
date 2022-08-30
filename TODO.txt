@@ -10,3 +10,4 @@ Could add something like 'bio' on facebook
 - create follow and unfollow user.
 - update post feed.
 - search user, user suggestions.
+- when you rae on the someone profile dont show settings
