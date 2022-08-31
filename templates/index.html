@@ -167,7 +167,7 @@
                             </a>
                         </div>
                         <div id="reactions">
-                            <p>Liked <span id="bold">name</span> and <span id="bold">111 others</span></p>
+                            <p>Liked <span id="bold">name</span> and <span id="bold">{{post.number_of_likes}} others</span></p>
                             <div id="profiles-wrapper">
                                 <div id="profile-wrapper"><img src="{% static 'images/Gryz-Szymon.jpeg' %}"></div>
                                 <div id="profile-wrapper"><img src="{% static 'images/pexels-charles-1851164.jpg' %}"></div>
@@ -176,6 +176,7 @@
                         </div>
                         <div id="interactions">
                             <i class="fas fa-thumbs-up"></i>
+                            <a href="/like_post?post_id={{post.id}}"></a>
                             <label for="comment-input"><i class="fas fa-message"></i></label>
                             <i class="fas fa-share"></i>
                         </div>
