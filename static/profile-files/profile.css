@@ -919,7 +919,7 @@ header a {
 }
 
 #about-section #personal-info .change-value.other-place {
-    bottom: 2rem;
+    bottom: 2rem; 
 }
 
 
@@ -1153,12 +1153,46 @@ header a {
     column-gap: 1.4rem;
     position: sticky;
     top: 59rem;
-    padding-bottom: 0;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+}
+
+#container-posts-section #additional-info-posts-section #friends-about-section h2 {
+    margin-top: -5.5rem;
+}
+
+#container-posts-section #additional-info-posts-section #friends-about-section #friends-num {
+    margin-top: -2.3rem;
+}
+
+#container-posts-section #additional-info-posts-section #friends-about-section .all {
+    top: 5rem;
+}
+
+#container-posts-section #additional-info-posts-section #friends-about-section img{
+    width: 110px;
+    height: 100px;
+}
+
+#container-posts-section #additional-info-posts-section #friends-about-section h4 {
+    margin-top: -2.2rem;
+}
+
+#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(1) img,
+#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(2) img,
+#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(3) img {
+    margin-top: -1.5rem;
+}
+
+#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(1) h4,
+#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(2) h4,
+#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(3) h4 {
+    margin-top: -4rem;
 }
 
 #container-posts-section #additional-info-posts-section #user-info {
     position: sticky;
-    top: 1rem;
+    top: 1.2rem;
 }
 
 #container-posts-section #photos-about-section span {
@@ -1171,7 +1205,7 @@ header a {
 
 #container-posts-section #friends-about-section .friend {
     position: relative;
-    width: 120px;
+    width: 120px;    
     margin-top: 3rem;
 }
 
@@ -1306,13 +1340,13 @@ header a {
     }
 
     /* PHOTOS SECTION SETTINGS */
-
+    
     #photos-about-section {
         margin-left: 13rem;
     }
 
     /* ABOUT SECTION SETTINGS */
-
+    
     #about-section #personal-info, #friends-about-section {
         width: 850px;
         margin-left: 12rem;
@@ -1372,18 +1406,18 @@ header a {
     }
 
     /* MAIN SECTION RESPONSIVE SETTINGS*/
-
+    
     #container-posts-section #additional-info-posts-section {
         left: 50%;
         transform: translate(-80%);
         position: absolute;
     }
-
+    
     #container-posts-section #additional-info-posts-section #user-info {
         position: absolute;
         width: 500px;
     }
-
+    
     #container-posts-section #additional-info-posts-section #photos-about-section {
         position: absolute;
         top: 23.5rem;
@@ -1421,7 +1455,7 @@ header a {
     }
 
     /* PHOTOS SECTION SETTINGS */
-
+    
     #photos-about-section {
         margin-left: 12rem;
         width: 720px;
@@ -1444,7 +1478,7 @@ header a {
     }
 
     #about-section #friends-about-section .all {
-        margin-left: 52rem !important;
+        margin-left: 52rem !important; 
     }
 
     #friends-about-section .all {
@@ -1496,11 +1530,11 @@ header a {
     }
 
     /* MAIN SECTION RESPONSIVE SETTINGS*/
-
+    
     #container-posts-section #additional-info-posts-section {
         left: 49%;
     }
-
+    
     #container-posts-section #additional-info-posts-section #photos-about-section {
         width: 400px;
     }
@@ -1508,7 +1542,7 @@ header a {
     #container-posts-section #additional-info-posts-section #photos-about-section span {
         width: 110px;
     }
-
+    
     #container-posts-section #additional-info-posts-section #user-info {
         width: 400px;
     }
@@ -1530,7 +1564,7 @@ header a {
     #container-posts-section #additional-info-posts-section #friends-about-section .friend:not(:nth-child(3n + 1)) {
         margin-left: 1rem;
     }
-
+    
     #container-posts-section #additional-info-posts-section #friends-about-section .friend h4{
         top: 10.5rem;
     }
@@ -1636,7 +1670,7 @@ header a {
     #about-section #personal-info .change-value {
         width: 205px;
     }
-
+    
     #about-section #personal-info .change-value input[type='text'], #about-section #personal-info .change-value select,#about-section #personal-info .change-value input[type='date'] {
         width: 160px;
         height: 45px;
@@ -1645,7 +1679,7 @@ header a {
     #about-section #personal-info .change-value input[type='text']:focus ~ span,
     #about-section #personal-info .change-value input[type='text']:valid ~ span{
         transform: translate(-2px, -10px)
-    }
+    } 
 
     #about-section #personal-info .change-value span {
         font-size: 1.8rem;
@@ -1655,43 +1689,43 @@ header a {
     #about-section #personal-info .change-value:nth-of-type(1) {
         top: 9.7rem;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(2) {
         top: 15rem;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(3) {
         top: 25.8rem;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(4) {
         top: 30.8rem;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(5) {
         top: 42rem;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(6) {
         top: 47rem;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(7) {
         top: 58rem;
         width: 250px;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(8) {
         top: 66.3rem;
         width: 270px;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(9) {
         top: 68rem;
     }
 
     #about-section #friends-about-section .all {
-        margin-left: 32rem !important;
+        margin-left: 32rem !important; 
     }
 
     #friends-about-section {
@@ -1761,11 +1795,11 @@ header a {
     #first-header #sections hr:nth-of-type(2) {
         left: 8.9rem;
     }
-
+    
     #first-header #sections hr:nth-of-type(3) {
         left: 19.6rem;
     }
-
+    
     #first-header #sections hr:nth-of-type(4) {
         width: 100px;
         left: 30.2rem;
@@ -1784,7 +1818,7 @@ header a {
     }
 
     /* MAIN SECTION RESPONSIVE SETTINGS*/
-
+    
     #container-posts-section #additional-info-posts-section {
         left: 42%;
     }
@@ -1854,15 +1888,15 @@ header a {
     }
 
     /* MAIN SECTION RESPONSIVE SETTINGS*/
-
+    
     #container-posts-section #additional-info-posts-section {
         left: 33%;
     }
-
+    
     #container-posts-section #additional-info-posts-section #photos-about-section {
         width: 400px;
     }
-
+    
     #container-posts-section #additional-info-posts-section #user-info {
         width: 400px;
     }
@@ -1887,7 +1921,7 @@ header a {
         left: 3.5rem;
         top: 108rem;
     }
-
+    
     /* PHOTOS SECTION */
 
     #photos-section #photos-about-section {
@@ -1902,7 +1936,7 @@ header a {
         margin-left: 4rem;
         width: 400px;
     }
-
+    
     #about-section #personal-info .right {
         font-size: 1.8rem !important;
         padding: 0.6rem;
@@ -1976,7 +2010,7 @@ header a {
         height: 55px;
         left: -3.6rem;
     }
-
+    
     #about-section #personal-info .change-value input[type='text'], #about-section #personal-info .change-value select, #about-section #personal-info .change-value input[type='date'] {
         width: 120px;
         height: 35px;
@@ -1988,35 +2022,35 @@ header a {
     #about-section #personal-info .change-value input[type='text']:valid ~ span{
         transform: translate(-2px, -8.5px);
         font-size: 0.9rem;
-    }
+    } 
 
     #about-section #personal-info .change-value span {
         font-size: 1.4rem;
         margin-top: 0;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(4) {
         top: 30.4rem;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(5) {
         top: 41rem;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(6) {
         top: 46rem;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(7) {
         top: 56.5rem;
         width: 210px;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(8) {
         top: 64.3rem;
         width: 250px;
     }
-
+    
     #about-section #personal-info .change-value:nth-of-type(9) {
         top: 66rem;
     }
