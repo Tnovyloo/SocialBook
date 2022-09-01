@@ -98,8 +98,9 @@ body {
 
 #background header h3 {
     position: absolute;
-    left: 2rem;
-    font-size: 5.2rem;
+    left: 3rem;
+    font-size: 4.1rem;
+    font-family: 'Poppins';
 }
 
 /* NOTIFICATION PANEL */
@@ -675,11 +676,6 @@ body {
     border-radius: 1rem;
 }
 
-#posts-container #post a {
-    text-decoration: none !important;
-    color: black !important;
-}
-
 #posts-container header {
     width: 100%;
     height: 5rem;
@@ -1216,6 +1212,10 @@ body {
         top: -0.8rem;
         margin-right: -3rem;
     }
+
+    #background header h3 {
+        font-size: 3.1rem;
+    }
 }
 
 @media screen and (max-width: 890px) {
@@ -1442,8 +1442,8 @@ body {
     }
 
     #background header h3 {
-        font-size: 3.2rem;
-        margin-left: -1.4rem;
+        font-size: 2.4rem;
+        left: 1.8rem;
     }
 
     #background header ul .fas {
@@ -1582,7 +1582,8 @@ body {
     }
 
     #background header h3 {
-        font-size: 2.3rem;
+        font-size: 1.8rem;
+        left: 1.4rem;
     }
 
     #background header label[id="upload"] {

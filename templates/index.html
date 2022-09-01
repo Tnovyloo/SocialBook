@@ -1,10 +1,11 @@
 {% load static %}
+<!-- {% static '/main-page/styles.css' %} -->
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{% static '/main-page/styles.css' %}" rel="stylesheet" type="text/css">
+        <link href="/static/main-page/styles.css" rel="stylesheet" type="text/css">
         <script src="https://kit.fontawesome.com/a18d53579f.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +16,7 @@
         <main>
             <div id="background">
                 <header>
-                    <h3>Fakebook</h3>
+                    <h3><a href="/main-page/index.html">Fakebook</a></h3>
                     <input type="text" placeholder="Search fakebook" id="search"><label for="search"><i class="fas fa-magnifying-glass"></i></label>
 
                     <!-- UPLOAD WINDOW -->
@@ -34,6 +35,9 @@
                     </div>
                     
                     <ul>
+
+                        <!-- NOTIFICATIONS WINDOW -->
+
                         <li>
                             <i class="fas fa-bell" id="notification-open"><span id="notification-icon"></span></i>                            
                             <div id="info">
@@ -50,11 +54,16 @@
                                     <i class="circle-notification"></i>
                                 </div>
                             </div>
+                            <span id="hover-notifications">Notifications</span>
                         </li>
+
+                        <!-- MESSAGES WINDOW -->
+
                         <li>
                             <i class="fas fa-message" id="message-icon">
                                 <div id="notification"></div>
                             </i>
+                            <span id="hover-messages">Messages</span>
                             <div id="messages">
                                 <h2>Chats</h2>
                                 <i id="close-messages">+</i>
@@ -78,8 +87,17 @@
                                 </div>
                             </div>
                         </li>
-                        <li><button id="photo-wrapper-onclick"><img src="/images/Gryz-Szymon.jpeg"></button></li>
+
+                        <!-- PROFILE -->
+
+                        <li>
+                            <button id="photo-wrapper-onclick"><img src="/images/Gryz-Szymon.jpeg"></button>
+                            <span id="hover-account">Account</span>
+                        </li>
+
                     </ul>
+
+                    <!-- WINDOW WITH NAVIGATION TO OTHER PAGES-->
 
                     <div id="other-pages">
                         <i class="fas fa-caret-up"></i>
@@ -91,9 +109,16 @@
                         </a>
 
                         <a href="/profile/{{user.username}}">
-                            <div class="window" id="last-window">
+                            <div class="window">
                                 <i class="fas fa-user"></i>
-                                <p>profile</p>
+                                <p>Profile</p>
+                            </div>
+                        </a>
+                        
+                        <a href="/login-register-page/login-register.html">
+                            <div class="window" id="last-window">
+                                <i class="fas fa-door-open"></i>
+                                <p>Log Out</p>
                             </div>
                         </a>
                     </div>
@@ -144,13 +169,17 @@
                     <p>Thank you! We will check this problem.</p>
                 </div>
             </div>
-<!--        Posts-->
+
+            <!-- Posts -->
+
             <div id="posts-container">
                 {% for post in posts reversed %}
                     <div id="post">
                         <header>
                             <div id="profile-wrapper"><img src="{{post.user.profile_img.url}}"></div>
-<!--                            TODO user profile img-->
+
+                            <!--TODO user profile img-->
+
                             <p><a href="profile/{{post.user_id}}">{{post.user_id}}</a></p>
                             <i class="fas fa-ellipsis"></i>
                         </header>
@@ -162,7 +191,7 @@
                         <div id="image-wrapper">
                             <a href="#">
                                 {% if post.image %}
-                                <img src="{{post.image.url}}" alt="">
+                                <img src="{{post.image.url}}" id="first-image">
                                 {% endif %}
                             </a>
                         </div>
@@ -211,6 +240,7 @@
                 {% endfor %}
             </div>
         </main>
-        <script type="text/javascript" src="{% static '/main-page/script.js' %}"></script>
+        <script type="text/javascript" src="/static/main-page/script.js"></script>
     </body>
 </html>
+<!-- {% static '/main-page/script.js' %} -->
