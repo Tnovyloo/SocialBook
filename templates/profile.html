@@ -109,29 +109,31 @@
                     <div class="friend">
                         <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
                         <h4>Name</h4>
-                        <p>100 mutual friends</p>
+                        <p class="number-of-friends">100 mutual friends</p>
                         <i class="fas fa-ellipsis-vertical"></i>
                     </div>
                     <div class="friend">
                         <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
                         <h4>Name</h4>
-                        <p>100 mutual friends</p>
+                        <p class="number-of-friends">100 mutual friends</p>
                         <i class="fas fa-ellipsis-vertical"></i>
                     </div>
                     <div class="friend">
                         <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
                         <h4>Name</h4>
-                        <p>100 mutual friends</p>
+                        <p class="number-of-friends">100 mutual friends</p>
                         <i class="fas fa-ellipsis-vertical"></i>
                     </div>
                     <div class="friend">
                         <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
                         <h4>Name</h4>
-                        <p>100 mutual friends</p>
+                        <p class="number-of-friends">100 mutual friends</p>
                         <i class="fas fa-ellipsis-vertical"></i>
                     </div>
                 </div>
             </div>
+
+            <!-- ADD POSTS SECTION -->
 
             <div id="add-post">
                 <img id="profile" src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.6435-9/67308354_2076925369277865_5351762411705597952_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=LuBWMhRIEgsAX--RB1L&_nc_ht=scontent-waw1-1.xx&oh=00_AT_SH1Dt-tsFuxR73JcJM9nKRp3luHI1MY_JFZ9LiitsXw&oe=631E362E">
@@ -158,12 +160,12 @@
                         <div id="profile-wrapper"><img src="{{user_profile.profile_image.url}}"></div>
 <!--                        <div id="profile-wrapper"><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></div>-->
                         <p>Natalie White</p>
-                        <i class="fas fa-ellipsis"></i>
+                        <button class="post-options-button"><i class="fas fa-ellipsis"></i></button>
                     </header>
                     <div class="post-options">
                         <i class="fas fa-play"></i>
-                        <div class="close-sign">+</div>
                         <button class="report">report post</button>
+                        <button class="delete">delete post</button>
                     </div>
                     <div id="image-wrapper">
                         <img src="{{post.image.url}}">
@@ -210,63 +212,6 @@
                     </div>
                 </div>
                 {% endfor %}
-
-<!--                <div id="post">-->
-<!--                    <header>-->
-<!--                        <div id="profile-wrapper"><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></div>-->
-<!--                        <p>Djordje Petrovic</p>-->
-<!--                        <i class="fas fa-ellipsis"></i>-->
-<!--                    </header>-->
-<!--                    <div class="post-options">-->
-<!--                        <i class="fas fa-play"></i>-->
-<!--                        <div class="close-sign">+</div>-->
-<!--                        <button class="report">report post</button>-->
-<!--                    </div>-->
-<!--                    <div id="image-wrapper">-->
-<!--                        <img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}">-->
-<!--                    </div>-->
-<!--                    <div id="reactions">-->
-<!--                        <p>Liked <span class="bold">name</span> and <span class="bold">111 others</span></p>-->
-<!--                        <div id="profiles-wrapper">-->
-<!--                            <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>-->
-<!--                            <div id="profile-wrapper"><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></div>-->
-<!--                            <div id="profile-wrapper"><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div id="interactions">-->
-<!--                        <i class="fas fa-thumbs-up"></i>-->
-<!--                        <label for="comment-input2"><i class="fas fa-message"></i></label>-->
-<!--                        <i class="fas fa-share"></i>-->
-<!--                    </div>-->
-<!--                    <div id="comments">-->
-<!--                        <div id="comment-messages">-->
-<!--                            <div id="comment">-->
-<!--                                <div id="comment-content">-->
-<!--                                    <div id="profile-wrapper"><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></div>-->
-<!--                                    <p>Nice!</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div id="comment">-->
-<!--                                <div id="comment-content">-->
-<!--                                    <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>-->
-<!--                                    <p>🐱‍👤</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div id="comment">-->
-<!--                                <div id="comment-content">-->
-<!--                                    <div id="profile-wrapper"><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></div>-->
-<!--                                    <p>Cool!</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <input type="text" placeholder="post a comment" id="comment-input2">-->
-<!--                        <input type="file" accept=".jpg" id="image">-->
-<!--                        <input type="file" accept=".mp4" id="video">-->
-<!--                        <label for="image"><i class="fas fa-image"></i></label>-->
-<!--                        <label for="video"><i class="fas fa-video"></i></label>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
 
         <!-- ABOUT SECTION -->
@@ -277,43 +222,115 @@
 
                 <h3>Places lived</h3>
 
+                <div class="change-value">
+                    <input type="text" class="new-changes" required>
+                    <input type="submit" value="Save" class="save">
+                    <input type="submit" value="Close" class="close">
+                    <span>live place</span>
+                </div>
+
                 <i class="fas fa-house left"></i>
-                <p>Live in <span class="bold">{{user_profile.current_location}}</span></p>
-                <i class="fas fa-pencil right" id="live"></i>
+                <p class="personal-info">Live in <span class="bold">{{user_profile.current_location}}</span></p>
+                <i class="fas fa-pencil right open-window" id="live"></i>
+
+                <div class="change-value other-place">
+                    <input type="text" class="new-changes" required>
+                    <input type="submit" value="Save" class="save">
+                    <input type="submit" value="Close" class="close">
+                    <span>from</span>
+                </div>
 
                 <i class="fas fa-location-dot left"></i>
-                <p>From <span class="bold">{{user_profile.location}}</span></p>
-                <i class="fas fa-pencil right" id="from"></i>
+                <p class="personal-info">From <span class="bold">{{user_profile.location}}</span></p>
+                <i class="fas fa-pencil right open-window" id="from"></i>
 
-                <h3>Education</h3>
+                <h3>Education - Hobby</h3>
+
+                <div class="change-value">
+                    <input type="text" class="new-changes" required>
+                    <input type="submit" value="Save" class="save">
+                    <input type="submit" value="Close" class="close">
+                    <span>current school</span>
+                </div>
+
                 <i class="fas fa-school left"></i>
-                <p>Current school <span class="bold">{{user_profile.school}}</span></p>
-                <i class="fas fa-pencil right" id="school"></i>
+                <p class="personal-info">Current school <span class="bold">{{user_profile.school}}</span></p>
+                <i class="fas fa-pencil right open-window" id="school"></i>
+
+                <div class="change-value other-place">
+                    <input type="text" class="new-changes" required>
+                    <input type="submit" value="Save" class="save">
+                    <input type="submit" value="Close" class="close">
+                    <span>hobbies</span>
+                </div>
+
+                <i class="fas fa-scroll left"></i>
+                <p class="personal-info">Hobbies: <span class="bold current-value">football, gaming</span> </p>
+                <i class="fas fa-pencil right open-window"></i>  
                 
                 <h3>Contact info</h3>
+
+                <div class="change-value">
+                    <input type="text" class="new-changes" required>
+                    <input type="submit" value="Save" class="save">
+                    <input type="submit" value="Close" class="close">
+                    <span>number</span>
+                </div>
+
                 <i class="fas fa-phone left"></i>
-                <p>Number <span class="bold">{{user_profile.number}}</span></p>
-                <i class="fas fa-pencil right" id="number"></i>
+                <p class="personal-info">Number <span class="bold">{{user_profile.number}}</span></p>
+                <i class="fas fa-pencil right open-window" id="number"></i>
+
+                <div class="change-value other-place">
+                    <input type="text" class="new-changes" required>
+                    <input type="submit" value="Save" class="save">
+                    <input type="submit" value="Close" class="close">
+                    <span>e-mail</span>
+                </div>
 
                 <i class="fas fa-envelope left"></i>
-                <p>E-mail <span class="bold">{{user_profile.email}}</span></p>
-                <i class="fas fa-pencil right" id="email"></i>
+                <p class="personal-info">E-mail <span class="bold">{{user_profile.email}}</span></p>
+                <i class="fas fa-pencil right open-window" id="email"></i>
 
                 <h3>Basic info</h3>
+
+                <div class="change-value">
+                    <input class="new-changes unused">
+                    <select>
+                        <option disabled selected>Select your option</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <input type="submit" value="Save" class="save select">
+                    <input type="submit" value="Close" class="close select">
+                </div>
                 
                 <i class="fas fa-person left"></i>
-                <p>Gender <span class="bold">{{user_profile.gender}}</span></p>
-                <i class="fas fa-pencil right" id="gender"></i>
+                <p class="personal-info">Gender <span class="bold">{{user_profile.gender}}</span></p>
+                <i class="fas fa-pencil right open-window" id="gender"></i>
+
+                <div class="change-value">
+                    <input type="date" class="new-changes">
+                    <input type="submit" value="Save" class="save date">
+                    <input type="submit" value="Close" class="close date">
+                </div>
                 
                 <i class="fas fa-cake-candles left"></i>
-                <p>Birth date <span class="bold">{{user_profile.birthday}}</span></p>
-                <p>Birth year <span class="bold">{{user_profile.birthyear}}</span></p>
-                <i class="fas fa-pencil right" id="birth"></i>
+                <p class="personal-info">Birth date <span class="bold current-value">20 February 2003</span></p>
+                <i class="fas fa-pencil right open-window" id="birth"></i>
+
+                <div class="change-value last">
+                    <input type="text" class="new-changes" required>
+                    <input type="submit" value="Save" class="save">
+                    <input type="submit" value="Close" class="close">
+                    <span>relationship</span>
+                </div>
                 
                 <i class="fas fa-children left"></i>
-                <p>Relationship <span class="bold">{{user_profile.relationship}}</span></p>
-                <i class="fas fa-pencil right" id="relation"></i>
+                <p class="personal-info relation">Relationship <span class="bold">{{user_profile.relationship}}</span></p>
+                <i class="fas fa-pencil right open-window" id="relation"></i>
             </div>
+
 
             <div id="friends-about-section">
                 <h2>Friends</h2>
