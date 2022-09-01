@@ -175,3 +175,34 @@ for (let i = 0; i < infoTexts.length; i++) {
     })
 }
 
+// APPEARING WINDOW WITH OTHER PAGES AFTER CLICK OVER PROFILE 
+
+let otherPagesWindow = document.getElementById('other-pages')
+let openPagesWindow = document.getElementById('photo-wrapper-onclick')
+
+openPagesWindow.onclick = function() {
+    otherPagesWindow.style.display = 'block'
+}
+
+window.onclick = function(event) {
+    if(event.target != openPagesWindow) {
+        otherPagesWindow.style.display = 'none'
+    }
+}
+
+// APPEARING WINDOW WITH OPTION TO CHANGE PROFILE 
+
+let changeProfileWindow = document.getElementById('change-profile-image-window')
+let changeProfileButton = document.getElementById('change-profile-image-button')
+let uploadButton = document.getElementById('upload-image')
+let chooseImageLabel = document.getElementById('choose-image-label')
+let chooseImageInput = document.getElementById('choose-image')
+
+let changeProfileWindowItems = [changeProfileWindow, uploadButton, chooseImageLabel, chooseImageInput, changeProfileButton]
+
+changeProfileButton.onclick = () => changeProfileWindow.style.display = 'flex'
+
+window.onclick = function(event) {
+    if (changeProfileWindowItems.every(el => el !== event.target)) changeProfileWindow.style.display = 'none';
+    console.log(event.target)
+}
