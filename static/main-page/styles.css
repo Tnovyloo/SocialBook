@@ -62,6 +62,7 @@ body {
     outline: none;
     background-color: var(--search-color);
     font-family: var(--header-font);
+    margin-left: -4rem;
 }
 
 #background header label[for="search"] {
@@ -70,7 +71,7 @@ body {
     height: 45px;
     border-radius: 90px;
     cursor: default; 
-    left: 28.0rem;
+    left: 24rem;
 }
 
 #background header label[for="search"] i {
