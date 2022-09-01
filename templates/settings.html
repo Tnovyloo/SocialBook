@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/a18d53579f.js" crossorigin="anonymous"></script>
-        <link href="{% static '/settings-page/settings.css' %}" rel="stylesheet">
+        <link href="{% static 'settings-page/settings.css' %}" rel="stylesheet">
         <title>Settings page</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,13 +13,11 @@
     </head>
     <body>
         <header>
-            <h1><a href="/main-page/index.html">Fakebook</a></h1>
+            <h1><a href="/templates/index.html">Fakebook</a></h1>
             <div id="search-wrapper">
                 <i class='fas fa-magnifying-glass'></i>
                 <input type="text" id="search" placeholder="Search fakebook">
             </div>
-
-            <a href="/" id="main-page-connection"><i class="fas fa-house"></i></a>
 
             <i class="fas fa-bell" id="notification-open"><span id="notification-icon"></span></i>
 
@@ -212,6 +210,6 @@
             </div>
 
         </main>
-        <script type="text/javascript" src="{% static '/settings-page/settings.js' %}"></script>
+        <script type="text/javascript" src="{% static 'settings-page/settings.js' %}"></script>
     </body>
 </html>
