@@ -327,72 +327,964 @@
                 </div>
                 
                 <i class="fas fa-children left"></i>
-                <p class="personal-info relation">Relationship <span class="bold">{{user_profile.relationship}}</span></p>
-                <i class="fas fa-pencil right open-window" id="relation"></i>
+                <p class="personal-info relation">Relationship <span class="bold current-value">{{user_profile.relationship}}</span></p>
+                <i class="fas fa-pencil right open-window"></i>
             </div>
-
 
             <div id="friends-about-section">
                 <h2>Friends</h2>
                 <p id="friends-num">1.192 friends</p>
-                <p id="all">See All Friends</p>
+                <p class="all">See All Friends</p>
                 <div class="friend">
-                    <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
+                    <img src="/images/pexels-pixabay-39866.jpg">
                     <h4>Name</h4>
-                    <p>100 mutual friends</p>
-                    <i class="fas fa-ellipsis-vertical"></i>
+                    <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
                 </div>
                 <div class="friend">
-                    <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
+                    <img src="/images/pexels-pixabay-39866.jpg">
                     <h4>Name</h4>
-                    <p>100 mutual friends</p>
-                    <i class="fas fa-ellipsis-vertical"></i>
+                    <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
                 </div>
                 <div class="friend">
-                    <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
+                    <img src="/images/pexels-pixabay-39866.jpg">
                     <h4>Name</h4>
-                    <p>100 mutual friends</p>
-                    <i class="fas fa-ellipsis-vertical"></i>
+                    <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
                 </div>
                 <div class="friend">
-                    <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
+                    <img src="/images/pexels-pixabay-39866.jpg">
                     <h4>Name</h4>
-                    <p>100 mutual friends</p>
-                    <i class="fas fa-ellipsis-vertical"></i>
+                    <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
                 </div>
             </div>
+        </div>
 
-            <div id="photos-about-section">
-                <h2>Photos</h2>
-                <span><img src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-amber-janssens-7327624.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-jeandaniel-francoeur-12913355.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-kristian-thomas-13146110.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-kássia-melo-13048774.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-letticia-massari-13037433.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-santiago-sauceda-gonzález-13122942.jpg' %}"></span>
+         <!-- ALL FRIENDS SECTION -->
+
+         <div id="friends-section">
+            <div id="friends-about-section">
+                <h2>Friends</h2>
+                <p id="friends-num">1.192 friends</p>
+
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
+                <div class="friend">
+                    <img src="/images/pexels-pixabay-39866.jpg">
+                    <h4>Name</h4>
+                    <p class="number-of-friends">100 mutual friends</p>
+                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="friend-options-window">
+                        <div class="friend-option favourite">
+                            <i class="fas fa-heart"></i>
+                            <p>Favourite</p>
+                        </div>
+
+                        <div class="friend-option follow-option">
+                            <i class="fas fa-square-minus"></i>
+                            <p class="follow-text">Unfollow</p>
+                        </div>
+
+                        <div class="friend-option unfriend">
+                            <i class="fas fa-user-xmark"></i>
+                            <p>Unfriend</p>
+                        </div>
+                    </div>
+                    <button class="add-friend">Add Friend</button>
+                </div>
             </div>
         </div>
 
         <!-- PHOTOS SECTION -->
+
         <div id="photos-section">
             <div id="photos-about-section">
                 <h2>Photos</h2>
-                <span><img src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-amber-janssens-7327624.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-jeandaniel-francoeur-12913355.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-kristian-thomas-13146110.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-kássia-melo-13048774.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-letticia-massari-13037433.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-santiago-sauceda-gonzález-13122942.jpg' %}"></span>
+                <span><img src="/images/pexels-andrea-piacquadio-837358.jpg"></span>
+                <span><img src="/images/pexels-charles-1851164.jpg"></span>
+                <span><img src="/images/pexels-pixabay-39866.jpg"></span>
+                <span><img src="/images/pexels-djordje-petrovic-2102416.jpg"></span>
+                <span><img src="/images/pexels-natalie-12502186.jpg"></span>
+                <span><img src="/images/pexels-amber-janssens-7327624.jpg"></span>
+                <span><img src="/images/pexels-jeandaniel-francoeur-12913355.jpg"></span>
+                <span><img src="/images/pexels-kristian-thomas-13146110.jpg"></span>
+                <span><img src="/images/pexels-kássia-melo-13048774.jpg"></span>
+                <span><img src="/images/pexels-letticia-massari-13037433.jpg"></span>
+                <span><img src="/images/pexels-santiago-sauceda-gonzález-13122942.jpg"></span>
             </div>
         </div>
         <script type="text/javascript" src="{% static 'profile-files/profile.js' %}"></script>
