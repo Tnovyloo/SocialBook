@@ -8,6 +8,10 @@ html {
     font-size: 62.5%;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 :root {
     --posts-header-color: rgb(240, 240, 240);
     --reactions-color: rgb(240, 240, 240);
@@ -49,6 +53,8 @@ html {
     border-radius: 50%;
 }
 
+/* HEADER NAVIGATION */
+
 header a {
     text-decoration: none;
     color: black;
@@ -78,11 +84,16 @@ header a {
 
 .navigation p {
     font-size: 2rem;
-    margin-left: 1.5rem;
+    margin-left: 4.7rem;
+    font-family: 'Open Sans'
 }
 
-.navigation:hover {
+#home:hover {
     width: 130px;
+}
+
+#settings:hover {
+    width: 150px;
 }
 
 #informations {
@@ -181,9 +192,6 @@ header a {
     background-color: hsl(220, 60%, 35%);
     bottom: -19px;
     border-radius: 100px;
-}
-
-#first-header #sections hr:nth-of-type(1), header #sections hr:nth-of-type(2), header #sections hr:nth-of-type(3) {
     display: none;
 }
 
@@ -197,6 +205,10 @@ header a {
 
 #first-header #sections hr:nth-of-type(3) {
     left: 250px;
+}
+
+#first-header #sections hr:nth-of-type(4) {
+    left: 391.5px;
 }
 
 #first-header #sections p:active {
@@ -217,13 +229,15 @@ header a {
     margin-top: 1rem;
 }
 
-#container-posts-section #user-info {
+#container-posts-section #additional-info-posts-section #user-info {
     width: 450px;
     padding: 2rem;
     border-radius: 10px;
     padding-bottom: 2.5rem;
     background-color: white;
     box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
+    position: sticky;
+    top: 1rem;
 }
 
 #container-posts-section #user-info h2 {
@@ -262,8 +276,8 @@ header a {
     padding-inline: 2.7rem;
     padding-bottom: 2rem;
     border-radius: 15px;
-    overflow: hidden;
     box-shadow: 0px 0.9px 2px 1px hsl(0, 0%, 80%);
+    overflow: hidden
 }
 
 #container-posts-section #add-post #profile {
@@ -319,6 +333,7 @@ header a {
 
 #container-posts-section #add-post p {
     font-size: 2.4rem;
+    margin-left: 3.8rem;
 }
 
 #container-posts-section input[type="file"] {
@@ -328,7 +343,6 @@ header a {
 #container-posts-section #user-posts {
     position: absolute;
     right: 10rem;
-    background-color: pink;
     border-radius: 10px;
     padding: 1rem;
 }
@@ -352,12 +366,10 @@ header a {
 
 #posts-container {
     position: absolute;
-    width: 542px;
+    max-width: 542px;
     right: 9.7rem;
     border-radius: 1rem;
     top: 19rem;
-    overflow: visible;
-    float: right;
 }
 
 #posts-container header {
@@ -366,28 +378,36 @@ header a {
     background-color: var(--posts-header-color);
 }
 
+#posts-container .post header button {
+    width: 31px;
+    height: 12px;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    border: none;
+}
+
+#posts-container header .fas.fa-ellipsis {
+    font-size: 3rem;
+    top: -1rem;
+    right: 0.10rem;
+    pointer-events: none;
+}
+
 #posts-container header p {
     font-size: 1.8rem;
     margin-top: -2.4rem;
     margin-left: 4rem;
 }
 
-#posts-container header .fas.fa-ellipsis {
-    position: absolute;
-    font-size: 3rem;
-    right: 3rem;
-    top: 1rem;
-    cursor: pointer;
-}
-
 #posts-container #image-wrapper {
-    height: 450px;
     overflow: hidden;
 }
 
 #posts-container #image-wrapper img {
-    object-position: 0px -250px;
     width: 100%;
+    object-fit: cover;
 }
 
 #posts-container #reactions {
@@ -442,6 +462,10 @@ header a {
     transform: translate(0, -50%);
     font-size: 2.3rem;
     cursor: pointer;
+}
+
+#posts-container #interactions .fas.fa-share {
+    right: 3rem;
 }
 
 /* COMMENTS SECTION */
@@ -525,18 +549,22 @@ header a {
     border-top: 1px solid gray;
 }
 
-#posts-container #post .post-options {
+#posts-container .post .post-options {
     position: absolute;
-    height: 40px;
-    width: 150px;
     background-color: rgb(240, 240, 240);
     border-radius: 10px;
     top: 6rem;
-    right: 2.6rem;
+    right: 1.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    align-items: center;
+    gap: 1.3rem;
     display: none;
 }
 
-#posts-container #post .post-options i {
+#posts-container .post .post-options i {
     color: rgb(240, 240, 240);
     position: absolute;
     right: 1rem;
@@ -545,7 +573,7 @@ header a {
     top: -1rem;
 }
 
-#posts-container #post .post-options .close-sign {
+#posts-container .post .post-options .close-sign {
     position: absolute;
     top: 0;
     right: 1rem;
@@ -555,19 +583,19 @@ header a {
     cursor: pointer;
 }
 
-#posts-container #post .post-options button {
+#posts-container .post .post-options button {
     cursor: pointer;
-    position: absolute;
-    left: 40%;
-    transform: translate(-50%, 0%);
     border: none;
-    padding: 1rem;
     font-size: 1.8rem;
-    width: 107px;
-    background-color: transparent;
+    height: 35px;
+    width: 146%;
 }
 
-#posts-container #post {
+#posts-container .post .post-options button:hover {
+    background-color: hsl(0, 0%, 87%)
+}
+
+#posts-container .post {
     margin-bottom: 3rem;
     position: relative;
     box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
@@ -644,13 +672,19 @@ header a {
 }
 
 #about-section #personal-info {
-    width: 65%;
+    width: 1200px;
     box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
     margin-inline: auto;
     border-radius: 10px;
     margin-top: 2.3rem;
     padding-inline: 1rem;
     padding-top: 1.5rem;
+    position: relative;
+    padding-bottom: 2.5rem;
+}
+
+#about-section #friends-about-section .all {
+    margin-left: 100rem !important;
 }
 
 #about-section #personal-info h2 {
@@ -661,7 +695,7 @@ header a {
 
 .fas {
     font-size: 3rem;
-    position: relative;
+    position: absolute;
 }
 
 #about-section #personal-info .left {
@@ -674,54 +708,63 @@ header a {
     background-color: hsl(0, 0%, 91%);
     padding: 0.8rem;
     border-radius: 50%;
-    top: -3.2rem;
     font-size: 2.2rem;
     cursor: pointer;
+    margin-top: -2.8rem;
+}
+
+/* ABOUT SECTION ICONS LEFT */
+
+#about-section #personal-info .fas.fa-house {
+    left: 7rem;
+    top: 11.6rem;
 }
 
 #about-section #personal-info .fas.fa-location-dot {
-    left: 2.8rem;
-    bottom: -3.2rem;
+    left: 7.5rem;
+    top: 17rem;
+}
+
+#about-section #personal-info .fas.fa-school {
+    left: 7rem;
+    top: 28rem;
+}
+
+#about-section #personal-info .fas.fa-scroll {
+    left: 7rem;
+    top: 33.5rem;
+}
+
+#about-section #personal-info .fas.fa-phone {
+    left: 7.5rem;
+    top: 44.5rem;
 }
 
 #about-section #personal-info .fas.fa-envelope {
-    left: 2.1rem;
-    bottom: -3.35rem;
-}
-
-#about-section #personal-info .fas.fa-cake-candles {
-    left: 1.95rem;
-    bottom: -4rem;
-}
-
-#about-section #personal-info .fas.fa-children {
-    bottom: -3.3rem;
-    left: 1.45rem;
+    left: 7.5rem;
+    top: 50rem;
 }
 
 #about-section #personal-info .fas.fa-person {
-    left: 6.5rem;
+    left: 7rem;
+    top: 61rem;
 }
 
-#about-section #personal-info #birth {
-    top: -4.4rem;
+#about-section #personal-info .fas.fa-cake-candles {
+    left: 6.6rem;
+    top: 66rem;
 }
 
-#about-section #personal-info #school {
-    top: -2.9rem;
-}
-
-#about-section #personal-info #email {
-    top: -2.9rem;
-}
-
-#about-section #personal-info #number {
-    top: -3.7rem;
+#about-section #personal-info .fas.fa-children {
+    left: 6.1rem;
+    top: 71.5rem
 }
 
 #about-section #personal-info p {
     font-size: 2rem;
     margin-left: 11.6rem;
+    margin-top: 3rem;
+    pointer-events: none;
 }
 
 #about-section #personal-info span {
@@ -735,18 +778,168 @@ header a {
     margin-left: 4rem;
 }
 
+/* CHANGING VALUE OF INFO IN ABOUT SECTION (WINDOW APPEARANCE) */
+
+#about-section #personal-info .change-value {
+    position: absolute;
+    width: 250px;
+    margin-left: 11.5rem;
+    height: 60px;
+    display: none;
+}
+
+/* CHANGE VALUE IN ABOUT WINDOWS POSITION */
+
+#about-section #personal-info .change-value:nth-of-type(1) {
+    top: 10rem;
+}
+
+#about-section #personal-info .change-value:nth-of-type(2) {
+    top: 15rem;
+}
+
+#about-section #personal-info .change-value:nth-of-type(3) {
+    top: 26.5rem;
+}
+
+#about-section #personal-info .change-value:nth-of-type(4) {
+    top: 31.8rem;
+}
+
+#about-section #personal-info .change-value:nth-of-type(5) {
+    top: 42.5rem;
+}
+
+#about-section #personal-info .change-value:nth-of-type(6) {
+    top: 48rem;
+}
+
+#about-section #personal-info .change-value:nth-of-type(7) {
+    top: 59rem;
+}
+
+#about-section #personal-info .change-value:nth-of-type(8) {
+    top: 68rem;
+}
+
+#about-section #personal-info .change-value:nth-of-type(9) {
+    top: 70rem;
+}
+
+#about-section #personal-info .change-value input[type='text'] {
+    position: relative;
+    height: 45px;
+    border-radius: 5px;
+    background-color: hsl(0, 0%, 90%);
+    outline-color: hsl(200, 0%, 80%);
+    border: none;
+    padding-inline: 1rem;
+    bottom: -1.3rem;
+    font-size: 1.5rem;
+}
+
+#about-section #personal-info .change-value input[type='date'] {
+    position: relative;
+    height: 45px;
+    border-radius: 5px;
+    background-color: hsl(0, 0%, 90%);
+    outline-color: hsl(200, 0%, 80%);
+    border: none;
+    padding-inline: 1rem;
+    bottom: 2.2rem;
+    font-size: 1.5rem;
+}
+
+#about-section #personal-info .change-value .save.date {
+    bottom: 3.1rem;
+    right: 5.2rem;
+}
+
+#about-section #personal-info .change-value .close.date {
+    bottom: 6.1rem;
+    right: 5.2rem;
+}
+
+#about-section #personal-info .change-value span {
+    position: absolute;
+    left: 1rem;
+    top: 2.2rem;
+    font-size: 2rem;
+    pointer-events: none;
+    color: gray;
+    transition: 0.5s;
+}
+
+#about-section #personal-info .change-value input[value = 'Save'], #about-section #personal-info .change-value input[value = 'Close'] {
+    position: absolute;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+#about-section #personal-info .change-value input[value = 'Save'] {
+    right: -1.5rem;
+    bottom: -0.3rem;
+    padding-inline: 0.7rem;
+}
+
+#about-section #personal-info .change-value input[value = "Close"] {
+    right: -1.5rem;
+    bottom: 2.8rem;
+}
+
+#about-section #personal-info .new-changes.unused {
+    display: none;
+}
+
+#about-section #personal-info .change-value.last {
+    bottom: 2.5rem !important;
+}
+
+#about-section #personal-info select {
+    position: relative;
+    height: 45px;
+    border-radius: 5px;
+    background-color: hsl(0, 0%, 90%);
+    outline-color: hsl(200, 0%, 80%);
+    border: none;
+    padding-inline: 1rem;
+    font-size: 1.5rem;
+    bottom: -1rem;
+}
+
+#about-section #personal-info .change-value .save.select {
+    right: 3.4rem;
+}
+
+#about-section #personal-info .change-value .close.select {
+    right: 3.4rem;
+}
+
+#about-section #personal-info .change-value.other-place {
+    bottom: 2rem;
+}
+
+
 /* ABOUT SECTION EDIT EFFECT */
 
 #about-section #personal-info .right:hover {
     background-color: hsl(0, 0%, 86%)
 }
 
-/**/
+#about-section #personal-info .change-value input[type='text']:valid ~ span, #about-section #personal-info .change-value input[type='text']:focus ~ span {
+    transform: translate(-1px, -7px);
+    font-size: 1.1rem;
+}
+
+/* FRIENDS SECTION */
 
 #friends-about-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 65%;
+    width: 1200px;
     box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
     margin-inline: auto;
     border-radius: 10px;
@@ -769,18 +962,25 @@ header a {
     color: gray;
 }
 
-#friends-about-section #all {
-    color: hsl(220, 100%, 65%);
+#friends-about-section .all {
+    color: blue;
     position: absolute;
-    margin-left: 56%;
+    margin-left: 26rem;
     margin-top: -1.7rem;
     font-size: 2rem;
     cursor: pointer;
 }
 
+#friends-about-section .all:hover {
+    background-color: hsl(0, 0%, 92%);
+    padding: 1rem;
+    transform: translateY(-10px) translateX(-10px);
+    border-radius: 10px;
+}
+
 #friends-about-section .friend {
     position: relative;
-    width: 550px;
+    width: 530px;
     margin-top: 3.5rem;
 }
 
@@ -798,7 +998,7 @@ header a {
     top: 20%
 }
 
-#friends-about-section .friend p {
+#friends-about-section .friend .number-of-friends {
     position: absolute;
     font-size: 1.4rem;
     left: 9.9rem;
@@ -806,35 +1006,107 @@ header a {
     color: hsl(0, 0%, 60%);
 }
 
-#friends-about-section .fas.fa-ellipsis-vertical {
+#friends-about-section .friend .friend-options-on {
     position: absolute;
-    right: 0rem;
-    transform: rotate(90deg);
-    top: 2.5rem;
+    right: -0.5rem;
+    top: 3.6rem;
     font-size: 2.4rem;
     cursor: pointer;
+    width: 20px;
+    height: 6px;
+}
+
+#friends-about-section .friend .friend-options-window {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(0, 0%, 95%);
+    width: 130px;
+    height: 100px;
+    position: absolute;
+    right: 3rem;
+    top: -1.4rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    padding-top: 0.2rem;
+}
+
+#friends-about-section .friend .friend-options-window .friend-option {
+    width: 90%;
+    position: relative;
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    border-radius: 3px;
+    padding-left: 3.5rem;
+    cursor: pointer;
+}
+
+#friends-about-section .friend .friend-options-window .friend-option i {
+    position: absolute;
+    font-size: 1.5rem;
+    left: 1rem;
+    top: 0.5rem;
+    pointer-events: none;
+}
+
+#friends-about-section .friend .friend-options-window .friend-option p {
+    pointer-events: none;
+}
+
+#friends-about-section .friend .friend-options-window .friend-option:hover {
+    background-color: hsl(0, 0%, 90%)
+}
+
+#friends-about-section .fas.fa-ellipsis-vertical {
+    position: absolute;
+    right: 0.5rem;
+    transform: rotate(90deg);
+    font-size: 2.4rem;
+    top: -1.1rem;
+    background-color: white;
+    pointer-events: none;
+}
+
+#friends-about-section .friend .add-friend {
+    display: none;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    position: absolute;
+    right: -3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#friends-about-section .friend .add-friend:hover {
+    background-color: hsl(0, 0%, 90%)
 }
 
 #photos-about-section {
     display: flex;
-    width: 65%;
+    width: 1050px;
     box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
     padding-top: 7.5rem;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-inline: auto;
     margin-top: 2.3rem;
     border-radius: 5px;
-    padding-left: 3.5rem;
     margin-bottom: 2rem;
     padding-bottom: 2rem;
+    padding-left: 3.4rem;
+    position: relative;
 }
 
 #photos-about-section h2 {
     position: absolute;
     font-size: 3rem;
-    margin-top: -6rem;
-    margin-left: -1.7rem;
+    left: 3rem;
+    top: 2rem;
 }
 
 #photos-about-section img {
@@ -862,33 +1134,49 @@ header a {
     background-color: rgba(0, 0, 0, 0.1)
 }
 
-#container-posts-section #photos-about-section {
+#container-posts-section #additional-info-posts-section {
+    width: 450px;
+}
+
+#container-posts-section #additional-info-posts-section #photos-about-section {
     width: 450px;
     margin-left: 0;
+    position: sticky;
+    top: 26.5rem;
+    padding-left: 2.2rem;
 }
 
-#container-posts-section #photos-about-section span {
-    width: 115px;
-}
-
-#container-posts-section #friends-about-section {
+#container-posts-section #additional-info-posts-section #friends-about-section {
     display: flex;
     flex-wrap: wrap;
     width: 450px;
-    margin-left: 0;
     column-gap: 1.4rem;
-    padding-bottom: 3rem;
-    top: 80rem;
+    position: sticky;
+    top: 59rem;
+    padding-bottom: 0;
+}
+
+#container-posts-section #additional-info-posts-section #user-info {
+    position: sticky;
+    top: 1rem;
+}
+
+#container-posts-section #photos-about-section span {
+    width: 125px;
+}
+
+#container-posts-section #photos-about-section h2 {
+    margin-left: -1.2rem;
 }
 
 #container-posts-section #friends-about-section .friend {
     position: relative;
-    width: 120px;    
+    width: 120px;
     margin-top: 3rem;
 }
 
 #container-posts-section #friends-about-section #all {
-    margin-left: 23%;
+    margin-left: 60%;
 }
 
 #container-posts-section #friends-about-section .friend img {
@@ -912,4 +1200,837 @@ header a {
 
 #container-posts-section #friends-about-section .fas.fa-ellipsis-vertical {
     display: none;
+}
+
+@media only screen and (max-width: 1300px) {
+
+    /* PHOTOS SECTION SETTINGS */
+
+    #photos-about-section {
+        width: 850px;
+        padding-left: 2rem;
+    }
+
+    #photos-section #photos-about-section h2 {
+        left: 1.7rem;
+    }
+
+    /* ABOUT SECTION SETTINGS */
+
+    #about-section #personal-info, #friends-about-section {
+        width: 1100px;
+    }
+
+    #about-section #personal-info .right {
+        left: 100rem;
+    }
+
+    #about-section #friends-about-section .all {
+        margin-left: 90rem !important;
+    }
+
+    #friends-about-section .friend {
+        width: 470px;
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+    #posts-container {
+        width: 450px;
+        right: 24rem;
+    }
+
+    #container-posts-section #add-post {
+        width: 450px;
+        right: 24rem;
+    }
+
+    #container-posts-section #add-post input[type="text"] {
+        width: 30rem;
+        margin-left: 1rem;
+    }
+
+    #posts-container .post #image-wrapper img {
+        object-fit: cover;
+    }
+
+    #additional-info-posts-section #friends-about-section {
+        margin-left: 0rem;
+    }
+
+    /* RESPONSIVE FOR HEADER IN PROFILE.HTML */
+
+    #first-header hr {
+        margin-top: 18rem;
+        width: 650px;
+        margin-left: 21.5rem;
+    }
+
+    #first-header #sections {
+        margin-left: 29rem;
+    }
+
+    #first-header #sections .underline {
+        margin-left: 0;
+    }
+
+    #first-header button[type="submit"] {
+        left: 43.5rem;
+        top: 53.5rem;
+    }
+
+    #first-header #foreground-image {
+        left: 45rem;
+    }
+
+    #first-header #informations {
+        /* background-color: red; */
+        top: 40rem;
+        left: 45.5rem;
+    }
+
+    #first-header #informations p{
+        margin-left: 3.2rem;
+    }
+
+    /* HEADER NAVIGATION SETTINGS */
+
+    #first-header #home {
+        left: 77rem;
+        top: 53.5rem;
+    }
+
+    #first-header #settings {
+        left: 26rem;
+        top: 53.5rem;
+    }
+
+    /* PHOTOS SECTION SETTINGS */
+
+    #photos-about-section {
+        margin-left: 13rem;
+    }
+
+    /* ABOUT SECTION SETTINGS */
+
+    #about-section #personal-info, #friends-about-section {
+        width: 850px;
+        margin-left: 12rem;
+    }
+
+    #about-section #personal-info .right {
+        left: 75rem;
+    }
+
+    #about-section #friends-about-section .all {
+        margin-left: 66rem !important;
+    }
+
+    #friends-about-section .friend {
+        width: 360px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+
+    #first-header #sections {
+        margin-left: 29rem;
+    }
+
+    #first-header hr {
+        margin-left: 15rem;
+    }
+
+
+    #first-header #foreground-image {
+        left: 38rem;
+    }
+
+    #first-header #informations {
+        top: 40rem;
+        left: 39rem;
+    }
+
+    #first-header button[type="submit"] {
+        left: 36.5rem;
+    }
+
+    #first-header #sections {
+        margin-left: 22.5rem;
+    }
+
+    /* HEADER NAVIGATION SETTINGS */
+
+    #first-header #home {
+        left: 68rem;
+        top: 53.5rem;
+    }
+
+    #first-header #settings {
+        left: 19rem;
+        top: 53.5rem;
+    }
+
+    /* MAIN SECTION RESPONSIVE SETTINGS*/
+
+    #container-posts-section #additional-info-posts-section {
+        left: 50%;
+        transform: translate(-80%);
+        position: absolute;
+    }
+
+    #container-posts-section #additional-info-posts-section #user-info {
+        position: absolute;
+        width: 500px;
+    }
+
+    #container-posts-section #additional-info-posts-section #photos-about-section {
+        position: absolute;
+        top: 23.5rem;
+        width: 500px;
+    }
+
+    #container-posts-section #additional-info-posts-section #photos-about-section span {
+       width: 142px;
+    }
+
+    #container-posts-section #additional-info-posts-section #friends-about-section{
+        position: absolute;
+        top: 57rem;
+        width: 500px;
+    }
+
+    #container-posts-section #additional-info-posts-section #friends-about-section .friend:not(:nth-child(3n + 1)) {
+        margin-left: 2.5rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #friends-about-section .all {
+        margin-left: 32rem;
+    }
+
+    #container-posts-section #add-post {
+        width: 500px;
+        top: 101rem;
+        left: 24rem;
+    }
+
+    #posts-container {
+        width: 500px;
+        top: 117rem;
+        left: 24rem;
+    }
+
+    /* PHOTOS SECTION SETTINGS */
+
+    #photos-about-section {
+        margin-left: 12rem;
+        width: 720px;
+        padding-left: 1.2rem;
+    }
+
+    #photos-section #photos-about-section h2 {
+        left: 1.7rem;
+    }
+
+    /* ABOUT SECTION SETTINGS */
+
+    #about-section #personal-info, #friends-about-section {
+        width: 700px;
+        margin-left: 12.5rem;
+    }
+
+    #about-section #personal-info .right {
+        left: 60rem;
+    }
+
+    #about-section #friends-about-section .all {
+        margin-left: 52rem !important;
+    }
+
+    #friends-about-section .all {
+        margin-left: 50rem;
+    }
+
+    #friends-about-section .friend {
+        width: 285px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    #first-header #sections {
+        margin-left: 19rem;
+    }
+
+    #first-header hr {
+        margin-left: 13.5rem;
+        margin-top: 25rem;
+        width: 550px;
+    }
+
+    #first-header #foreground-image {
+        left: 31.5rem;
+    }
+
+    #first-header #informations {
+        left: 32rem;
+    }
+
+    #first-header button[type="submit"] {
+        left: 29.5rem;
+    }
+
+    #first-header #sections {
+        margin-left: 16.5rem;
+    }
+
+    /* HEADER NAVIGATION SETTINGS */
+
+    #first-header #home {
+        left: 50rem;
+        top: 60.5rem;
+    }
+
+    #first-header #settings {
+        left: 26rem;
+        top: 60.5rem;
+    }
+
+    /* MAIN SECTION RESPONSIVE SETTINGS*/
+
+    #container-posts-section #additional-info-posts-section {
+        left: 49%;
+    }
+
+    #container-posts-section #additional-info-posts-section #photos-about-section {
+        width: 400px;
+    }
+
+    #container-posts-section #additional-info-posts-section #photos-about-section span {
+        width: 110px;
+    }
+
+    #container-posts-section #additional-info-posts-section #user-info {
+        width: 400px;
+    }
+
+    #container-posts-section #additional-info-posts-section #friends-about-section{
+        top: 53rem;
+        width: 400px;
+    }
+
+    #container-posts-section #additional-info-posts-section #friends-about-section .all {
+        margin-left: 22rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #friends-about-section .friend {
+        width: 100px;
+        margin-left: -0.9rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #friends-about-section .friend:not(:nth-child(3n + 1)) {
+        margin-left: 1rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #friends-about-section .friend h4{
+        top: 10.5rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #friends-about-section .friend img{
+        width: 110px;
+        height: 100px;
+    }
+
+    #container-posts-section #add-post {
+        width: 400px;
+        top: 92rem;
+        left: 22.7rem;
+    }
+
+    #container-posts-section #add-post input[type="text"] {
+        width: 275px;
+    }
+
+    #posts-container {
+        width: 400px;
+        left: 22.7rem;
+        top: 107.5rem;
+    }
+
+    /* PHOTOS SECTION */
+
+    #photos-about-section span {
+        width: 31%;
+    }
+
+    #photos-about-section {
+        width: 560px;
+        padding-right: 0.3rem;
+        margin-left: 12.9rem;
+    }
+
+    /* ABOUT SECTION SETTINGS */
+
+    #about-section #personal-info, #friends-about-section {
+        width: 500px;
+        margin-left: 16.3rem;
+    }
+
+    #about-section #personal-info p {
+        font-size: 1.8rem;
+    }
+
+    #about-section #personal-info .right {
+        left: 43rem;
+    }
+
+    #about-section #personal-info h2 {
+        margin-left: 0.5rem;
+    }
+
+    #about-section #personal-info h3 {
+        margin-left: 1.5rem;
+    }
+
+    #about-section #personal-info .left {
+        left: 4rem;
+    }
+
+    #about-section #personal-info .fas.fa-house {
+        top: 11.6rem;
+    }
+
+    #about-section #personal-info .fas.fa-location-dot {
+        top: 16.8rem;
+    }
+
+    #about-section #personal-info .fas.fa-school {
+        top: 27.3rem;
+    }
+
+    #about-section #personal-info .fas.fa-scroll {
+        top: 33rem;
+    }
+
+    #about-section #personal-info .fas.fa-phone {
+        top: 43.9rem;
+    }
+
+    #about-section #personal-info .fas.fa-envelope {
+        top: 48.7rem;
+    }
+
+    #about-section #personal-info .fas.fa-person {
+        top: 59.7rem;
+    }
+
+    #about-section #personal-info .fas.fa-cake-candles {
+        top: 64.5rem;
+    }
+
+    #about-section #personal-info .fas.fa-children {
+        top: 69.7rem
+    }
+
+    /* CHANGING VALUE OF INFO SETTINGS */
+
+    #about-section #personal-info .change-value {
+        width: 205px;
+    }
+
+    #about-section #personal-info .change-value input[type='text'], #about-section #personal-info .change-value select,#about-section #personal-info .change-value input[type='date'] {
+        width: 160px;
+        height: 45px;
+    }
+
+    #about-section #personal-info .change-value input[type='text']:focus ~ span,
+    #about-section #personal-info .change-value input[type='text']:valid ~ span{
+        transform: translate(-2px, -10px)
+    }
+
+    #about-section #personal-info .change-value span {
+        font-size: 1.8rem;
+        margin-top: 0.2rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(1) {
+        top: 9.7rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(2) {
+        top: 15rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(3) {
+        top: 25.8rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(4) {
+        top: 30.8rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(5) {
+        top: 42rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(6) {
+        top: 47rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(7) {
+        top: 58rem;
+        width: 250px;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(8) {
+        top: 66.3rem;
+        width: 270px;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(9) {
+        top: 68rem;
+    }
+
+    #about-section #friends-about-section .all {
+        margin-left: 32rem !important;
+    }
+
+    #friends-about-section {
+        grid-template-columns: 1fr
+    }
+
+    #friends-about-section .all {
+        margin-left: 31rem;
+    }
+
+    #friends-about-section .friend {
+        width: 400px;
+    }
+
+    #friends-about-section .friend img {
+        width: 70px;
+        height: 60px;
+    }
+
+    #friends-about-section .friend h4 {
+        top: 1rem;
+        left: 8rem;
+    }
+
+    #friends-about-section .friend .number-of-friends {
+        top: 3.5rem;
+        left: 8rem;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+    #first-header #sections {
+        margin-left: 14rem;
+        font-size: 2.4rem;
+    }
+
+    #first-header hr {
+        margin-left: 11rem;
+        width: 450px;
+    }
+
+    #first-header #foreground-image {
+        left: 25rem;
+    }
+
+    #first-header #informations {
+        left: 26rem;
+    }
+
+    #first-header button[type="submit"] {
+        left: 22.9rem;
+    }
+
+    #first-header #sections p {
+        margin-right: -2rem;
+    }
+
+    #first-header #sections hr {
+        width: 90px;
+    }
+
+    #first-header #sections hr:nth-of-type(1) {
+        left: -1.3rem;
+    }
+
+    #first-header #sections hr:nth-of-type(2) {
+        left: 8.9rem;
+    }
+
+    #first-header #sections hr:nth-of-type(3) {
+        left: 19.6rem;
+    }
+
+    #first-header #sections hr:nth-of-type(4) {
+        width: 100px;
+        left: 30.2rem;
+    }
+
+    /* HEADER NAVIGATION SETTINGS */
+
+    #first-header #home {
+        left: 42rem;
+        top: 60.5rem;
+    }
+
+    #first-header #settings {
+        left: 20rem;
+        top: 60.5rem;
+    }
+
+    /* MAIN SECTION RESPONSIVE SETTINGS*/
+
+    #container-posts-section #additional-info-posts-section {
+        left: 42%;
+    }
+
+    #container-posts-section #add-post {
+        left: 14.3rem;
+    }
+
+    #posts-container {
+        left: 14.3rem;
+    }
+
+    /* PHOTOS SECTION */
+
+    #photos-about-section span {
+        width: 30%;
+    }
+
+    #photos-about-section {
+        width: 450px;
+        padding-right: 0rem;
+        margin-left: 11.2rem;
+    }
+
+    /* ABOUT SECTION SETTINGS */
+
+    #about-section #personal-info, #friends-about-section {
+        margin-left: 9rem;
+    }
+
+}
+
+@media only screen and (max-width: 640px) {
+
+    #first-header hr {
+        margin-left: 4rem;
+        margin-top: 24rem;
+        width: 400px;
+    }
+
+    #first-header #foreground-image {
+        left: 14rem;
+    }
+
+    #first-header #informations {
+        left: 15rem;
+    }
+
+    #first-header button[type="submit"] {
+        left: 12.5rem;
+    }
+
+    #first-header #sections {
+        margin-left: 4.5rem;
+    }
+
+    /* HEADER NAVIGATION SETTINGS */
+
+    #first-header #home {
+        left: 32rem;
+        top: 60.5rem;
+    }
+
+    #first-header #settings {
+        left: 10rem;
+        top: 60.5rem;
+    }
+
+    /* MAIN SECTION RESPONSIVE SETTINGS*/
+
+    #container-posts-section #additional-info-posts-section {
+        left: 33%;
+    }
+
+    #container-posts-section #additional-info-posts-section #photos-about-section {
+        width: 400px;
+    }
+
+    #container-posts-section #additional-info-posts-section #user-info {
+        width: 400px;
+    }
+
+    #container-posts-section #additional-info-posts-section #friends-about-section{
+        top: 53rem;
+        width: 400px;
+    }
+
+    #container-posts-section #add-post {
+        width: 400px;
+        top: 92rem;
+        left: 3.5rem;
+    }
+
+    #container-posts-section #add-post input[type="text"] {
+        width: 275px;
+    }
+
+    #posts-container {
+        width: 400px;
+        left: 3.5rem;
+        top: 108rem;
+    }
+
+    /* PHOTOS SECTION */
+
+    #photos-section #photos-about-section {
+        margin-left: 2.7rem;
+        gap: 1.4rem;
+        padding-left: 1.4rem;
+    }
+
+    /* ABOUT SECTION SETTINGS */
+
+    #about-section #personal-info, #friends-about-section {
+        margin-left: 4rem;
+        width: 400px;
+    }
+
+    #about-section #personal-info .right {
+        font-size: 1.8rem !important;
+        padding: 0.6rem;
+        margin-left: -8rem;
+        margin-top: -2.5rem;
+    }
+
+    /* ABOUT SECTION ICONS LEFT */
+
+    #about-section #personal-info .fas {
+        font-size: 2.7rem;
+    }
+
+    #about-section #personal-info .fas.fa-house {
+        left: 3rem;
+        top: 11.6rem;
+    }
+
+    #about-section #personal-info .fas.fa-location-dot {
+        left: 3.5rem;
+        top: 16.5rem;
+    }
+
+    #about-section #personal-info .fas.fa-school {
+        left: 3rem;
+        top: 26.8rem;
+    }
+
+    #about-section #personal-info .fas.fa-scroll {
+        left: 3rem;
+        top: 32rem;
+    }
+
+    #about-section #personal-info .fas.fa-phone {
+        left: 3.5rem;
+        top: 42.5rem;
+    }
+
+    #about-section #personal-info .fas.fa-envelope {
+        left: 3.5rem;
+        top: 47.3rem;
+    }
+
+    #about-section #personal-info .fas.fa-person {
+        left: 3.8rem;
+        top: 57.7rem;
+    }
+
+    #about-section #personal-info .fas.fa-cake-candles {
+        left: 3.4rem;
+        top: 62.5rem;
+    }
+
+    #about-section #personal-info .fas.fa-children {
+        left: 2.9rem;
+        top: 67.3rem
+    }
+
+    #about-section #personal-info h2 {
+        margin-left: 0rem
+    }
+
+    #about-section #personal-info h3 {
+        margin-left: 1rem;
+    }
+
+    /* CHANGING VALUE OF INFO SETTINGS */
+
+    #about-section #personal-info .change-value {
+        width: 160px;
+        height: 55px;
+        left: -3.6rem;
+    }
+
+    #about-section #personal-info .change-value input[type='text'], #about-section #personal-info .change-value select, #about-section #personal-info .change-value input[type='date'] {
+        width: 120px;
+        height: 35px;
+        font-size: 1.3rem;
+        padding-top: 0.4rem;
+    }
+
+    #about-section #personal-info .change-value input[type='text']:focus ~ span,
+    #about-section #personal-info .change-value input[type='text']:valid ~ span{
+        transform: translate(-2px, -8.5px);
+        font-size: 0.9rem;
+    }
+
+    #about-section #personal-info .change-value span {
+        font-size: 1.4rem;
+        margin-top: 0;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(4) {
+        top: 30.4rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(5) {
+        top: 41rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(6) {
+        top: 46rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(7) {
+        top: 56.5rem;
+        width: 210px;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(8) {
+        top: 64.3rem;
+        width: 250px;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(9) {
+        top: 66rem;
+    }
+
+    #about-section #personal-info .personal-info {
+        margin-left: 7rem;
+        font-size: 1.6rem;
+    }
+
+    #about-section #friends-about-section .all {
+        margin-left: 21rem !important;
+    }
+
+    #friends-about-section .friend {
+        width: 320px;
+    }
 }

@@ -15,6 +15,19 @@
             <div id="background-image"><img src="https://tipsmake.com/data/images/50-black-facebook-cover-photos-for-people-in-a-sad-mood-picture-8-W6ph3xBkS.jpg"></div>
             <div id="foreground-image"><img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.6435-9/67308354_2076925369277865_5351762411705597952_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=LuBWMhRIEgsAX--RB1L&_nc_ht=scontent-waw1-1.xx&oh=00_AT_SH1Dt-tsFuxR73JcJM9nKRp3luHI1MY_JFZ9LiitsXw&oe=631E362E"></div>
             
+<!--            <a href="/">-->
+<!--                <div class="navigation" id="home">-->
+<!--                    <i class="fas fa-house"></i>-->
+<!--                    <p id="home-text">home</p>-->
+<!--                </div>-->
+<!--            </a>-->
+
+<!--            <a href="/settings">-->
+<!--                <div class="navigation" id="settings">-->
+<!--                    <i class="fas fa-gear"></i>-->
+<!--                    <p id="settings-text">settings</p>-->
+<!--                </div>-->
+<!--            </a>-->
             <a href="/">
                 <div class="navigation" id="home">
                     <i class="fas fa-house"></i>
@@ -31,7 +44,7 @@
 
             <div id="informations">
                 <h3>{{user_profile.first_name}} {{user_profile.last_name}}  @{{user_profile.user}}</h3>
-                <p>1.1k friends</p>
+                <p class="bold" style="color:gray">1.1k friends</p>
                 <div id="profiles-wrapper">
                     <img class="profile-friend" src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}">
                     <img class="profile-friend" src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}">
@@ -55,6 +68,8 @@
                 <hr id="photos-underline" class="underline">
                 <p id="about">About</p>
                 <hr id="about-underline" class="underline">
+                <p id="about">Friends</p>
+                <hr id="friends-underline" class="underline">
             </div>
         </header>
         <!-- REPORT MESSAGE TO APPEAR -->
@@ -67,52 +82,54 @@
 
         <!--POSTS SECTION -->
         <div id="container-posts-section">
-            <div id="user-info">
-                <h2>User info</h2>
-                <i class="fas fa-house"></i>
-                <p>Lives in: <span id="live-place" class="bold">{{user_profile.current_location}}</span></p>
-                <i class="fas fa-location-dot"></i>
-                <p>From: <span id="from-place" class="bold">{{user_profile.location}}</span></p>
-                <i class="fas fa-scroll"></i>
-                <p>Hobbies: <span id="from-place" class="bold">{{user_profile.hobby}}</span></p>
-            </div>
+            <div id="additional-info-post-section">
+                <div id="user-info">
+                    <h2>User info</h2>
+                    <i class="fas fa-house"></i>
+                    <p>Lives in: <span id="live-place" class="bold">{{user_profile.current_location}}</span></p>
+                    <i class="fas fa-location-dot"></i>
+                    <p>From: <span id="from-place" class="bold">{{user_profile.location}}</span></p>
+                    <i class="fas fa-scroll"></i>
+                    <p>Hobbies: <span id="from-place" class="bold">{{user_profile.hobby}}</span></p>
+                </div>
 
-            <div id="photos-about-section">
-                <h2>Photos</h2>
-                <span><img src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></span>
-            </div>
+                <div id="photos-about-section">
+                    <h2>Photos</h2>
+                    <span><img src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}"></span>
+                    <span><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></span>
+                    <span><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></span>
+                    <span><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></span>
+                    <span><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></span>
+                </div>
 
-            <div id="friends-about-section">
-                <h2>Friends</h2>
-                <p id="friends-num">1.192 friends</p>
-                <p id="all">See All Friends</p>
-                <div class="friend">
-                    <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                    <h4>Name</h4>
-                    <p>100 mutual friends</p>
-                    <i class="fas fa-ellipsis-vertical"></i>
-                </div>
-                <div class="friend">
-                    <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                    <h4>Name</h4>
-                    <p>100 mutual friends</p>
-                    <i class="fas fa-ellipsis-vertical"></i>
-                </div>
-                <div class="friend">
-                    <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                    <h4>Name</h4>
-                    <p>100 mutual friends</p>
-                    <i class="fas fa-ellipsis-vertical"></i>
-                </div>
-                <div class="friend">
-                    <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                    <h4>Name</h4>
-                    <p>100 mutual friends</p>
-                    <i class="fas fa-ellipsis-vertical"></i>
+                <div id="friends-about-section">
+                    <h2>Friends</h2>
+                    <p id="friends-num">1.192 friends</p>
+                    <p id="all">See All Friends</p>
+                    <div class="friend">
+                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
+                        <h4>Name</h4>
+                        <p>100 mutual friends</p>
+                        <i class="fas fa-ellipsis-vertical"></i>
+                    </div>
+                    <div class="friend">
+                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
+                        <h4>Name</h4>
+                        <p>100 mutual friends</p>
+                        <i class="fas fa-ellipsis-vertical"></i>
+                    </div>
+                    <div class="friend">
+                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
+                        <h4>Name</h4>
+                        <p>100 mutual friends</p>
+                        <i class="fas fa-ellipsis-vertical"></i>
+                    </div>
+                    <div class="friend">
+                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
+                        <h4>Name</h4>
+                        <p>100 mutual friends</p>
+                        <i class="fas fa-ellipsis-vertical"></i>
+                    </div>
                 </div>
             </div>
 
