@@ -15,9 +15,9 @@ class Profile(models.Model):
 
     #Profile images
     profile_img = models.ImageField(upload_to='profile_images',
-                                    default='profile_images/user-profile-icon.png')
+                                    default='user-profile-icon.jpg')
     wallpaper_img = models.ImageField(upload_to='wallpaper_images',
-                                      default='pexels-amber-janssens-7327624.jpg')
+                                      default='wallpaper_default.jpg')
 
     #Places where user live.
     location = models.CharField(max_length=100, blank=True)
@@ -29,7 +29,7 @@ class Profile(models.Model):
 
     #Contact info
     number = models.IntegerField(blank=True, null=True)
-    email = models.EmailField(max_length=254, blank=True)
+    email = models.EmailField(max_length=254, blank=True, null=True)
 
     #Basic info
     gender = models.CharField(max_length=100, blank=True)
@@ -50,6 +50,9 @@ class Friend_Request(models.Model):
     to_user = models.ForeignKey(
         User, related_name='to_user', on_delete=models.CASCADE
     )
+
+    def __str__(self):
+        return self.user
 
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
