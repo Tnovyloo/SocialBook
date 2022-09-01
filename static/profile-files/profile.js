@@ -5,9 +5,6 @@ window.onbeforeunload = () => window.scrollTo(0, 0)
 // Settings posts wrapper to appropriate height
 
 let additionalHeight = document.getElementById('posts-container').offsetHeight + document.getElementById('add-post').offsetHeight + 35
-
-console.log(document.getElementById('posts-container').offsetHeight)
-console.log(document.getElementById('add-post').offsetHeight)
 document.getElementById('additional-info-posts-section').style.height = `${additionalHeight}px`
 
 // REPORT WINDOW
@@ -208,16 +205,15 @@ for (let i = 0; i < friendOptionsButton.length; i++) {
     friendOptionsButton[i].onclick = function() {
         friendOptionsWindow[i].style.display = 'flex'
     }
-    // window.onclick = function(event) {
-    //     if (friendOptionsButton.every(el => el !== event.target) && friendOptionsWindow.every(el => el !== event.target)) {
-    //         console.log('Siema')
-    //         for (let i = 0; i < friendOptionsWindow.length; i++) {
-    //             friendOptionsWindow[i].style.display = 'none'
-    //         }
-    //     }
-    // }
+     window.onclick = function(event) {
+         if (friendOptionsButton.every(el => el !== event.target) && friendOptionsWindow.every(el => el !== event.target)) {
+             for (let i = 0; i < friendOptionsWindow.length; i++) {
+                 friendOptionsWindow[i].style.display = 'none'
+             }
+         }
+     }
     favouriteOption[i].addEventListener('click', () => favouriteHearts[i].style.color === 'red' ? favouriteHearts[i].style.color = 'black' : favouriteHearts[i].style.color = 'red')
     followOption[i].addEventListener('click', () => followText[i].innerText === 'Unfollow' ? followText[i].innerText = 'Follow' : followText[i].innerText = 'Unfollow')
     unfriendOption[i].addEventListener('click', () => addFriendButton[i].style.display = 'block')
     addFriendButton[i].addEventListener('click', () => addFriendButton[i].innerText === 'Cancel Request' ? addFriendButton[i].innerText = 'Add Friend' : addFriendButton[i].innerText = 'Cancel Request')
-    }
+}
