@@ -80,7 +80,6 @@
                 </div>
 <!--                Change profile picture.-->
                 <div id="change-profile">
-                    {% csrf_token %}
                     <img src="{{user_profile.profile_image.url}}" class="profile">
                     <div id="change-profile-info">
                         <p>{{user.username}}</p>
@@ -88,16 +87,18 @@
                     </div>
                 </div>
 
-                <form id="change-profile-image-window" action="" method="POST">
+                <form id="change-profile-image-window" action="change_profile_image" method="POST">
+                    {% csrf_token %}
                     <label for="choose-image" id="choose-image-label">
-                        <input type="file" accept=".jpg" id="choose-image">
+                        <input type="file" accept=".jpg" id="choose-image" name="profile_image">
                     </label>
-                    <input type="submit" value="Upload" id="upload-image">
+                    <input type="submit" value="Upload" id="upload-image" name="profile_image">
+<!--                    TODO Upload input need to be submit button because django couldn't download image to the database. -->
                 </form>
 
 <!--                Basic info.-->
                 <form id="basic-info" class="forms" action="profile_basic_info" method="POST">
-<!--TODO placeholder could be a {} with current data from database.-->
+
                     {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-basic'>First Name</p>
