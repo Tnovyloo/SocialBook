@@ -9,6 +9,12 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordResetForm
 
 @login_required(login_url='signin')
+def settings(request):
+    user_object = User.objects.get(username=request.user)
+    user_profile = Profile.objects.get(user=user_object)
+    return render(request, 'settings.html', {'user_profile': user_profile})
+
+@login_required(login_url='signin')
 def change_profile_image(request):
     user_profile = Profile.objects.get(user=request.user)
     if request.method == "POST":

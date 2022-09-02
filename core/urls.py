@@ -12,9 +12,9 @@ urlpatterns = [
     path('signup', views.signup, name='signup'),
     path('logout', views.logout, name='logout'),
     path('upload', views.upload, name='upload'),
-    path('settings', views.settings, name='settings'),
     path('like_post', views.like_post, name='like_post'),
     # Settings paths. TODO change profile picture.
+    path('settings', settings_views.settings, name='settings'),
     path('profile_basic_info', settings_views.profile_basic_info, name='profile_basic_info'),
     path('profile_location', settings_views.profile_location, name='profile_location'),
     path('profile_hobby', settings_views.profile_hobby, name='profile_hobby'),
