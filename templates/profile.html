@@ -159,7 +159,9 @@
                     <div class="post-options">
                         <i class="fas fa-play"></i>
                         <button class="report">report post</button>
-                        <button class="delete">delete post</button>
+                        {% if user.username == user_object.username %}
+                        <button class="delete"><a href="/delete_post/{{post.id}}">delete post</a></button>
+                        {% endif %}
                     </div>
                     <div id="image-wrapper">
                         <img src="{{post.image.url}}">

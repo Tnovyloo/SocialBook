@@ -13,7 +13,7 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('upload', views.upload, name='upload'),
     path('like_post', views.like_post, name='like_post'),
-    path('delete_post', views.delete_post, name='delete_post'),
+    path('delete_post/<post_id>', views.delete_post, name='delete_post'),
     # Settings paths. TODO change profile picture.
     path('settings', settings_views.settings, name='settings'),
     path('profile_basic_info', settings_views.profile_basic_info, name='profile_basic_info'),

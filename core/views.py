@@ -38,8 +38,14 @@ def profile(request, pk):
     return render(request, 'profile.html', context)
 
 @login_required(login_url='signin')
-def delete_post(request):
-    pass #todo create delete_post
+def delete_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    if request.user.username == post.user_id:
+        post_to_delete = Post.objects.get(id=post_id)
+        post_to_delete.delete()
+        return redirect('/')
+    else:
+        return redirect('/')
 
 @login_required(login_url='signin')
 def upload(request):
@@ -136,7 +142,7 @@ def signup(request):
                                                      first_name=first_name,
                                                      last_name=last_name)
                 new_profile.save()
-                return redirect('settings') # TODO redirect to settings
+                return redirect('settings')
         else:
             messages.info(request, "Password is not matching / First name and last name cannot be empty!")
             return redirect('signup')
