@@ -27,24 +27,6 @@ def profile(request, pk):
     user_object = User.objects.get(username=pk)
     user_profile = Profile.objects.get(user=user_object)
     user_posts = Post.objects.filter(user_id=pk)
-    #TODO
-
-    # user_posts = Post.objects.filter(user_id=pk)
-    # user_posts = Post.objects.filter(user_id=pk)
-    # user_post_length = len(user_posts)
-    #
-    # follower = request.user.username
-    # user = pk
-    # user = User.objects.get(username=request.username)
-    # if user.objects.friends.filter()
-    #     button_text = 'Unfollow'
-    # else:
-    #     button_text = 'Follow'
-    #
-    # user_followers = len(FollowersCount.objects.filter(user=pk))
-    # user_following = len(FollowersCount.objects.filter(follower=pk))
-
-    # posts = Post.objects.all() #todo user posts
 
     context = {
         'user_object': user_object,
@@ -54,6 +36,10 @@ def profile(request, pk):
     }
 
     return render(request, 'profile.html', context)
+
+@login_required(login_url='signin')
+def delete_post(request):
+    pass #todo create delete_post
 
 @login_required(login_url='signin')
 def upload(request):
@@ -88,12 +74,6 @@ def like_post(request):
         post.number_of_likes = post.number_of_likes - 1
         post.save()
         return redirect('/')
-
-# @login_required(login_url='signin')
-# def settings(request):
-#     user_object = User.objects.get(username=request.user)
-#     user_profile = Profile.objects.get(user=user_object)
-#     return render(request, 'settings.html', {'user_profile': user_profile})
 
 def friend_request(request):
     user_profile = Profile.objects.get(user=request.user)
