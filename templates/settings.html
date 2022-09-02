@@ -87,13 +87,13 @@
                     </div>
                 </div>
 
-                <form id="change-profile-image-window" action="change_profile_image" method="POST">
+                <form id="change-profile-image-window" action="change_profile_image" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="choose-image" id="choose-image-label">
                         <input type="file" accept=".jpg" id="choose-image" name="profile_image">
                     </label>
-                    <input type="submit" value="Upload" id="upload-image" name="profile_image">
-<!--                    TODO Upload input need to be submit button because django couldn't download image to the database. -->
+<!--                    <input type="submit" value="Upload" id="upload-image" name="profile_image">-->
+                    <input type="submit" class="submit-button">
                 </form>
 
 <!--                Basic info.-->

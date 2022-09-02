@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordResetForm
 
-# Create your views here.
 @login_required(login_url='signin')
 def index(request):
     user_object = User.objects.get(username=request.user.username)
@@ -21,6 +20,7 @@ def index(request):
     }
 
     return render(request, 'index.html', context)
+# Create your views here.
 
 @login_required(login_url='signin')
 def profile(request, pk):

@@ -1,15 +1,15 @@
 #TODO FRONTEND Current tasks.
-Could add something like 'bio' on facebook
-- h3 with profile picture and wallpaper on settings
-- set up posting on profile page.
-- do a button on like button in html
+- Could add something like 'bio' on facebook
+- wallpaper image input in settings.html
+- responsiveness on signin and signup
+- responsiveness on index.html
 
 #TODO BACKEND Current tasks.
-- create profile, posts, comments, following, like_posts databases
+- create comments-posts model in django
 - do connections with posts and comments.
-- create logout
-- create like-post and comments
+- create comments
 - update post feed where posts is only from friends.
 - search user, user suggestions.
-- when you rae on the someone profile dont show settings - DONE
-- Add on profile right posts.
+
+- deleting posts on profile.html
+- post users profile picture.

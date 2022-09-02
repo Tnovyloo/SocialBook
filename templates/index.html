@@ -91,7 +91,7 @@
                         <!-- PROFILE -->
 
                         <li>
-                            <button id="photo-wrapper-onclick"><img src="/images/Gryz-Szymon.jpeg"></button>
+                            <button id="photo-wrapper-onclick"><img src="{{user_profile.profile_img.url}}"></button>
                             <span id="hover-account">Account</span>
                         </li>
 
@@ -176,9 +176,10 @@
                 {% for post in posts reversed %}
                     <div id="post">
                         <header>
-                            <div id="profile-wrapper"><img src="{{post.user.profile_img.url}}"></div>
+                            <div id="profile-wrapper"><img src="{{post.user_id.profile_img.url}}"></div>
 
-                            <!--TODO user profile img-->
+                            <!--TODO post user - no profile image on post.user_id you have username,
+                             TODO now use this username to get profile image-->
 
                             <p><a href="profile/{{post.user_id}}">{{post.user_id}}</a></p>
                             <i class="fas fa-ellipsis"></i>

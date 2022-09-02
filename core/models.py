@@ -40,6 +40,7 @@ class Profile(models.Model):
     relationship = models.CharField(max_length=50, blank=True)
     family = models.CharField(max_length=50, blank=True)
 
+    #TODO to my profile create many to many user to posts field
 
     def __str__(self):
         return self.user.username
