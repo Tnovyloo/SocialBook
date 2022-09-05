@@ -61,6 +61,20 @@ class Post(models.Model):
     def __str__(self):
         return str(self.user_id)
 
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE
+    )
+    profile = models.ForeignKey(
+        Profile,
+        on_delete=models.CASCADE
+    )
+    content = models.TextField(null=True)
+
+    def __str__(self):
+        return self.post.id
+
 class Friend_Request(models.Model):
     from_user = models.ForeignKey(
         User, related_name='from_user', on_delete=models.CASCADE)

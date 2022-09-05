@@ -56,11 +56,18 @@ def upload(request):
         image = request.FILES.get('image_upload')
         # caption = request.POST['caption']
 
-        new_post = Post.objects.create(user_id=user, image=image, profile=Profile.objects.get(user=request.user))
+        new_post = Post.objects.create(user_id=user,
+                                       image=image,
+                                       profile=Profile.objects.get(user=request.user)
+                                       )
         new_post.save()
         return redirect('/')
     else:
         return redirect('/')
+
+# TODO comment view.
+def comment(request):
+    pass
 
 @login_required(login_url='signin')
 def like_post(request):

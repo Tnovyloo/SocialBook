@@ -10,6 +10,3 @@
 - create comments
 - update post feed where posts is only from friends.
 - search user, user suggestions.
-
-- deleting posts on profile.html
-- post users profile picture.
