@@ -14,6 +14,8 @@ def index(request):
     user_profile = Profile.objects.get(user=user_object)
     posts = Post.objects.all()
 
+    #TODO connect posts with post.user_id profile.image
+
     context = {
         'user_profile': user_profile,
         'posts': posts,
@@ -54,7 +56,7 @@ def upload(request):
         image = request.FILES.get('image_upload')
         # caption = request.POST['caption']
 
-        new_post = Post.objects.create(user_id=user, image=image)
+        new_post = Post.objects.create(user_id=user, image=image, profile=Profile.objects.get(user=request.user))
         new_post.save()
         return redirect('/')
     else:

@@ -45,6 +45,24 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+class Post(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user_id = models.CharField(max_length=100, null=True)
+    profile = models.ForeignKey(
+        Profile,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
+
+    image = models.ImageField(upload_to='post_media')
+    created_at = models.DateTimeField(default=datetime.now())
+    number_of_likes = models.IntegerField(default=0)
+    caption = models.TextField()
+
+    def __str__(self):
+        return str(self.user_id)
+
 class Friend_Request(models.Model):
     from_user = models.ForeignKey(
         User, related_name='from_user', on_delete=models.CASCADE)
@@ -54,17 +72,6 @@ class Friend_Request(models.Model):
 
     def __str__(self):
         return self.user
-
-class Post(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    user_id = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='post_media')
-    created_at = models.DateTimeField(default=datetime.now())
-    number_of_likes = models.IntegerField(default=0)
-    caption = models.TextField()
-
-    def __str__(self):
-        return self.user_id
 
 class LikePost(models.Model):
     post_id = models.CharField(max_length=500)
