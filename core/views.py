@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile, Post, Friend_Request, LikePost
+from .models import Profile, Post, Friend_Request, LikePost, Comment
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordResetForm
@@ -13,8 +13,6 @@ def index(request):
     user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)
     posts = Post.objects.all()
-
-    #TODO connect posts with post.user_id profile.image
 
     context = {
         'user_profile': user_profile,
@@ -67,7 +65,18 @@ def upload(request):
 
 # TODO comment view.
 def comment(request):
-    pass
+    if request.method == 'POST':
+        user = request.user
+        post_id = request.POST['post_id']
+        text = request.POST['text']
+        new_comment = Comment.objects.create(post=Post.objects.get(id=post_id),
+                                             profile=Profile.objects.get(user=user),
+                                             content=text)
+        new_comment.save()
+        return redirect('/')
+    else:
+        return redirect('/')
+
 
 @login_required(login_url='signin')
 def like_post(request):

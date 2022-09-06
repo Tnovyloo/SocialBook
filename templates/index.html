@@ -1,5 +1,4 @@
 {% load static %}
-<!-- {% static '/main-page/styles.css' %} -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -207,31 +206,30 @@
                             <i class="fas fa-share"></i>
                         </div>
                         <div id="comments">
+                            {% for comment in post.comments.all %}
                             <div id="comment-messages">
                                 <div id="comment">
                                     <div id="comment-content">
-                                        <div id="profile-wrapper"><img src="{% static 'images/pexels-charles-1851164.jpg' %}"></div>
-                                        <p>💕</p>
-                                    </div>
-                                </div>
-                                <div id="comment">
-                                    <div id="comment-content">
-                                        <div id="profile-wrapper"><img src="{% static 'images/Gryz-Szymon.jpeg' %}"></div>
-                                        <p>😎</p>
-                                    </div>
-                                </div>
-                                <div id="comment">
-                                    <div id="comment-content">
-                                        <div id="profile-wrapper"><img src="{% static 'images/pexels-pixabay-39866.jpg' %}"></div>
-                                        <p>Looks good!</p>
+                                        <div id="profile-wrapper"><img src="{{comment.profile.profile_img.url}}"></div>
+                                        {% if comment %}
+                                        <p>{{comment.content}}</p>
+                                        {% else %}
+                                        <p>not working</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            <input type="text" placeholder="post a comment" id="comment-input">
-                            <input type="file" accept=".jpg" id="image">
-                            <input type="file" accept=".mp4" id="video">
-                            <label for="image"><i class="fas fa-image"></i></label>
-                            <label for="video"><i class="fas fa-video"></i></label>
+                            {% endfor %}
+                            <form method="POST" action="comment">
+                                {% csrf_token %}
+                                <input type="text" placeholder="post a comment" id="comment-input" name="text">
+                                <input type="hidden" value="{{post.id}}" name="post_id">
+                                <button type="submit">Send comment.</button>
+                            </form>
+                            <!--                            <input type="file" accept=".jpg" id="image">-->
+<!--                            <input type="file" accept=".mp4" id="video">-->
+<!--                            <label for="image"><i class="fas fa-image"></i></label>-->
+<!--                            <label for="video"><i class="fas fa-video"></i></label>-->
                         </div>
                     </div>
                 {% endfor %}
