@@ -6,7 +6,7 @@ from django.contrib import messages
 from .models import Profile, Post, Friend_Request, LikePost
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.forms import PasswordChangeForm
 
 @login_required(login_url='signin')
 def settings(request):
@@ -128,7 +128,7 @@ def profile_password(request):
         new_password2 = request.POST['new_password2']
 
         if new_password == new_password2:
-            form = PasswordResetForm()
+            form = PasswordChangeForm(request.user, request.POST)
             if form.is_valid():
                 user = form.save()
                 update_session_auth_hash(request, user)

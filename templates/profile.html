@@ -88,11 +88,9 @@
 
                 <div id="photos-about-section">
                     <h2>Photos</h2>
-                    <span><img src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}"></span>
-                    <span><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></span>
-                    <span><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></span>
-                    <span><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></span>
-                    <span><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></span>
+                    {% for post in user_posts %}
+                    <span><img src="{{post.image.url}}"></span>
+                    {% endfor %}
                 </div>
 
                 <div id="friends-about-section">
@@ -167,7 +165,13 @@
                         <img src="{{post.image.url}}">
                     </div>
                     <div id="reactions">
-                        <p>Liked <span class="bold">name</span> and <span class="bold">111 others</span></p>
+                        {% if post.number_of_likes == 0 %}
+                        <p>Liked by <span id="bold">no one</span></p>
+                        {% elif post.number_of_likes == 1 %}
+                        <p>Liked by <span id="bold">{{post.number_of_likes}} person </span></p>
+                        {% elif post.number_of_likes > 1 %}
+                        <p>Liked by <span id="bold">{{post.number_of_likes}} people</span></p>
+                        {% endif %}
                         <div id="profiles-wrapper">
                             <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>
                             <div id="profile-wrapper"><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></div>
@@ -176,6 +180,7 @@
                     </div>
                     <div id="interactions">
                         <i class="fas fa-thumbs-up"></i>
+                        <a href="/like_post?post_id={{post.id}}"></a>
                         <label for="comment-input"><i class="fas fa-message"></i></label>
                         <i class="fas fa-share"></i>
                     </div>
@@ -209,61 +214,6 @@
                 </div>
                 {% endfor %}
 
-<!--                <div class="post">-->
-<!--                    <header>-->
-<!--                        <div id="profile-wrapper"><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></div>-->
-<!--                        <p>Djordje Petrovic</p>-->
-<!--                        <button class="post-options-button"><i class="fas fa-ellipsis"></i></button>-->
-<!--                    </header>-->
-<!--                    <div class="post-options">-->
-<!--                        <i class="fas fa-play"></i>-->
-<!--                        <button class="report">report post</button>-->
-<!--                        <button class="delete">delete post</button>-->
-<!--                    </div>-->
-<!--                    <div id="image-wrapper">-->
-<!--                        <img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}">-->
-<!--                    </div>-->
-<!--                    <div id="reactions">-->
-<!--                        <p>Liked <span class="bold">name</span> and <span class="bold">111 others</span></p>-->
-<!--                        <div id="profiles-wrapper">-->
-<!--                            <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>-->
-<!--                            <div id="profile-wrapper"><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></div>-->
-<!--                            <div id="profile-wrapper"><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div id="interactions">-->
-<!--                        <i class="fas fa-thumbs-up"></i>-->
-<!--                        <label for="comment-input2"><i class="fas fa-message"></i></label>-->
-<!--                        <i class="fas fa-share"></i>-->
-<!--                    </div>-->
-<!--                    <div id="comments">-->
-<!--                        <div id="comment-messages">-->
-<!--                            <div id="comment">-->
-<!--                                <div id="comment-content">-->
-<!--                                    <div id="profile-wrapper"><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></div>-->
-<!--                                    <p>Nice!</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div id="comment">-->
-<!--                                <div id="comment-content">-->
-<!--                                    <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>-->
-<!--                                    <p>🐱‍👤</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div id="comment">-->
-<!--                                <div id="comment-content">-->
-<!--                                    <div id="profile-wrapper"><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></div>-->
-<!--                                    <p>Cool!</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <input type="text" placeholder="post a comment" id="comment-input2">-->
-<!--                        <input type="file" accept=".jpg" id="image">-->
-<!--                        <input type="file" accept=".mp4" id="video">-->
-<!--                        <label for="image"><i class="fas fa-image"></i></label>-->
-<!--                        <label for="video"><i class="fas fa-video"></i></label>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
 
@@ -272,17 +222,9 @@
         <div id="photos-section">
             <div id="photos-about-section">
                 <h2>Photos</h2>
-                <span><img src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-natalie-12502186.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-amber-janssens-7327624.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-jeandaniel-francoeur-12913355.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-kristian-thomas-13146110.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-kássia-melo-13048774.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-letticia-massari-13037433.jpg' %}"></span>
-                <span><img src="{% static '/images/pexels-santiago-sauceda-gonzález-13122942.jpg' %}"></span>
+                {% for post in user_posts %}
+                <span><img src="{{post.image.url}}"></span>
+                {% endfor %}
             </div>
         </div>
 

@@ -27,5 +27,4 @@ urlpatterns = [
     # Friends request paths.
     path('send_friend_request/<int:userID>/', views.send_friend_request, name='send_friend_request'),
     path('accept_friend_request/<int:requestID>/', views.accept_friend_request, name='accept_friend_request'),
-    path('friend_request', views.friend_request, name='friend_request')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

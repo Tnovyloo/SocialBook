@@ -6,7 +6,11 @@
 
 #TODO BACKEND Current tasks.
 - create comments-posts model in django
-- do connections with posts and comments.
-- create comments
 - update post feed where posts is only from friends.
 - search user, user suggestions.
+- check if password changes work well.
+
+- today
+- under like button set a <a href='like-post'> on the index page
+- under like button set a <a href='like-post'> on the profile page
+- friends section profile.

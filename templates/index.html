@@ -41,17 +41,18 @@
                             <i class="fas fa-bell" id="notification-open"><span id="notification-icon"></span></i>                            
                             <div id="info">
                                 <h2>Notifications</h2>
-                                <i id="close-notifications">+</i>                               
+                                <i id="close-notifications">+</i>
+<!--                               TODO {% for request in all_friend_request %}-->
                                 <div class="info-text">                                   
                                     <img class="profile-wrapper" src="{% static 'images/pexels-charles-1851164.jpg' %}">
-                                    <p class="info-content">Charles has a birthday today.</p>
+                                    <p class="info-content"><a href="/accept_friend_request/{{friend_request.id}}">Accept friend request</a></p>
                                     <i class="circle-notification"></i>
                                 </div>
-                                <div class="info-text">                                   
-                                    <img class="profile-wrapper" src="{% static 'images/pexels-charles-1851164.jpg' %}">
-                                    <p class="info-content">Charles has a birthday today.</p>
-                                    <i class="circle-notification"></i>
-                                </div>
+<!--                                <div class="info-text">                                   -->
+<!--                                    <img class="profile-wrapper" src="{% static 'images/pexels-charles-1851164.jpg' %}">-->
+<!--                                    <p class="info-content">Charles has a birthday today.</p>-->
+<!--                                    <i class="circle-notification"></i>-->
+<!--                                </div>-->
                             </div>
                             <span id="hover-notifications">Notifications</span>
                         </li>
@@ -192,7 +193,13 @@
                             </a>
                         </div>
                         <div id="reactions">
-                            <p>Liked <span id="bold">name</span> and <span id="bold">{{post.number_of_likes}} others</span></p>
+                            {% if post.number_of_likes == 0 %}
+                            <p>Liked by <span id="bold">no one</span></p>
+                            {% elif post.number_of_likes == 1 %}
+                            <p>Liked by <span id="bold">{{post.number_of_likes}} person </span></p>
+                            {% elif post.number_of_likes > 1 %}
+                            <p>Liked by <span id="bold">{{post.number_of_likes}} people</span></p>
+                            {% endif %}
                             <div id="profiles-wrapper">
                                 <div id="profile-wrapper"><img src="{% static 'images/Gryz-Szymon.jpeg' %}"></div>
                                 <div id="profile-wrapper"><img src="{% static 'images/pexels-charles-1851164.jpg' %}"></div>
@@ -226,10 +233,10 @@
                                 <input type="hidden" value="{{post.id}}" name="post_id">
                                 <button type="submit">Send comment.</button>
                             </form>
-                            <!--                            <input type="file" accept=".jpg" id="image">-->
-<!--                            <input type="file" accept=".mp4" id="video">-->
-<!--                            <label for="image"><i class="fas fa-image"></i></label>-->
-<!--                            <label for="video"><i class="fas fa-video"></i></label>-->
+                            <input type="file" accept=".jpg" id="image">
+                            <input type="file" accept=".mp4" id="video">
+                            <label for="image"><i class="fas fa-image"></i></label>
+                            <label for="video"><i class="fas fa-video"></i></label>
                         </div>
                     </div>
                 {% endfor %}

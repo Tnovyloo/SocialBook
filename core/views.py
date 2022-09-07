@@ -13,10 +13,12 @@ def index(request):
     user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)
     posts = Post.objects.all()
+    # user_friend_requests = Friend_Request.filter(to_user=request.user.username)
 
     context = {
         'user_profile': user_profile,
         'posts': posts,
+        # 'user_friend_requests': user_friend_requests
     }
 
     return render(request, 'index.html', context)
@@ -32,7 +34,6 @@ def profile(request, pk):
         'user_object': user_object,
         'user_profile': user_profile,
         'user_posts': user_posts,
-        # 'button_text': button_text
     }
 
     return render(request, 'profile.html', context)
@@ -63,7 +64,7 @@ def upload(request):
     else:
         return redirect('/')
 
-# TODO comment view.
+@login_required(login_url='signin')
 def comment(request):
     if request.method == 'POST':
         user = request.user
@@ -98,10 +99,6 @@ def like_post(request):
         post.number_of_likes = post.number_of_likes - 1
         post.save()
         return redirect('/')
-
-def friend_request(request):
-    user_profile = Profile.objects.get(user=request.user)
-    return render(request, 'friend_request.html')
 
 @login_required(login_url='signin')
 def send_friend_request(request, userID):

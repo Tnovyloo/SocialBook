@@ -74,6 +74,8 @@ class Comment(models.Model):
     )
     content = models.TextField(null=True)
 
+    # TODO create image field which is null by default but when user upload image then show it in comment.
+
     def __str__(self):
         return str(self.post.id)
 
@@ -85,7 +87,7 @@ class Friend_Request(models.Model):
     )
 
     def __str__(self):
-        return self.user
+        return str(f"'{self.from_user}'" + f" to '{self.to_user}'")
 
 class LikePost(models.Model):
     post_id = models.CharField(max_length=500)
