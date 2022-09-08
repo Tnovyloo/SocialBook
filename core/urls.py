@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from . import views
 from . import settings_views
+from . import friends_views
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -25,6 +26,7 @@ urlpatterns = [
     path('profile_password', settings_views.profile_password, name='profile_password'),
     path('change_profile_image', settings_views.change_profile_image, name='change_profile_image'),
     # Friends request paths.
-    path('send_friend_request/<int:userID>/', views.send_friend_request, name='send_friend_request'),
-    path('accept_friend_request/<int:requestID>/', views.accept_friend_request, name='accept_friend_request'),
+    path('friend_request/<str:pk>/', friends_views.friend_request, name='friend_request'),
+    path('add_or_remove_friend/<str:pk>/<str:operation>', friends_views.add_or_remove_friend, name='add_or_remove_friend'),
+    path('delete_request/<str:pk>/<str:operation>', friends_views.delete_request, name='delete_request'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

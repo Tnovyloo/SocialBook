@@ -47,7 +47,7 @@
             {% if user_object.username == user.username %}
             <button type="submit"><a href="/settings">Edit profile</a></button>
             {% else %}
-            <button type="submit"><a href="/send_friend_request/{{user_profile.id}}">Add friend</a></button>
+            <button type="submit"><a href="/friend_request?pk={{user_profile.username}}">Add friend</a></button>
             {% endif %}
 <!--            <button type="submit">Edit profile</button>-->
             <hr>
