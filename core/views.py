@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile, Post, Friends1, LikePost, Comment
+from .models import Profile, Post, Friends1, LikePost, Comment, FriendRequest
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordResetForm
@@ -13,16 +13,15 @@ def index(request):
     user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)
     posts = Post.objects.all()
-    # user_friend_requests = Friend_Request.filter(to_user=request.user.username)
+    user_friend_requests = FriendRequest.objects.filter(receiver=user_object.id)
 
     context = {
         'user_profile': user_profile,
         'posts': posts,
-        # 'user_friend_requests': user_friend_requests
+        'user_friend_requests': user_friend_requests
     }
 
     return render(request, 'index.html', context)
-# Create your views here.
 
 @login_required(login_url='signin')
 def profile(request, pk):
@@ -99,27 +98,6 @@ def like_post(request):
         post.number_of_likes = post.number_of_likes - 1
         post.save()
         return redirect('/')
-
-# @login_required(login_url='signin')
-# def send_friend_request(request, userID):
-#     from_user = request.user
-#     to_user = User.objects.get(id=userID)
-#     friend_request, created = Friend_Request.objects.get_or_create(from_user=from_user, to_user=to_user)
-#     if created:
-#         return HttpResponse('friend request sent')
-#     else:
-#         return HttpResponse('friend request was already sent')
-#
-# @login_required(login_url='signin')
-# def accept_friend_request(request, requestID):
-#     friend_request = Friend_Request.objects.get(id=requestID)
-#     if friend_request.to_user == request.user:
-#         friend_request.to_user.friends.add(friend_request.from_user)
-#         friend_request.from_user.friends.add(friend_request.to_user)
-#         friend_request.delete()
-#         return HttpResponse('friend request accepted')
-#     else:
-#         return HttpResponse('friend request not accepted')
 
 def signup(request):
     if request.method == "POST":

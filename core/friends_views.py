@@ -10,8 +10,8 @@ from django.contrib.auth import update_session_auth_hash
 def friend_request(request, pk):
     sender = User.objects.get(username=request.user.username)
     recipient = User.objects.get(username=pk)
-    model = FriendRequest.objects.get_or_create(sender=request.user, receivers=recipient)
-    return redirect(f'/profile/{pk}')
+    model = FriendRequest.objects.get_or_create(sender=sender, receiver=recipient)
+    return redirect(f'/')
 
 def delete_request(request, operation, pk):
     client1 = User.objects.get(username=pk)
