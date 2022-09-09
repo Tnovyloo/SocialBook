@@ -16,8 +16,10 @@
             <div id="background">
                 <header>
                     <h3><a href="/">Fakebook</a></h3>
-                    <input type="text" placeholder="Search fakebook" id="search"><label for="search"><i class="fas fa-magnifying-glass"></i></label>
-
+                    <form action="search" method="POST">
+                    {% csrf_token %}
+                    <input name="username" type="text" placeholder="Search fakebook" id="search"><label for="search"><i class="fas fa-magnifying-glass"></i></label>
+                    </form>
                     <!-- UPLOAD WINDOW -->
 
                     <button id="upload">Upload photo/video</button>
@@ -43,7 +45,8 @@
                                 <h2>Notifications</h2>
                                 <i id="close-notifications">+</i>
                                 {% for request in user_friend_requests %}
-                                <div class="info-text">                                   
+                                <div class="info-text">
+<!--                                    TODO sender profile image doesnt shows.-->
                                     <img class="profile-wrapper" src="{{request.sender.profile.profile_img.url}}">
                                     <p class="info-content"><a href="/add_or_remove_friend{{request.id}}/add">Accept friend request</a></p>
                                     <p class="info-content"><a href="/add_or_remove_friend/{{friend_request.id}}/remove">Remove friend request</a></p>

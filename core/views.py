@@ -7,6 +7,8 @@ from .models import Profile, Post, Friends1, LikePost, Comment, FriendRequest
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordResetForm
+from itertools import chain
+
 
 @login_required(login_url='signin')
 def index(request):
@@ -98,6 +100,27 @@ def like_post(request):
         post.number_of_likes = post.number_of_likes - 1
         post.save()
         return redirect('/')
+
+@login_required(login_url='signin')
+def search(request):
+    user_object = User.objects.get(username=request.user.username)
+    user_profile = Profile.objects.get(user=user_object)
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        username_object = User.objects.filter(username__icontains=username)
+
+        username_profile = [users.id for users in username_object]
+        username_profile_list = [Profile.objects.filter(id_user=id) for id in username_profile]
+
+        username_profile_list = list(chain(*username_profile_list))
+
+    context = {
+        'user_profile': user_profile,
+        'username_profile_list': username_profile_list,
+    }
+
+    return render(request, 'search.html', context)
 
 def signup(request):
     if request.method == "POST":

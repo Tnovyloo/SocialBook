@@ -102,7 +102,7 @@ class FriendRequest(models.Model):
     receiver = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     # def __str__(self):
-    #     return str(sender + ' to ' + receiver)
+    #     return str(sender_id + ' to ' + receiver_id)
 
 class LikePost(models.Model):
     post_id = models.CharField(max_length=500)
