@@ -30,19 +30,16 @@ def profile(request, pk):
     user_object = User.objects.get(username=pk)
     user_profile = Profile.objects.get(user=user_object)
     user_posts = Post.objects.filter(user_id=pk)
-    user_friends = Friends1.objects.get(current_user=user_object.id) # This downloads the objects with friends
-    # user_friends = Friends1.objects.get(current_user=user_object.id).friend.values_list()
-    # field_value = getattr(user_friends, 'users1')
-
-    # count_friends = len(user_friends)
-
-    friends = Friends1.objects.filter(current_user=user_object.id).friend
+    # user_friends = Friends1.objects.get(current_user=user_object.id)
+    friends = Friends1.objects.get(current_user=user_object.id).users1.all()
+    count_friends = len(friends)
 
     context = {
         'user_object': user_object,
         'user_profile': user_profile,
         'user_posts': user_posts,
-        'user_friends': user_friends,
+        'user_friends': friends,
+        'count_friends': count_friends,
     }
     # logging(user_friends)
 
