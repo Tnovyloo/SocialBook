@@ -81,7 +81,7 @@ class Comment(models.Model):
         return str(self.post.id)
 
 class Friends1(models.Model):
-    users1 = models.ManyToManyField(User, null=True, related_name='friend')
+    users1 = models.ManyToManyField(User, related_name='friend')
     current_user = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE, null=True)
 
     @classmethod
@@ -95,6 +95,8 @@ class Friends1(models.Model):
             current_user=current_user
         )
         friend.users1.remove(new_friend)
+
+    #TODO magic method __str__
 
 class FriendRequest(models.Model):
     sender = models.ForeignKey(User, null=True, related_name='sender', on_delete=models.CASCADE)

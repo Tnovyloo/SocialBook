@@ -15,7 +15,6 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-
 admin.site.register(Friends1)
 admin.site.register(Post)
 admin.site.register(LikePost)

@@ -34,7 +34,7 @@
 
             <div id="informations">
                 <h3>{{user_profile.first_name}} {{user_profile.last_name}} @{{user_profile.user}}</h3>
-                <p class="bold" style="color: gray;">1.1k friends</p>
+                <p class="bold" style="color: gray;">{{count_friends}} Friends</p>
                 <div id="profiles-wrapper">
                     <img class="profile-friend" src="{% static 'images/pexels-andrea-piacquadio-837358.jpg' %}">
                     <img class="profile-friend" src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}">
@@ -95,33 +95,18 @@
 
                 <div id="friends-about-section">
                     <h2>Friends</h2>
-                    <p id="friends-num">1.192 friends</p>
+                    <p id="friends-num">{{count_friends}} friends</p>
                     <p class="all">See All Friends</p>
+                    {% for person in user_friends.friend.all %}
                     <div class="friend">
-                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                        <h4>Name</h4>
+                        <img src="">
+                        <h4>{{person}}</h4>
                         <p class="number-of-friends">100 mutual friends</p>
                         <i class="fas fa-ellipsis-vertical"></i>
                     </div>
-                    <div class="friend">
-                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                        <h4>Name</h4>
-                        <p class="number-of-friends">100 mutual friends</p>
-                        <i class="fas fa-ellipsis-vertical"></i>
-                    </div>
-                    <div class="friend">
-                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                        <h4>Name</h4>
-                        <p class="number-of-friends">100 mutual friends</p>
-                        <i class="fas fa-ellipsis-vertical"></i>
-                    </div>
-                    <div class="friend">
-                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                        <h4>Name</h4>
-                        <p class="number-of-friends">100 mutual friends</p>
-                        <i class="fas fa-ellipsis-vertical"></i>
-                    </div>
+                    {% endfor %}
                 </div>
+
             </div>
 
             <!-- ADD POST SECTION -->
@@ -450,7 +435,7 @@
             <div id="friends-section">
                 <div id="friends-about-section">
                     <h2>Friends</h2>
-                    <p id="friends-num">1.192 friends</p>
+                    <p id="friends-num">{{count_friends}} friends</p>
 
                     <div class="friend">
                         <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">

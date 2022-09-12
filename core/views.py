@@ -8,17 +8,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordResetForm
 from itertools import chain
-
+import logging
 
 @login_required(login_url='signin')
 def index(request):
     user_object = User.objects.get(username=request.user.username)
-    user_profile = Profile.objects.get(user=user_object)
+    # user_profile = Profile.objects.get(user=user_object)
     posts = Post.objects.all()
     user_friend_requests = FriendRequest.objects.filter(receiver=user_object.id)
 
     context = {
-        'user_profile': user_profile,
+        'user_profile': user_object,
         'posts': posts,
         'user_friend_requests': user_friend_requests
     }
@@ -30,12 +30,21 @@ def profile(request, pk):
     user_object = User.objects.get(username=pk)
     user_profile = Profile.objects.get(user=user_object)
     user_posts = Post.objects.filter(user_id=pk)
+    user_friends = Friends1.objects.get(current_user=user_object.id) # This downloads the objects with friends
+    # user_friends = Friends1.objects.get(current_user=user_object.id).friend.values_list()
+    # field_value = getattr(user_friends, 'users1')
+
+    # count_friends = len(user_friends)
+
+    friends = Friends1.objects.filter(current_user=user_object.id).friend
 
     context = {
         'user_object': user_object,
         'user_profile': user_profile,
         'user_posts': user_posts,
+        'user_friends': user_friends,
     }
+    # logging(user_friends)
 
     return render(request, 'profile.html', context)
 
