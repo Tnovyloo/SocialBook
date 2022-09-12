@@ -7,8 +7,9 @@ User = get_user_model()
 
 # Create your models here.
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_related_name')
-    friends = models.ManyToManyField(User, blank=True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    friends = models.ManyToManyField(User, blank=True, related_name='friends')
 
     id_user = models.IntegerField()
     # bio = models.TextField(blank=True)
@@ -80,14 +81,12 @@ class Comment(models.Model):
         return str(self.post.id)
 
 class Friends1(models.Model):
-    users1 = models.ManyToManyField(User, null=True)
+    users1 = models.ManyToManyField(User, null=True, related_name='friend')
     current_user = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE, null=True)
 
     @classmethod
     def make_friend(cls, current_user, new_friend):
-        friend, create = cls.objects.get_or_create(
-                            current_user=current_user
-                                                    )
+        friend, create = cls.objects.get_or_create(current_user=current_user)
         friend.users1.add(new_friend)
 
     @classmethod
