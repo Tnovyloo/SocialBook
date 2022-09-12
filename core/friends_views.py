@@ -17,10 +17,10 @@ def delete_request(request, operation, pk):
     client1 = User.objects.get(username=pk)
     print(client1)
     if operation == 'Sender_deleting':
-        model1 = FriendRequest.objects.get(sender=request.user, receivers=client1)
+        model1 = FriendRequest.objects.get(sender=request.user, receiver=client1)
         model1.delete()
     elif operation == 'Receiver_deleting':
-        model2 = FriendRequest.objects.get(sender=client1, receivers=request.user)
+        model2 = FriendRequest.objects.get(sender=client1, receiver=request.user)
         model2.delete()
         return redirect('/')
 
@@ -29,7 +29,7 @@ def delete_request(request, operation, pk):
 def add_or_remove_friend(request, operation, pk):
     new_friend = User.objects.get(username=pk)
     if operation == 'add':
-        fq = FriendRequest.objects.get(sender=new_friend, receivers=request.user)
+        fq = FriendRequest.objects.get(sender=new_friend, receiver=request.user)
         Friends1.make_friend(request.user, new_friend)
         Friends1.make_friend(new_friend, request.user)
         fq.delete()

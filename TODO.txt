@@ -5,12 +5,9 @@
 - responsiveness on index.html
 
 #TODO BACKEND Current tasks.
-- create comments-posts model in django
 - update post feed where posts is only from friends.
-- search user, user suggestions.
+- user suggestions.
 - check if password changes work well.
-
-- today
 - under like button set a <a href='like-post'> on the index page
 - under like button set a <a href='like-post'> on the profile page
 - friends section profile.
