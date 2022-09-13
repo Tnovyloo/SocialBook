@@ -112,6 +112,7 @@ def like_post(request):
 def search(request):
     user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)
+    search_question = request.POST['username']
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -125,6 +126,7 @@ def search(request):
     context = {
         'user_profile': user_profile,
         'username_profile_list': username_profile_list,
+        'search_question': search_question,
     }
 
     return render(request, 'search.html', context)
