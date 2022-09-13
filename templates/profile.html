@@ -36,12 +36,10 @@
                 <h3>{{user_profile.first_name}} {{user_profile.last_name}} @{{user_profile.user}}</h3>
                 <p class="bold" style="color: gray;">{{count_friends}} Friends</p>
                 <div id="profiles-wrapper">
-                    <img class="profile-friend" src="{% static 'images/pexels-andrea-piacquadio-837358.jpg' %}">
-                    <img class="profile-friend" src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}">
-                    <img class="profile-friend" src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                    <img class="profile-friend" src="{% static '/images/pexels-natalie-12502186.jpg' %}">
-                    <img class="profile-friend" src="{% static '/images/pexels-charles-1851164.jpg' %}">
+                    {% for person in user_friends %}
+                    <img class="profile-friend" src="{{person.profile.profile_img.url}}">
                     <i class="fas fa-ellipsis-vertical"></i>
+                    {% endfor %}
                 </div>
             </div>
             {% if user_object.username == user.username %}

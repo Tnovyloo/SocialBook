@@ -10,3 +10,5 @@
 - check if password changes work well.
 - under like button set a <a href='like-post'> on the index page
 - under like button set a <a href='like-post'> on the profile page
+
+TODO settings - if user nothing changed then dont delete current data.
