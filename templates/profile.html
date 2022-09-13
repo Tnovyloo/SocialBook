@@ -222,10 +222,14 @@
                 <h3>Places lived</h3>
 
                 <div class="change-value">
-                    <input type="text" class="new-changes" required>
+                    <form method="POST" action="/about_current_place">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_name" value="{{user_object.username}}">
+                    <input name='live_place' type="text" class="new-changes" required>
                     <input type="submit" value="Save" class="save">
                     <input type="submit" value="Close" class="close">
                     <span>live place</span>
+                    </form>
                 </div>
 
                 <i class="fas fa-house left"></i>
@@ -233,10 +237,14 @@
                 <i class="fas fa-pencil right open-window"></i>
 
                 <div class="change-value other-place">
-                    <input type="text" class="new-changes" required>
+                    <form method="POST" action="/about_from_place">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_name" value="{{user_object.username}}">
+                    <input name="from_place" type="text" class="new-changes" required>
                     <input type="submit" value="Save" class="save">
                     <input type="submit" value="Close" class="close">
                     <span>from</span>
+                    </form>
                 </div>
 
                 <i class="fas fa-location-dot left"></i>
@@ -246,10 +254,14 @@
                 <h3>Education - Hobby</h3>
 
                 <div class="change-value">
-                    <input type="text" class="new-changes" required>
+                    <form method="POST" action="/about_school">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_name" value="{{user_object.username}}">
+                    <input name="school" type="text" class="new-changes" required>
                     <input type="submit" value="Save" class="save">
                     <input type="submit" value="Close" class="close">
                     <span>current school</span>
+                    </form>
                 </div>
 
                 <i class="fas fa-school left"></i>
@@ -257,10 +269,14 @@
                 <i class="fas fa-pencil right open-window"></i>
 
                 <div class="change-value other-place">
-                    <input type="text" class="new-changes" required>
+                    <form method="POST" action="/about_hobby">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_name" value="{{user_object.username}}">
+                    <input name="hobby" type="text" class="new-changes" required>
                     <input type="submit" value="Save" class="save">
                     <input type="submit" value="Close" class="close">
                     <span>hobbies</span>
+                    </form>
                 </div>
 
                 <i class="fas fa-scroll left"></i>
@@ -270,10 +286,14 @@
                 <h3>Contact info</h3>
 
                 <div class="change-value">
-                    <input type="text" class="new-changes" required>
+                    <form method="POST" action="/about_number">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_name" value="{{user_object.username}}">
+                    <input name="hobby" type="text" class="new-changes" required>
                     <input type="submit" value="Save" class="save">
                     <input type="submit" value="Close" class="close">
                     <span>number</span>
+                    </form>
                 </div>
 
                 <i class="fas fa-phone left"></i>
@@ -281,10 +301,14 @@
                 <i class="fas fa-pencil right open-window"></i>
 
                 <div class="change-value other-place">
-                    <input type="text" class="new-changes" required>
+                    <form method="POST" action="/about_email">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_name" value="{{user_object.username}}">
+                    <input name="email" type="text" class="new-changes" required>
                     <input type="submit" value="Save" class="save">
                     <input type="submit" value="Close" class="close">
                     <span>e-mail</span>
+                    </form>
                 </div>
 
                 <i class="fas fa-envelope left"></i>
@@ -294,14 +318,18 @@
                 <h3>Basic info</h3>
 
                 <div class="change-value">
+                    <form method="POST" action="/about_gender">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_name" value="{{user_object.username}}">
                     <input class="new-changes unused">
-                    <select>
+                    <select name="gender">
                         <option disabled selected>Select your option</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
                     <input type="submit" value="Save" class="save select">
                     <input type="submit" value="Close" class="close select">
+                    </form>
                 </div>
 
                 <i class="fas fa-person left"></i>
@@ -309,9 +337,14 @@
                 <i class="fas fa-pencil right open-window"></i>
 
                 <div class="change-value">
-                    <input type="date" class="new-changes">
-                    <input type="submit" value="Save" class="save date">
-                    <input type="submit" value="Close" class="close date">
+                    <form method="POST" action="/about_year">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_name" value="{{user_object.username}}">
+                    <input name="birthyear" type="text" class="new-changes" required>
+                    <input type="submit" value="Save" class="save">
+                    <input type="submit" value="Close" class="close">
+                    <span>year</span>
+                    </form>
                 </div>
 
                 <i class="fas fa-cake-candles left"></i>
@@ -319,10 +352,14 @@
                 <i class="fas fa-pencil right open-window"></i>
 
                 <div class="change-value last">
-                    <input type="text" class="new-changes" required>
+                    <form method="POST" action="/about_relationship">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_name" value="{{user_object.username}}">
+                    <input name="relationship" type="text" class="new-changes" required>
                     <input type="submit" value="Save" class="save">
                     <input type="submit" value="Close" class="close">
                     <span>relationship</span>
+                    </form>
                 </div>
 
                 <i class="fas fa-children left"></i>
@@ -333,11 +370,14 @@
 
                 <div id="friends-about-section">
                     <h2>Friends</h2>
-                    <p id="friends-num">1.192 friends</p>
+                    <p id="friends-num">{{count_friends}} friends</p>
                     <p class="all">See All Friends</p>
+
+                    {% for person in user_friends %}
                     <div class="friend">
-                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                        <h4>Name</h4>
+                        <img src="{{person.profile.profile_img.url}}">
+                        <h4>{{person.username}}</h4>
+<!--                        TODO- in mutual friend p tag maybe paste a user bio.-->
                         <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
                         <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
                         <div class="friend-options-window">
@@ -358,75 +398,8 @@
                         </div>
                         <button class="add-friend">Add Friend</button>
                     </div>
-                    <div class="friend">
-                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                        <h4>Name</h4>
-                        <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
-                        <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
-                        <div class="friend-options-window">
-                            <div class="friend-option favourite">
-                                <i class="fas fa-heart"></i>
-                                <p>Favourite</p>
-                            </div>
+                    {% endfor %}
 
-                            <div class="friend-option follow-option">
-                                <i class="fas fa-square-minus"></i>
-                                <p class="follow-text">Unfollow</p>
-                            </div>
-
-                            <div class="friend-option unfriend">
-                                <i class="fas fa-user-xmark"></i>
-                                <p>Unfriend</p>
-                            </div>
-                        </div>
-                        <button class="add-friend">Add Friend</button>
-                    </div>
-                    <div class="friend">
-                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                        <h4>Name</h4>
-                        <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
-                        <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
-                        <div class="friend-options-window">
-                            <div class="friend-option favourite">
-                                <i class="fas fa-heart"></i>
-                                <p>Favourite</p>
-                            </div>
-
-                            <div class="friend-option follow-option">
-                                <i class="fas fa-square-minus"></i>
-                                <p class="follow-text">Unfollow</p>
-                            </div>
-
-                            <div class="friend-option unfriend">
-                                <i class="fas fa-user-xmark"></i>
-                                <p>Unfriend</p>
-                            </div>
-                        </div>
-                        <button class="add-friend">Add Friend</button>
-                    </div>
-                    <div class="friend">
-                        <img src="{% static '/images/pexels-pixabay-39866.jpg' %}">
-                        <h4>Name</h4>
-                        <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
-                        <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
-                        <div class="friend-options-window">
-                            <div class="friend-option favourite">
-                                <i class="fas fa-heart"></i>
-                                <p>Favourite</p>
-                            </div>
-
-                            <div class="friend-option follow-option">
-                                <i class="fas fa-square-minus"></i>
-                                <p class="follow-text">Unfollow</p>
-                            </div>
-
-                            <div class="friend-option unfriend">
-                                <i class="fas fa-user-xmark"></i>
-                                <p>Unfriend</p>
-                            </div>
-                        </div>
-                        <button class="add-friend">Add Friend</button>
-                    </div>
                 </div>
             </div>
 

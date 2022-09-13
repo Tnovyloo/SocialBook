@@ -5,6 +5,7 @@ from django.contrib import admin
 from . import views
 from . import settings_views
 from . import friends_views
+from . import about_views
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -30,4 +31,15 @@ urlpatterns = [
     path('friend_request/<str:pk>/', friends_views.friend_request, name='friend_request'),
     path('add_or_remove_friend/<str:pk>/<str:operation>', friends_views.add_or_remove_friend, name='add_or_remove_friend'),
     path('delete_request/<str:pk>/<str:operation>', friends_views.delete_request, name='delete_request'),
+    # About section - edit buttons.
+    # path('about_current_place/<str:pk>/<str:new_place>', about_views.about_current_place, name='about_current_place'),
+    path('about_current_place', about_views.about_current_place, name='about_current_place'),
+    path('about_from_place', about_views.about_from_place, name='about_from_place'),
+    path('about_school', about_views.about_school, name='about_school'),
+    path('about_hobby', about_views.about_hobby, name='about_hobby'),
+    path('about_number', about_views.about_number, name='about_number'),
+    path('about_email', about_views.about_email, name='about_email'),
+    path('about_gender', about_views.about_gender, name='about_gender'),
+    path('about_birthyear', about_views.about_birthyear, name='birthyear'),
+    path('about_relationship', about_views.about_relationship, name='about_relationship'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
