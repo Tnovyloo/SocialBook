@@ -48,7 +48,7 @@
                                 <div class="info-text">-->
                                     <img class="profile-wrapper" src="{{request.sender.profile.profile_img.url}}">
                                     <p class="info-content"><a href="/add_or_remove_friend/{{request.sender.username}}/add">Accept friend request</a></p>
-                                    <p class="info-content"><a href="/add_or_remove_friend/{{request.sender.username}}/remove">Remove friend request</a></p>
+                                    <p class="info-content"><a href="/delete_request/{{request.sender.username}}/remove">Remove friend request</a></p>
                                     <i class="circle-notification"></i>
                                 </div>
                                 {% endfor %}

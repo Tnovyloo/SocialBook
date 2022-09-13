@@ -46,10 +46,11 @@
             </div>
             {% if user_object.username == user.username %}
             <button type="submit"><a href="/settings">Edit profile</a></button>
+            {% elif if_friends %}
+            <button type="submit"><a href="/add_or_remove_friend/{{user_object.username}}/remove">Remove friend</a></button>
             {% else %}
             <button type="submit"><a href="/friend_request/{{user_object.username}}">Add friend</a></button>
             {% endif %}
-<!--            <button type="submit">Edit profile</button>-->
             <hr>
             <div id="sections">
                 <p id="posts">Posts</p>
