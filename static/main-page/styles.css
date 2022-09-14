@@ -4,21 +4,75 @@
     box-sizing: border-box;
 }
 
+*::-webkit-input-placeholder {
+    color: inherit;
+    opacity: 0.7;
+}
+
 :root {
-    --background-color: rgb(0, 0, 0, 0.1);
+    --background-color: rgba(0, 0, 0, 0.1);
     --header-color: rgb(245, 245, 245);
-    --users-follow-color: rgb(240, 240, 240);
+    --window-color: rgb(220, 220, 220);
+    --window-element-hover-color: hsl(0, 0%, 82%);
+    --text-color: black;
+
+    --search-upload-color: rgb(220, 220, 220);
+    --upload-elements-color: hsl(0, 0%, 92%);
+    --post-preview-border-color: rgb(190, 190, 190);
+    --notifications-number-color: red;
+    
     --user-card-color: white;
-    --follow-button-color: rgb(235, 235, 235);
-    --posts-header-color: rgb(240, 240, 240);
-    --reactions-color: rgb(240, 240, 240);
-    --interactions-color: rgb(240, 240, 240);
+    --add-button-color: rgb(225, 225, 225);
+    --add-button-before-color: white;
+    --add-button-hover-first-shadow: hsl(0, 0%, 86%);
+    --add-button-hover-second-shadow: hsl(0, 0%, 90%);
+
+    --posts-border-bottom-color: hsl(0, 0%, 89%);
+    --post-options-button-hover-color: hsl(0, 0%, 90%);
+
+    --report-message-color: white;
+
     --comments-color: rgb(245, 245, 245);
-    --enter-comment-color: rgb(235, 235, 235);
     --comment-color: rgb(235, 235, 235);
-    --upload-file-color: rgb(235, 235, 235);
-    --search-color: rgb(235, 235, 235);
+
+    --accept-button-color: hsl(200, 100%, 35%);
+    --accept-button-hover-color: hsl(200, 100%, 30%);
+    --decline-button-color: hsl(0, 0%, 90%);
+    --decline-button-hover-color: hsl(0, 0%, 86%);
+
     --header-font: 'Kanit', sans-serif;
+}
+
+.darkmode {
+    --background-color: rgba(0, 0, 0, 0.9);
+    --header-color: rgb(50, 50, 50);
+    --window-color: rgb(40, 40, 40);
+    --window-element-hover-color: rgb(30, 30, 30);
+    --text-color: rgb(217, 217, 217);
+
+    --search-upload-color: rgb(35, 35, 35);
+    --upload-elements-color: rgb(50, 50, 50);
+    --post-preview-border-color: rgb(60, 60, 60);
+    --notifications-number-color: rgb(120, 0, 0);
+
+    --user-card-color: rgb(60, 60, 60);
+    --add-button-color: rgb(50, 50, 50);
+    --add-button-before-color: rgb(70, 70, 70);
+    --add-button-hover-first-shadow: rgb(40, 40, 40);
+    --add-button-hover-second-shadow: rgb(47, 47, 47);
+
+    --posts-border-bottom-color: rgb(37, 37, 37);
+    --post-options-button-hover-color: rgb(44, 44, 44);
+
+    --report-message-color: rgb(20, 20, 20);
+
+    --comments-color: rgb(55, 55, 55);
+    --comment-color: rgb(45, 45, 45);
+
+    --accept-button-color: hsl(200, 100%, 30%);
+    --accept-button-hover-color: hsl(200, 100%, 25%);
+    --decline-button-color: hsl(0, 0%, 80%);
+    --decline-button-hover-color: hsl(0, 0%, 75%);
 }
 
 html {
@@ -26,8 +80,6 @@ html {
 }
 
 body {
-    width: 100%;
-    min-height: 100vh;
     background: var(--background-color);
     font-size: 5rem;
 }
@@ -36,9 +88,9 @@ body {
     font-weight: bold;
 }
 
-/* header style */
+/* HEADER AND HEADER ELEMENTS STYLE */
 
-#background header {
+header {
     position: fixed;
     height: 80px;
     width: 100%;
@@ -48,335 +100,230 @@ body {
     justify-content: space-between;
     padding-inline: 2rem;
     z-index: 2;
-    padding-left: 28rem;
 }
 
-#background header input[type="text"] {
+header a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+header input[type="text"] {
     width: 225px;
     height: 45px;
     border: none;
     border-radius: 60px;
-    padding-left: 3.6rem;
-    padding-right: 2rem;
+    padding-inline: 3.6rem 2rem;
     font-size: 1.8rem;
     outline: none;
-    background-color: var(--search-color);
+    background-color: var(--search-upload-color);
+    color: var(--text-color);
     font-family: var(--header-font);
-    margin-left: -4rem;
+    margin-left: 22.7rem;
 }
 
-#background header label[for="search"] {
+header label[for="search"] {
     position: absolute;
     width: 35px;
     height: 45px;
-    border-radius: 90px;
+    border-radius: 60px;
     cursor: default; 
-    left: 24rem;
+    left: 25rem;
 }
 
-#background header label[for="search"] i {
+header label[for="search"] i {
     position: absolute;
     left: 1.2rem;
     font-size: 1.5rem;
     top: 50%;
     transform: translateY(-50%);
-    color: gray;
+    color: var(--text-color);
+    opacity: 0.7;
 }
 
-#background header ul {
+header ul {
     display: flex;
     gap: 6rem;
     list-style: none;
+    align-items: center;
 }
 
-#background header ul .fas {
+header ul .fas {
     font-size: 3rem;
     position: relative;
     top: -0.4rem;
     right: 2.5rem;
     cursor: pointer;
+    color: var(--text-color)
 }
 
-#background header h3 {
+header h3 {
     position: absolute;
     left: 3rem;
     font-size: 4.1rem;
     font-family: 'Poppins';
 }
 
-/* NOTIFICATION PANEL */
+/* UPLOAD BUTTON APPEARANCE AND EFFECT */
 
-#background header .fas.fa-bell {
-    position: relative;
-}
-
-#background header #info {
+header button[id="upload"] {
     position: absolute;
-    width: 250px;
-    background-color: white;
-    right: 23rem;
-    font-size: 1.7rem;
-    border-radius: 20px 20px 10px 10px;
-    padding: 1rem;
-    display: none;
-}
-
-#background header #info i {
-    position: absolute;
-    right: 1.4rem;
-    top: 0.8rem;
-    font-weight: bold;
-    font-size: 3rem;
-    transform: rotate(45deg);
-    cursor: pointer;
-}
-
-#background header #info h2 {
-    margin-bottom: 0.7rem;
-}
-
-#background header #info .info-text {
-    width: 100%;
-    position: relative;
-    cursor: pointer;
-    padding-inline: 0.9rem;
-    padding-bottom: 0.7rem;
-    border-radius: 5px;
-    padding-top: 0.6rem;
-}
-
-#background header #info .info-text .profile-wrapper {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-#background header #info .info-text p {
-    font-size: 1.5rem;
-    margin-top: -3.7rem;
-    margin-left: 4.5rem;
-}
-
-#background header #info .info-text .circle-notification {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: blue;
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%)
-}
-
-#background header #notification-icon {
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background-color: red;
-        font-size: 1.7rem;
-        color: white;
-        font-family: consolas;
-        text-align: center;
-        top: -0.5rem;
-        right: -0.5rem;
-}
-
-/* NOTIFICATION PANEL EFFECTS */
-
-#background header #info .info-text:hover {
-    background-color: hsl(240, 0%, 93%)
-}
-
-/*MESSAGE PANEL*/
-
-#background header #notification {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background-color: red;
-    font-size: 1.7rem;
-    color: white;
-    font-family: consolas;
-    text-align: center;
-    top: -1rem;
-    right: -1rem;
-}
-
-#background header #messages {
-    position: absolute;
-    width: 250px;
-    background-color: white;
-    border-radius: 20px 20px 10px 10px;
-    right: 15rem;
-    top: 6.8rem;
-    padding: 1rem;
-    font-size: 2rem;
-    font-family: none;
-    display: none;
-}
-
-#background header #messages i {
-    position: absolute;
-    right: 1.4rem;
-    top: 1rem;
-    font-weight: bold;
-    font-size: 3rem;
-    transform: rotate(45deg);
-    cursor: pointer;
-}
-
-#background header #messages .message {
-    width: 100%;
-    position: relative;
-    cursor: pointer;
-    padding-inline: 0.9rem;
-    padding-bottom: 0.7rem;
-    border-radius: 5px;
-    padding-top: 1.1rem;
-    margin-top: 0.5rem;
-}
-
-#background header #messages h2 {
-    margin-bottom: 0.7rem;
-}
-
-#background header #messages .message #profile-wrapper {
-    width: 40px;
-    height: 40px;
-}
-
-#background header #messages .message h4 {
-    position: absolute;
-    top: 0.9rem;
-    left: 5.7rem;
-}
-
-#background header #messages .message p {
-    margin-top: -2.3rem;
-    margin-left: 4.7rem;
-    font-size: 1.4rem;
-    color: blue;
-}
-
-#background header #messages .message .circle-message {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: blue;
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%)
-}
-
-/* MESSAGES ANIMATIONS */
-
-#background header #messages .message:hover {
-    background-color: hsl(240, 0%, 93%)
-}
-
-/* UPLOAD BUTTON EFFECTS AND APPEARANCE */
-
-#background header button[id="upload"] {
-    position: absolute;
-    background-color: var(--upload-file-color);
+    background-color: var(--search-upload-color);
+    color: var(--text-color);
+    font-family: var(--header-font);
     width: 225px;
     height: 45px;
-    border-radius: 50px;
-    right: 30rem;
-    transition: 0.5s;
+    border-radius: 6px;
+    right: 38rem;
     font-size: 2rem;
     text-align: center;
-    overflow: hidden;
     cursor: pointer;
-    font-family: var(--header-font);
     border: none;
+    transition-duration: 0.4s;
 }
 
-#background header button[id="upload"]::before {
+header button[id="upload"]::after, header button[id="upload"]::before {
     position: absolute;
     content: '';
-    height: 3px;
-    width: 100%;
-    background: linear-gradient(90deg, transparent 50%, hsl(240, 0%, 80%));
     top: 0;
-    left: -100%;
-}
-
-#background header button[id="upload"]::after {
-    position: absolute;
-    content: '';
-    height: 3px;
+    left: 0;
     width: 100%;
-    background: linear-gradient(90deg, hsl(240, 0%, 80%), transparent 50%);
-    bottom: 0;
-    right: -100%;
+    height: 100%;
+    z-index: -1;
+    background-color: inherit;
+    border-radius: inherit;
+    opacity: 0.4;
+    transition-duration: 0.4s;
 }
 
-#background header button[id="upload"]:hover::after {
-    right: 100% ;
-    transition: 1s;
-    transition-delay: 0.25s;
+header button[id="upload"]:hover {
+    transform: translate(-8px, -8px)
 }
 
-#background header button[id="upload"]:hover::before {
-    left: 100% ;
-    transition: 1s;
+header button[id="upload"]:hover::after {
+    transform: translate(4px, 4px);
 }
 
-#background header button[id="upload"]:hover {
-    transition-delay: 0.6s;
-    box-shadow: 0px 0px 5px 1px hsl(240, 0%, 80%),
-    0px 0px 10px 2px hsl(240, 0%, 80%);
-    background-color: hsl(240, 0%, 80%);
-    letter-spacing: 0.5px;
+header button[id="upload"]:hover::before {
+    transform: translate(8px, 8px);
 }
 
 /* WINDOW AFTER CLICKING UPLOAD BUTTON */
 
-#background header #upload-files {
-    background-color: hsl(0, 0%, 85%);
-    padding: 1rem;
-    border-radius: 5px;
+header #upload-files {
     position: absolute;
-    right: 30rem;
+    background-color: var(--window-color);
+    border-radius: 5px;
+    right: 38.25rem;
     top: 7.5rem;
     display: none;
+    padding-inline: 1rem;
     padding-block: 1.5rem;
+    z-index: 2;
 }
 
-#background header #upload-files form {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
+header #upload-files #show-hide-preview {
+    font-size: 2.2rem;
+    top: 1rem;
+    width: 100%;
+    cursor: pointer;
+    font-family: "Kanit";
+    text-align: center;
+    color: var(--text-color)
 }
 
-#background header #upload-files form input[id='photo-video'] {
+/* class to toggle post-image-preview */
+
+.off {
     display: none;
 }
 
-#background header #upload-files form label[for="photo-video"] {
-    background-color: black;
-    border-radius: 5px;
-    width: 48%;
-    height: 35px;
+header #upload-files #post-image-preview {
     position: relative;
-    background-color: hsl(0, 0%, 90%);
+    border: 1px solid var(--post-preview-border-color);
+    max-width: 150px;
+    width: 75%;
+    height: 200px;
+}
+
+header #upload-files #post-image-preview #post-image-preview-header {
+    position: relative;
+    width: 100%;
+    background-color: var(--header-color);
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--posts-border-bottom-color);
+    pointer-events: none;
+}
+
+header #upload-files #post-image-preview #post-image-preview-header .profile-wrapper {
+    width: 15px;
+    height: 15px;
+    margin-top: 0.25rem;
+    margin-left: 0.4rem;
+}
+
+header #upload-files #post-image-preview #post-image-preview-header p {
+    position: absolute;
+    top: 0.5rem;
+    left: 2.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color)
+}
+
+header #upload-files #post-image-preview #post-image-preview-header i {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    color: var(--text-color)
+}
+
+header #upload-files #post-image-preview #post-image-preview-caption {
+    width: 100%;
+    background-color: var(--header-color);
+    padding: 0.5rem;
+    display: none;
+    overflow-x: hidden;
+    pointer-events: none;
+}
+
+header #upload-files #post-image-preview #post-image-preview-caption #post-image-preview-caption-text {
+    font-size: 1rem;
+    color: var(--text-color)
+} 
+
+header #upload-files #post-image-preview #post-image-preview-photo {
+    background-size: cover;
+    width: 100%;
+    height: 177px;
+}
+
+header #upload-files form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+header #upload-files form label[for="photo-video"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.3rem;
+    width: 55px;
+    height: 55px;
+    font-size: 2.7rem;
+    border-radius: 50%;
+    background-color: var(--upload-elements-color);
     cursor: pointer;
 }
 
-#background header #upload-files form label[for="photo-video"]::after {
-    content: 'Choose File';
-    font-size: 1.7rem;
+header #upload-files form label[for="photo-video"] i {
+    margin-top: -0.2rem;
+    pointer-events: none;
+    color: var(--text-color);
 }
 
-#background header #upload-files form textarea {
+header #upload-files form textarea {
     width: 83%;
     height: 75px;
     padding: 0.5rem;
@@ -384,40 +331,259 @@ body {
     border: none;
     border-radius: 5px;
     margin-inline: 1.2rem;
+    background-color: var(--upload-elements-color);
+    color: var(--text-color);
 }
 
-#background header #upload-files form button[type='submit'] {
+header #upload-files form textarea::-webkit-scrollbar {
+    display: none;
+}
+
+header #upload-files form button[type='submit'] {
     width: 38%;
     height: 30px;
-    border-radius: 10px;
+    border-radius: 3px;
     border: none;
     cursor: pointer;
+    background-color: var(--upload-elements-color);
+    font-weight: bold;
+    font-family: 'Kanit';
+    color: var(--text-color)
 }
 
-#photo-wrapper, .photo-wrapper, #profile-wrapper, #photo-wrapper-onclick {
+/* NOTIFICATION PANEL */
+
+header #info {
+    position: absolute;
+    width: 250px;
+    background-color: var(--window-color);
+    right: 28rem;
+    font-size: 1.7rem;
+    border-radius: 20px 20px 10px 10px;
+    padding: 1rem;
+    display: none;
+    z-index: 2;
+}
+
+header #info i {
+    position: absolute;
+    right: 1.4rem;
+    top: 0.8rem;
+    font-weight: bold;
+    font-size: 3rem;
+    transform: rotate(45deg);
+    cursor: pointer;
+    color: var(--text-color)
+}
+
+header #info h2 {
+    margin-bottom: 0.7rem;
+    color: var(--text-color)
+}
+
+header #info .info-text {
+    position: relative;
+    cursor: pointer;
+    padding-inline: 0.9rem;
+    border-radius: 5px;
+    min-height: 50px;
+    text-align: left;
+}
+
+header #info .info-text .profile-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: -0.5rem;
+}
+
+header #info .info-text p {
+    font-size: 1.5rem;
+    margin-top: -3.7rem;
+    margin-left: 4.5rem;
+    width: 140px;
+    color: var(--text-color)
+}
+
+header #info .info-text .user-request {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.7rem;
+    margin-left: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+header #info .info-text .user-request [name="user-friend-action"], header #info .info-text .user-request [name="user-group-action"] {
+    width: 65px;
+    height: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+header #info .info-text .user-request .confirm, header #info .info-text .user-request .accept {
+    background-color: var(--accept-button-color);
+    color: linen;
+}
+
+header #info .info-text .user-request .remove, header #info .info-text .user-request .decline {
+    background-color: var(--decline-button-color)
+}
+
+header #info .info-text .user-request .confirm:hover, header #info .info-text .user-request .accept:hover {
+    background-color: var(--accept-button-hover-color)
+}
+
+header #info .info-text .user-request .remove:hover, header #info .info-text .user-request .decline:hover  {
+    background-color: var(--decline-button-hover-color)
+}
+
+header #info .info-text .user-request .after-remove, 
+header #info .info-text .user-request .after-confirm,
+header #info .info-text .user-request .after-accept,
+header #info .info-text .user-request .after-decline {
+    display: none;
+    position: absolute;
+    bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-family: 'Open Sans';
+}
+
+header #info .info-text .user-request .after-confirm, header #info .info-text .user-request .after-accept {
+    color: hsl(120, 20%, 60%);
+}
+
+header #info .info-text .user-request .after-remove, header #info .info-text .user-request .after-decline {
+    color: hsl(0, 100%, 30%);
+}
+
+header #info .info-text .circle-notification {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accept-button-color);
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 1rem;
+}
+
+header .notification-icon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--notifications-number-color);
+    font-size: 1.7rem;
+    color: white;
+    font-family: 'consolas';
+    text-align: center;
+    top: -0.5rem;
+    right: -0.5rem;
+}
+
+/*MESSAGE PANEL*/
+
+header #messages {
+    position: absolute;
+    width: 250px;
+    background-color: var(--window-color);
+    border-radius: 20px 20px 10px 10px;
+    right: 20rem;
+    top: 6.8rem;
+    padding: 1rem;
+    font-size: 2rem;
+    display: none;
+    z-index: 2;
+}
+
+header #messages i {
+    position: absolute;
+    right: 1.4rem;
+    top: 1rem;
+    font-weight: bold;
+    font-size: 3rem;
+    transform: rotate(45deg);
+    cursor: pointer;
+    color: var(--text-color)
+}
+
+header #messages h2 {
+    margin-bottom: 0.7rem;
+    margin-left: 0.5rem;
+    color: var(--text-color)
+}
+
+header #messages .message {
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    padding-inline: 0.9rem;
+    padding-block: 1.1rem 0.7rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}
+
+header #messages .message .profile-wrapper {
+    width: 40px;
+    height: 40px;
+}
+
+header #messages .message h4 {
+    position: absolute;
+    top: 0.9rem;
+    left: 5.7rem;
+    color: var(--text-color)
+}
+
+header #messages .message p {
+    margin-top: -2.3rem;
+    margin-left: 4.7rem;
+    font-size: 1.4rem;
+    color: var(--accept-button-color);
+}
+
+header #messages .message .circle-message {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accept-button-color);
+    top: 50%;
+    transform: translate(0, -50%)
+}
+
+/* MESSAGES AND NOTIFICATIONS ANIMATIONS */
+
+header #info .info-text:hover, header #messages .message:hover {
+    background-color: var(--window-element-hover-color)
+}
+
+.photo-wrapper, .profile-wrapper, #other-pages-open {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
 
-#photo-wrapper img, .photo-wrapper img, #profile-wrapper img {
+.photo-wrapper img, .profile-wrapper img {
     width: 100%;
     height: 100%;
     position: absolute;
     border-radius: 50%;
 }
 
-#background header ul #photo-wrapper-onclick {
+header ul #other-pages-open {
     position: relative;
-    top: -1.5rem;
-    right: 3rem;
+    top: -1.3rem;
+    right: 2.6rem;
     border: none;
     cursor: pointer;
 }
 
-#background header ul #photo-wrapper-onclick img {
-    width: 100%;
+header ul #other-pages-open img {
     border-radius: 50px;
+    width: 100%;
     height: 100%;
     position: absolute;
     pointer-events: none;
@@ -425,70 +591,68 @@ body {
     left: 0;
 }
 
-/* CHANGE PAGE OPTION */
+/* CHANGE PAGE WINDOW */
 
-#background header #other-pages {
+header #other-pages {
     position: absolute;
     width: 130px;
-    font-size: 2rem;
-    right: 4.75rem;
+    font-size: 1.75rem;
+    right: 14rem;
     top: 8rem;
-    position: absolute;
     display: none;
 }
 
-#background header #other-pages .window {
-    width: 130px;
+header #other-pages .window {
     padding: 0.5rem;
     padding-left: 1rem;
-    background-color: white;
+    background-color: var(--window-color);
 }
 
-#background header #other-pages #first-window {
+header #other-pages .fas.fa-caret-up {
+    position: absolute;
+    right: 0.8rem;
+    top: -1.3rem;
+    font-size: 2.2rem;
+    color: var(--window-color);
+}
+
+header #other-pages #first-window {
     border-radius: 5px 5px 0 0
 }
 
-#background header #other-pages #last-window {
+header #other-pages #last-window {
     border-radius: 0 0 5px 5px;
 }
 
-#background header #other-pages .window:hover {
-    background-color: hsl(0, 0%, 95%)
+header #other-pages .window:hover {
+    background-color: var(--window-element-hover-color)
 }
 
-#background header #other-pages .fas.fa-caret-up {
-    position: absolute;
-    right: 0.5rem;
-    top: -1.3rem;
-    font-size: 2.2rem;
-    color: white;
-}
-
-#background header #other-pages p {
+header #other-pages .window p {
     display: inline-block;
     font-family: 'Lato';
-    vertical-align: top;
+    vertical-align: middle;
+    font-size: 1.7rem;
 }
 
-#background header a {
-    text-decoration: none;
-    color: black;
-}
-
-#background header #other-pages i {
+header #other-pages .window i {
     font-size: 1.5rem;
     margin-right: 0.5rem;
     vertical-align: middle;
 }
 
-#background header #other-pages .fas.fa-door-open {
+header #other-pages .window .fas.fa-door-open {
     margin-right: 0.3rem;
     margin-left: -0.15rem;
 }
 
-/* HOVER ICONS APPEARING WINDOWS */
+header #darkmode-toggle {
+    width: 30px;
+}
 
-#background header #hover-notifications, #background header #hover-messages, #background header #hover-account {
+/* ICONS TO INFORM WHAT WILL BE DISPLAYED */
+
+header #hover-notifications, header #hover-messages, header #hover-account, header #hover-dark-mode  {
     font-size: 1.5rem;
     background-color: black;
     color: hsl(0, 0%, 84%);
@@ -496,73 +660,76 @@ body {
     padding-block: 0.4rem;
     border-radius: 5px;
     position: absolute;
-    top: 6.5rem;
+    top: 7rem;
     transition: 0.5s;
     transition-timing-function: cubic-bezier(0.26, 0.78, 0.8, 0.99);
     opacity: 0;
     pointer-events: none;
 }
 
-#background header #hover-notifications {
-    right: 20rem;
+header #hover-notifications {
+    right: 29.2rem;
 }
 
-#background header #hover-messages {
-    right: 12rem;
+header #hover-messages {
+    right: 21.4rem;
 }
 
-#background header #hover-account {
-    right: 4rem;
+header #hover-account {
+    right: 12.4rem;
 }
 
-#background header #notification-open:hover ~ #hover-notifications {
-    opacity: 1;
+header #hover-dark-mode {
+    right: 2.1rem;
 }
 
-#background header #message-icon:hover ~ #hover-messages {
-    opacity: 1;
+header #notification-open:hover ~ #hover-notifications, header #message-open:hover ~ #hover-messages, header #other-pages-open:hover ~ #hover-account, header #darkmode-toggle:hover ~ #hover-dark-mode {
+    opacity: 1
 }
 
-#background header #photo-wrapper-onclick:hover ~ #hover-account {
-    opacity: 1;
-}
+/* ADD USERS SECTION */
 
-
-/* FOLLOW USERS SECTION */
-
-#follow-users {
+#add-users {
     width: 400px;
     height: 350px;
     position: absolute;
     top: 16rem;
-    background-color: var(--users-follow-color);
-    border-radius: 2rem;
+    background-color: var(--header-color);
+    border-radius: 20px;
     padding: 1rem;
-    left: 115rem;
+    left: 110rem;
     box-shadow: 0px 0px 15px black;
     font-family: 'Kanit', sans-serif;
+    overflow: hidden;
 }
 
-#follow-users h3, #follow-users p {
-    color: gray;
+#add-users header {
+    position: relative;
+    height: 50px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0);
+    top: -1rem;
 }
 
-#follow-users h3 {
-    font-size: 2.5rem;
-    padding-left: 1rem;
-    margin-top: -0.5rem;
+#add-users header h3, #add-users header p {
+    color: var(--text-color)
 }
 
-#follow-users p[id="refresh"]{
+#add-users header h3 {
+    font-size: 2.3rem;
+    margin-left: -1.5rem;
+    margin-top: 0.2rem;
+}
+
+#add-users header p {
     font-size: 2rem;
-    display: block;
     position: absolute;
-    right: 4rem;
-    top: 1rem;
+    right: 2rem;
+    top: 1.2rem;
     cursor: pointer;
 }
 
-#follow-users #users-card {
+#add-users #users-card {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -575,96 +742,93 @@ body {
     padding-bottom: 0.5rem;
 }
 
-#follow-users #users-card hr {
+#add-users #users-card .user {
+    height: 25%;
+    position: relative;
+}
+
+#add-users #users-card hr {
     background-color: gray;
     border-color: gray;
     opacity: 0.2;
 }
 
-#follow-users #users-card .photo-wrapper {
+#add-users #users-card .photo-wrapper {
     position: relative;
     top: 50%;
     transform: translate(50%, -50%)
 }
 
-#follow-users #users-card p[id="name"] {
+#add-users #users-card .name {
     position: relative;
     font-size: 2rem;
-    color: black;
-    bottom: 28%;
-    left: 3%;
-    transform: translate(18%, 10%);
+    color: var(--text-color);
+    left: 7.4rem;
     transition: 0.5s;
     cursor: default;
-    width: 85%;
+    bottom: 2rem;
 }
 
-#follow-users #users-card .user {
-    height: 25%;
-}
-
-#follow-users #users-card .followers {
+#add-users #users-card .followers {
     font-size: 1.5rem;
     position: relative;
     bottom: 50%;
-    left: 18.7%;
+    left: 7.4rem;
     cursor: default;
     font-weight: bold;
-    color: black;
+    color: var(--text-color);
     transition: 0.5s;
     opacity: 0;
-    width: 80%
 }
 
-#follow-users #users-card .user button {
+#add-users #users-card .user .add-friend {
     position: absolute;
+    left: 65%;
+    top: 50%;
+    transform: translateY(-50%);
     width: 11rem;
     height: 3.5rem;
-    left: 65%;
-    font-size: 2rem;
-    letter-spacing: 0.1rem;
-    border-radius: 2rem;
+    font-size: 1.6rem;
+    border-radius: 5px;
     border: none;
     opacity: 0;
+    transition-duration: 0.4s;
+    background-color: var(--add-button-color);
+    overflow: hidden;
+    color: var(--text-color);
+}
+
+#add-users #users-card .user .add-friend::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -120%;
+    background-color: var(--add-button-before-color);
+    z-index: -1;
+    transform: skew(50deg);
     transition-duration: 0.5s;
-    background-color: var(--follow-button-color);
 }
 
-#follow-users #users-card .user.first button {
-    top: 2rem;
+/* ADD USERS EFFECTS*/
+
+#add-users #users-card .user:hover .name {
+    bottom: 43%;
 }
 
-#follow-users #users-card .user.second button {
-    top: 9.7rem
-}
-
-#follow-users #users-card .user.third button {
-    bottom: 9.3rem;
-}
-
-#follow-users #users-card .user.fourth button {
-    bottom: 1.6rem;
-}
-
-/* FOLLOW-USERS EFFECTS*/
-
-#follow-users #users-card .user:hover p[id="name"] {
-    bottom: 50%;
-}
-
-#follow-users #users-card .user:hover .followers {
+#add-users #users-card .user:hover .followers, #add-users #users-card .user:hover button {
     opacity: 1;
 }
 
-#follow-users #users-card .user:hover button {
-    opacity: 1;
-}
-
-#follow-users #users-card .user button:hover {
+#add-users #users-card .user .add-friend:hover {
     cursor: pointer;
-    letter-spacing: 0.2rem;
-    box-shadow: 0px 0px 5px 2px gray,
-    0px 0px 6px 4px gray; 
+    box-shadow: 0px 0px 10px 1px var(--add-button-hover-first-shadow),
+    0px 0px 20px 3px var(--add-button-hover-second-shadow); 
+}
+
+#add-users #users-card .user .add-friend:hover::before {
+    left: 120%;
 }
 
 /* POSTS SECTION */
@@ -672,94 +836,139 @@ body {
 #posts-container {
     position: absolute;
     width: 550px;
-    left: 48rem;
+    left: 45rem;
     top: 16rem;
-    border-radius: 1rem;
 }
 
-#posts-container header {
-    width: 100%;
-    height: 5rem;
-    padding: 1.3rem;
-    background-color: var(--posts-header-color);
-}
-
-#posts-container header p {
-    font-size: 1.8rem;
-    margin-top: -2.8rem;
-    margin-left: 4rem;
-    font-family: var(--header-font)
-}
-
-#posts-container header .fas.fa-ellipsis {
-    position: absolute;
-    font-size: 3rem;
-    right: 3rem;
-    top: 1rem;
-    cursor: pointer;
-}
-
-#posts-container #image-wrapper {
-    height: 450px;
-    overflow: hidden;
-}
-
-#posts-container #image-wrapper img {
-    object-position: 0px -250px;
-    width: 100%;
-}
-
-#posts-container #reactions {
+#posts-container .post {
+    margin-bottom: 3rem;
     position: relative;
-    width: 100%;
-    background-color: var(--reactions-color);
-    height: 5rem;
-    border-bottom: 0.2px solid hsl(240, 5%, 85%);
-    padding-top: 1.3rem;
-    margin-top: -1.1rem;
 }
 
-#posts-container #profiles-wrapper {
-    display: flex;
-    margin-left: 1rem;
-}
-
-#posts-container #profile-wrapper {
+#posts-container .profile-wrapper {
     position: relative;
     width: 25px;
     height: 25px;
     bottom: 1px;
 }
 
-#posts-container #profile-wrapper:nth-child(2) {
+#posts-container .post header {
+    position: absolute;
+    display: block;
+    height: 50px;
+    background-color: var(--header-color);
+    z-index: 1;
+    pointer-events: none;
+    border-bottom: 1px solid var(--posts-border-bottom-color)
+}
+
+#posts-container .post header .profile-wrapper {
+    top: 50%;
+    transform: translateY(-50%);
+    left: -0.4rem;
+}
+
+#posts-container .post header p {
+    position: absolute;
+    font-size: 1.8rem;
+    font-family: var(--header-font);
+    color: var(--text-color);
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5.5rem;
+    pointer-events: auto;
+}
+
+#posts-container .post header button {
+    position: absolute;
+    border-radius: 50%;
+    padding: 0.4rem;
+    cursor: pointer;
+    pointer-events: auto;
+    border: none;
+    width: 35px;
+    height: 35px;
+    right: 2.5rem;
+    top: 0.7rem;
+    background-color: inherit;
+    color: var(--text-color)
+}
+
+#posts-container .post header .fas.fa-ellipsis {
+    font-size: 2.7rem;
+    pointer-events: none;
+}
+
+#posts-container .post header button:hover {
+    background-color: var(--post-options-button-hover-color)
+}
+
+/* CAPTION SECTION */
+
+#posts-container .post .caption {
+    position: relative;
+    width: 100%;
+    background-color: var(--header-color);
+    padding: 6rem 1.8rem 1rem 1.8rem;
+    z-index: -1;
+}
+
+#posts-container .post .caption .caption-text {
+    font-size: 1.8rem;
+    color: var(--text-color)
+}
+
+/* IMAGE SECTION */
+
+#posts-container .image-wrapper img {
+    width: 100%;
+}
+
+/* REACTIONS SECTION */
+
+#posts-container .reactions {
+    background-color: var(--header-color);
+    height: 50px;
+    border-bottom: 0.2px solid var(--posts-border-bottom-color);
+    padding-top: 1.3rem;
+    margin-top: -1.1rem;
+}
+
+#posts-container .reactions #profiles-wrapper {
+    display: flex;
+    margin-left: 1rem;
+}
+
+#posts-container .reactions .profile-wrapper:nth-child(2) {
     left: -1rem;
 }
 
-#posts-container #profile-wrapper:nth-child(3) {
+#posts-container .reactions .profile-wrapper:nth-child(3) {
     left: -2rem;
 }
 
-#posts-container p {
+#posts-container .reactions p, #posts-container .comments p {
     position: absolute;
     font-size: 2rem;
     margin-left: 7.5rem;
+    color: var(--text-color);
 }
 
 /* INTERACTIONS SECTION */
 
-#posts-container #interactions {
+#posts-container .interactions {
     display: flex;
     width: 100%;
-    height: 4.5rem;
+    height: 50px;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--interactions-color);
+    background-color: var(--header-color);
+    color: var(--text-color);
     font-size: 2.5rem;
     padding-inline: 2rem;
-    position: relative;
 }
 
-#posts-container #interactions .fa-message {
+#posts-container .interactions .fa-message {
     position: absolute;
     left: 8rem;
     transform: translate(0, -50%);
@@ -767,32 +976,18 @@ body {
     cursor: pointer;
 }
 
+#posts-container .interactions .fas.fa-share {
+    cursor: pointer;
+}
+
 /* COMMENTS SECTION */
 
-#posts-container #comments {
-    width: 100%;
-    height: 22rem;
+#posts-container .comments {
+    height: 220px;
     background-color: var(--comments-color);
-    position: relative;
-    border-radius: 0px 0px 1rem 1rem;
 }
 
-#posts-container #comments input[type='text'] {
-    position: absolute;
-    width: 90%;
-    bottom: 1rem;
-    left: 50%;
-    transform: translate(-50%, -6%);
-    height: 4rem;
-    padding: 1.8rem;
-    border-radius: 1.5rem;
-    font-size: 1.7rem;
-    background-color: var(--enter-comment-color);
-    border: none;
-}
-
-#posts-container #comments #comment-messages {
-    width: 100%;
+#posts-container .comments .comment-messages {
     height: 15.4rem;
     display: flex;
     flex-flow: column;
@@ -802,50 +997,65 @@ body {
     position: relative;
 }
 
-#posts-container #comments #comment-messages::-webkit-scrollbar {
+#posts-container .comments .comment-messages::-webkit-scrollbar {
     display: none;
 }
 
-#posts-container #comments input[type="file"] {
+#posts-container .comments input[type='text'] {
+    position: absolute;
+    width: 90%;
+    bottom: 1.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4rem;
+    padding: 1.8rem;
+    border-radius: 1.5rem;
+    font-size: 1.7rem;
+    background-color: var(--comment-color);
+    color: var(--text-color);
+    border: none;
+}
+
+#posts-container .comments input[type="file"] {
     display: none;
 }
 
-#posts-container #comments input[id="image"] {
+#posts-container .comments input[id="image"] {
     right: 8rem;
 }
 
-#posts-container #comments input[id="video"] {
+#posts-container .comments input[id="video"] {
     right: 4rem;
 }
 
-#posts-container #comments .fas {
+#posts-container .comments .fas {
     position: absolute;
     bottom: 2.2rem;
     font-size: 2rem;
     cursor: pointer;
+    color: var(--text-color);
 }
 
-#posts-container #comments .fa-image {
+#posts-container .comments .fa-image {
     right: 8rem;
 }
 
-#posts-container #comments .fa-video {
+#posts-container .comments .fa-video {
     right: 4rem;
 }
 
 /* COMMENTS */
 
-#comment-content #profile-wrapper {
-    position: relative;
-    bottom: -2.7rem;
+.comment-content .profile-wrapper {
+    bottom: -2.7rem !important;
     margin-left: 2.5rem;
 }
 
-#comments #comment-messages #comment #comment-content p{
+.comments .comment-messages .comment .comment-content p {
     z-index: 1;
 }
 
-#comments #comment-messages #comment #comment-content p::before{
+.comments .comment-messages .comment .comment-content p::before{
     content: '';
     position: absolute;
     background-color: var(--comment-color);
@@ -854,107 +1064,98 @@ body {
     height: calc(100% + 0.5rem);
     z-index: -1;
     bottom: -0.25rem;
-    border-radius: 10px;
-    border-top: 1px solid gray;
+    border-radius: 6px;
+    border-top: 1px solid rgba(180, 180, 180, 0.5);
 }
 
-/* APPEARING WINDOW - POST1*/
+/* REPORT WINDOW */
 
-#posts-container #post .post-options {
+#posts-container .post .post-options {
     position: absolute;
-    height: 40px;
     width: 150px;
-    background-color: rgb(240, 240, 240);
-    border-radius: 10px;
+    height: 75px;
+    background-color: var(--window-color);
+    border-radius: 7px;
     top: 6rem;
     right: 2.6rem;
     display: none;
+    align-items: center;
 }
 
-#posts-container #post .post-options i {
-    color: rgb(240, 240, 240);
+#posts-container .post .post-options i {
+    color: rgb(220, 220, 220);
     position: absolute;
     right: 1rem;
     font-size: 2rem;
     transform: rotate(-90deg);
     top: -1rem;
+    color: var(--window-color);
 }
 
-#posts-container #post .post-options .close-sign {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    font-size: 3rem;
-    font-weight: bold;
-    transform: rotate(45deg);
+#posts-container .post .post-options button {
     cursor: pointer;
-}
-
-#posts-container #post .post-options button {
-    cursor: pointer;
-    position: absolute;
-    left: 40%;
-    transform: translate(-50%, 0%);
     border: none;
-    border-radius: 20px;
-    padding: 1rem;
     font-size: 1.8rem;
-    width: 107px;
-    background-color: transparent;
+    height: 35px;
+    width: 100%;
+    background-color: inherit;
+    color: var(--text-color)
 }
 
-#posts-container #post {
-    margin-bottom: 3rem;
-    position: relative;
+#posts-container .post .post-options button:hover {
+    background-color: var(--window-element-hover-color)
 }
 
 #report-background {
+    position: fixed;
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 200vh;
+    align-items: center;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
     z-index: 2;
     display: none;
-    padding-top: 32rem;
-    position: fixed;
 }
 
 #report-message {
+    position: relative;
     text-align: center;
     width: 350px;
     height: 180px;
-    background-color: white;
+    background-color: var(--report-message-color);
     border-radius: 10px;
-    position: relative;
 }
 
 #report-background #report-message i {
     position: absolute;
     top: 1rem;
     left: 50%;
-    transform: translate(-50%)
+    transform: translate(-50%);
+    color: var(--text-color)
 }
 
 #report-background #report-message p {
     margin-top: 6.6rem;
     cursor: default;
     font-size: 4rem;
+    color: var(--text-color)
 }
 
 /* ANIMATION OF LIKE */
 
-#posts-container #interactions .fa-thumbs-up {
+#posts-container .interactions .fa-thumbs-up {
     cursor: pointer;
     color: black;
     transform-origin: center left;
+    border-radius: 50%;
+    margin-top: -0.2rem;
+    color: var(--text-color)
 }
 
 .animation-like {
     animation-name: like-animation;
     animation-duration: 0.4s;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: cubic-bezier(0.68, 1.15, 0.82, 0.93);
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -965,12 +1166,17 @@ body {
     }
 
     50% {
-        transform: rotate(-20deg) scale(1.1)
+        transform: rotate(-20deg) scale(1.1);
+        box-shadow: 0px 0px 10px 10px rgba(0, 0, 255, 0.1);
+    }
+
+    75% {
+        filter: blur(0.8px)
     }
 
     100% {
         transform: rotate(0deg);
-        color: blue;
+        color: var(--accept-button-color);
     }
 }
 
@@ -982,7 +1188,7 @@ body {
     #posts-container {
         left: 22rem;
     }
-    #follow-users {
+    #add-users {
         left: 87rem;
     }
 }
@@ -992,29 +1198,74 @@ body {
         left: 5rem;
     }
 
-    #follow-users {
+    #add-users {
         left: 70rem;
     }
 }
 
 @media screen and (max-width: 1145px) {
 
-    /* RESPONSIVE SETTINGS UPLOAD PHOTO - VIDEO */
+    /*HEADER ELEMENTS RESPONSIVE SETTINGS */
 
-    #background header #upload {
-        padding-top: 0rem;
-    }
-
-    #background header #upload-files {
-        width: 180px;
+    header button[id="upload"] {
+        width: 170px;
+        font-size: 1.5rem;
         right: 23rem;
+        height: 35px;
     }
 
-    #background header #upload-files form label[for="photo-video"]::after {
-        font-size: 1.4rem;
+    header ul .fas {
+        font-size: 2.5rem;
+        top: -0.8rem;
     }
 
-    #background header #notification-icon, #background header #notification {
+    header ul {
+        gap: 3rem;
+        margin-right: -3rem;
+    }
+
+    header input[type="text"] {
+        font-size: 1.5rem;
+        margin-left: 16.4rem;
+        width: 190px;
+        height: 35px;
+        padding-inline: 3rem;
+    }
+    
+    header label[for="search"] {
+        left: 18.4rem;
+        height: 35px;
+    }
+
+    header label[for="search"] i {
+        font-size: 1.1rem;
+    }
+
+    header h3 {
+        font-size: 3.1rem;
+        left: 1.4rem;
+    }
+
+    /* UPLOAD PHOTO - VIDEO RESPONSIVE SETTINGS */
+
+    header #upload-files {
+        width: 180px;
+        right: 22.5rem;
+    }
+
+    header #upload-files #show-hide-preview {
+        font-size: 1.75rem;
+    }
+
+    header #upload-files form label[for="photo-video"] {
+        width: 45px;
+        height: 45px;
+        font-size: 2.3rem;
+    }
+
+    /* NOTIFICATIONS AND MESSAGES RESPONSIVE SETTINGS */
+
+    header .notification-icon {
         width: 15px;
         height: 15px;
         font-size: 1.4rem;
@@ -1022,290 +1273,333 @@ body {
         padding-top: 0.1rem;
     }
 
-    #background header #notification {
-        right: -0.7rem;
-        top: -0.7rem;
+    /* notifications */
+
+    header #info {
+        width: 220px;
+        right: 16rem;
     }
 
-    #background header #messages {
-        right: 12rem;
+    header #info h2 {
+        font-size: 2.3rem; 
+    } 
+
+    header #info .info-text .profile-wrapper {
+        width: 30px;
+        height: 30px;
+        margin-top: 0.6rem;
+    }
+
+    header #info .info-text p {
+        margin-left: 3.7rem;
+        margin-top: -3.2rem;
+        width: 110px;
+    }
+
+    header #info .info-text .user-request {
+        margin-left: 0rem;
+    }
+
+    header #info .info-text .user-request [name='user-friend-action'], header #info .info-text .user-request [name='user-group-action'] {
+        width: 50px;
+        height: 20px;
+        font-size: 1.1rem;
+    }
+
+    header #info .info-text .user-request .after-remove, 
+    header #info .info-text .user-request .after-confirm, 
+    header #info .info-text .user-request .after-accept, 
+    header #info .info-text .user-request .after-decline {
+        font-size: 1.1rem;
+    }
+
+    header #info .info-text .circle-notification {
+        right: 3rem;
+    }
+
+    header #info #close-notifications {
+        font-size: 2.6rem;
+    }
+
+    /* messages */
+
+    header #messages {
+        right: 11rem;
         width: 220px;
         font-size: 1.5rem;
     }
 
-    #background header #messages #close-messages{
+    header #messages #close-messages{
         top: 0.8rem;
         font-size: 2.6rem;
     }
 
-    #background header #messages .message #profile-wrapper{
+    header #messages .message .profile-wrapper {
         width: 30px;
         height: 30px;
     }
 
-    #background header #messages .message p {
+    header #messages .message p {
         margin-top: -1.8rem;
         margin-left: 3.7rem;
-        font-size: 1.4rem;
-        color: blue;
     }
 
-    #background header #messages .message h4 {
-        margin-left: -1.2rem;
+    header #messages .message h4 {
+       left: 4.6rem;
     }
 
-    #background header #messages .message .circle-message {
+    header #messages .message .circle-message {
         right: 0.7rem;
         width: 8px;
         height: 8px;
     }
-
-    #background header #info {
-        width: 220px;
-        font-size: 1.5rem;
-        right: 18rem;
-    }
-
-    #background header #info .info-text .profile-wrapper {
-        width: 30px;
-        height: 30px;
-    }
-
-    #background header #info .info-text p {
-        font-size: 1.5rem;
-        margin-left: 3.7rem;
-        margin-top: -3.55rem;
-    }
-
-    #background header #info .info-text .circle-notification {
-        font-size: 1.5rem;
-        right: 3rem;
-    }
-
-    #background header #info #close-notifications {
-        top: 0.8rem;
-        font-size: 2.6rem;
-    }
+    /* OTHER PAGES WINDOW RESPONSIVE SETTINGS*/
     
-    #background header ul #photo-wrapper-onclick {
+    header ul #other-pages-open {
         width: 30px;
         height: 30px;
         top: -1.7rem;
     }
 
-    #background header #other-pages {
-        right: 4.2rem;
+    header #other-pages {
+        right: 7.5rem;
         top: 7rem;
-        font-size: 1.7rem;
         width: 120px;
     }
 
-    #background header #other-pages .window {
-        width: 120px;
+    header #other-pages .window p {
+        font-size: 1.5rem;
     }
+
+    header #hover-notifications, header #hover-messages, header #hover-account, header #hover-dark-mode {
+        top: 6.5rem;
+        font-size: 1.3rem;
+    }
+
+    header #hover-notifications {
+        right: 16rem;
+    }
+    
+    header #hover-messages {
+        right: 11.5rem;
+    }
+    
+    header #hover-account {
+        right: 6.2rem;
+    }
+
+    header #hover-dark-mode {
+        right: 0.2rem;
+        padding-inline: 0.3rem;
+    }
+
+    /* POST SECTION AND ADD SECTION SETTINGS */
 
     #posts-container {
         left: 10rem;
         width: 350px;
-        position: relative;
         top: 14rem;
     }
 
-    #posts-container #image-wrapper {
-        height: 280px;
-    }
-
-    #posts-container #image-wrapper img {
-        object-position: 0px -165px;
-    }
-
-    #follow-users {
+    #add-users {
         top: 14.2rem;
         left: 55rem;
         width: 300px;
         height: 250px;
     }
 
-    #follow-users header h3 {
-        font-size: 1.9rem;
+    #add-users header h3 {
+        font-size: 1.75rem;
         margin-left: -0.5rem;
-        margin-top: -0.3rem;
+        margin-top: -0.5rem;
     }
 
-    #follow-users header #refresh {
-        top: 0.74rem;
-        font-size: 1.9rem;
-        right: 2rem;
+    #add-users header p {
+        font-size: 1.6rem;
+        right: 1.5rem;
+        top: 1.1rem
     }
 
-    #follow-users #users-card {
-        height: 83%;
+    #add-users #users-card {
+        height: 207px;
     }
 
-    #follow-users .photo-wrapper {
+    #add-users #users-card .photo-wrapper {
         width: 25px;
         height: 25px;
     }
 
-    #follow-users #users-card #name {
+    #add-users #users-card .name {
         font-size: 1.6rem;
-        left: 0;
+        left: 4.7rem;
+        bottom: 1.4rem;
     }
     
-    #follow-users #users-card .followers {
+    #add-users #users-card .followers {
         font-size: 1.3rem;
         left: 4.7rem;
+        bottom: 2.7rem;
     }
 
-    #follow-users #users-card .user button {
+    #add-users #users-card .user .add-friend {
         width: 80px;
         height: 25px;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
-    #follow-users #users-card .user.first button{
-        top: 1.5rem;
-    }
-
-    #follow-users #users-card .user.second button{
-        top: 6.6rem;
-    }
-
-    #follow-users #users-card .user.third button{
-        bottom: 6.3rem;
-    }
-
-    #follow-users #users-card .user.fourth button{
-        bottom: 1.2rem;
-    }
-
-    #follow-users #users-card button:hover {
-        box-shadow: 0px 0px 10px 1px gray!important; 
-    }
-
-    #background header button[id="upload"] {
-        width: 180px;
-        font-size: 1.7rem;
-        right: 23rem;
-        padding-top: 0.9rem;
-    }
-
-    #background header ul .fas {
-        font-size: 2.4rem;
-    }
-
-    #background header h3 {
-        font-size: 4rem;
-    }
-
-    #background header input[type="text"] {
-        height: 40px;
-        font-size: 1.7rem;
-        margin-left: -7rem;
-        width: 190px;
-    }
-    
-    #background header label[for="search"] {
-        left: 21rem;
-    }
-
-    #background header ul .fas {
-        top: -0.8rem;
-        margin-right: -3rem;
-    }
-
-    #background header h3 {
-        font-size: 3.1rem;
+    #add-users #users-card .user .add-friend::before {
+        width: 75%;
     }
 }
 
 @media screen and (max-width: 890px) {
-    /* RESPONSIVE SETTINGS UPLOAD PHOTO - VIDEO */
 
-    #background header #upload-files {
-        right: 14.3rem;
+    /* HEADER SETTINGS */
+
+    header input[type="text"] {
+        width: 158px;
+        font-size: 1.3rem;
+        margin-left: 13.7rem;
+    }
+
+    header label[for="search"] {
+        left: 15.7rem;
+    }
+
+    header h3 {
+        font-size: 2.7rem;
+    }
+
+    /* UPLOAD PHOTO / VIDEO SETTINGS */
+
+    header button[id="upload"] {
+        right: 20.4rem;
+        width: 134px;
+        font-size: 1.3rem;
+    }
+
+    header button[id="upload"]:hover {
+        transform: translate(-3px, -3px)
+    }
+
+    header button[id="upload"]:hover::before {
+        transform: translate(6px, 6px)
+    }
+
+    header button[id="upload"]:hover::after {
+        transform: translate(3px, 3px)
+    }
+
+    header #upload-files {
+        right: 19.6rem;
         width: 150px;
     }
 
-    #background header #upload-files form label[for="photo-video"]::after {
-        font-size: 1.3rem;
+    header #upload-files #show-hide-preview {
+        font-size: 1.4rem;
     }
 
-    #background header #upload-files form label[for="photo-video"] {
-        width: 58%;
+    header #upload-files #post-image-preview {
+        height: 150px;
     }
 
-    #background header #upload-files form button[type="submit"] {
-        font-size: 1.3rem;
-        width: 40%;
+    header #upload-files #post-image-preview #post-image-preview-photo {
+        height: 129px;
     }
+
+    header #upload-files #post-image-preview #post-image-preview-header p {
+        font-size: 0.8rem;
+        left: 2rem;
+    }
+
+    header #upload-files #post-image-preview #post-image-preview-header i {
+        top: 0.35rem;
+    }
+
+    header #upload-files #post-image-preview #post-image-preview-header .profile-wrapper {
+        width: 13px;
+        height: 13px;
+    }
+
+    header #upload-files #post-image-preview #post-image-preview-caption-text {
+        font-size: 0.9rem;
+    }
+
+    header #upload-files form textarea {
+        font-size: 1.1rem;
+    }
+
+    header #upload-files form button[type='submit'] {
+        font-size: 1.1rem;
+    }
+
+    /* ICONS AND OTHER WINDOWS IN HEADER RESPONSIVE SETTINGS */
+
+    header ul {
+        margin-right: -3.5rem;
+        gap: 2.7rem;
+    }
+
+    header ul .fas {
+        top: -0.7rem;
+        right: 2.5rem;
+        font-size: 2.2rem;
+    }
+
+    header ul #other-pages-open {
+        width: 26px;
+        height: 26px;
+    }
+
+    header #info {
+        right: 14rem;
+    }
+
+    header #messages {
+        right: 8.5rem;
+    }
+
+    header #info .info-text .circle-notification {
+        right: 2.4rem;
+    }
+
+    header #other-pages {
+        right: 6.5rem;
+        font-size: 1.5rem;
+        width: 110px;
+    }
+
+    /* HOVER WINDOWS */
+
+    header #hover-notifications {
+        right: 13.5rem;
+    }
+
+    header #hover-messages {
+        right: 9.8rem;
+    }
+
+    header #hover-account {
+        right: 5.2rem;
+    }
+
+    header #hover-dark-mode {
+        right: 0.2rem;
+        padding-inline: 0.2rem;
+        font-size: 1.2rem;
+    }
+
+    
+    /* POSTS, FOLLOW SECTION AND REPORT MESSAGE RESPONSIVE SETTINGS */
 
     #posts-container {
         left: 3rem;
     }
 
-    #follow-users {
+    #add-users {
         left: 44rem;
     }
-
-    #background header #messages {
-        right: 6rem;
-    }
-
-    #background header #info {
-        width: 220px;
-        font-size: 1.5rem;
-        right: 10rem;
-    }
-
-    #background header button[id="upload"] {
-        width: 145px;
-        font-size: 1.4rem;
-        height: 40px;  
-        right: 14.5rem;
-    }
-
-    #background header input[type="text"] {
-        width: 160px;
-        height: 40px;
-        font-size: 1.4rem;
-        padding-left: 2.8rem;
-        margin-left: -8.5rem;
-    }
-    
-    #background header label[for="search"] {
-        left: 19.5rem;
-        height: 40px;
-        width: 25px;
-    }
-
-    #background header label[for="search"] i{
-        font-size: 1.2rem;
-        left: 1rem;
-    }
-
-    #background header ul .fas {
-        font-size: 2.4rem;
-        top: -0.7rem;
-        right: 2.5rem;
-        cursor: pointer;
-    }
-
-    #background header ul {
-        gap: 4rem;
-        margin-right: -3.5rem;
-    }
-
-    #background header #other-pages {
-        right: 0.7rem;
-        font-size: 1.5rem;
-        width: 110px;
-    }
-
-    #background header #other-pages .window {
-        width: 110px;
-    }
-    
+  
     #report-message {
         width: 350px;
         height: 175px;
@@ -1321,83 +1615,57 @@ body {
 }
 
 @media screen and (max-width: 770px) {
+
+    /* POST SECTION, FOLLOW SECTION AND REPORT MESSAGE RESPONSIVE SETTINGS */
+
     #posts-container {
         top: 44rem;
         left: 20%;
         width: 430px;
     }
 
-    #posts-container #image-wrapper img {
-        object-position: 0px -200px;
-    }
-
-    #background header input[type="text"] {
-        margin-left: -8.3rem;
-        width: 160px;
-    }
-
-    #background header label[for="search"] {
-        left: 19.7rem;
-        height: 40px;
-    }
-
-    #follow-users {
+    #add-users {
         top: 11.5rem;
-        left: 28%; /* 23.5 rem*/
+        left: 28%;
         width: 320px;
         height: 280px;
     }
 
-    #follow-users header #refresh {
-        top: 1rem;
+    #add-users #users-card {
+        height: 232px;
     }
 
-    #follow-users header h3 {
+    #add-users header p {
+        top: 1.2rem;
+    }
+
+    #add-users header h3 {
         margin-top: 0;
     }
 
-    #follow-users #users-card #name {
-        bottom: 35%;
-        left: 0.3rem;
+    #add-users #users-card .name {
+        bottom: 1.7rem;
+        left: 5.4rem;
         font-size: 1.8rem;
     }
 
-    #follow-users #users-card .user:hover #name {
-        bottom: 53%;
-    }
-
-    #follow-users #users-card .user:hover .followers {
-        transition-delay: 0.2s;
+    #add-users #users-card .user:hover .name {
+        bottom: 2.7rem;
     }
     
-    #follow-users #users-card .followers {
+    #add-users #users-card .followers {
         font-size: 1.3rem;
-        left: 5.3rem;
+        left: 5.4rem;
+        bottom: 3rem;
     }
 
-    #follow-users #users-card .user button {
+    #add-users #users-card .user .add-friend {
         width: 90px;
         height: 30px;
-        left: 66%
+        left: 68%
     }
 
-    #follow-users #users-card .user.first button{
-        top: 1.5rem;
-    }
-
-    #follow-users #users-card .user.second button{
-        top: 7.4rem;
-    }
-
-    #follow-users #users-card .user.third button{
-        bottom: 7rem;
-    }
-
-    #follow-users #users-card .user.fourth button{
-        bottom: 1.4rem;
-    }
-
-    #follow-users #users-card .photo-wrapper {
+    #add-users #users-card .photo-wrapper {
         width: 30px;
         height: 30px;
     }
@@ -1418,243 +1686,302 @@ body {
 
 @media screen and (max-width: 680px) {
 
-    /* RESPONSIVE SETTINGS PHOTO - VIDEO UPLOAD*/
+    /* HEADER RESPONSIVE SETTINGS */
 
-    #background header #upload-files {
-        right: 12rem;
-    }
-
-    #background header input[type="text"] {
-        margin-left: -13rem;
-        width: 160px;
-    }
-
-    #background header label[for='search'] {
-        left: 15.3rem;
-        height: 36px;
-    }
-
-    #background header label[for="search"] i {
-        left: 0.7rem;
-    }
-
-    #background header button[id="upload"] {
-        right: 12.5rem;
-    }
-
-    #background header h3 {
+    header h3 {
         font-size: 2.4rem;
-        left: 1.8rem;
+        left: 1rem;
     }
 
-    #background header ul .fas {
-        font-size: 2.1rem;
+    header input[type="text"] {
+        margin-left: 12.4rem;
+        width: 140px;
+        padding-left: 2.4rem;
+        padding-right: 1rem;
     }
 
-    #background header ul #photo-wrapper-onclick {
-        width: 25px;
-        height: 25px;
-        top: -1.5rem;
+    header label[for='search'] {
+        left: 14.5rem;
     }
 
-    #background header #notification-icon, #background header #notification {
+    header label[for="search"] i {
+        left: 0.7rem;
+        font-size: 1rem;
+    }
+
+    /* UPLOAD PHOTO / VIDEO RESPONSIVE SETTINGS */
+
+    header button[id="upload"] {
+        right: 20.5rem;
+        width: 90px;
+        font-size: 1.3rem;
+        height: 35px;
+    }
+    
+    header #upload-files {
+        right: 17.4rem;
+    }
+
+    /* OTHER ELEMENTS IN HEADER SETTINGS */
+
+    header ul .fas {
+        font-size: 2.3rem;
+    }
+
+    header .notification-icon {
         width: 13px;
         height: 13px;
         font-size: 1rem;
         padding-right: 0.3rem;
     }
 
-    #background header #notification {
-        padding-right: 0.2rem;
+    header ul #other-pages-open {
+        width: 27px;
+        height: 27px;
+        top: -1.5rem;
     }
 
-}
+    /* HEADER OTHER PAGES WINDOW SETTINGS */
 
-@media screen and (max-width: 600px) {
-    /* RESPONSIVE SETTINGS FOR UPLOAD PHOTO - VIDEO */
-
-    #background header #upload {
-        font-size: 1rem;
-        width: 110px;
-        height: 30px;
+    header #other-pages .window p {
+        font-size: 1.4rem;
     }
 
-    #background header #upload-files {
-        top: 5.5rem;
-        right: 12rem;
-        width: 120px;
-    }
-
-    #background header #upload-files textarea {
+    header #hover-notifications, header #hover-messages, header #hover-account, header #hover-dark-mode {
         font-size: 1.1rem;
     }
 
-    #background header #upload-files form label[for="photo-video"] {
-        width: 72%;
+    header #hover-notifications {
+        right: 14.3rem;
     }
 
-    #background header #upload-files form button[type='submit'] {
+    header #hover-messages {
+        right: 10.4rem;
+    }
+
+    header #hover-account {
+        right: 5.6rem;
+    }
+
+    header #hover-dark-mode {
+        right: 0;
+        padding-inline: 0.5rem;
+    }
+
+    /* FOLLOW SECTION HEADER */
+
+    #add-users header h3 {
+        margin-left: -0.7rem;
+    }
+
+    #add-users header p {
+        right: 1.7rem;
+        top: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    /* HEADER RESPONSIVE SETTINGS*/
+
+    header {
+        height: 60px;
+    }
+
+    header h3 {
+        font-size: 1.8rem;
+    }
+
+    header input[type="text"] {
+        width: 115px;
+        height: 30px;
+        font-size: 1.1rem;
+        padding-left: 2rem;
+        margin-left: 9rem;
+        padding-right: 1rem;
+        margin-top: 0.3rem;
+    }
+
+    header label[for="search"] {
+        left: 11rem;
+        height: 30px;
+        width: 20px;
+        margin-top: 0.3rem;
+    }
+
+    /* HEADER MESSAGES AND NOTIFICATIONS WINDOWS RESPONSIVE SETTINGS */
+
+    header #info {
+        width: 190px;
+        font-size: 1.4rem;
+        right: 12rem;
+        top: 5rem;
+    }
+
+    header #info h2 {
+        font-size: 2rem;
+    }
+
+    header #info .info-text .profile-wrapper {
+        width: 25px;
+        height: 25px;
+        margin-top: 1rem;
+    }
+
+    header #info .info-text p {
+        font-size: 1.3rem;
+        margin-left: 2.8rem;
+        margin-top: -3rem;
+        width: 100px;
+    }
+
+    header #info .info-text .user-request {
+        margin-left: 1.1rem;
+    }
+
+    header #info .info-text .circle-notification {
+        right: 0.5rem;
+    }
+
+    header #messages {
+        right: 8rem;
+        width: 170px;
+        top: 5rem;
+    }
+
+    header #messages .message .profile-wrapper {
+        width: 25px;
+        height: 25px;
+        margin-left: -0.6rem;
+    }
+
+    header #messages .message p {
+        font-size: 1.15rem;
+        margin-left: 2.5rem;
+        margin-top: -1.6rem;
+    }
+
+    header #messages .message h4 {
+        left: 3.45rem;
+        margin-top: -0.3rem;
+    }
+
+    header #messages .message .circle-message {
+        right: 0.5rem;
+        width: 6px;
+        height: 6px;
+    }
+
+    header #messages .message {
+        width: 102%;
+    }
+
+    /* OTHER ELEMENTS IN HEADER RESPONSIVE SETTINGS */
+    
+    header ul .fas {
+        font-size: 2rem;
+        top: -0.8rem;
+        right: 1.5rem;
+        margin-right: 0rem;
+    }
+
+    header ul #darkmode-toggle {
+        width: 21px;
+        margin-left: -2rem;
+        margin-right: 1rem;
+    }
+
+    header ul {
+        gap: 2.7rem;
+        margin-right: -3rem;
+    }
+
+    header #other-pages-open {
+        margin-left: 0.8rem;
+    }
+
+    /* OTHER PAGES WINDOW SETTINGS */
+
+    header #other-pages {
+        font-size: 1.3rem;
+        width: 100px;
+        right: 5.2rem;
+        top: 6rem
+    }
+
+    header #other-pages .fas.fa-caret-up {
+        top: -1rem;
+    }
+
+    header #other-pages .window i {
+        font-size: 1.2rem;
+        margin-top: 0.25rem;
+    }
+
+    header #hover-notifications, header #hover-messages, header #hover-account, header #hover-dark-mode {
+        top: 5.1rem;
+    }
+
+    header #hover-notifications {
+        right: 12.3rem;
+    }
+    
+    header #hover-messages {
+        right: 8.6rem;
+    }
+    
+    header #hover-account {
+        padding-inline: 0.3rem;
+        right: 4.6rem;
+    }
+
+    header #hover-dark-mode {
+        right: -0.1rem;
+    }
+
+    /* UPLOAD PHOTO / VIDEO RESPONSIVE SETTINGS */
+
+    header button[id="upload"] {
+        font-size: 1.1rem;
+        height: 30px;
+        width: 75px;
+        right: 18rem;
+        margin-top: 0.3rem;
+    }
+
+    header #upload-files {
+        top: 5.5rem;
+        width: 120px;
+        right: 15.7rem;
+    }
+
+    header #upload-files #show-hide-preview {
+        font-size: 1.1rem;
+    }
+
+    header #upload-files #post-image-preview {
+        width: 95px;
+    }
+
+    header #upload-files form textarea {
+        font-size: 0.9rem;
+        height: 50px;
+    }
+
+    header #upload-files form button[type='submit'] {
         width: 55%;
     }
+
+    /* POSTS SECTION, FOLLOW SECTION AND REPORT MESSAGE RESPONSIVE SETTINGS */
 
     #posts-container {
         left: 7%;
         top: 42rem;
     }
 
-    #follow-users {
+    #add-users {
         left: 8.5rem;
         top: 9.5rem;
-    }
-
-    #background header #messages {
-        font-size: 1.4rem;
-        right: 4rem;
-        width: 170px;
-        top: 5rem;
-    }
-
-    #background header #messages #close-messages{
-        top: 0.8rem;
-        font-size: 2.6rem;
-    }
-
-    #background header #messages .message #profile-wrapper{
-        width: 25px;
-        height: 25px;
-        margin-left: -1rem;
-    }
-
-    #background header #messages .message p {
-        font-size: 1.15rem;
-        margin-left: 2.2rem;
-        margin-top: -1.6rem;
-    }
-
-    #background header #messages .message h4 {
-        margin-left: -2.3rem;
-        margin-top: -0.2rem;
-    }
-
-    #background header #messages .message .circle-message {
-        right: 0.3rem;
-        width: 7px;
-        height: 7px;
-    }
-
-    #background header #info {
-        width: 170px;
-        font-size: 1.4rem;
-        right: 8rem;
-        top: 5rem;
-    }
-
-    #background header #messages .message {
-        width: 102%;
-        padding-left: 1.2rem;
-    }
-
-    #background header #info .info-text .profile-wrapper {
-        width: 25px;
-        height: 25px;
-        margin-left: -0.6rem;
-    }
-
-    #background header #info .info-text p {
-        font-size: 1.3rem;
-        margin-left: 2.6rem;
-        margin-top: -3.2rem;
-    }
-
-    #background header #info .info-text .circle-notification {
-        font-size: 1.5rem;
-        right: 1rem;
-        width: 8px;
-        height: 8px;
-    }
-
-    #background header #info #close-notifications {
-        top: 0.8rem;
-        font-size: 2.6rem;
-    }
-
-    #background header {
-        height: 60px;
-    }
-
-    #background header h3 {
-        font-size: 1.8rem;
-        left: 1.4rem;
-    }
-
-    #background header label[id="upload"] {
-        width: 123px;
-        font-size: 1.2rem;
-        height: 30px;  
-        right: 11rem;
-        padding-top: 0.5rem;
-        }
-
-    #background header input[type="text"] {
-        width: 124px;
-        height: 30px;
-        font-size: 1.2rem;
-        padding-left: 2rem;
-        margin-left: -16.5rem;
-        padding-right: 1rem;
-    }
-    
-    #background header label[for="search"] {
-        left: 11.5rem;
-        height: 30px;
-        width: 20px;
-    }
-
-    #background header label[for="search"] i {
-        font-size: 1rem;
-    }
-
-    #background header ul .fas {
-        font-size: 2rem;
-        top: -0.8rem;
-        right: 1.5rem;
-        cursor: pointer;
-    }
-
-    #background header ul .fas {
-        margin-right: -0.5rem;
-    }
-
-    #background header ul {
-        gap: 2.7rem;
-        margin-right: -4rem;
-    }
-
-    #background header #photo-wrapper-onclick {
-        width: 25px;
-        height: 25px;
-        margin-top: 0.7rem; 
-        margin-left: 1rem;
-    }
-
-    #background header #photo-wrapper-onclick img{
-        width: 25px;
-        height: 25px;
-    }
-
-    #background header #other-pages {
-        font-size: 1.3rem;
-        width: 100px;
-        right: 0.2rem;
-        top: 6rem
-    }
-
-    #background header #other-pages .window {
-        width: 100px;
-    }
-
-    #background header #other-pages i {
-        font-size: 1.2rem;
     }
 
     #report-message {

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/a18d53579f.js" crossorigin="anonymous"></script>
+        <link href="settings.css" rel="stylesheet">
+        <title>Settings page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Poppins&family=Open Sans&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1><a href="/main-page/index.html">Fakebook</a></h1>
+
+            <div id="search-wrapper">
+                <i class='fas fa-magnifying-glass'></i>
+                <input type="text" id="search" placeholder="Search fakebook">
+            </div>
+
+            <i class="fas fa-bell" id="notification-open"><span id="notification-icon"></span></i>
+
+            <button id="photo-wrapper-onclick"><img src="/images/Gryz-Szymon.jpeg"></button>
+
+            <span id="hover-notifications">Notifications</span>
+
+            <span id="hover-account">Account</span>
+
+            <!-- NOTIFICATION WINDOW -->
+
+            <div id="info">
+                <h2>Notifications</h2>
+                <i id="close-notifications">+</i>     
+
+                <div class="info-text">                                   
+                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">
+                    <p class="info-content">Charles has a birthday today.</p>
+                    <i class="circle-notification"></i>
+                </div>
+
+                <div class="info-text">                                   
+                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">
+                    <p class="info-content">Charles invited you to friends.</p>
+                    <form class="user-request">
+                        <input type="submit" class="confirm" name="user-friend-action" value="Confirm">
+                        <span class="after-confirm">Invitation confirmed.</span>
+                        <input type="submit" class="remove" name="user-friend-action" value="Remove">
+                        <span class="after-remove">Invitation removed.</span>
+                    </form>
+                    <i class="circle-notification"></i>
+                </div>
+
+                <div class="info-text">                                   
+                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">
+                    <p class="info-content">Charles invited you to a group.</p>
+                    <form class="user-request">
+                        <input type="submit" class="accept" name="user-group-action" value="Accept">
+                        <span class="after-accept">Invitation accepted.</span>
+                        <input type="submit" class="decline" name="user-group-action" value="Decline">
+                        <span class="after-decline">Invitation declined.</span>
+                    </form>
+                    <i class="circle-notification"></i>
+                </div>  
+
+            </div>
+
+            <!-- OTHER PAGES WINDOW -->
+
+            <div id="other-pages">
+                <i class="fas fa-caret-up"></i>
+                <a href="/main-page/index.html">
+                    <div class="window" id="first-window">
+                        <i class='fas fa-house'></i>
+                        <p>Home</p>
+                    </div>
+                </a>
+
+                <a href="/profile-page/profile.html">
+                    <div class="window">
+                        <i class="fas fa-user"></i>
+                        <p>Profile</p>
+                    </div>
+                </a>
+
+                <a href="/login-register-page/login-register.html">
+                    <div class="window" id="last-window">
+                        <i class="fas fa-door-open"></i>
+                        <p>Log Out</p>
+                    </div>
+                </a>
+            </div>
+
+        </header>
+        
+        <main>
+            <div id="settings-content">
+                <div id="navigation">
+                    <h3 class="activate-form">Basic Info</h3>
+                    <h3 class="activate-form">Location</h3>
+                    <h3 class="activate-form">Hobby and education</h3>
+                    <h3 class="activate-form">Contact</h3>
+                    <h3 class="activate-form">People</h3>
+                    <h3 class="activate-form">Password</h3>
+                </div>
+
+                <div id="change-profile">
+                    <img src="/images/Gryz-Szymon.jpeg" class="profile">
+                    <div id="change-profile-info">
+                        <p>Szymon Gryz</p>
+                        <button id="change-profile-image-button">Change your profile image</button>
+                    </div>
+                </div>
+                
+                    <form id="change-profile-image-window">
+                        <h2 id="change-profile-title">Change your profile image</h2>
+                        <div id="image-wrapper">
+                            <p id="image-placeholder">
+                                <span style="pointer-events: none">Your</span>
+                                <span style="pointer-events: none">Image</span>
+                                <span style="pointer-events: none">Here</span>
+                            </p>
+                        </div>
+                        <label for="choose-image" id="choose-image-label">
+                            <i class="fas fa-cloud-arrow-up" style="pointer-events: none"></i>
+                            <input type="file" accept="image/*" id="choose-image" onchange="showImage(event)" style="display: none">
+                        </label>
+                        <input type="submit" value="Upload" id="upload-image">
+                    </form>
+
+                    <div id="black-background"></div>
+
+                <form id="basic-info" class="forms">
+
+                    <div class="info">
+                        <p class='info-to-change-basic'>First Name</p>
+                        <input type="text" placeholder="First name">
+                    </div>
+                    
+                    <div class="info">
+                        <p class='info-to-change-basic'>Last Name</p>
+                        <input type="text" placeholder="Last name">
+                    </div>
+
+                    <div class="info">
+                        <p class='info-to-change-basic'>Gender</p>
+                        <!-- <input type="text" placeholder="Gender"> -->
+                        <select>
+                            <option selected disabled>Choose your option</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="info">
+                        <p class='info-to-change-basic'>Birth date</p>
+                        <input type="date">
+                    </div>
+
+                    <input type="submit" class="submit-button" value="Send">
+
+                </form>
+
+                <form id="live-places" class="forms">
+
+                    <div class="info">
+                        <p class='info-to-change-places'>Live place</p>
+                        <input type="text" placeholder="Live place">
+                    </div>
+
+                    <div class="info">
+                        <p class='info-to-change-places'>From</p>
+                        <input type="text" placeholder="From">
+                    </div>
+
+                    <input type="submit" class="submit-button" value="Send">
+
+                </form>
+
+                <form id="hobby-education" class="forms">
+
+                    <div class="info">
+                        <p class='info-to-change-hobby-education'>Hobby</p>
+                        <input type="text" placeholder="Hobby">
+                    </div>
+
+                    <div class="info">
+                        <p class='info-to-change-hobby-education'>School</p>
+                        <input type="text" placeholder="School">
+                    </div>
+
+                    <input type="submit" class="submit-button" value="Send">
+
+                </form>
+
+                <form id="contact" class="forms">
+
+                    <div class="info">
+                        <p class='info-to-change-contact'>Number</p>
+                        <input type="number" placeholder="Number">
+                    </div>
+
+                    <div class="info">
+                        <p class='info-to-change-contact'>E-mail</p>
+                        <input type="email" placeholder="E-mail">
+                    </div>
+
+                    <input type="submit" class="submit-button" value="Send">
+
+                </form>
+                
+                <form id="close-people" class="forms">
+                    
+                    <div class="info">
+                        <p class='info-to-change-people'>Relationship</p>
+                        <!-- <input type="text" placeholder="Relationship"> -->
+                        <select>
+                            <option selected disabled>Choose your option</option>
+                            <option>Husband</option>
+                            <option>Wife</option>
+                            <option>Son</option>
+                            <option>Daughter</option>
+                            <option>Father</option>
+                            <option>Mother</option>
+                            <option>Brother</option>
+                            <option>Sister</option>
+                            <option>Grandfather</option>
+                            <option>Grandmother</option>
+                            <option>Cousin</option>
+                            <option>Nephew</option>
+                            <option>Niece</option>
+                        </select>
+                    </div>
+
+                    <div class="info">
+                        <p class='info-to-change-people'>Family member</p>
+                        <input type="text" placeholder="Family member">
+                    </div>
+
+                    <input type="submit" class="submit-button" value="Send">
+
+                </form>
+
+                <form id="change-password" class="forms">
+
+                    <div class="info">
+                        <p class="change-password-info">Old password</p>
+                        <input placeholder="Old password">
+                    </div>
+                    
+                    <div class="info">
+                        <p class="change-password-info">New password</p>
+                        <input placeholder="New password" minlength = '6'>
+                    </div>
+
+                    <div class="info">
+                        <p class="change-password-info">Repeat password</p>
+                        <input placeholder="Repeat password">
+                    </div>
+
+                    <input type="submit" class="submit-button" value="Change password">
+                </form>
+
+            </div>
+
+        </main>
+        <script type="text/javascript" src="settings.js"></script>
+        <script type="text/javascript" src="/darkmode-other.js"></script>
+    </body>
+</html>

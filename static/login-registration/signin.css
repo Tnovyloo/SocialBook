@@ -4,14 +4,17 @@
     box-sizing: border-box;
 }
 
+:root {
+    --outer-color: rgb(0, 0, 70);
+    --inner-color: rgb(0, 0, 95);
+}
+
 body {
-    background: linear-gradient(180deg, darkblue 0%, darkblue 5%, hsl(220, 100%, 35%) 35%,hsl(220, 100%, 35%) 65%, darkblue 95%, darkblue 100%);
-    font-family: 'Poppins'
+    background: linear-gradient(180deg, var(--outer-color) 0%, var(--outer-color) 5%, var(--inner-color) 35%,var(--inner-color) 65%, var(--outer-color) 95%, var(--outer-color) 100%);
 }
 
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding-inline: 1rem;
     height: 60px;
@@ -20,6 +23,7 @@ header {
 header h1 {
     color: white;
     text-shadow: 0px 0px 2px black;
+    font-family: 'Poppins';
 }
 
 #background {
@@ -37,12 +41,10 @@ header h1 {
     border: none;
     position: relative;
     overflow: hidden;
-    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    border-top: 1px solid rgba(255, 255, 255, 0.5)
+    border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-#background form {
+#background fieldset form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,24 +56,23 @@ header h1 {
 #background form input {
     width: 265px;
     height: 47px;
-    border-radius: 10px;
+    border-radius: 6px;
     padding-inline: 1rem;
     background-color: hsl(0, 0%, 85%);
     border: 1px solid gray;
     font-size: 1.1rem;
     margin-bottom: 1.4rem;
     outline: none;
-    color: black;
 }
 
 #background form button {
+    width: 220px;
     height: 45px;
+    font-size: 1.3rem;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1.3rem;
-    width: 220px;
     border: none;
-    background-color: hsl(250, 100%, 25%);
+    background-color: hsl(250, 100%, 17%);
     color: white;
     font-weight: bold;
 }
@@ -97,11 +98,12 @@ header h1 {
 /* LOGIN / REGISTER TITLES */
 
 #background #login-section label {
-    color:hsl(250, 100%, 25%);
+    color:hsl(250, 100%, 18%);
     cursor: pointer;
     transition: 0.7s;
     margin-top: -15.8rem;
     margin-bottom: 2rem;
+    font-family: 'Poppins'
 }
 
 #background #registration-section h1 {
@@ -110,6 +112,7 @@ header h1 {
     transition: 0.7s;
     margin-top: -2rem;
     margin-bottom: 4rem;
+    font-family: "Poppins"
 }
 
 /* APPEAR LOGIN WINDOW */
@@ -131,4 +134,3 @@ header h1 {
 input[type='checkbox'] {
     display: none;
 }
-

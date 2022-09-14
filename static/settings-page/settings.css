@@ -4,17 +4,69 @@
     padding: 0
 }
 
+:root {
+    --main-parts-clr: hsl(0, 0%, 96%);
+    --sec-clr-text: hsl(200, 100%, 39%);
+    --sec-clr: hsl(200, 100%, 44%);
+    --hov-sec-clr: hsl(200, 100%, 35%);
+
+    --decline-clr: hsl(0, 0%, 90%);
+    --decline-hov-clr: hsl(0, 0%, 86%);
+    
+    --txt-clr: black;
+    
+    --bg-clr: hsl(0, 0%, 93%);
+    --shad-clr: gray;
+    --border-clr: black;
+
+    --inp-clr: hsl(0, 0%, 90%);
+    --inp-border-clr: rgb(220, 220, 220);
+
+    --not-clr: red;
+    --hov-clr: hsl(0, 0%, 87%);
+    --hov-nav-clr: hsl(0, 0%, 92%);
+    --win-clr: hsl(0, 0%, 90%);
+}
+
+.darkmode {
+    --main-parts-clr: rgb(40, 40, 40);
+    --sec-clr-text: hsl(200, 100%, 39%);
+    --sec-clr: hsl(200, 100%, 30%);
+    --hov-sec-clr: hsl(200, 100%, 25%);
+
+    --decline-clr: hsl(0, 0%, 80%);
+    --decline-hov-clr: hsl(0, 0%, 75%);
+
+    --txt-clr: white;
+    --sel-cal-clr: rgba(255, 255, 255, 0.3);
+    --bg-clr: rgba(0, 0, 0, 0.9);
+    --shad-clr: rgb(80, 80, 80);
+    --border-clr: rgb(80, 80, 80);
+
+    --inp-clr: rgb(50, 50, 50);
+    --inp-border-clr: rgb(80, 80, 80);
+
+    --not-clr: rgb(120, 0, 0);
+
+    --hov-clr: rgb(33, 33, 33);
+    --hov-nav-clr: rgb(29, 29, 29);
+
+    --win-clr: rgb(40, 40, 40);
+}
+
 html {
     font-size: 62.5%;
-    background-color: hsl(0, 0%, 93%);
+}
+
+body {
+    background-color: var(--bg-clr);
 }
 
 header {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: var(--main-parts-clr);
     height: 80px;
-    position: relative;
     padding-inline: 2rem;
 }
 
@@ -24,7 +76,7 @@ header h1 {
 }
 
 header h1 a {
-    color: black;
+    color: var(--txt-clr);
     text-decoration: none;
 }
 
@@ -33,7 +85,7 @@ header #search-wrapper {
     margin-left: 1rem;
 }
 
-header .fas.fa-magnifying-glass {
+header #search-wrapper .fas.fa-magnifying-glass {
     position: absolute;
     font-size: 1.7rem;
     color: gray;
@@ -42,7 +94,7 @@ header .fas.fa-magnifying-glass {
     transform: translateY(-50%)
 }
 
-header #search  {
+header #search-wrapper #search  {
     height: 45px;
     width: 250px;
     border-radius: 15px;
@@ -51,9 +103,9 @@ header #search  {
     margin-left: 2rem;
     border: none;
     outline: none;
-    background-color: hsl(0, 0%, 94%);
+    background-color: var(--inp-clr);
     font-size: 2rem;
-    font-family: 'Open Sans'
+    font-family: 'Kanit';
 }
 
 header .fas.fa-bell {
@@ -61,36 +113,21 @@ header .fas.fa-bell {
     right: 13rem;
     font-size: 3rem;
     cursor: pointer;
+    color: var(--txt-clr);
 }
 
-header #hover-notifications, header #hover-account {
-    font-size: 1.5rem;
-    background-color: black;
-    color: hsl(0, 0%, 84%);
-    padding-inline: 0.7rem;
-    padding-block: 0.4rem;
-    border-radius: 5px;
+header .fas.fa-bell #notification-icon {
     position: absolute;
-    top: 7rem;
-    opacity: 0;
-    transition: 0.5s;
-    transition-timing-function: cubic-bezier(0.26, 0.78, 0.8, 0.99);
-}
-
-header #hover-notifications {
-    right: 9.5rem;
-}
-
-header #hover-account {
-    right: 2.5rem;
-}
-
-header #notification-open:hover ~ #hover-notifications {
-    opacity: 1;
-}
-
-header #photo-wrapper-onclick:hover ~ #hover-account {
-    opacity: 1;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--not-clr);
+    font-size: 1.7rem;
+    color: white;
+    font-family: 'consolas';
+    text-align: center;
+    top: -0.5rem;
+    right: -0.5rem;
 }
 
 header #photo-wrapper-onclick {
@@ -110,103 +147,66 @@ header #photo-wrapper-onclick img {
     pointer-events: none;
 }
 
-/* CHANGE PAGE OPTION */
-
-header #other-pages {
-    position: absolute;
-    width: 130px;
-    font-size: 2rem;
-    right: 3.2rem;
-    top: 8rem;
-    display: none;
-}
-
-header #other-pages .window {
-    width: 130px;
-    padding: 0.5rem;
-    padding-left: 1rem;
-    background-color: white;
-}
-
-header #other-pages #first-window {
-    border-radius: 5px 5px 0 0
-}
-
-header #other-pages #last-window {
-    border-radius: 0 0 5px 5px;
-}
-
-header #other-pages .window:hover {
-    background-color: hsl(0, 0%, 97%)
-}
-
-header #other-pages .fas.fa-caret-up {
-    position: absolute;
-    right: 0.5rem;
-    top: -1.3rem;
-    font-size: 2.2rem;
-    color: white;
-}
-
-header #other-pages p {
-    display: inline-block;
-    font-family: 'Lato';
-    vertical-align: top;
-}
-
-header #other-pages a {
-    text-decoration: none;
-    color: black;
-}
-
-header #other-pages i {
+header #hover-notifications, header #hover-account {
     font-size: 1.5rem;
-    margin-right: 0.5rem;
-    vertical-align: middle;
+    background-color: black;
+    color: hsl(0, 0%, 84%);
+    padding-inline: 0.7rem;
+    padding-block: 0.4rem;
+    border-radius: 5px;
+    position: absolute;
+    top: 7rem;
+    opacity: 0;
+    transition: 0.5s;
+    transition-timing-function: cubic-bezier(0.26, 0.78, 0.8, 0.99);
 }
 
-header #other-pages .fas.fa-house {
-    margin-left: -0.2rem;
-    margin-right: 0.35rem;
+header #hover-notifications {
+    right: 9.75rem;
 }
 
-header #other-pages .fas.fa-door-open {
-    margin-right: 0.3rem;
-    margin-left: -0.15rem;
+header #hover-account {
+    right: 2.55rem;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin-top: -80px;
+header #notification-open:hover ~ #hover-notifications {
+    opacity: 1;
+}
+
+header #photo-wrapper-onclick:hover ~ #hover-account {
+    opacity: 1;
 }
 
 header #info {
     position: absolute;
     width: 250px;
-    background-color: white;
+    background-color: var(--win-clr);
     right: 11rem;
     font-size: 1.7rem;
     border-radius: 20px 20px 10px 10px;
     padding: 1rem;
     display: none;
     top: 6rem;
+    z-index: 1;
 }
 
 header #info i {
     position: absolute;
-    right: 1.4rem;
-    top: 0.8rem;
+}
+
+header #info #close-notifications {
+    right: 2rem;
     font-weight: bold;
     font-size: 3rem;
     transform: rotate(45deg);
+    top: 0.8rem;
     cursor: pointer;
+    color: var(--txt-clr)
 }
 
 header #info h2 {
     margin-bottom: 0.7rem;
+    color: var(--txt-clr)
 }
 
 header #info .info-text {
@@ -217,11 +217,12 @@ header #info .info-text {
     padding-bottom: 0.7rem;
     border-radius: 5px;
     padding-top: 0.6rem;
+    color: var(--txt-clr)
 }
 
 header #info .info-text .profile-wrapper {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
 }
 
@@ -231,43 +232,189 @@ header #info .info-text p {
     margin-left: 4.5rem;
 }
 
+header #info .info-text .user-request {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.7rem;
+    margin-left: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+header #info .info-text .user-request [name="user-friend-action"], header #info .info-text .user-request [name="user-group-action"] {
+    width: 65px;
+    height: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+header #info .info-text .user-request .confirm, header #info .info-text .user-request .accept {
+    background-color: var(--sec-clr);
+    color: linen;
+}
+
+header #info .info-text .user-request .remove, header #info .info-text .user-request .decline {
+    background-color: var(--decline-clr)
+}
+
+header #info .info-text .user-request .confirm:hover, header #info .info-text .user-request .accept:hover {
+    background-color: var(--hov-sec-clr)
+}
+
+header #info .info-text .user-request .remove:hover, header #info .info-text .user-request .decline:hover  {
+    background-color: var(--decline-hov-clr)
+}
+
+header #info .info-text .user-request .after-remove, 
+header #info .info-text .user-request .after-confirm,
+header #info .info-text .user-request .after-accept,
+header #info .info-text .user-request .after-decline {
+    display: none;
+    position: absolute;
+    bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-family: 'Open Sans'
+}
+
+header #info .info-text .user-request .after-confirm, header #info .info-text .user-request .after-accept {
+    color: hsl(120, 20%, 60%)
+}
+
+header #info .info-text .user-request .after-remove, header #info .info-text .user-request .after-decline {
+    color: hsl(0, 100%, 30%)
+}
+
 header #info .info-text .circle-notification {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: blue;
+    background-color: var(--sec-clr);
     position: absolute;
     top: 50%;
-    transform: translate(0, -50%)
-}
-
-header #notification-icon {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background-color: red;
-    font-size: 1.7rem;
-    color: white;
-    font-family: consolas;
-    text-align: center;
-    top: -0.5rem;
-    right: -0.5rem;
+    transform: translate(0, -50%);
+    right: 1rem;
 }
 
 /* NOTIFICATION PANEL EFFECTS */
 
 header #info .info-text:hover {
-    background-color: hsl(240, 0%, 93%)
+    background-color: var(--hov-clr)
+}
+
+/* CHANGE PAGE OPTION */
+
+header #other-pages {
+    position: absolute;
+    width: 130px;
+    font-size: 2rem;
+    right: 3.9rem;
+    top: 8rem;
+    display: none;
+}
+
+header #other-pages .fas.fa-caret-up {
+    position: absolute;
+    right: 1rem;
+    top: -1.3rem;
+    font-size: 2.2rem;
+    color: var(--win-clr);
+}
+
+header #other-pages a {
+    text-decoration: none;
+    color: var(--txt-clr);
+}
+
+header #other-pages a .window {
+    width: 130px;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    background-color: var(--win-clr);
+}
+
+header #other-pages a .window:hover {
+    background-color: var(--hov-nav-clr)
+}
+
+header #other-pages a #first-window {
+    border-radius: 5px 5px 0 0;
+}
+
+header #other-pages a #last-window {
+    border-radius: 0 0 5px 5px;
+}
+
+header #other-pages a .window p {
+    display: inline-block;
+    font-family: 'Lato';
+    font-size: 1.7rem;
+    vertical-align: middle;
+    margin-top: -0.1rem;
+}
+
+header #other-pages a .window i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+header #other-pages a .window .fas.fa-house {
+    margin-left: -0.2rem;
+    margin-right: 0.35rem;
+}
+
+header #other-pages a .window .fas.fa-door-open {
+    margin-right: 0.3rem;
+    margin-left: -0.15rem;
+}
+
+/* MAIN SECTION WITH SETTINGS CONTENT */
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -80px;
 }
 
 #settings-content {
-    background-color: hsl(0, 0%, 98%);
+    background-color: var(--main-parts-clr);
     position: relative;
     padding-left: 28rem;
     font-size: 2.3rem;
     min-height: 340px;
-    box-shadow: 0px 1px 7px gray;
+    box-shadow: 0px 1px 7px var(--shad-clr);
+}
+
+#settings-content #navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    border-right: 1px solid var(--border-clr);
+    padding-right: 1.5rem;
+    margin-left: 1rem;
+    padding-top: 1rem;
+}
+
+#settings-content #navigation h3 {
+    cursor: pointer;
+    width: 280px;
+    height: 50px;
+    margin: -1rem -1.5rem 0 -1rem;
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    font-weight: normal;
+    color: var(--txt-clr)
+}
+
+#settings-content #navigation h3:hover {
+    background-color: var(--hov-nav-clr)
 }
 
 #settings-content #change-profile {
@@ -280,7 +427,7 @@ header #info .info-text:hover {
     margin-bottom: 2.4rem;
 }
 
-#settings-content #change-profile img {
+#settings-content #change-profile .profile {
     position: absolute;
     width: 50px;
     height: 50px;
@@ -292,222 +439,165 @@ header #info .info-text:hover {
 }
 
 #settings-content #change-profile #change-profile-info p {
-    margin-bottom: -0.3rem;
+    margin-bottom: -0.5rem;
+    color: var(--txt-clr)
 }
 
-#settings-content #change-profile #change-profile-info button {
-    background-color: hsl(0, 0%, 98%);
+#settings-content #change-profile #change-profile-info #change-profile-image-button {
+    background-color: inherit;
     border: none;
-    color: hsla(200, 100%, 55%, 1);
+    color: var(--sec-clr-text);
     cursor: pointer;
 }
 
 /* WINDOW WITH OPTION TO CHANGE PROFILE */
 
 #settings-content #change-profile-image-window {
-    background-color: hsl(0, 0%, 84%);
+    background-color: var(--win-clr);
     display: none;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 1rem;
+    padding: 3rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 2rem;
+    z-index: 1;
+    width: 475px;
 }
 
-#settings-content #change-profile-image-window label input {
-    display: none;
+#settings-content #change-profile-image-window #change-profile-title {
+    font-family: 'Kanit';
+    color: var(--txt-clr)
 }
 
-#settings-content #change-profile-image-window label {
-    background-color: hsla(200, 100%, 55%, 0.5);
-    width: 100px;
-    height: 35px;
+#settings-content #change-profile-image-window #image-wrapper {
     position: relative;
-    cursor: pointer;
-    border-radius: 5px;
+    border: 2px solid var(--txt-clr);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-size: cover;
 }
 
-#settings-content #change-profile-image-window label::after {
+#settings-content #change-profile-image-window #image-wrapper #image-placeholder {
     position: absolute;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    content: 'Choose image';
-    font-size: 1.6rem;
+    font-size: 3.4rem;
+    gap: 1.5rem;
+    z-index: -1;
+    font-size: 3.1rem;
+    color: var(--txt-clr)
+}
+
+#settings-content #change-profile-image-window label {
+    display: flex;
+    background-color: var(--sec-clr);
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--txt-clr)
 }
 
 #settings-content #change-profile-image-window input[type='submit'] {
-    margin: 0;
-    padding: 0;
-}
-
-#settings-content #navigation {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    position: absolute;
-    left: 0;
-    height: 100%;
-    border-right: 1px solid black;
-    padding-right: 1.5rem;
-    margin-left: 1rem;
-    padding-top: 1rem;
-}
-
-#settings-content #navigation hr {
-    border-color: black;
-    width: 112%;
-    margin-left: -1rem;
-}
-
-#settings-content #navigation h3 {
-    display: inline-block;
-    cursor: pointer;
-    width: 280px;
+    width: 175px;
     height: 50px;
-    margin-top: -1rem;
-    margin-left: -1rem;
-    margin-right: -1.5rem;
-    padding-top: 1rem;
-    padding-left: 1.5rem;
-    font-weight: 400;
+    background-color: var(--sec-clr);
+    border: none;
+    border-radius: 3px;
+    font-family: 'Kanit';
+    font-weight: bold;
+    font-size: 2.1rem;
+    cursor: pointer;
+    color: var(--txt-clr)
 }
 
-#settings-content #navigation h3:hover {
-    background-color: hsl(0, 0%, 92%)
+#black-background {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
 }
 
-#settings-content form {
+/* FORMS WITH OPTION TO CHANGE INFO ABOUT PERSON IN SETTINGS CONTENT */
+
+#settings-content form:not(:first-of-type) {
     margin-left: 3rem;
 }
 
-#settings-content .info {
+#settings-content form .info {
     width: 500px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
 }
 
-#settings-content .info p {
+#settings-content form .info p {
     font-family: 'Lato';
     display: inline-block;
     vertical-align: top;
-    margin-bottom: 2rem;
-    font-weight: 700;
+    font-weight: bold;
     font-size: 1.9rem;
+    color: var(--txt-clr)
 }
 
-#settings-content .info input {
+#settings-content form .info input, #settings-content form .info select {
     padding-inline: 1rem;
     vertical-align: top;
     width: 200px;
     height: 30px;
     border: none;
     outline: none;
-    background-color: white;
-    border-radius: 2px;
-    border: 1px solid rgb(220, 220, 220);
+    background-color: var(--inp-clr);
+    border-radius: 3px;
+    border: 1px solid var(--inp-border-clr);
+    color: var(--sel-cal-clr)
 }
 
-#settings-content .info input[type='number']::-webkit-inner-spin-button {
+#settings-content form .info select {
+    padding-inline: 0.4rem;
+    color: var(--sel-cal-clr)
+}
+
+#settings-content form .info input[type='number']::-webkit-inner-spin-button {
     display: none;
 }
 
-#settings-content form input[type='submit'] {
+#settings-content form:not(:first-of-type) input[type='submit'] {
     padding-inline: 1rem;
     width: 80px;
     height: 30px;
     border-radius: 7px;
     border: none;
     cursor: pointer;
-    background-color: hsla(200, 100%, 55%, 0.5);
+    background-color: var(--sec-clr);
     margin-left: 117px; 
-    margin-bottom: min(20px)
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: var(--txt-clr);
 }
 
 #settings-content form input[value="Change password"] {
-    width: 140px;
+    width: 140px !important;
 }
 
 @media only screen and (max-width: 850px) {
-
-    /* SETTINGS CONTENT NAVIGATION (LEFT SIDE)*/
-
-    #settings-content {
-        width: 450px;
-        padding-left: 145px;
-    }
-
-    #settings-content #navigation h3:nth-of-type(3) {
-        padding-top: 0.3rem;
-    }
-
-    #settings-content #navigation h3 {
-        font-size: 2rem;
-        width: 140px;
-        padding-top: 1.3rem;
-    }
-
-    /* SETTINGS CONTENT RIGHT SIDE, INFORMATIONS RESPONSIVE SETTINGS*/
-
-    #settings-content .info {
-        width: 205px;
-    }
-
-    #settings-content .info p {
-        font-size: 1.5rem;
-        margin-top: 0.5rem;
-        margin-right: -2rem;
-    }
-
-    #settings-content .info p {
-        min-width: 100px;
-    }
-
-    #settings-content .info .info-to-change-hobby-education {
-        min-width: 70px
-    }
-
-    #settings-content .info .info-to-change-contact {
-        min-width: 80px;
-    }
-
-    #settings-content .info .info-to-change-people {
-        min-width: 150px;
-    }
-
-    #settings-content .info .change-password-info{
-        min-width: 160px;
-    }
-
-    #settings-content .info input {
-        margin-top: -1rem;
-    }
-
-    #settings-content form input[type='submit'] {
-        margin-left: 0px !important;
-        margin-top: 1rem;
-    }
-
-    /* SETTINGS CONTENT RIGHT SIDE, CHANGE PROFILE RESPONSIVE SETTINGS*/
-
-    #settings-content #change-profile #change-profile-info p:nth-of-type(1) {
-        font-size: 2rem;
-    }
-
-    #settings-content #change-profile #change-profile-info p:nth-of-type(2) {
-        font-size: 1.5rem;
-        margin-top: 0.2rem;
-    }
-
-    #settings-content #change-profile img {
-        width: 40px;
-        height: 40px;
-    }
 
     /* HEADER RESPONSIVE SETTINGS */
 
@@ -517,15 +607,16 @@ header #info .info-text:hover {
 
     header #search-wrapper {
         width: 240px;
+        margin-left: -0.2rem;
     }
 
-    header #search-wrapper input[type="text"] {
-        width: 220px;
+    header #search-wrapper #search {
+        width: 200px;
         height: 36px;
         font-size: 1.7rem;
     }
 
-    header .fas.fa-magnifying-glass {
+    header #search-wrapper .fas.fa-magnifying-glass {
         font-size: 1.4rem;
         color: gray;
         left: 3.2rem;
@@ -549,13 +640,137 @@ header #info .info-text:hover {
     }
 
     /* HEADER OTHER PAGES WINDOW RESPONSIVE SETTINGS */
-    header #other-pages .window p {
+
+    header #other-pages {
+        width: 110px;
+    }
+
+    header #other-pages .fas.fa-caret-up {
+        right: 0.9rem;
+    }
+
+    header #other-pages a .window {
+        width: 110px;
+    }
+    
+    header #other-pages a .window p {
         font-size: 1.5rem;
-        margin-top: 0.4rem;
+        margin-top: -0.1rem;
+    }
+
+    /* SETTINGS CONTENT NAVIGATION (LEFT SIDE)*/
+
+    #settings-content {
+        width: 450px;
+        padding-left: 145px;
+    }
+
+    #settings-content #navigation h3:nth-of-type(3) {
+        padding-top: 0.3rem;
+    }
+
+    #settings-content #navigation h3 {
+        font-size: 2rem;
+        width: 140px;
+        padding-top: 1.3rem;
+    }
+
+    /* SETTINGS CONTENT RIGHT SIDE */
+
+    /* change profile settings */
+
+    #settings-content #change-profile #change-profile-info {
+        margin-left: 5.2rem;
+    }
+
+    #settings-content #change-profile #change-profile-info p {
+        font-size: 2rem;
+    }
+
+    #settings-content #change-profile .profile {
+        width: 40px;
+        height: 40px;
+    }
+
+    #settings-content #change-profile-image-window {
+        width: 330px;
+    }
+
+    #settings-content #change-profile-image-window h2 {
+        font-size: 2.9rem;
+        width: 230px;
+    }
+    
+    #settings-content #change-profile-image-window #image-wrapper {
+        width: 180px;
+        height: 180px;
+    }
+
+    #settings-content #change-profile-image-window #image-wrapper #image-placeholder {
+        font-size: 2.7rem;
+        gap: 1rem;
+    }
+
+    #settings-content #change-profile-image-window label {
+        font-size: 2.5rem;
+        width: 60px;
+        height: 60px;
+    }
+
+    #settings-content #change-profile-image-window input[type='submit'] {
+        width: 140px;
+        height: 40px;
+        font-size: 1.9rem;
+    }
+
+    /* informations settings */
+
+    #settings-content form:not(:first-of-type) {
+        margin-top: -1rem;
+    }
+
+    #settings-content form .info {
+        width: 205px;
+    }
+
+    #settings-content form .info p {
+        font-size: 1.5rem;
+        min-width: 105px;
+    }
+
+    /* setting width of every info to stay with responsive settings of greater width */
+
+    #settings-content .info .info-to-change-basic {
+        min-width: 93px;
+    }
+    
+    #settings-content .info .info-to-change-places {
+        min-width: 83px;
+    }
+
+    #settings-content .info .info-to-change-hobby-education {
+        min-width: 60px
+    }
+
+    #settings-content .info .info-to-change-contact {
+        min-width: 70px;
+    }
+
+    #settings-content form .info .info-to-change-people {
+        min-width: 150px;
+    }
+
+    #settings-content form .info .change-password-info {
+        min-width: 150px;
+    }
+
+    #settings-content form input[type='submit'] {
+        margin-left: 0px !important;
     }
 }
 
 @media only screen and (max-width: 600px) {
+
     /* HEADER RESPONSIVE SETTINGS */
 
     header .fas.fa-bell {
@@ -570,21 +785,17 @@ header #info .info-text:hover {
         width: 200px;
     }
 
-    header #search-wrapper input[type="text"] {
+    header #search-wrapper #search {
         width: 180px;
         font-size: 1.52rem;
     }
 
-    header #search-wrapper i {
-        font-size: 1.25rem;
+    header #search-wrapper .fas.fa-magnifying-glass {
+        font-size: 1.2rem;
         margin-left: 0.2rem;
     }
 
-    /* HEADER APPEARING WINDOWS RESPONSIVE SETTINGS */
-
-    header #other-pages {
-        right: 2.9rem;
-    }
+    /* NOTIFICATIONS AND OTHER PAGES RESPONSIVE SETTINGS */
 
     header #info {
         right: 8rem;
@@ -601,33 +812,15 @@ header #info .info-text:hover {
         margin-right: 1rem;
     }
 
+    header #other-pages {
+        right: 2.9rem;
+    }
+
     header #hover-notifications {
         right: 6rem;
     }
 
     header #hover-account {
         right: 1.4rem;
-    }
-}
-
-@media only screen and (min-width: 851px) {
-    #settings-content .info p {
-        min-width: 100px;
-    }
-
-    #settings-content .info .info-to-change-hobby-education {
-        min-width: 70px
-    }
-
-    #settings-content .info .info-to-change-contact {
-        min-width: 80px;
-    }
-
-    #settings-content .info .info-to-change-people {
-        min-width: 150px;
-    }
-
-    #settings-content .info .change-password-info{
-        min-width: 160px;
     }
 }

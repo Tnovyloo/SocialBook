@@ -8,34 +8,91 @@ html {
     font-size: 62.5%;
 }
 
-body {
-    overflow-x: hidden;
+:root {
+    --main-elements-color: rgb(240, 240, 240);
+    --window-color: rgb(220, 220, 220);
+    --window-element-hover-color: hsl(0, 0%, 82%);
+    --text-color: black;
+    --shadow-color: hsl(0, 0%, 80%);
+
+    --other-elements-color: rgb(230, 230, 230);
+    --other-elements-hover-color: rgb(220, 220, 220);
+
+    --posts-border-bottom-color: hsl(0, 0%, 89%);
+    --post-options-button-hover-color: hsl(0, 0%, 90%);
+
+    --report-message-color: white;
+
+    --comments-color: rgb(251, 251, 251);
+    --comment-color: rgb(235, 235, 235);
+
+    --accept-button-color: hsl(200, 100%, 35%);
+    --accept-button-hover-color: hsl(200, 100%, 30%);
+    --decline-button-color: hsl(0, 0%, 85%);
+    --decline-button-hover-color: hsl(0, 0%, 80%);
+    --accept-buttons-font-color: linen;
+
+    --brightness: 1;
 }
 
-:root {
-    --posts-header-color: rgb(240, 240, 240);
-    --reactions-color: rgb(240, 240, 240);
-    --interactions-color: rgb(240, 240, 240);
-    --comments-color: rgb(251, 251, 251);
-    --enter-comment-color: rgb(235, 235, 235);
-    --comment-color: rgb(235, 235, 235);
-    --upload-file-color: rgb(235, 235, 235);
+.darkmode {
+    --clr-bg: rgba(0, 0, 0, 0.9);
+    --main-elements-color: rgb(50, 50, 50);
+    --window-color: rgb(40, 40, 40); 
+    --window-element-hover-color: rgb(30, 30, 30); 
+    --text-color: rgb(210, 210, 210);
+    --shadow-color: rgb(70, 70, 70);
+
+    --other-elements-color: rgb(45, 45, 45);
+    --other-elements-hover-color: rgb(41, 41, 41);
+
+    --posts-border-bottom-color: rgb(37, 37, 37);
+    --post-options-button-hover-color: rgb(44, 44, 44);
+    
+    --report-message-color: rgb(20, 20, 20);
+
+    --comments-color: rgb(55, 55, 55);
+    --comment-color: rgb(45, 45, 45);
+
+    --accept-button-color: hsl(200, 100%, 30%);
+    --accept-button-hover-color: hsl(200, 100%, 25%);
+    --decline-button-color: hsl(0, 0%, 80%);
+    --decline-button-hover-color: hsl(0, 0%, 75%);
+
+    --icons-color: rgb(210, 210, 210);
+    --title-subtitle-color: white;
+
+    --brightness: 0.85
+}
+
+*::-webkit-input-placeholder {
+    opacity: 0.7;
+    color: inherit;
 }
 
 .bold {
     font-weight: 800;
 }
 
+body {
+    overflow-x: hidden;
+    padding-bottom: 1rem;
+    background-color: var(--clr-bg)
+}
+
+.fas {
+    position: absolute;
+}
+
 #background-image {
     width: 100%;
-    margin-inline: auto;
     height: 250px;
 }
 
 #background-image img {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    filter: brightness(var(--brightness))
 }
 
 #foreground-image {
@@ -45,107 +102,142 @@ body {
     position: relative;
     left: 25rem;
     top: -5rem;
-    border: 5px solid white;
+    border: 5px solid var(--posts-border-bottom-color);
+    overflow: hidden;
 }
 
 #foreground-image img {
     width: 100%;
-    border-radius: 50%;
+    filter: brightness(var(--brightness))
 }
 
-/* HEADER NAVIGATION */
+/* NAVIGATION IN FIRST HEADER */
 
-header a {
+#first-header {
+    border-bottom: 1px solid var(--posts-border-bottom-color);
+    padding-bottom: 1.6rem;
+}
+
+#first-header a {
     text-decoration: none;
     color: black;
 }
 
-.navigation {
-    display: flex;
+#first-header #navigation-window {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    right: 4rem;
-    height: 53.75px;
-    width: 53.75px;
-    background-color: hsl(0, 0%, 80%);
+    gap: 2rem;
+    margin-left: 3rem;
+    width: 100px;
+    right: 7rem;
+    top: 26.2rem;
+}
+
+#first-header #navigation-window .navigation {
+    position: relative;
+    height: 55px;
+    width: 55px;
+    background-color: var(--other-elements-color);
     border-radius: 25px;
-    padding-inline: 1rem;
-    overflow: hidden;
+    transition-duration: 0.5s;
+    box-shadow: 0px 5px 15px 1px rgba(0, 0, 0, 0.2);
+    color: var(--text-color)
+}
+
+#first-header #navigation-window .navigation i, 
+#first-header #navigation-window .navigation i {
+    font-size: 3rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition-duration: 0.5s;
+    transition-delay: 0.3s;
+}
+
+#first-header #navigation-window .navigation span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Poppins';
+    font-size: 0;
     transition-duration: 0.5s;
 }
 
-#home {
-    top: 27rem;
-}
+/* navigation effects */
 
-#settings {
-    top: 34rem;
-}
-
-.navigation p {
-    font-size: 2rem;
-    margin-left: 4.7rem;
-    font-family: 'Open Sans'
-}
-
-#home:hover {
-    width: 130px;
-}
-
-#settings:hover {
+#first-header #navigation-window .navigation:hover {
     width: 150px;
 }
 
-#informations {
+#first-header #navigation-window .navigation:hover i {
+    font-size: 0;
+    transition-delay: 0ms;
+    transition-duration: 0s;
+}
+
+#first-header #navigation-window .navigation:hover span {
+    font-size: 2.3rem;
+    letter-spacing: 1px;
+}
+
+/* INFO SECTION IN FIRST HEADER */
+
+#first-header #informations {
     position: absolute;
     left: 45rem;
     width: 300px;
     top: 26rem;
+}
+
+#first-header #informations h3 {
     font-size: 2.5rem;
+    color: var(--text-color)
 }
 
-#informations p {
+#first-header #informations p {
     font-size: 2rem;
-    margin-top: 0.5rem;
 }
 
-#informations #profiles-wrapper {
+#first-header #informations .profiles-wrapper {
     display: flex;
     margin-top: 1rem;
     width: 163px;
     position: relative;
+    filter: brightness(var(--brightness))
 }
 
-#informations #profiles-wrapper .fas.fa-ellipsis-vertical {
+#first-header #informations .profiles-wrapper .fas.fa-ellipsis-vertical {
     display: flex;
+    font-size: 2.5rem;
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 0;
+    right: 0.3rem;
     transform: rotate(90deg);
     color: gray;
     background-color: rgba(0, 0, 0, 0.5);
-    width: 40px;
-    height: 40px;
+    width: 39px;
+    height: 39px;
     border-radius: 50%;
     cursor: pointer;
 }
 
-#informations .profile-friend {
+#first-header #informations .profiles-wrapper .profile-friend {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid var(--posts-border-bottom-color);
+    object-fit: cover;
 }
 
-#informations .profile-friend #curtain {
-    position: absolute;
-    width: 100%;
-}
-
-#informations .profile-friend:not(:first-of-type) {
+#first-header #informations .profile-friend:not(:first-of-type) {
     margin-left: -1rem;
 }
+
+/* EDIT PROFILE BUTTON WITH TRANSITIONS IN FIRST HEADER */
 
 #first-header button[type="submit"] {
     position: absolute;
@@ -153,22 +245,50 @@ header a {
     top: 30rem;
     width: 215px;
     height: 50px;
-    background-color: hsl(0, 0%, 92%);
+    background-color: hsl(0, 0%, 80%);
     border-radius: 10px;
     font-size: 2.6rem;
     cursor: pointer;
     border: none;
+    transition-duration: 0.3s;
+    background-color: var(--other-elements-color);
+    color: var(--text-color);
+}
+
+#first-header button[type="submit"]::after, #first-header button[type="submit"]::before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: inherit;
+    z-index: -1;
+    transition-duration: 0.3s;
+    background-color: inherit;
+    opacity: 0.6
 }
 
 #first-header button[type="submit"]:hover {
-    background-color: hsl(0, 0%, 88%)
+    transform: translate(-10px, -10px)
+}
+
+#first-header button[type="submit"]:hover::after {
+    transform: translate(5px, 5px)
+}
+
+#first-header button[type="submit"]:hover::before {
+    transform: translate(10px, 10px);
 }
 
 #first-header hr {
     width: 80%;
     margin-inline: auto;
     margin-top: -2.5rem;
+    border-color: var(--posts-border-bottom-color)
 }
+
+/* SECTIONS IN FIRST HEADER */
 
 #first-header #sections {
     display: flex;
@@ -182,14 +302,15 @@ header a {
 #first-header #sections p {
     cursor: pointer;
     padding: 0.5rem;
-    font-weight: bold;
+    border-radius: 10px;
+    color: var(--text-color);
 }
 
 #first-header #sections hr {
     position: absolute;
     width: 115px;
     height: 5px;
-    background-color: hsl(220, 60%, 35%);
+    background-color: var(--accept-button-color);
     bottom: -19px;
     border-radius: 100px;
     display: none;
@@ -212,72 +333,266 @@ header a {
 }
 
 #first-header #sections p:active {
-    border-radius: 10px;
-    background-color: hsl(240, 0%, 90%);
+    background-color: var(--other-elements-hover-color);
 }
 
-#first-header {
-    border-bottom: 1px solid gray;
-    padding-bottom: 1.6rem;
-}
+/* ELEMENTS IN CONTAINER POSTS SECTION*/
 
 #container-posts-section {
     position: relative;
     width: 1200px;
     margin-inline: auto;
-    padding: 1rem;
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
+
+/* ADDITIONAL INFO IN CONTAINER POSTS SECTION */
+
+#container-posts-section #additional-info-posts-section {
+    position: sticky;
+    top: 1.1rem;
+    width: 450px;
+    height: 915px;
+}
+
+#container-posts-section #additional-info-posts-section #user-info,
+#container-posts-section #additional-info-posts-section .photos-about-section,
+#container-posts-section #additional-info-posts-section .friends-about-section {
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px 1px var(--shadow-color);
+}
+
+/* user info in additional info */
 
 #container-posts-section #additional-info-posts-section #user-info {
-    width: 450px;
     padding: 2rem;
-    border-radius: 10px;
-    padding-bottom: 2.5rem;
-    background-color: white;
-    box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
-    position: sticky;
-    top: 1rem;
+    background-color: var(--main-elements-color)
 }
 
-#container-posts-section #user-info h2 {
+#container-posts-section #additional-info-posts-section #user-info h2 {
     font-size: 3rem;
+    margin-bottom: -1.5rem;
+    margin-top: -0.5rem;
+    color: var(--text-color)
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info {
+    position: relative;
+    border-bottom: 2px solid hsl(0, 0%, 86%);
+    padding-bottom: 0.6rem;
+    margin-top: 2rem;
     margin-bottom: -1rem;
 }
 
-#container-posts-section #user-info p {
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #user-input-text {
+    width: 90%;
+    margin-left: 2rem;
+    font-size: 2.3rem;
+    overflow: hidden;
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #add-bio-submit {
+    width: 100%;
+    height: 35px;
+    transform: translateX(-50%);
+    border: none;
+    border-radius: 3px;
+    background-color: var(--other-elements-color);
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+    margin-left: 50%;
+    margin-top: 1rem;
+    color: var(--text-color)
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #add-bio-submit:hover {
+    background-color: var(--other-elements-hover-color)
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form {
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 0.7rem;
+    margin-bottom: -6rem;
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #add-bio-text {
+    resize: none;
+    border: none;
+    border-radius: 3px;
+    background-color: hsl(0, 0%, 91%);
+    padding: 0.5rem 1rem;
+    outline: none;
+    grid-column: 1 / 3 span;
+    grid-row: 1 / 2;
+    height: 90px;
+    font-size: 1.7rem;
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #letters-counter-bio {
+    font-size: 1.7rem;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    width: 150px;
+    height: 25px;
+    margin: 0;
+    padding-top: 0.5rem;
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form .bio-buttons {
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    width: 65px;
+    height: 30px;
+    grid-row: 2 / 3;
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #bio-save {
+    background-color: var(--accept-button-color);
+    color: var(--accept-buttons-font-color);
+    grid-column: 3 / 4
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #bio-cancel {
+    background-color: var(--decline-button-color);
+    grid-column: 3 / 4;
+    margin-left: 8rem;
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #bio-save:hover {
+    background-color: var(--accept-button-hover-color)
+}
+
+#container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #bio-cancel:hover {
+    background-color: var(--decline-button-hover-color)
+}
+
+#container-posts-section #additional-info-posts-section #user-info p {
     font-size: 2.3rem;
     margin-top: 0.8rem;
     margin-left: 3.5rem;
+    color: var(--text-color)
 }
 
-#container-posts-section #user-info .fas {
+#container-posts-section #additional-info-posts-section #user-info .fas {
     font-size: 2rem;
     position: relative;
     top: 3rem;
+    color: var(--icons-color)
 }
 
-#container-posts-section #user-info .fas.fa-location-dot {
+#container-posts-section #additional-info-posts-section #user-info .fas.fa-location-dot {
     left: 0.55rem;
 }
 
-#container-posts-section #user-info .fas.fa-house {
+#container-posts-section #additional-info-posts-section #user-info .fas.fa-house {
     left: 0.2rem;
 }
 
-#container-posts-section #user-info .fas.fa-scroll {
+#container-posts-section #additional-info-posts-section #user-info .fas.fa-scroll {
     left: 0.2rem;
 }
+
+/* photos info in additional info */
+
+#container-posts-section #additional-info-posts-section .photos-about-section {
+    position: relative;
+    padding-left: 2.2rem;
+    margin-top: 0.7rem;
+    padding-top: 6.5rem;
+}
+
+#container-posts-section #additional-info-posts-section .photos-about-section #all-photos {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--accept-button-color);
+    top: 1.2rem;
+    right: 2rem;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+#container-posts-section #additional-info-posts-section .photos-about-section #all-photos:hover {
+    background-color: var(--other-elements-color);
+}
+
+#container-posts-section #additional-info-posts-section .photos-about-section span {
+    width: 125px;
+}
+
+#container-posts-section #additional-info-posts-section .photos-about-section h2 {
+    left: 2.2rem;
+    top: 1.5rem;
+}
+
+/* friends info in additional info */
+
+#container-posts-section #additional-info-posts-section .friends-about-section {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.4rem;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+    margin-top: -1.2rem;
+}
+
+#container-posts-section #additional-info-posts-section .friends-about-section h2 {
+    margin-top: -5.5rem;
+    margin-left: 0;
+    color: var(--text-color)
+}
+
+#container-posts-section #additional-info-posts-section .friends-about-section #friends-num {
+    margin-top: -2rem;
+    margin-left: 0;
+}
+
+#container-posts-section #additional-info-posts-section .friends-about-section .all-friends {
+    right: 4rem;
+    top: 2.6rem;
+}
+
+#container-posts-section .friends-about-section .friend {
+    width: 120px;    
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+#container-posts-section .friends-about-section .friend img {
+    object-fit: cover;
+    width: 110px;
+    height: 100px;
+}
+
+#container-posts-section .friends-about-section .friend h4 {
+    position: absolute;
+    font-size: 1.5rem;
+    left: 0.3rem;
+    top: 10.3rem;
+    color: var(--text-color)
+}
+
+/* ADD POST OPTION IN CONTAINER POSTS SECTION */
+
+/* add post section (upper) */
 
 #container-posts-section #add-post {
     position: absolute;
     right: 10rem;
-    top: 2rem;
+    top: 0;
     padding-inline: 2.7rem;
     padding-bottom: 2rem;
     border-radius: 15px;
-    box-shadow: 0px 0.9px 2px 1px hsl(0, 0%, 80%);
-    overflow: hidden
+    box-shadow: 0px 0.9px 2px 1px var(--shadow-color);
+    overflow: hidden;
+    background-color: var(--main-elements-color)
 }
 
 #container-posts-section #add-post #profile {
@@ -287,6 +602,7 @@ header a {
     position: relative;
     bottom: -2rem;
     right: 1rem;
+    filter: brightness(var(--brightness))
 }
 
 #container-posts-section #add-post input[type="text"] {
@@ -297,21 +613,25 @@ header a {
     font-size: 1.7rem;
     outline: none;
     border: none;
-    background-color: hsl(0, 10%, 95%);
+    background-color: var(--other-elements-color);
+    color: var(--text-color)
 }
 
 #container-posts-section #add-post input[type="text"]:hover {
-    background-color: hsl(0, 0%, 92%)
+    background-color: var(--other-elements-hover-color)
 }
 
 #container-posts-section #add-post hr {
-    width: 113%;
+    width: 120%;
     margin-left: -2.7rem;
     margin-block: 1.5rem;
+    border-color: var(--shadow-color);
 }
 
+/* add interactions section (lower) */
+
 #container-posts-section #add-interactions {
-    width: 69%;
+    width: 63%;
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
@@ -325,172 +645,260 @@ header a {
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 10px;
+    color: var(--text-color)
 }
 
-#container-posts-section #add-post i {
-    font-size: 2.4rem;
+#container-posts-section #add-post #add-interactions i {
+    font-size: 2.1rem;
 }
 
-#container-posts-section #add-post p {
-    font-size: 2.4rem;
-    margin-left: 3.8rem;
+#container-posts-section #add-post #add-interactions p {
+    font-size: 2.2rem;
+    margin-left: 3.5rem;
 }
 
-#container-posts-section input[type="file"] {
+#container-posts-section #add-post #add-interactions input[type="file"] {
     display: none;
 }
 
-#container-posts-section #user-posts {
-    position: absolute;
-    right: 10rem;
-    border-radius: 10px;
-    padding: 1rem;
-}
+/* CONTAINERS FOR IMAGES */
 
-/* PHOTOS */
-
-#photo-wrapper, .photo-wrapper, #profile-wrapper {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-#photo-wrapper img, .photo-wrapper img, #profile-wrapper img {
+.profile-wrapper img {
     width: 100%;
     height: 100%;
     position: absolute;
     border-radius: 50%;
+    filter: brightness(var(--brightness))
 }
 
-/* POSTS-SECTION */
+/* POSTS-SECTION IN CONTAINER POSTS SECTION */
 
-#posts-container {
+#container-posts-section #posts-container {
     position: absolute;
     max-width: 542px;
     right: 9.7rem;
     border-radius: 1rem;
-    top: 19rem;
+    top: 17rem;
 }
 
-#posts-container header {
+#container-posts-section #posts-container .post {
+    margin-bottom: 3rem;
+    position: relative;
+    box-shadow: 0px 1px 2px 1px var(--shadow-color);
+}
+
+/* post header elements */
+
+#container-posts-section #posts-container .post header {
+    position: relative;
     width: 100%;
     padding: 1.3rem;
-    background-color: var(--posts-header-color);
+    background-color: var(--main-elements-color);
+    border-bottom: 1px solid var(--posts-border-bottom-color)
 }
 
-#posts-container .post header button {
-    width: 31px;
-    height: 12px;
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    cursor: pointer;
-    border: none;
+#container-posts-section #posts-container .post header .profile-wrapper {
+    position: relative;
+    width: 25px;
+    height: 25px;
 }
 
-#posts-container header .fas.fa-ellipsis {
-    font-size: 3rem;
-    top: -1rem;
-    right: 0.10rem;
-    pointer-events: none;
-}
-
-#posts-container header p {
+#container-posts-section #posts-container .post header p {
     font-size: 1.8rem;
     margin-top: -2.4rem;
     margin-left: 4rem;
+    color: var(--text-color)
 }
 
-#posts-container #image-wrapper {
-    overflow: hidden;
+#container-posts-section #posts-container .post header button {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    padding: 1.85rem;
+    background-color: inherit;
 }
 
-#posts-container #image-wrapper img {
+#container-posts-section #posts-container .post header .fas.fa-ellipsis {
+    font-size: 2.5rem;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    pointer-events: none;
+    color: var(--text-color)
+}
+
+#container-posts-section #posts-container .post header button:hover {
+    background-color: var(--post-options-button-hover-color)
+}
+
+/* caption in post*/
+
+#posts-container .post .caption {
+    position: relative;
     width: 100%;
-    object-fit: cover;
+    background-color: var(--main-elements-color);
+    padding: 1rem 1.8rem 1rem 1.8rem;
 }
 
-#posts-container #reactions {
+#posts-container .post .caption .caption-text {
+    font-size: 1.8rem;
+    color: var(--text-color)
+}
+
+#posts-container .post .caption .change-caption-form {
+    display: grid;
+    position: relative;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1rem;
+    width: 100%;
+    height: 150px;
+    display: none;
+    margin-top: 0.3rem;
+    margin-bottom: -3rem;
+}
+
+#posts-container .post .caption .change-caption-form .change-caption-text {
+    border: none;
+    outline: none;
+    background-color: hsl(0, 0%, 90%);
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    grid-column: 1 / 4;
+    resize: none;
+    width: 100%;
+} 
+
+#posts-container .post .caption .change-caption-form .change-caption-text::-webkit-scrollbar {
+    display: none;
+}
+
+#posts-container .post .caption .change-caption-form .letters-counter-edit-profile {
+    font-size: 1.6rem;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    padding-top: 0.5rem;
+    width: 250px;
+    color: var(--text-color)
+}
+
+#posts-container .post .caption .change-caption-form .finished-editing, #posts-container .post .caption .change-caption-form .cancel {
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 30px;
+    grid-row: 2 / 3;
+    cursor: pointer;
+}
+
+#posts-container .post .caption .change-caption-form .finished-editing {
+    background-color: var(--accept-button-color);
+    color: var(--accept-buttons-font-color);
+    width: 120px;
+    grid-column: 2 / 3;
+    margin-left: 5rem;
+}
+
+#posts-container .post .caption .change-caption-form .cancel {
+    background-color: var(--decline-button-color);
+    width: 70px;
+    grid-column: 3 / 4;
+}
+
+#posts-container .post .caption .change-caption-form .finished-editing:hover {
+    background-color: var(--accept-button-hover-color);
+}
+
+#posts-container .post .caption .change-caption-form .cancel:hover {
+    background-color: var(--decline-button-hover-color)
+}
+
+/* uploaded image wrapper in post */
+
+#container-posts-section #posts-container .post .image-wrapper img {
+    width: 100%;
+    filter: brightness(var(--brightness))
+}
+
+/* reaction section in post */
+
+#container-posts-section #posts-container .post #reactions {
     height: 5rem;
-    border-bottom: 0.2px solid hsl(240, 5%, 85%);
+    border-bottom: 0.2px solid var(--posts-border-bottom-color);
     padding-top: 1.3rem;
-    background-color: var(--reactions-color)
+    background-color: var(--main-elements-color)
 }
 
-#posts-container #profiles-wrapper {
+#container-posts-section #posts-container .post #reactions .profiles-wrapper {
     display: flex;
     margin-left: 1rem;
 }
 
-#posts-container #profile-wrapper {
+#container-posts-section #posts-container .post #reactions .profile-wrapper {
     position: relative;
     width: 25px;
     height: 25px;
-    bottom: 1px;
 }
 
-#posts-container #profile-wrapper:nth-child(2) {
+#container-posts-section #posts-container .post #reactions .profile-wrapper:nth-child(2) {
     left: -1rem;
 }
 
-#posts-container #profile-wrapper:nth-child(3) {
+#container-posts-section #posts-container .post #reactions .profile-wrapper:nth-child(3) {
     left: -2rem;
 }
 
-#posts-container p {
+#container-posts-section #posts-container .post #reactions p {
     position: absolute;
     font-size: 2rem;
     margin-left: 7.5rem;
+    color: Var(--text-color)
 }
 
-/* INTERACTIONS SECTION */
+/* interactions section in post */
 
-#posts-container #interactions {
+#container-posts-section #posts-container #interactions {
     display: flex;
     width: 100%;
-    height: 4.5rem;
+    height: 5rem;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--interactions-color);
+    background-color: var(--main-elements-color);
     font-size: 2.5rem;
     padding-inline: 2rem;
 }
 
-#posts-container #interactions .fa-message {
-    position: absolute;
+#container-posts-section #posts-container #interactions .fas {
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+#container-posts-section #posts-container #interactions .fas.fa-message {
     left: 8rem;
     transform: translate(0, -50%);
     font-size: 2.3rem;
-    cursor: pointer;
 }
 
-#posts-container #interactions .fas.fa-share {
+#container-posts-section #posts-container #interactions .fas.fa-share {
     right: 3rem;
 }
 
-/* COMMENTS SECTION */
+/* comments section in post  */
 
-#posts-container #comments {
+#container-posts-section #posts-container .comments {
     width: 100%;
     height: 22rem;
     background-color: var(--comments-color);
 }
 
-#posts-container #comments input[type='text'] {
-    position: absolute;
-    width: 90%;
-    bottom: 1rem;
-    left: 50%;
-    transform: translate(-50%, -6%);
-    height: 4rem;
-    padding: 1.8rem;
-    border-radius: 1.5rem;
-    font-size: 1.7rem;
-    background-color: var(--enter-comment-color);
-    border: none;
-}
-
-#posts-container #comments #comment-messages {
+#container-posts-section #posts-container .comments .comment-messages {
     width: 100%;
     height: 15.4rem;
     display: flex;
@@ -501,71 +909,94 @@ header a {
     position: relative;
 }
 
-#posts-container #comments #comment-messages::-webkit-scrollbar {
-    display: none;
-}
-
-#posts-container #comments input[type="file"] {
-    display: none;
-}
-
-#posts-container #comments .fas {
-    position: absolute;
-    bottom: 2.2rem;
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-#posts-container #comments .fa-image {
-    right: 8rem;
-}
-
-#posts-container #comments .fa-video {
-    right: 4rem;
-}
-
-/* COMMENTS */
-
-#comment-content #profile-wrapper {
+#container-posts-section #posts-container .post .comments .profile-wrapper {
     position: relative;
-    bottom: -2.7rem;
+    width: 25px;
+    height: 25px;
+    bottom: -2.55rem;
     margin-left: 2.5rem;
 }
 
-#comments #comment-messages #comment #comment-content p{
+#container-posts-section #posts-container .post .comments .comment-messages p {
+    position: absolute;
+    font-size: 2rem;
+    margin-left: 7.5rem;
     z-index: 1;
+    color: var(--text-color)
 }
 
-#comments #comment-messages #comment #comment-content p::before{
+.comments .comment-messages .comment .comment-content p::before {
     content: '';
     position: absolute;
     background-color: var(--comment-color);
     width: calc(100% + 2rem);
-    left: -1rem;
     height: calc(100% + 0.5rem);
+    left: -1rem;
     z-index: -1;
     bottom: -0.25rem;
     border-radius: 10px;
-    border-top: 1px solid gray;
+    border-top: 1px solid var(--shadow-color);
 }
 
-#posts-container .post .post-options {
-    position: absolute;
-    background-color: rgb(240, 240, 240);
-    border-radius: 10px;
-    top: 6rem;
-    right: 1.7rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    align-items: center;
-    gap: 1.3rem;
+#container-posts-section #posts-container .comments .comment-messages::-webkit-scrollbar {
     display: none;
 }
 
-#posts-container .post .post-options i {
-    color: rgb(240, 240, 240);
+/* add comment section in comments section */
+
+#container-posts-section #posts-container .comments input[type='text'] {
+    position: absolute;
+    width: 90%;
+    bottom: 1.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4rem;
+    padding: 1.8rem;
+    border-radius: 1.5rem;
+    font-size: 1.7rem;
+    background-color: var(--comment-color);
+    border: none;
+    color: var(--text-color)
+}
+
+#container-posts-section #posts-container .comments input[type="file"] {
+    display: none;
+}
+
+#container-posts-section #posts-container .comments .fas {
+    bottom: 2.2rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color)
+}
+
+#container-posts-section #posts-container .comments .fa-image {
+    right: 8rem;
+}
+
+#container-posts-section #posts-container .comments .fa-video {
+    right: 4rem;
+}
+
+/* post options in post */
+
+#container-posts-section #posts-container .post .post-options {
+    position: absolute;
+    background-color: var(--window-color);
+    border-radius: 10px;
+    top: 6rem;
+    right: 2.1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 1.3rem;
+    display: none;
+    z-index: 1;
+}
+
+#container-posts-section #posts-container .post .post-options i {
+    color: var(--window-color);
     position: absolute;
     right: 1rem;
     font-size: 2rem;
@@ -573,50 +1004,37 @@ header a {
     top: -1rem;
 }
 
-#posts-container .post .post-options .close-sign {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    font-size: 3rem;
-    font-weight: bold;
-    transform: rotate(45deg);
-    cursor: pointer;
-}
-
-#posts-container .post .post-options button {
+#container-posts-section #posts-container .post .post-options button {
     cursor: pointer;
     border: none;
     font-size: 1.8rem;
     height: 35px;
     width: 146%;
+    background-color: inherit;
+    color: Var(--text-color)
 }
 
-#posts-container .post .post-options button:hover {
-    background-color: hsl(0, 0%, 87%)
-}
-
-#posts-container .post {
-    margin-bottom: 3rem;
-    position: relative;
-    box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
+#container-posts-section #posts-container .post .post-options button:hover {
+    background-color: var(--window-element-hover-color)
 }
 
 #report-background {
-    display: flex;
     justify-content: center;
+    align-items: center;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
     display: none;
-    padding-top: 32rem;
     z-index: 2;
     inset: 0;
 }
 
-#report-message {
+/* REPORT POST MESSAGE */
+
+#report-background #report-message {
     text-align: center;
     width: 350px;
     height: 180px;
-    background-color: white;
+    background-color: var(--report-message-color);
     border-radius: 10px;
     position: relative;
 }
@@ -625,28 +1043,31 @@ header a {
     position: absolute;
     top: 1rem;
     left: 50%;
-    transform: translate(-50%)
+    transform: translate(-50%);
+    font-size: 5rem;
+    color: var(--text-color)
 }
 
 #report-background #report-message p {
     margin-top: 6.6rem;
     cursor: default;
     font-size: 4rem;
+    color: var(--text-color)
 }
 
 /* ANIMATION OF LIKE */
 
-#posts-container #interactions .fa-thumbs-up {
-    cursor: pointer;
-    color: black;
+#container-posts-section #posts-container #interactions .fa-thumbs-up {
+    color: var(--text-color);
     transform-origin: center left;
+    border-radius: 50%;
+    font-size: 2.5rem;
 }
 
 .animation-like {
     animation-name: like-animation;
     animation-duration: 0.4s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.68, 1.15, 0.82, 0.93);
     animation-fill-mode: forwards;
 }
 
@@ -656,56 +1077,116 @@ header a {
     }
 
     50% {
-        transform: rotate(-20deg) scale(1.1)
+        transform: rotate(-20deg) scale(1.1);
+        box-shadow: 0px 0px 10px 10px rgba(0, 0, 255, 0.1);
+    }
+
+    75% {
+        filter: blur(0.8px)
     }
 
     100% {
         transform: rotate(0deg);
-        color: blue;
+        color: var(--accept-button-color);
     }
 }
 
-/* ABOUT SECTION APPEARANCE */
+/* PHOTOS MAIN SECTION */
 
-#about-section {
-    width: 100%;
+.photos-about-section {
+    position: relative;
+    display: flex;
+    width: 1050px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px 1px var(--shadow-color);
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 7.5rem 0 2rem 3.4rem;
+    margin: 2rem auto;
+    background-color: var(--main-elements-color)
 }
+
+.photos-about-section h2 {
+    position: absolute;
+    font-size: 3rem;
+    left: 3rem;
+    top: 2rem;
+    color: var(--text-color)
+}
+
+.photos-about-section img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px 0px hsla(0, 0%, 20%, 0.8);
+}
+
+.photos-about-section span {
+    position: relative;
+    width: 23%;
+    cursor: pointer;
+    filter: brightness(var(--brightness))
+}
+
+.photos-about-section span::after {
+    position: absolute;
+    content: '';
+    inset: 0;
+}
+
+.photos-about-section span:hover::after {
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+/* ABOUT SECTION */
+
+/* personal info in about section */
 
 #about-section #personal-info {
     width: 1200px;
-    box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
+    box-shadow: 0px 1px 2px 1px var(--shadow-color);
     margin-inline: auto;
     border-radius: 10px;
     margin-top: 2.3rem;
-    padding-inline: 1rem;
-    padding-top: 1.5rem;
     position: relative;
-    padding-bottom: 2.5rem;
-}
-
-#about-section #friends-about-section .all {
-    margin-left: 100rem !important;
+    padding: 1.5rem 1rem 2.5rem 1rem;
+    background-color: var(--main-elements-color)
 }
 
 #about-section #personal-info h2 {
     font-size: 3rem;
     margin-bottom: -1.5rem;
     margin-left: 1rem;
+    color: var(--title-subtitle-color)
 }
 
-.fas {
-    font-size: 3rem;
-    position: absolute;
+#about-section #personal-info h3 {
+    font-size: 2.5rem;
+    margin: 4rem 0rem -1rem 4rem;
+    color: var(--title-subtitle-color)
 }
 
-#about-section #personal-info .left {
-    left: 6.3rem;
-    bottom: -2.5rem;
+#about-section #personal-info p {
+    font-size: 2rem;
+    margin-left: 11.6rem;
+    margin-top: 3rem;
+    pointer-events: none;
+    color: var(--text-color)
+}
+
+#about-section #personal-info span {
+    margin-left: 0.1rem;
+}
+
+#about-section #personal-info .fas {
+    font-size: 2.9rem;
+    color: var(--icons-color);
 }
 
 #about-section #personal-info .right {
     left: 110rem;
-    background-color: hsl(0, 0%, 91%);
+    background-color: var(--other-elements-color);
     padding: 0.8rem;
     border-radius: 50%;
     font-size: 2.2rem;
@@ -713,7 +1194,7 @@ header a {
     margin-top: -2.8rem;
 }
 
-/* ABOUT SECTION ICONS LEFT */
+/* left icons in about section */
 
 #about-section #personal-info .fas.fa-house {
     left: 7rem;
@@ -760,25 +1241,7 @@ header a {
     top: 71.5rem
 }
 
-#about-section #personal-info p {
-    font-size: 2rem;
-    margin-left: 11.6rem;
-    margin-top: 3rem;
-    pointer-events: none;
-}
-
-#about-section #personal-info span {
-    margin-left: 0.1rem;
-}
-
-#about-section #personal-info h3 {
-    font-size: 2.5rem;
-    margin-top: 4rem;
-    margin-bottom: -1rem;
-    margin-left: 4rem;
-}
-
-/* CHANGING VALUE OF INFO IN ABOUT SECTION (WINDOW APPEARANCE) */
+/* change personal info value in about section */
 
 #about-section #personal-info .change-value {
     position: absolute;
@@ -788,7 +1251,16 @@ header a {
     display: none;
 }
 
-/* CHANGE VALUE IN ABOUT WINDOWS POSITION */
+#about-section #personal-info .change-value.date {
+    margin-top: -3.5rem;
+    width: 182px;
+}
+
+#about-section #personal-info .change-value.select {
+    width: 200px;
+}
+
+/* position of window with change-value option */
 
 #about-section #personal-info .change-value:nth-of-type(1) {
     top: 10rem;
@@ -823,60 +1295,35 @@ header a {
 }
 
 #about-section #personal-info .change-value:nth-of-type(9) {
-    top: 70rem;
+    top: 69.5rem;
 }
 
-#about-section #personal-info .change-value input[type='text'] {
+/* input's style in change value in about section */
+
+#about-section #personal-info .change-value input[type='text'], #about-section #personal-info .change-value.date input[type="date"], #about-section #personal-info select {
     position: relative;
     height: 45px;
     border-radius: 5px;
-    background-color: hsl(0, 0%, 90%);
-    outline-color: hsl(200, 0%, 80%);
+    background-color: var(--other-elements-color);
+    outline-color: var(--shadow-color);
     border: none;
     padding-inline: 1rem;
+    font-size: 1.5rem;
     bottom: -1.3rem;
-    font-size: 1.5rem;
+    color: var(--text-color)
 }
 
-#about-section #personal-info .change-value input[type='date'] {
-    position: relative;
-    height: 45px;
-    border-radius: 5px;
-    background-color: hsl(0, 0%, 90%);
-    outline-color: hsl(200, 0%, 80%);
-    border: none;
-    padding-inline: 1rem;
-    bottom: 2.2rem;
-    font-size: 1.5rem;
-}
+/* span and save / close buttons in about section */
 
-#about-section #personal-info .change-value .save.date {
-    bottom: 3.1rem;
-    right: 5.2rem;
-}
-
-#about-section #personal-info .change-value .close.date {
-    bottom: 6.1rem;
-    right: 5.2rem;
-}
-
-#about-section #personal-info .change-value span {
-    position: absolute;
-    left: 1rem;
-    top: 2.2rem;
-    font-size: 2rem;
-    pointer-events: none;
-    color: gray;
-    transition: 0.5s;
-}
-
-#about-section #personal-info .change-value input[value = 'Save'], #about-section #personal-info .change-value input[value = 'Close'] {
+#about-section #personal-info .change-value input[value='Save'], #about-section #personal-info .change-value input[value='Close'] {
     position: absolute;
     padding: 0.5rem;
     border-radius: 5px;
     border: none;
     font-size: 1.4rem;
     cursor: pointer;
+    background-color: var(--other-elements-color);
+    color: var(--text-color)
 }
 
 #about-section #personal-info .change-value input[value = 'Save'] {
@@ -890,43 +1337,20 @@ header a {
     bottom: 2.8rem;
 }
 
-#about-section #personal-info .new-changes.unused {
-    display: none;
+#about-section #personal-info .change-value span {
+    position: absolute;
+    left: 1rem;
+    top: 2.2rem;
+    font-size: 2rem;
+    pointer-events: none;
+    color: gray;
+    transition: 0.5s;
 }
 
-#about-section #personal-info .change-value.last {
-    bottom: 2.5rem !important;
-}
-
-#about-section #personal-info select {
-    position: relative;
-    height: 45px;
-    border-radius: 5px;
-    background-color: hsl(0, 0%, 90%);
-    outline-color: hsl(200, 0%, 80%);
-    border: none;
-    padding-inline: 1rem;
-    font-size: 1.5rem;
-    bottom: -1rem;
-}
-
-#about-section #personal-info .change-value .save.select {
-    right: 3.4rem;
-}
-
-#about-section #personal-info .change-value .close.select {
-    right: 3.4rem;
-}
-
-#about-section #personal-info .change-value.other-place {
-    bottom: 2rem; 
-}
-
-
-/* ABOUT SECTION EDIT EFFECT */
+/* edit value effects in about section */
 
 #about-section #personal-info .right:hover {
-    background-color: hsl(0, 0%, 86%)
+    background-color: var(--other-elements-hover-color)
 }
 
 #about-section #personal-info .change-value input[type='text']:valid ~ span, #about-section #personal-info .change-value input[type='text']:focus ~ span {
@@ -934,71 +1358,143 @@ header a {
     font-size: 1.1rem;
 }
 
-/* FRIENDS SECTION */
+/* friends info in about section */
 
-#friends-about-section {
+#about-section .friends-about-section {
+    position: relative;
+    padding-top: 6rem;
+    margin-top: 1rem;
+}
+
+#about-section .friends-about-section h2 {
+    margin-top: 1.5rem;
+    margin-left: 3rem;
+    color: var(--text-color)
+}
+
+#about-section .friends-about-section #friends-num {
+    margin-top: 5rem;
+    margin-left: 3rem;
+}
+
+#about-section .friends-about-section .all-friends {
+    right: 3rem;
+    top: 2.6rem;
+    margin-left: 0;
+}
+
+/* FRIENDS MAIN SECTION */
+
+/* friends-about-section appearance and position */
+
+.friends-about-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 1200px;
-    box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
+    box-shadow: 0px 1px 2px 1px var(--shadow-color);
     margin-inline: auto;
     border-radius: 10px;
     margin-top: 2.3rem;
-    padding: 5rem 0 2rem 3rem
+    padding: 12rem 0 2rem 3rem;
+    position: relative;
+    background-color: var(--main-elements-color)
 }
 
-#friends-about-section h2 {
+.friends-about-section h2 {
     position: absolute;
     font-size: 3rem;
-    margin-left: -1.7rem;
-    margin-top: -3.5rem;
+    margin-left: 3rem;
+    margin-top: 1.4rem;
+    color: var(--text-color)
 }
 
-#friends-about-section #friends-num {
+.friends-about-section #friends-num {
     position: absolute;
     font-size: 1.7rem;
-    margin-left: -1.7rem;
-    margin-top: 0rem;
+    margin-left: 3rem;
+    margin-top: 4.8rem;
     color: gray;
 }
 
-#friends-about-section .all {
-    color: blue;
+/* .all settings for all friends main section in a file */
+
+.friends-about-section .all-friends {
+    color: var(--accept-button-color);
     position: absolute;
-    margin-left: 26rem;
-    margin-top: -1.7rem;
     font-size: 2rem;
     cursor: pointer;
+    padding: 1rem;
 }
 
-#friends-about-section .all:hover {
-    background-color: hsl(0, 0%, 92%);
-    padding: 1rem;
-    transform: translateY(-10px) translateX(-10px);
+.friends-about-section .all-friends:hover {
+    background-color: var(--other-elements-color);
     border-radius: 10px;
 }
 
-#friends-about-section .friend {
+.friends-about-section .all-friends {
+    margin: 0;
+    top: 3.6rem;
+}
+
+.friends-about-section #friends-section-subsections {
+    display: flex;
+    gap: 3rem;
+    position: absolute;
+    top: 8rem;
+    color: gray;
+    font-weight: bold;
+    left: 3rem;
+}
+
+.friends-about-section #friends-section-subsections p {
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 10px;
+    cursor: pointer;
+    padding-top: 10px;
+    color: var(--text-color)
+}
+
+.friends-about-section #friends-section-subsections p:active {
+    background-color: hsl(0, 0%, 89%)
+}
+
+.friends-about-section #friends-section-subsections p:nth-of-type(1) {
+    width: 110px;
+}
+
+.friends-about-section #friends-section-subsections p:nth-of-type(2) {
+    width: 160px;
+}
+
+.friends-about-section #friends-section-subsections p:nth-of-type(3) {
+    width: 100px;
+}
+
+.friends-about-section .friend {
     position: relative;
     width: 530px;
     margin-top: 3.5rem;
 }
 
-#friends-about-section .friend img {
+.friends-about-section .friend img {
     width: 85px;
     height: 75px;
     border-radius: 5px;
     box-shadow: 0px 0px 4px 0px hsla(0, 0%, 20%, 0.8);
+    object-fit: cover;
+    filter: brightness(var(--brightness))
 }
 
-#friends-about-section .friend h4 {
+.friends-about-section .friend h4 {
     position: absolute;
     font-size: 2.3rem;
     left: 10rem;
-    top: 20%
+    top: 20%;
+    color: var(--text-color)
 }
 
-#friends-about-section .friend .number-of-friends {
+.friends-about-section .friend .number-of-friends {
     position: absolute;
     font-size: 1.4rem;
     left: 9.9rem;
@@ -1006,70 +1502,81 @@ header a {
     color: hsl(0, 0%, 60%);
 }
 
-#friends-about-section .friend .friend-options-on {
+/* friend options in friend section */
+
+.friends-about-section .friend .friend-options-on {
     position: absolute;
     right: -0.5rem;
-    top: 3.6rem;
-    font-size: 2.4rem;
+    top: 2.3rem;
     cursor: pointer;
     width: 20px;
     height: 6px;
+    border-radius: 50%;
+    padding: 1.7rem;
+    border: none;
+    background-color: inherit;
 }
 
-#friends-about-section .friend .friend-options-window {
+.friends-about-section .friend .friend-options-on .fas.fa-ellipsis-vertical {
+    position: absolute;
+    font-size: 2.4rem;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    color: var(--text-color)
+}
+
+
+.friends-about-section .friend .friend-options-on:hover {
+    background-color: var(--other-elements-hover-color)
+}
+
+/* friend option window in friend section */
+
+.friends-about-section .friend .friend-options-window {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: hsl(0, 0%, 95%);
-    width: 130px;
+    background-color: var(--window-color);
+    width: 110px;
     height: 100px;
     position: absolute;
     right: 3rem;
     top: -1.4rem;
     border-radius: 5px;
-    padding: 0.5rem;
-    padding-top: 0.2rem;
+    padding-bottom: 0.5rem;
+    padding-inline: 0.15rem;
 }
 
-#friends-about-section .friend .friend-options-window .friend-option {
+.friends-about-section .friend .friend-options-window .friend-option {
     width: 90%;
     position: relative;
     margin-top: 0.5rem;
     font-size: 1.4rem;
     padding: 0.5rem;
-    border-radius: 3px;
+    border-radius: 2px;
     padding-left: 3.5rem;
     cursor: pointer;
+    color: var(--text-color)
 }
 
-#friends-about-section .friend .friend-options-window .friend-option i {
-    position: absolute;
+.friends-about-section .friend .friend-options-window .friend-option i {
     font-size: 1.5rem;
     left: 1rem;
-    top: 0.5rem;
-    pointer-events: none;
+    color: var(--text-color)
 }
 
-#friends-about-section .friend .friend-options-window .friend-option p {
-    pointer-events: none;
+.friends-about-section .friend .friend-options-window .friend-option:hover {
+    background-color: var(--window-element-hover-color)
 }
 
-#friends-about-section .friend .friend-options-window .friend-option:hover {
-    background-color: hsl(0, 0%, 90%)
-}
+/* add friend button in friend section */
 
-#friends-about-section .fas.fa-ellipsis-vertical {
-    position: absolute;
-    right: 0.5rem;
-    transform: rotate(90deg);
-    font-size: 2.4rem;
-    top: -1.1rem;
-    background-color: white;
-    pointer-events: none;
-}
-
-#friends-about-section .friend .add-friend {
+.friends-about-section .friend .add-friend {
     display: none;
     padding: 0.7rem;
     border: none;
@@ -1080,178 +1587,32 @@ header a {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    background-color: var(--other-elements-color);
+    color: var(--text-color)
 }
 
-#friends-about-section .friend .add-friend:hover {
-    background-color: hsl(0, 0%, 90%)
+.friends-about-section .friend .add-friend:hover {
+    background-color: var(--other-elements-hover-color)
 }
 
-#photos-about-section {
-    display: flex;
-    width: 1050px;
-    box-shadow: 0px 1px 2px 1px hsl(0, 0%, 80%);
-    padding-top: 7.5rem;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-inline: auto;
-    margin-top: 2.3rem;
-    border-radius: 5px;
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    padding-left: 3.4rem;
-    position: relative;
-}
-
-#photos-about-section h2 {
-    position: absolute;
-    font-size: 3rem;
-    left: 3rem;
-    top: 2rem;
-}
-
-#photos-about-section img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0px 0px 4px 0px hsla(0, 0%, 20%, 0.8);
-}
-
-#photos-about-section span {
-    position: relative;
-    width: 23%;
-    cursor: pointer;
-}
-
-#photos-about-section span::after {
-    position: absolute;
-    content: '';
-    width: 100%;
-    inset: 0;
-}
-
-#photos-about-section span:hover::after {
-    background-color: rgba(0, 0, 0, 0.1)
-}
-
-#container-posts-section #additional-info-posts-section {
-    width: 450px;
-}
-
-#container-posts-section #additional-info-posts-section #photos-about-section {
-    width: 450px;
-    margin-left: 0;
-    position: sticky;
-    top: 26.5rem;
-    padding-left: 2.2rem;
-}
-
-#container-posts-section #additional-info-posts-section #friends-about-section {
-    display: flex;
-    flex-wrap: wrap;
-    width: 450px;
-    column-gap: 1.4rem;
-    position: sticky;
-    top: 59rem;
-    padding-top: 7rem;
-    padding-bottom: 4rem;
-}
-
-#container-posts-section #additional-info-posts-section #friends-about-section h2 {
-    margin-top: -5.5rem;
-}
-
-#container-posts-section #additional-info-posts-section #friends-about-section #friends-num {
-    margin-top: -2.3rem;
-}
-
-#container-posts-section #additional-info-posts-section #friends-about-section .all {
-    top: 5rem;
-}
-
-#container-posts-section #additional-info-posts-section #friends-about-section img{
-    width: 110px;
-    height: 100px;
-}
-
-#container-posts-section #additional-info-posts-section #friends-about-section h4 {
-    margin-top: -2.2rem;
-}
-
-#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(1) img,
-#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(2) img,
-#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(3) img {
-    margin-top: -1.5rem;
-}
-
-#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(1) h4,
-#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(2) h4,
-#container-posts-section #additional-info-posts-section #friends-about-section .friend:nth-of-type(3) h4 {
-    margin-top: -4rem;
-}
-
-#container-posts-section #additional-info-posts-section #user-info {
-    position: sticky;
-    top: 1.2rem;
-}
-
-#container-posts-section #photos-about-section span {
-    width: 125px;
-}
-
-#container-posts-section #photos-about-section h2 {
-    margin-left: -1.2rem;
-}
-
-#container-posts-section #friends-about-section .friend {
-    position: relative;
-    width: 120px;    
-    margin-top: 3rem;
-}
-
-#container-posts-section #friends-about-section #all {
-    margin-left: 60%;
-}
-
-#container-posts-section #friends-about-section .friend img {
-    width: 120px;
-    height: 125px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 4px 0px hsla(0, 0%, 20%, 0.8);
-    object-fit: cover;
-}
-
-#container-posts-section #friends-about-section .friend h4 {
-    position: absolute;
-    font-size: 1.5rem;
-    left: 0.5rem;
-    top: 13rem;
-}
-
-#container-posts-section #friends-about-section .friend p {
-    display: none;
-}
-
-#container-posts-section #friends-about-section .fas.fa-ellipsis-vertical {
-    display: none;
-}
+/* RESPONSIVE SETTINGS */
 
 @media only screen and (max-width: 1300px) {
 
     /* PHOTOS SECTION SETTINGS */
 
-    #photos-about-section {
+    .photos-about-section {
         width: 850px;
         padding-left: 2rem;
     }
 
-    #photos-section #photos-about-section h2 {
-        left: 1.7rem;
+    .photos-about-section h2 {
+        left: 2rem;
     }
 
     /* ABOUT SECTION SETTINGS */
 
-    #about-section #personal-info, #friends-about-section {
+    #about-section #personal-info, #about-section .friends-about-section {
         width: 1100px;
     }
 
@@ -1259,40 +1620,36 @@ header a {
         left: 100rem;
     }
 
-    #about-section #friends-about-section .all {
-        margin-left: 90rem !important;
+    /* FRIENDS SECTION SETTINGS */
+
+    .friends-about-section {
+        width: 1100px;
     }
 
-    #friends-about-section .friend {
+    .friends-about-section .friend {
         width: 470px;
     }
 }
 
 @media only screen and (max-width: 1150px) {
-    #posts-container {
-        width: 450px;
-        right: 24rem;
+
+    /* HEADER SETTINGS */
+
+    #first-header #foreground-image {
+        left: 45rem;
     }
 
-    #container-posts-section #add-post {
-        width: 450px;
-        right: 24rem;
+    #first-header #informations {
+        top: 40rem;
+        left: 45.8rem;
+        width: 160px;
+        text-align: center;
     }
 
-    #container-posts-section #add-post input[type="text"] {
-        width: 30rem;
-        margin-left: 1rem;
+    #first-header button[type="submit"] {
+        left: 43.5rem;
+        top: 53.5rem;
     }
-
-    #posts-container .post #image-wrapper img {
-        object-fit: cover;
-    }
-
-    #additional-info-posts-section #friends-about-section {
-        margin-left: 0rem;
-    }
-
-    /* RESPONSIVE FOR HEADER IN PROFILE.HTML */
 
     #first-header hr {
         margin-top: 18rem;
@@ -1308,46 +1665,69 @@ header a {
         margin-left: 0;
     }
 
-    #first-header button[type="submit"] {
-        left: 43.5rem;
-        top: 53.5rem;
+    /* header navigation settings */
+
+    #first-header #navigation-window {
+        top: 53.3rem;
+        gap: 0;
+        left: 21rem;
+        width: 600px;
+        pointer-events: none;
     }
 
-    #first-header #foreground-image {
-        left: 45rem;
+    #first-header #navigation-window .navigation {
+        pointer-events: auto;
     }
 
-    #first-header #informations {
-        /* background-color: red; */
-        top: 40rem;
-        left: 45.5rem;
+    #first-header #navigation-window #settings {
+        margin-left: 50rem;
+        margin-top: -5.5rem;
     }
 
-    #first-header #informations p{
-        margin-left: 3.2rem;
+    #first-header #navigation-window #home {
+        margin-right: 50rem;
     }
 
-    /* HEADER NAVIGATION SETTINGS */
+    /* POSTS SECTION CONTENT RESPONSIVE SETTINGS */
 
-    #first-header #home {
-        left: 77rem;
-        top: 53.5rem;
+    #container-posts-section #posts-container {
+        width: 450px;
+        right: 24rem;
     }
 
-    #first-header #settings {
-        left: 26rem;
-        top: 53.5rem;
+    #container-posts-section #add-post {
+        width: 450px;
+        right: 24rem;
+    }
+
+    #container-posts-section #add-post input[type="text"] {
+        width: 30rem;
+        margin-left: 1rem;
+    }
+
+    #posts-container .post .caption .change-caption-form .finished-editing {
+        margin-left: -4rem;
+    }
+
+
+    #container-posts-section #additional-info-posts-section .photos-about-section,
+    #container-posts-section #additional-info-posts-section .friends-about-section {
+        margin-left: 0;
+    }
+
+    #container-posts-section #additional-info-posts-section {
+        left: 2rem;
     }
 
     /* PHOTOS SECTION SETTINGS */
     
-    #photos-about-section {
-        margin-left: 13rem;
+    .photos-about-section {
+        margin-left: 12rem;
     }
 
     /* ABOUT SECTION SETTINGS */
     
-    #about-section #personal-info, #friends-about-section {
+    #about-section #personal-info, #about-section .friends-about-section {
         width: 850px;
         margin-left: 12rem;
     }
@@ -1356,32 +1736,36 @@ header a {
         left: 75rem;
     }
 
-    #about-section #friends-about-section .all {
-        margin-left: 66rem !important;
+    .friends-about-section .friend h4 {
+        font-size: 2rem;
+        top: 22%;
+    } 
+
+    /* FRIENDS SECTION SETTINGS */
+
+    .friends-about-section {
+        width: 870px;
+        margin-left: 11rem;
     }
 
-    #friends-about-section .friend {
-        width: 360px;
+    .friends-about-section .friend {
+        width: 370px;
     }
 }
 
 @media only screen and (max-width: 1000px) {
 
-    #first-header #sections {
-        margin-left: 29rem;
+    /* HEADER SETTINGS */
+
+    #first-header #foreground-image {
+        left: 38rem;
     }
 
     #first-header hr {
         margin-left: 15rem;
     }
 
-
-    #first-header #foreground-image {
-        left: 38rem;
-    }
-
     #first-header #informations {
-        top: 40rem;
         left: 39rem;
     }
 
@@ -1395,80 +1779,77 @@ header a {
 
     /* HEADER NAVIGATION SETTINGS */
 
-    #first-header #home {
-        left: 68rem;
-        top: 53.5rem;
-    }
-
-    #first-header #settings {
-        left: 19rem;
-        top: 53.5rem;
+    #first-header #navigation-window {
+        width: 500px;
+        left: 19.5rem;
     }
 
     /* MAIN SECTION RESPONSIVE SETTINGS*/
     
     #container-posts-section #additional-info-posts-section {
-        left: 50%;
-        transform: translate(-80%);
-        position: absolute;
-    }
-    
-    #container-posts-section #additional-info-posts-section #user-info {
-        position: absolute;
+        position: unset;
+        margin-left: 24rem;
         width: 500px;
-    }
-    
-    #container-posts-section #additional-info-posts-section #photos-about-section {
-        position: absolute;
-        top: 23.5rem;
-        width: 500px;
+        margin-bottom: 7.5rem;
     }
 
-    #container-posts-section #additional-info-posts-section #photos-about-section span {
+    #container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #bio-cancel {
+        margin-left: 8.7rem;
+    }
+    
+    #container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #bio-save {
+        margin-left: 0.8rem;
+    }
+
+    #container-posts-section #additional-info-posts-section .photos-about-section span {
        width: 142px;
     }
 
-    #container-posts-section #additional-info-posts-section #friends-about-section{
-        position: absolute;
-        top: 57rem;
-        width: 500px;
+    #container-posts-section #additional-info-posts-section .friends-about-section {
+        position: unset;
+        margin-bottom: 0;
     }
 
-    #container-posts-section #additional-info-posts-section #friends-about-section .friend:not(:nth-child(3n + 1)) {
+    #container-posts-section #additional-info-posts-section .friends-about-section .friend:not(:nth-child(3n + 1)) {
         margin-left: 2.5rem;
     }
 
-    #container-posts-section #additional-info-posts-section #friends-about-section .all {
-        margin-left: 32rem;
+    #container-posts-section #additional-info-posts-section .friends-about-section .all-friends {
+        right: 3rem;
     }
 
     #container-posts-section #add-post {
+        position: unset;
         width: 500px;
-        top: 101rem;
-        left: 24rem;
+        margin-left: 24rem;
+        margin-bottom: 2rem;
     }
 
-    #posts-container {
+    #container-posts-section #posts-container {
+        position: unset;
         width: 500px;
-        top: 117rem;
-        left: 24rem;
+        margin-left: 24rem;
+    }
+
+    #posts-container .post .caption .change-caption-form .finished-editing {
+        margin-left: 0.5rem;
     }
 
     /* PHOTOS SECTION SETTINGS */
     
-    #photos-about-section {
-        margin-left: 12rem;
+    .photos-about-section {
+        margin-left: 10.6rem;
         width: 720px;
         padding-left: 1.2rem;
     }
 
-    #photos-section #photos-about-section h2 {
-        left: 1.7rem;
+    .photos-about-section h2 {
+        left: 1.1rem;
     }
 
     /* ABOUT SECTION SETTINGS */
 
-    #about-section #personal-info, #friends-about-section {
+    #about-section #personal-info, #about-section .friends-about-section {
         width: 700px;
         margin-left: 12.5rem;
     }
@@ -1477,36 +1858,33 @@ header a {
         left: 60rem;
     }
 
-    #about-section #friends-about-section .all {
-        margin-left: 52rem !important; 
+    /* FRIENDS SECTION SETTINGS */
+
+    .friends-about-section {
+        width: 715px;
+        margin-left: 12rem;
     }
 
-    #friends-about-section .all {
-        margin-left: 50rem;
-    }
-
-    #friends-about-section .friend {
-        width: 285px;
-    }
+    .friends-about-section .friend {
+        width: 295px;
+    }   
 }
 
 @media only screen and (max-width: 850px) {
-    #first-header #sections {
-        margin-left: 19rem;
-    }
 
-    #first-header hr {
-        margin-left: 13.5rem;
-        margin-top: 25rem;
-        width: 550px;
-    }
+    /* HEADER SETTINGS */
 
     #first-header #foreground-image {
-        left: 31.5rem;
+        left: 31rem;
     }
 
     #first-header #informations {
         left: 32rem;
+    }
+
+    #first-header hr {
+        margin-left: 13.5rem;
+        width: 550px;
     }
 
     #first-header button[type="submit"] {
@@ -1517,86 +1895,191 @@ header a {
         margin-left: 16.5rem;
     }
 
-    /* HEADER NAVIGATION SETTINGS */
+    /* header navigation settings */
 
-    #first-header #home {
-        left: 50rem;
-        top: 60.5rem;
+    #first-header #navigation-window {
+        width: 200px;
+        top: 53.2rem;
+        left: 27.4rem;
     }
 
-    #first-header #settings {
-        left: 26rem;
-        top: 60.5rem;
+    #first-header #navigation-window #home {
+        margin-right: 40rem;
     }
 
-    /* MAIN SECTION RESPONSIVE SETTINGS*/
+    #first-header #navigation-window #settings {
+        margin-left: 40rem;
+    }
+
+    /* MAIN SECTION SETTINGS*/
     
     #container-posts-section #additional-info-posts-section {
-        left: 49%;
-    }
-    
-    #container-posts-section #additional-info-posts-section #photos-about-section {
         width: 400px;
+        margin-bottom: 1.8rem;
+        margin-left: 20.5rem;
     }
 
-    #container-posts-section #additional-info-posts-section #photos-about-section span {
+    /* user info in posts section settings */
+
+    #container-posts-section #additional-info-posts-section #user-info h2 {
+        font-size: 2.7rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #add-bio-text {
+        font-size: 1.6rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #user-info #user-input-info #user-input-text {
+        font-size: 2rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #bio-cancel {
+        margin-left: 8rem;
+    }
+    
+    #container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #bio-save {
+        margin-left: 0.2rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #user-info p {
+        font-size: 2rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #user-info .fas {
+        top: 2.9rem;
+    }
+
+    #container-posts-section #additional-info-posts-section #user-info .fas.fa-scroll {
+        top: 3.1rem;
+    }
+
+    /* photos section in posts section settings */
+
+    #container-posts-section #additional-info-posts-section .photos-about-section h2 {
+        font-size: 2.8rem;
+    }
+
+    #container-posts-section #additional-info-posts-section .photos-about-section span {
         width: 110px;
     }
-    
-    #container-posts-section #additional-info-posts-section #user-info {
-        width: 400px;
+
+    /* friends section in posts section settings */
+
+    #container-posts-section #additional-info-posts-section .friends-about-section h2,
+    #container-posts-section #additional-info-posts-section .friends-about-section #friends-num {
+        margin-left: -0.7rem;
     }
 
-    #container-posts-section #additional-info-posts-section #friends-about-section{
-        top: 53rem;
-        width: 400px;
+    #container-posts-section #additional-info-posts-section .friends-about-section h2 {
+        font-size: 2.8rem;
     }
 
-    #container-posts-section #additional-info-posts-section #friends-about-section .all {
-        margin-left: 22rem;
+    #container-posts-section #additional-info-posts-section .friends-about-section #friends-num {
+        font-size: 1.6rem;
+        margin-top: -2.2rem;
     }
 
-    #container-posts-section #additional-info-posts-section #friends-about-section .friend {
+    #container-posts-section #additional-info-posts-section .friends-about-section .all-friends {
+        right: 1.7rem;
+        font-size: 1.9rem;
+    }
+
+    #container-posts-section #additional-info-posts-section .friends-about-section .friend {
         width: 100px;
         margin-left: -0.9rem;
+        margin-bottom: 0.5rem;
     }
 
-    #container-posts-section #additional-info-posts-section #friends-about-section .friend:not(:nth-child(3n + 1)) {
+    #container-posts-section #additional-info-posts-section .friends-about-section .friend:not(:nth-child(3n + 1)) {
         margin-left: 1rem;
     }
     
-    #container-posts-section #additional-info-posts-section #friends-about-section .friend h4{
-        top: 10.5rem;
+    #container-posts-section #additional-info-posts-section .friends-about-section .friend h4 {
+        top: 10.2rem;
     }
 
-    #container-posts-section #additional-info-posts-section #friends-about-section .friend img{
+    #container-posts-section #additional-info-posts-section .friends-about-section .friend img {
         width: 110px;
         height: 100px;
     }
 
+    /* add post and posts container in posts section settings */
+
     #container-posts-section #add-post {
         width: 400px;
-        top: 92rem;
-        left: 22.7rem;
+        top: 93rem;
+        margin-left: 20.5rem;
     }
 
     #container-posts-section #add-post input[type="text"] {
         width: 275px;
     }
 
-    #posts-container {
+    #container-posts-section #add-post #add-interactions i {
+        font-size: 1.9rem;
+    }
+
+    #container-posts-section #add-post #add-interactions p {
+        font-size: 2rem;
+        margin-left: 2.8rem;
+    }
+
+    #container-posts-section #posts-container {
         width: 400px;
-        left: 22.7rem;
-        top: 107.5rem;
+        margin-left: 20.5rem;
+        top: 108.5rem;
+    }
+
+    #posts-container .post .caption .change-caption-form .finished-editing, #posts-container .post .caption .change-caption-form .cancel {
+        font-size: 1.2rem;
+    }
+
+    #posts-container .post .caption .change-caption-form .finished-editing {
+        margin-left: -7rem;
+        width: 105px;
+    }
+
+    #posts-container .post .caption .change-caption-form .cancel {
+        width: 65px;
+    }
+
+    #container-posts-section #posts-container .post #reactions p {
+        font-size: 1.7rem;
+        margin-top: 0.2rem;
+    }
+
+    #container-posts-section #posts-container .post #reactions .profile-wrapper {
+        width: 23px;
+        height: 23px;
+    } 
+
+    #container-posts-section #posts-container .post #interactions .fas {
+        font-size: 2.3rem;
+    }
+
+    /* report message settings */
+
+    #report-background #report-message {
+        width: 300px;
+        height: 160px;
+    }
+
+    #report-background #report-message p {
+        font-size: 3.4rem;
+    } 
+
+    #report-background #report-message i {
+        font-size: 4.2rem;
+        top: 1.3rem;
     }
 
     /* PHOTOS SECTION */
 
-    #photos-about-section span {
+    .photos-about-section span {
         width: 31%;
     }
 
-    #photos-about-section {
+    .photos-about-section {
         width: 560px;
         padding-right: 0.3rem;
         margin-left: 12.9rem;
@@ -1604,20 +2087,14 @@ header a {
 
     /* ABOUT SECTION SETTINGS */
 
-    #about-section #personal-info, #friends-about-section {
+    #about-section #personal-info, #about-section .friends-about-section {
         width: 500px;
         margin-left: 16.3rem;
     }
 
-    #about-section #personal-info p {
-        font-size: 1.8rem;
-    }
-
-    #about-section #personal-info .right {
-        left: 43rem;
-    }
-
     #about-section #personal-info h2 {
+        margin-top: 1rem;
+        margin-bottom: -2.7rem;
         margin-left: 0.5rem;
     }
 
@@ -1625,60 +2102,90 @@ header a {
         margin-left: 1.5rem;
     }
 
-    #about-section #personal-info .left {
-        left: 4rem;
+    #about-section #personal-info p {
+        font-size: 1.8rem;
+        margin-left: 8.8rem;
+    }
+
+    #about-section #personal-info .right {
+        left: 43rem;
+        font-size: 1.8rem;
+        margin-top: -2.6rem;
     }
 
     #about-section #personal-info .fas.fa-house {
-        top: 11.6rem;
+        top: 11.35rem;
+        left: 4.5rem
     }
 
     #about-section #personal-info .fas.fa-location-dot {
-        top: 16.8rem;
+        top: 16.7rem;
+        left: 5.1rem;
     }
 
     #about-section #personal-info .fas.fa-school {
         top: 27.3rem;
+        left: 4.5rem;
     }
 
     #about-section #personal-info .fas.fa-scroll {
-        top: 33rem;
+        top: 32.8rem;
+        left: 4.7rem;
     }
 
     #about-section #personal-info .fas.fa-phone {
-        top: 43.9rem;
+        top: 43.7rem;
+        left: 5rem;
     }
 
     #about-section #personal-info .fas.fa-envelope {
         top: 48.7rem;
+        left: 5.1rem;
     }
 
     #about-section #personal-info .fas.fa-person {
-        top: 59.7rem;
+        top: 59.5rem;
+        left: 5.7rem;
     }
 
     #about-section #personal-info .fas.fa-cake-candles {
-        top: 64.5rem;
+        top: 64.4rem;
+        left: 5.35rem;
     }
 
     #about-section #personal-info .fas.fa-children {
-        top: 69.7rem
+        top: 69.7rem;
+        left: 4.9rem;
     }
 
     /* CHANGING VALUE OF INFO SETTINGS */
 
     #about-section #personal-info .change-value {
-        width: 205px;
+        width: 190px;
+        margin-left: 8.8rem;
+    }
+
+    #about-section #personal-info .change-value.select {
+        width: 190px;
+    }
+
+    #about-section #personal-info .change-value.date {
+        width: 190px;
     }
     
-    #about-section #personal-info .change-value input[type='text'], #about-section #personal-info .change-value select,#about-section #personal-info .change-value input[type='date'] {
-        width: 160px;
-        height: 45px;
+    #about-section #personal-info .change-value input[type='text'], 
+    #about-section #personal-info .change-value select,
+    #about-section #personal-info .change-value input[type='date'] {
+        width: 150px;
+        height: 40px;
+        bottom: -1.4rem;
+        font-size: 1.2rem;
     }
 
     #about-section #personal-info .change-value input[type='text']:focus ~ span,
     #about-section #personal-info .change-value input[type='text']:valid ~ span{
-        transform: translate(-2px, -10px)
+        transform: translate(-2px, -8px);
+        font-size: 0.9rem;
     } 
 
     #about-section #personal-info .change-value span {
@@ -1712,61 +2219,40 @@ header a {
     
     #about-section #personal-info .change-value:nth-of-type(7) {
         top: 58rem;
-        width: 250px;
     }
     
     #about-section #personal-info .change-value:nth-of-type(8) {
         top: 66.3rem;
-        width: 270px;
     }
     
     #about-section #personal-info .change-value:nth-of-type(9) {
         top: 68rem;
     }
 
-    #about-section #friends-about-section .all {
-        margin-left: 32rem !important; 
+    #about-section .friends-about-section .all-friends {
+        right: 1.5rem;
     }
 
-    #friends-about-section {
-        grid-template-columns: 1fr
+    /* FRIENDS SECTION SETTINGS */
+
+    .friends-about-section {
+        grid-template-columns: 1fr;
+        width: 500px;
+        margin-left: 16.1rem;
     }
 
-    #friends-about-section .all {
-        margin-left: 31rem;
+    .friends-about-section .friend {
+        width: 420px;
     }
 
-    #friends-about-section .friend {
-        width: 400px;
+    .friends-about-section .friend .friend-options-on {
+        top: 2rem;
     }
-
-    #friends-about-section .friend img {
-        width: 70px;
-        height: 60px;
-    }
-
-    #friends-about-section .friend h4 {
-        top: 1rem;
-        left: 8rem;
-    }
-
-    #friends-about-section .friend .number-of-friends {
-        top: 3.5rem;
-        left: 8rem;
-    }
-
 }
 
 @media only screen and (max-width: 700px) {
-    #first-header #sections {
-        margin-left: 14rem;
-        font-size: 2.4rem;
-    }
 
-    #first-header hr {
-        margin-left: 11rem;
-        width: 450px;
-    }
+    /* HEADER SETTINGS */
 
     #first-header #foreground-image {
         left: 25rem;
@@ -1776,8 +2262,19 @@ header a {
         left: 26rem;
     }
 
+    #first-header #sections {
+        margin-left: 14rem;
+        font-size: 2.4rem;
+    }
+
     #first-header button[type="submit"] {
         left: 22.9rem;
+    }
+
+    #first-header hr {
+        margin-left: 11rem;
+        margin-top: 24.5rem;
+        width: 450px;
     }
 
     #first-header #sections p {
@@ -1805,60 +2302,76 @@ header a {
         left: 30.2rem;
     }
 
-    /* HEADER NAVIGATION SETTINGS */
+    /* header navigation settings */
 
-    #first-header #home {
-        left: 42rem;
-        top: 60.5rem;
+    #first-header #navigation-window {
+        top: 60rem;
+        width: 215px;
+        left: 19.9rem;
     }
 
-    #first-header #settings {
-        left: 20rem;
-        top: 60.5rem;
+    #first-header #navigation-window #home {
+        margin-right: 20rem;
     }
 
-    /* MAIN SECTION RESPONSIVE SETTINGS*/
+    #first-header #navigation-window #settings {
+        margin-left: 20rem;
+    }
+
+    /* MAIN SECTION SETTINGS */
     
-    #container-posts-section #additional-info-posts-section {
-        left: 42%;
+    #container-posts-section #additional-info-posts-section,
+    #container-posts-section #add-post,
+    #container-posts-section #posts-container {
+        margin-left: 14.3rem;
     }
 
-    #container-posts-section #add-post {
-        left: 14.3rem;
+    /* report message settings */
+
+    #report-background #report-message {
+        width: 250px;
+        height: 130px;
     }
 
-    #posts-container {
-        left: 14.3rem;
+    #report-background #report-message p {
+        font-size: 2.6rem;
+        margin-top: 5.7rem;
+    }
+
+    #report-background #report-message i {
+        font-size: 3.7rem;
+        top: 1.3rem;
     }
 
     /* PHOTOS SECTION */
 
-    #photos-about-section span {
+    .photos-about-section span {
         width: 30%;
     }
 
-    #photos-about-section {
+    .photos-about-section {
         width: 450px;
         padding-right: 0rem;
-        margin-left: 11.2rem;
+        margin-left: 11rem;
     }
 
     /* ABOUT SECTION SETTINGS */
 
-    #about-section #personal-info, #friends-about-section {
-        margin-left: 9rem;
+    #about-section #personal-info, #about-section .friends-about-section {
+        margin-left: 8.7rem;
     }
 
+    /* FRIENDS SECTION SETTINGS */
+
+    .friends-about-section {
+        margin-left: 8.7rem;
+    }
 }
 
 @media only screen and (max-width: 640px) {
 
-    #first-header hr {
-        margin-left: 4rem;
-        margin-top: 24rem;
-        width: 400px;
-    }
-
+    /* HEADER SETTINGS */
+    
     #first-header #foreground-image {
         left: 14rem;
     }
@@ -1866,9 +2379,15 @@ header a {
     #first-header #informations {
         left: 15rem;
     }
-
+    
     #first-header button[type="submit"] {
         left: 12.5rem;
+        top: 53rem;
+    }
+
+    #first-header hr {
+        margin-left: 4rem;
+        width: 400px;
     }
 
     #first-header #sections {
@@ -1877,194 +2396,227 @@ header a {
 
     /* HEADER NAVIGATION SETTINGS */
 
-    #first-header #home {
-        left: 32rem;
-        top: 60.5rem;
+    #first-header #navigation-window {
+        left: 9.7rem;
     }
 
-    #first-header #settings {
-        left: 10rem;
-        top: 60.5rem;
-    }
-
-    /* MAIN SECTION RESPONSIVE SETTINGS*/
+    /* MAIN SECTION SETTINGS*/
     
-    #container-posts-section #additional-info-posts-section {
-        left: 33%;
-    }
-    
-    #container-posts-section #additional-info-posts-section #photos-about-section {
-        width: 400px;
-    }
-    
-    #container-posts-section #additional-info-posts-section #user-info {
-        width: 400px;
-    }
-
-    #container-posts-section #additional-info-posts-section #friends-about-section{
-        top: 53rem;
-        width: 400px;
-    }
-
-    #container-posts-section #add-post {
-        width: 400px;
-        top: 92rem;
-        left: 3.5rem;
-    }
-
-    #container-posts-section #add-post input[type="text"] {
-        width: 275px;
-    }
-
-    #posts-container {
-        width: 400px;
-        left: 3.5rem;
-        top: 108rem;
+    #container-posts-section #additional-info-posts-section,
+    #container-posts-section #add-post,
+    #container-posts-section #posts-container {
+        margin-left: 4rem;
     }
     
     /* PHOTOS SECTION */
 
-    #photos-section #photos-about-section {
-        margin-left: 2.7rem;
-        gap: 1.4rem;
-        padding-left: 1.4rem;
+    .photos-about-section {
+        margin-left: 1.8rem;
+        padding-left: 1.1rem;
     }
 
     /* ABOUT SECTION SETTINGS */
 
-    #about-section #personal-info, #friends-about-section {
+    #about-section #personal-info, #about-section .friends-about-section {
         margin-left: 4rem;
         width: 400px;
     }
-    
-    #about-section #personal-info .right {
-        font-size: 1.8rem !important;
-        padding: 0.6rem;
-        margin-left: -8rem;
-        margin-top: -2.5rem;
-    }
-
-    /* ABOUT SECTION ICONS LEFT */
-
-    #about-section #personal-info .fas {
-        font-size: 2.7rem;
-    }
-
-    #about-section #personal-info .fas.fa-house {
-        left: 3rem;
-        top: 11.6rem;
-    }
-
-    #about-section #personal-info .fas.fa-location-dot {
-        left: 3.5rem;
-        top: 16.5rem;
-    }
-
-    #about-section #personal-info .fas.fa-school {
-        left: 3rem;
-        top: 26.8rem;
-    }
-
-    #about-section #personal-info .fas.fa-scroll {
-        left: 3rem;
-        top: 32rem;
-    }
-
-    #about-section #personal-info .fas.fa-phone {
-        left: 3.5rem;
-        top: 42.5rem;
-    }
-
-    #about-section #personal-info .fas.fa-envelope {
-        left: 3.5rem;
-        top: 47.3rem;
-    }
-
-    #about-section #personal-info .fas.fa-person {
-        left: 3.8rem;
-        top: 57.7rem;
-    }
-
-    #about-section #personal-info .fas.fa-cake-candles {
-        left: 3.4rem;
-        top: 62.5rem;
-    }
-
-    #about-section #personal-info .fas.fa-children {
-        left: 2.9rem;
-        top: 67.3rem
-    }
 
     #about-section #personal-info h2 {
-        margin-left: 0rem
+        margin-left: 0rem;
+        font-size: 2.75rem;
     }
 
     #about-section #personal-info h3 {
         margin-left: 1rem;
+        font-size: 2.1rem;
     }
 
-    /* CHANGING VALUE OF INFO SETTINGS */
+    #about-section #personal-info p {
+        margin-left: 6.5rem;
+        font-size: 1.6rem;
+    }
+    
+    #about-section #personal-info .right {
+        font-size: 1.8rem;
+        padding: 0.6rem;
+        margin-top: -2.3rem;
+        left: 35.5rem;
+    }
+
+    /* ABOUT SECTION SETTINGS */
+
+    /* left icons in about section settings */
+
+    #about-section #personal-info .left {
+        font-size: 2.4rem;
+    }
+
+    #about-section #personal-info .fas.fa-house {
+        left: 3rem;
+        top: 11rem;
+    }
+
+    #about-section #personal-info .fas.fa-location-dot {
+        left: 3.5rem;
+        top: 16rem;
+    }
+
+    #about-section #personal-info .fas.fa-school {
+        left: 3rem;
+        top: 26rem;
+    }
+
+    #about-section #personal-info .fas.fa-scroll {
+        left: 3rem;
+        top: 31.2rem;
+    }
+
+    #about-section #personal-info .fas.fa-phone {
+        left: 3.5rem;
+        top: 41.5rem;
+    }
+
+    #about-section #personal-info .fas.fa-envelope {
+        left: 3.5rem;
+        top: 46.2rem;
+    }
+
+    #about-section #personal-info .fas.fa-person {
+        left: 3.8rem;
+        top: 56.4rem;
+    }
+
+    #about-section #personal-info .fas.fa-cake-candles {
+        left: 3.4rem;
+        top: 61.1rem;
+    }
+
+    #about-section #personal-info .fas.fa-children {
+        left: 3rem;
+        top: 66rem
+    }
+
+    /* changing value of info in about section settings */
 
     #about-section #personal-info .change-value {
         width: 160px;
         height: 55px;
-        left: -3.6rem;
+        margin-left: 6.5rem;
+    }
+
+    #about-section #personal-info .change-value.select {
+        width: 170px;
+    }
+
+    #about-section #personal-info .change-value.date {
+        width: 170px;
     }
     
-    #about-section #personal-info .change-value input[type='text'], #about-section #personal-info .change-value select, #about-section #personal-info .change-value input[type='date'] {
+    #about-section #personal-info .change-value input[type='text'] {
         width: 120px;
         height: 35px;
-        font-size: 1.3rem;
         padding-top: 0.4rem;
+        font-size: 1.1rem;
+    }
+
+    #about-section #personal-info .change-value select {
+        width: 130px;
+        height: 35px;
+        padding-right: 0;
+        padding-left: 0.5rem;
+        bottom: -1.3rem;
+    }
+
+    #about-section #personal-info .change-value.date input[type='date'] {
+        width: 130px;
+        height: 35px;
     }
 
     #about-section #personal-info .change-value input[type='text']:focus ~ span,
     #about-section #personal-info .change-value input[type='text']:valid ~ span{
-        transform: translate(-2px, -8.5px);
+        transform: translate(-2px, -8px);
         font-size: 0.9rem;
     } 
 
     #about-section #personal-info .change-value span {
         font-size: 1.4rem;
-        margin-top: 0;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(2) {
+        top: 14.2rem;
+    }
+
+    #about-section #personal-info .change-value:nth-of-type(3) {
+        top: 24.6rem;
     }
     
     #about-section #personal-info .change-value:nth-of-type(4) {
-        top: 30.4rem;
+        top: 29.1rem;
     }
     
     #about-section #personal-info .change-value:nth-of-type(5) {
-        top: 41rem;
+        top: 39.7rem;
     }
     
     #about-section #personal-info .change-value:nth-of-type(6) {
-        top: 46rem;
+        top: 44.5rem;
     }
     
     #about-section #personal-info .change-value:nth-of-type(7) {
-        top: 56.5rem;
-        width: 210px;
+        top: 54.7rem;
     }
     
     #about-section #personal-info .change-value:nth-of-type(8) {
-        top: 64.3rem;
-        width: 250px;
+        top: 63.1rem;
     }
     
     #about-section #personal-info .change-value:nth-of-type(9) {
-        top: 66rem;
+        top: 64rem;
     }
 
-    #about-section #personal-info .personal-info {
-        margin-left: 7rem;
-        font-size: 1.6rem;
+    .friends-about-section .friend {
+        width: 330px;
     }
 
-    #about-section #friends-about-section .all {
-        margin-left: 21rem !important;
+    /* friends section in about section settings */
+
+    #about-section .friends-about-section h2 {
+        font-size: 2.75rem;
     }
 
-    #friends-about-section .friend {
-        width: 320px;
+    #about-section .friends-about-section #friends-num {
+        font-size: 1.5rem;
+        margin-top: 4.7rem;
+    }
+
+    #about-section .friends-about-section .all-friends {
+        font-size: 1.75rem;
+    }
+
+    /* FRIEND SECTION SETTINGS */
+
+    .friends-about-section {
+        width: 400px;
+        margin-left: 3.75rem;
+    } 
+    .friends-about-section #friends-section-subsections {
+        gap: 1rem;
+    }
+
+    .friends-about-section #friends-section-subsections p {
+        font-size: 1.75rem;
+    }
+
+    .friends-about-section #friends-section-subsections p:nth-of-type(1) {
+        width: 95px;
+    }
+
+    .friends-about-section #friends-section-subsections p:nth-of-type(2) {
+        width: 140px;
+    }
+
+    .friends-about-section #friends-section-subsections p:nth-of-type(3) {
+        width: 85px;
     }
 }
