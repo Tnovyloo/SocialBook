@@ -7,8 +7,9 @@ User = get_user_model()
 
 # Create your models here.
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='topic_content_type')
-    friends = models.ManyToManyField(User, blank=True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    friends = models.ManyToManyField(User, blank=True, related_name='friends')
 
     id_user = models.IntegerField()
     # bio = models.TextField(blank=True)
@@ -40,30 +41,69 @@ class Profile(models.Model):
     relationship = models.CharField(max_length=50, blank=True)
     family = models.CharField(max_length=50, blank=True)
 
-
     def __str__(self):
         return self.user.username
 
-class Friend_Request(models.Model):
-    from_user = models.ForeignKey(
-        User, related_name='from_user', on_delete=models.CASCADE)
-    to_user = models.ForeignKey(
-        User, related_name='to_user', on_delete=models.CASCADE
-    )
-
-    def __str__(self):
-        return self.user
-
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    user_id = models.CharField(max_length=100)
+    user_id = models.CharField(max_length=100, null=True)
+    profile = models.ForeignKey(
+        Profile,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
+
     image = models.ImageField(upload_to='post_media')
     created_at = models.DateTimeField(default=datetime.now())
     number_of_likes = models.IntegerField(default=0)
     caption = models.TextField()
 
     def __str__(self):
-        return self.username
+        return str(self.user_id)
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
+    profile = models.ForeignKey(
+        Profile,
+        on_delete=models.CASCADE,
+        related_name='profile'
+    )
+    content = models.TextField(null=True)
+
+    # TODO create image field which is null by default but when user upload image then show it in comment.
+
+    def __str__(self):
+        return str(self.post.id)
+
+class Friends1(models.Model):
+    users1 = models.ManyToManyField(User, related_name='friend')
+    current_user = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE, null=True)
+
+    @classmethod
+    def make_friend(cls, current_user, new_friend):
+        friend, create = cls.objects.get_or_create(current_user=current_user)
+        friend.users1.add(new_friend)
+
+    @classmethod
+    def lose_friend(cls, current_user, new_friend):
+        friend, create = cls.objects.get_or_create(
+            current_user=current_user
+        )
+        friend.users1.remove(new_friend)
+
+    #TODO magic method __str__
+
+class FriendRequest(models.Model):
+    sender = models.ForeignKey(User, null=True, related_name='sender', on_delete=models.CASCADE)
+    receiver = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+
+    # def __str__(self):
+    #     return str(sender_id + ' to ' + receiver_id)
 
 class LikePost(models.Model):
     post_id = models.CharField(max_length=500)

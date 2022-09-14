@@ -13,7 +13,7 @@
     </head>
     <body>
         <header>
-            <h1><a href="/templates/index.html">Fakebook</a></h1>
+            <h1><a href="/">Fakebook</a></h1>
             <div id="search-wrapper">
                 <i class='fas fa-magnifying-glass'></i>
                 <input type="text" id="search" placeholder="Search fakebook">
@@ -38,27 +38,27 @@
                 </div>
             </div>
 
-            <button id="photo-wrapper-onclick"><img src="/images/Gryz-Szymon.jpeg"></button>
+            <button id="photo-wrapper-onclick"><img src="{{user_profile.profile_img.url}}"></button>
 
             <span id="hover-account">Account</span>
 
             <div id="other-pages">
                 <i class="fas fa-caret-up"></i>
-                <a href="/templates/index.html">
+                <a href="/">
                     <div class="window" id="first-window">
                         <i class='fas fa-house'></i>
                         <p>Home</p>
                     </div>
                 </a>
 
-                <a href="/templates/profile.html">
+                <a href="/profile/{{user.username}}">
                     <div class="window">
                         <i class="fas fa-user"></i>
                         <p>Profile</p>
                     </div>
                 </a>
 
-                <a href="/templates/signin.html">
+                <a href="logout">
                     <div class="window" id="last-window">
                         <i class="fas fa-door-open"></i>
                         <p>Log Out</p>
@@ -80,20 +80,20 @@
                 </div>
 <!--                Change profile picture.-->
                 <div id="change-profile">
-                    <img src="{{user_profile.profile_image.url}}" class="profile">
+                    <img src="{{user_profile.profile_img.url}}" class="profile">
                     <div id="change-profile-info">
                         <p>{{user.username}}</p>
                         <button id="change-profile-image-button">Change your profile image</button>
                     </div>
                 </div>
 
-                <form id="change-profile-image-window" action="change_profile_image" method="POST">
+                <form id="change-profile-image-window" action="change_profile_image" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="choose-image" id="choose-image-label">
                         <input type="file" accept=".jpg" id="choose-image" name="profile_image">
                     </label>
-                    <input type="submit" value="Upload" id="upload-image" name="profile_image">
-<!--                    TODO Upload input need to be submit button because django couldn't download image to the database. -->
+<!--                    <input type="submit" value="Upload" id="upload-image" name="profile_image">-->
+                    <input type="submit" class="submit-button">
                 </form>
 
 <!--                Basic info.-->

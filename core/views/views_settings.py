@@ -3,10 +3,16 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile, Post, Friend_Request, LikePost
+from core.models import Profile, Post, Friends1, LikePost
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.forms import PasswordChangeForm
+
+@login_required(login_url='signin')
+def settings(request):
+    user_object = User.objects.get(username=request.user)
+    user_profile = Profile.objects.get(user=user_object)
+    return render(request, 'settings.html', {'user_profile': user_profile})
 
 @login_required(login_url='signin')
 def change_profile_image(request):
@@ -122,7 +128,7 @@ def profile_password(request):
         new_password2 = request.POST['new_password2']
 
         if new_password == new_password2:
-            form = PasswordResetForm()
+            form = PasswordChangeForm(request.user, request.POST)
             if form.is_valid():
                 user = form.save()
                 update_session_auth_hash(request, user)

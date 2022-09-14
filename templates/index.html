@@ -1,11 +1,10 @@
 {% load static %}
-<!-- {% static '/main-page/styles.css' %} -->
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/static/main-page/styles.css" rel="stylesheet" type="text/css">
+        <link href="{% static '/main-page/styles.css' %}" rel="stylesheet" type="text/css">
         <script src="https://kit.fontawesome.com/a18d53579f.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +15,11 @@
         <main>
             <div id="background">
                 <header>
-                    <h3><a href="/main-page/index.html">Fakebook</a></h3>
-                    <input type="text" placeholder="Search fakebook" id="search"><label for="search"><i class="fas fa-magnifying-glass"></i></label>
-
+                    <h3><a href="/">Fakebook</a></h3>
+                    <form action="search" method="POST">
+                    {% csrf_token %}
+                    <input name="username" type="text" placeholder="Search fakebook" id="search"><label for="search"><i class="fas fa-magnifying-glass"></i></label>
+                    </form>
                     <!-- UPLOAD WINDOW -->
 
                     <button id="upload">Upload photo/video</button>
@@ -42,17 +43,20 @@
                             <i class="fas fa-bell" id="notification-open"><span id="notification-icon"></span></i>                            
                             <div id="info">
                                 <h2>Notifications</h2>
-                                <i id="close-notifications">+</i>                               
-                                <div class="info-text">                                   
-                                    <img class="profile-wrapper" src="{% static 'images/pexels-charles-1851164.jpg' %}">
-                                    <p class="info-content">Charles has a birthday today.</p>
+                                <i id="close-notifications">+</i>
+                                {% for request in user_friend_requests.all %}
+                                <div class="info-text">-->
+                                    <img class="profile-wrapper" src="{{request.sender.profile.profile_img.url}}">
+                                    <p class="info-content"><a href="/add_or_remove_friend/{{request.sender.username}}/add">Accept friend request</a></p>
+                                    <p class="info-content"><a href="/delete_request/{{request.sender.username}}/remove">Remove friend request</a></p>
                                     <i class="circle-notification"></i>
                                 </div>
-                                <div class="info-text">                                   
-                                    <img class="profile-wrapper" src="{% static 'images/pexels-charles-1851164.jpg' %}">
-                                    <p class="info-content">Charles has a birthday today.</p>
-                                    <i class="circle-notification"></i>
-                                </div>
+                                {% endfor %}
+<!--                                <div class="info-text">                                   -->
+<!--                                    <img class="profile-wrapper" src="{% static 'images/pexels-charles-1851164.jpg' %}">-->
+<!--                                    <p class="info-content">Charles has a birthday today.</p>-->
+<!--                                    <i class="circle-notification"></i>-->
+<!--                                </div>-->
                             </div>
                             <span id="hover-notifications">Notifications</span>
                         </li>
@@ -91,7 +95,7 @@
                         <!-- PROFILE -->
 
                         <li>
-                            <button id="photo-wrapper-onclick"><img src="/images/Gryz-Szymon.jpeg"></button>
+                            <button id="photo-wrapper-onclick"><img src="{{user_profile.profile.profile_img.url}}"></button>
                             <span id="hover-account">Account</span>
                         </li>
 
@@ -115,7 +119,7 @@
                             </div>
                         </a>
                         
-                        <a href="{% static '/login-registration/login-registration.html'  % }">
+                        <a href="logout">
                             <div class="window" id="last-window">
                                 <i class="fas fa-door-open"></i>
                                 <p>Log Out</p>
@@ -176,10 +180,7 @@
                 {% for post in posts reversed %}
                     <div id="post">
                         <header>
-                            <div id="profile-wrapper"><img src="{{post.user.profile_img.url}}"></div>
-
-                            <!--TODO user profile img-->
-
+                            <div id="profile-wrapper"><img src="{{post.profile.profile_img.url}}"></div>
                             <p><a href="profile/{{post.user_id}}">{{post.user_id}}</a></p>
                             <i class="fas fa-ellipsis"></i>
                         </header>
@@ -196,7 +197,13 @@
                             </a>
                         </div>
                         <div id="reactions">
-                            <p>Liked <span id="bold">name</span> and <span id="bold">{{post.number_of_likes}} others</span></p>
+                            {% if post.number_of_likes == 0 %}
+                            <p>Liked by <span id="bold">no one</span></p>
+                            {% elif post.number_of_likes == 1 %}
+                            <p>Liked by <span id="bold">{{post.number_of_likes}} person </span></p>
+                            {% elif post.number_of_likes > 1 %}
+                            <p>Liked by <span id="bold">{{post.number_of_likes}} people</span></p>
+                            {% endif %}
                             <div id="profiles-wrapper">
                                 <div id="profile-wrapper"><img src="{% static 'images/Gryz-Szymon.jpeg' %}"></div>
                                 <div id="profile-wrapper"><img src="{% static 'images/pexels-charles-1851164.jpg' %}"></div>
@@ -210,27 +217,26 @@
                             <i class="fas fa-share"></i>
                         </div>
                         <div id="comments">
+                            {% for comment in post.comments.all %}
                             <div id="comment-messages">
                                 <div id="comment">
                                     <div id="comment-content">
-                                        <div id="profile-wrapper"><img src="{% static 'images/pexels-charles-1851164.jpg' %}"></div>
-                                        <p>💕</p>
-                                    </div>
-                                </div>
-                                <div id="comment">
-                                    <div id="comment-content">
-                                        <div id="profile-wrapper"><img src="{% static 'images/Gryz-Szymon.jpeg' %}"></div>
-                                        <p>😎</p>
-                                    </div>
-                                </div>
-                                <div id="comment">
-                                    <div id="comment-content">
-                                        <div id="profile-wrapper"><img src="{% static 'images/pexels-pixabay-39866.jpg' %}"></div>
-                                        <p>Looks good!</p>
+                                        <div id="profile-wrapper"><img src="{{comment.profile.profile_img.url}}"></div>
+                                        {% if comment %}
+                                        <p>{{comment.content}}</p>
+                                        {% else %}
+                                        <p>not working</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            <input type="text" placeholder="post a comment" id="comment-input">
+                            {% endfor %}
+                            <form method="POST" action="comment">
+                                {% csrf_token %}
+                                <input type="text" placeholder="post a comment" id="comment-input" name="text">
+                                <input type="hidden" value="{{post.id}}" name="post_id">
+                                <button type="submit">Send comment.</button>
+                            </form>
                             <input type="file" accept=".jpg" id="image">
                             <input type="file" accept=".mp4" id="video">
                             <label for="image"><i class="fas fa-image"></i></label>
@@ -240,7 +246,7 @@
                 {% endfor %}
             </div>
         </main>
-        <script type="text/javascript" src="/static/main-page/script.js"></script>
+        <script type="text/javascript" src="{% static '/main-page/script.js' %}"></script>
     </body>
 </html>
 <!-- {% static '/main-page/script.js' %} -->
