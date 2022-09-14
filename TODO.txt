@@ -12,3 +12,4 @@
 - under like button set a <a href='like-post'> on the profile page
 
 TODO settings - if user nothing changed then dont delete current data.
+TODO szymoin12 doesnt have friends and there is a problem (find friends)

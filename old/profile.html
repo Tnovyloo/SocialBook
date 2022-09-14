@@ -8,21 +8,34 @@
         <script src="https://kit.fontawesome.com/a18d53579f.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Kanit&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
         <title>Profile</title>
     </head>
-
     <body>
         <header id="first-header">
             <div id="background-image"><img src="{{user_profile.wallpaper_img.url}}"></div>
             <div id="foreground-image"><img src="{{user_profile.profile_img.url}}"></div>
-    
-            <!-- INFO SECTION IN HEADER -->
+
+            <!-- NAVIGATION TO OTHER PAGES -->
+
+            <a href="/">
+                <div class="navigation" id="home">
+                    <i class="fas fa-house"></i>
+                    <p id="home-text">home</p>
+                </div>
+            </a>
+
+            <a href="/settings">
+                <div class="navigation" id="settings">
+                    <i class="fas fa-gear"></i>
+                    <p id="settings-text">settings</p>
+                </div>
+            </a>
 
             <div id="informations">
                 <h3>{{user_profile.first_name}} {{user_profile.last_name}} @{{user_profile.user}}</h3>
                 <p class="bold" style="color: gray;">{{count_friends}} Friends</p>
-                <div class="profiles-wrapper">
+                <div id="profiles-wrapper">
                     {% for person in user_friends %}
                     <img class="profile-friend" src="{{person.profile.profile_img.url}}">
                     <i class="fas fa-ellipsis-vertical"></i>
@@ -30,50 +43,26 @@
                 </div>
             </div>
             {% if user_object.username == user.username %}
-            <a href="/settings"><button type="submit">Edit profile</button></a>
+            <button type="submit"><a href="/settings">Edit profile</a></button>
             {% elif if_friends %}
-            <a href="/add_or_remove_friend/{{user_object.username}}/remove"><button type="submit">Remove friend</button></a>
+            <button type="submit"><a href="/add_or_remove_friend/{{user_object.username}}/remove">Remove friend</a></button>
             {% else %}
-            <a href="/friend_request/{{user_object.username}}"><button type="submit">Add friend</button></a>
+            <button type="submit"><a href="/friend_request/{{user_object.username}}">Add friend</a></button>
             {% endif %}
-            <!-- NAVIGATION TO OTHER PAGES -->
-
-            <div id="navigation-window">
-
-            <a href="/">
-                <div class="navigation" id="home">
-                    <i class="fas fa-house"></i>
-                    <span>HOME</span>
-                </div>
-            </a>
-
-            <a href="/settings">
-                <div class="navigation" id="settings">
-                    <i class="fas fa-gear"></i>
-                    <span>SETTINGS</span>
-                </div>
-            </a>
-
-            </div>
-
             <hr>
-
-            <!-- ALL SECTIONS TO CHOOSE -->
-
             <div id="sections">
-                <p id="posts" class="bold">Posts</p>
+                <p id="posts">Posts</p>
                 <hr id="posts-underline" class="underline">
-                <p id="photos" class="bold">Photos</p>
+                <p id="photos">Photos</p>
                 <hr id="photos-underline" class="underline">
-                <p id="about" class="bold">About</p>
+                <p id="about">About</p>
                 <hr id="about-underline" class="underline">
-                <p id="friends" class="bold">Friends</p>
+                <p id="friends">Friends</p>
                 <hr id="friends-underline" class="underline">
             </div>
-
         </header>
 
-        <!-- REPORT MESSAGE  -->
+        <!-- REPORT MESSAGE TO APPEAR -->
 
         <div id="report-background">
             <div id="report-message">
@@ -88,48 +77,35 @@
             <div id="additional-info-posts-section">
                 <div id="user-info">
                     <h2>User info</h2>
-
-                    <div id="user-input-info">
-                        <p id="user-input-text"></p>
-                        <input type="submit" value="Add Bio" id="add-bio-submit">
-<!--                        TODO create bio panel -->
-                        <form method="POST" action="" id="bio-form">
-                            <textarea placeholder="Add bio..." id="add-bio-text" rows="4" cols="40" maxlength="83" onkeyup="charCount(this)"></textarea>
-                            <p id="letters-counter-bio"> <span id="num-of-characters-bio">0</span> / 83 characters</p>
-                            <input type="submit" id="bio-save" value="Save" class="bio-buttons">
-                            <input type="submit" id="bio-cancel" value="Cancel" class="bio-buttons">
-                        </form>
-                    </div>
-
                     <i class="fas fa-house"></i>
-                    <p>Lives in <span id="live-place" class="bold">{{user_profile.current_location}}</span></p>
+                    <p>Lives in: <span id="live-place" class="bold">{{user_profile.current_location}}</span></p>
                     <i class="fas fa-location-dot"></i>
-                    <p>From <span id="from-place" class="bold">{{user_profile.location}}</span></p>
+                    <p>From: <span id="from-place" class="bold">{{user_profile.location}}</span></p>
                     <i class="fas fa-scroll"></i>
                     <p>Hobbies: <span id="hobby" class="bold">{{user_profile.hobby}}</span></p>
                 </div>
 
-                <div class="photos-about-section">
+                <div id="photos-about-section">
                     <h2>Photos</h2>
-                    <p id="all-photos">See All Photos</p>
                     {% for post in user_posts %}
                     <span><img src="{{post.image.url}}"></span>
                     {% endfor %}
                 </div>
 
-                <div class="friends-about-section">
+                <div id="friends-about-section">
                     <h2>Friends</h2>
                     <p id="friends-num">{{count_friends}} friends</p>
-                    <p class="all-friends">See All Friends</p>
-
+                    <p class="all">See All Friends</p>
                     {% for person in user_friends %}
                     <div class="friend">
                         <img src="{{person.profile.profile_img.url}}">
                         <h4>{{person}}</h4>
+                        <p class="number-of-friends">100 mutual friends</p>
+                        <i class="fas fa-ellipsis-vertical"></i>
                     </div>
                     {% endfor %}
-
                 </div>
+
             </div>
 
             <!-- ADD POST SECTION -->
@@ -143,12 +119,10 @@
                         <i class="fas fa-image"></i>
                         <p>Image</p>
                     </label>
-
                     <label for="video">
                         <i class="fas fa-video"></i>
                         <p>Video</p>
-                    </label>
-                    
+                    </labeL>
                     <input type="file" accept=".jpg" id="image">
                     <input type="file" accept=".mp4" id="video">
                 </div>
@@ -157,38 +131,23 @@
             <!-- POSTS IN POSTS SECTION -->
 
             <div id="posts-container">
+                {% for post in user_posts %}
                 <div class="post">
                     <header>
-                        <div class="profile-wrapper"><img src="{{user_profile.profile_img.url}}"></div>
+                        <div id="profile-wrapper"><img src="{{user_profile.profile_img.url}}"></div>
                         <p>{{user_profile.user}}</p>
                         <button class="post-options-button"><i class="fas fa-ellipsis"></i></button>
                     </header>
-
                     <div class="post-options">
                         <i class="fas fa-play"></i>
                         <button class="report">report post</button>
                         {% if user.username == user_object.username %}
                         <button class="delete"><a href="/delete_post/{{post.id}}">delete post</a></button>
-                        <button class="edit-caption">edit post</button>
-<!--                        TODO Edit post-->
                         {% endif %}
                     </div>
-
-                    <div class="caption">
-<!--                        TODO post caption-->
-                        <p class="caption-text">Summer time.</p>
-                        <form class="change-caption-form">
-                            <textarea type="text" class="change-caption-text" maxlength="500" onkeyup="calcChar(this)"></textarea>
-                            <p class="letters-counter-edit-profile"> <span class="edit-num-of-characters-left"></span> characters remaining</p>
-                            <input type="submit" class="finished-editing" value="Finished editing">
-                            <input type="submit" class="cancel" value="Cancel">
-                        </form>
-                    </div>
-
-                    <div class="image-wrapper">
+                    <div id="image-wrapper">
                         <img src="{{post.image.url}}">
                     </div>
-
                     <div id="reactions">
                         {% if post.number_of_likes == 0 %}
                         <p>Liked by <span id="bold">no one</span></p>
@@ -197,52 +156,55 @@
                         {% elif post.number_of_likes > 1 %}
                         <p>Liked by <span id="bold">{{post.number_of_likes}} people</span></p>
                         {% endif %}
-                        <div class="profiles-wrapper">
-                            <div class="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>
-                            <div class="profile-wrapper"><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></div>
-                            <div class="profile-wrapper"><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></div>
+                        <div id="profiles-wrapper">
+                            <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>
+                            <div id="profile-wrapper"><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></div>
+                            <div id="profile-wrapper"><img src="{% static '/images/pexels-djordje-petrovic-2102416.jpg' %}"></div>
                         </div>
                     </div>
-
                     <div id="interactions">
-                        <a href="/like_post?post_id={{post.id}}"><i class="fas fa-thumbs-up"></i></a>
+                        <i class="fas fa-thumbs-up"></i>
+                        <a href="/like_post?post_id={{post.id}}"></a>
                         <label for="comment-input"><i class="fas fa-message"></i></label>
                         <i class="fas fa-share"></i>
                     </div>
-
-                    <div class="comments">
-                        <div class="comment-messages">
-                            {% for comment in post.comments.all %}
-                                <div class="comment">
-                                    <div class="comment-content">
-                                        <div class="profile-wrapper"><img src="{{comment.profile.profile_img.url}}"></div>
-                                        {% if comment %}
-                                        <p>{{comment.content}}</p>
-                                        {% else %}
-                                        <p>not working</p>
-                                        {% endif %}
-                                    </div>
+                    <div id="comments">
+                        <div id="comment-messages">
+                            <div id="comment">
+                                <div id="comment-content">
+                                    <div id="profile-wrapper"><img src="{% static '/images/pexels-charles-1851164.jpg' %}"></div>
+                                    <p>💕</p>
                                 </div>
-                                {% endfor %}
+                            </div>
+                            <div id="comment">
+                                <div id="comment-content">
+                                    <div id="profile-wrapper"><img src="{% static '/images/Gryz-Szymon.jpeg' %}"></div>
+                                    <p>😎</p>
+                                </div>
+                            </div>
+                            <div id="comment">
+                                <div id="comment-content">
+                                    <div id="profile-wrapper"><img src="{% static '/images/pexels-pixabay-39866.jpg' %}"></div>
+                                    <p>Looks good!</p>
+                                </div>
+                            </div>
                         </div>
-                        <form action="comment" method="POST">
-                                {% csrf_token %}
-                                <input name="text" type="text" placeholder="post a comment" id="comment-input">
-                                <input type="hidden" value="{{post.id}}" name="post_id">
-    <!--                            <input type="file" accept=".jpg" id="image">-->
-    <!--                            <input type="file" accept=".mp4" id="video">-->
-    <!--                            <label for="image"><i class="fas fa-image"></i></label>-->
-    <!--                            <label for="video"><i class="fas fa-video"></i></label>-->
-                        </form>
+                        <input type="text" placeholder="post a comment" id="comment-input">
+                        <input type="file" accept=".jpg" id="image">
+                        <input type="file" accept=".mp4" id="video">
+                        <label for="image"><i class="fas fa-image"></i></label>
+                        <label for="video"><i class="fas fa-video"></i></label>
                     </div>
                 </div>
+                {% endfor %}
+
             </div>
         </div>
 
-        <!-- PHOTOS MAIN SECTION -->
+        <!-- PHOTOS SECTION -->
 
         <div id="photos-section">
-            <div class="photos-about-section">
+            <div id="photos-about-section">
                 <h2>Photos</h2>
                 {% for post in user_posts %}
                 <span><img src="{{post.image.url}}"></span>
@@ -250,12 +212,9 @@
             </div>
         </div>
 
-        <!-- ABOUT MAIN SECTION -->
+        <!-- ABOUT SECTION -->
 
         <div id="about-section">
-
-            <!-- PERSONAL INFO SECTION IN ABOUT SECTION -->
-
             <div id="personal-info">
                 <h2>About</h2>
 
@@ -408,132 +367,76 @@
 
             </div>
 
-            <!-- FRIENDS SECTION IN ABOUT SECTION -->
+                <div id="friends-about-section">
+                    <h2>Friends</h2>
+                    <p id="friends-num">{{count_friends}} friends</p>
+                    <p class="all">See All Friends</p>
 
-            <div class="friends-about-section">
-                <h2>Friends</h2>
-                <p id="friends-num">{{count_friends}} friends</p>
-                <p class="all-friends">See All Friends</p>
+                    {% for person in user_friends %}
+                    <div class="friend">
+                        <img src="{{person.profile.profile_img.url}}">
+                        <h4>{{person.username}}</h4>
+<!--                        TODO- in mutual friend p tag maybe paste a user bio.-->
+                        <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
+                        <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                        <div class="friend-options-window">
+                            <div class="friend-option favourite">
+                                <i class="fas fa-heart"></i>
+                                <p>Favourite</p>
+                            </div>
 
-                {% for person in user_friends %}
-                <div class="friend">
-                    <img src="{{person.profile.profile_img.url}}">
-                    <h4>Name</h4>
-                    <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
-                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
-                    <div class="friend-options-window">
-                        <div class="friend-option favourite">
-                            <i class="fas fa-heart"></i>
-                            <p>Favourite</p>
+                            <div class="friend-option follow-option">
+                                <i class="fas fa-square-minus"></i>
+                                <p class="follow-text">Unfollow</p>
+                            </div>
+
+                            <div class="friend-option unfriend">
+                                <i class="fas fa-user-xmark"></i>
+                                <p>Unfriend</p>
+                            </div>
                         </div>
-
-                        <div class="friend-option follow-option">
-                            <i class="fas fa-square-minus"></i>
-                            <p class="follow-text">Unfollow</p>
-                        </div>
-
-                        <div class="friend-option unfriend">
-                            <i class="fas fa-user-xmark"></i>
-                            <p>Unfriend</p>
-                        </div>
+                        <button class="add-friend">Add Friend</button>
                     </div>
-                    <button class="add-friend">Add Friend</button>
+                    {% endfor %}
+
                 </div>
-                {% endfor %}
             </div>
-        </div>
 
-        <!-- ALL FRIENDS SECTION -->
+            <!-- ALL FRIENDS SECTION -->
 
-        <div id="friends-section">
-            <div class="friends-about-section">
-                <h2>Friends</h2>
-                <p id="friends-num">{{count_friends}} friends</p>
+            <div id="friends-section">
+                <div id="friends-about-section">
+                    <h2>Friends</h2>
+                    <p id="friends-num">{{count_friends}} friends</p>
 
-                <div id="friends-section-subsections">
-                    <p id="all-friends-section-underline">All friends</p>
-                    <p id="family-members-section-underline">Family members</p>
-                    <p id="same-city-section-underline">Same city</p>
-                </div>
+                    {% for person in user_friends %}
+                    <div class="friend">
+                        <img src="{{person.profile.profile_img.url}}">
+                        <h4>{{person}}</h4>
+                        <p class="number-of-friends" class="number-of-friends">100 mutual friends</p>
+                        <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
+                        <div class="friend-options-window">
+                            <div class="friend-option favourite">
+                                <i class="fas fa-heart"></i>
+                                <p>Favourite</p>
+                            </div>
 
-<!--                <div class="friend family">-->
-<!--                    <img src="/images/pexels-pixabay-39866.jpg">-->
-<!--                    <h4>Name</h4>-->
-<!--                    <p class="number-of-friends">100 mutual friends</p>-->
-<!--                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>-->
-<!--                    <div class="friend-options-window">-->
-<!--                        <div class="friend-option favourite">-->
-<!--                            <i class="fas fa-heart"></i>-->
-<!--                            <p>Favourite</p>-->
-<!--                        </div>-->
+                            <div class="friend-option follow-option">
+                                <i class="fas fa-square-minus"></i>
+                                <p class="follow-text">Unfollow</p>
+                            </div>
 
-<!--                        <div class="friend-option follow-option">-->
-<!--                            <i class="fas fa-square-minus"></i>-->
-<!--                            <p class="follow-text">Unfollow</p>-->
-<!--                        </div>-->
-
-<!--                        <div class="friend-option unfriend">-->
-<!--                            <i class="fas fa-user-xmark"></i>-->
-<!--                            <p>Unfriend</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <button class="add-friend">Add Friend</button>-->
-<!--                </div>-->
-<!--                -->
-<!--                <div class="friend same-city">-->
-<!--                    <img src="/images/pexels-pixabay-39866.jpg">-->
-<!--                    <h4>Name</h4>-->
-<!--                    <p class="number-of-friends">100 mutual friends</p>-->
-<!--                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>-->
-<!--                    <div class="friend-options-window">-->
-<!--                        <div class="friend-option favourite">-->
-<!--                            <i class="fas fa-heart"></i>-->
-<!--                            <p>Favourite</p>-->
-<!--                        </div>-->
-
-<!--                        <div class="friend-option follow-option">-->
-<!--                            <i class="fas fa-square-minus"></i>-->
-<!--                            <p class="follow-text">Unfollow</p>-->
-<!--                        </div>-->
-
-<!--                        <div class="friend-option unfriend">-->
-<!--                            <i class="fas fa-user-xmark"></i>-->
-<!--                            <p>Unfriend</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <button class="add-friend">Add Friend</button>-->
-<!--                </div>-->
-
-<!--                TODO create 3x for loops for friedns city/ family/ all-->
-                {% for person in user_friends %}
-                <div class="friend">
-                    <img src="{{person.profile.profile_img.url}}">
-                    <h4>{{person}}</h4>
-                    <p class="number-of-friends">100 mutual friends</p>
-                    <button class="friend-options-on"><i class="fas fa-ellipsis-vertical"></i></button>
-                    <div class="friend-options-window">
-                        <div class="friend-option favourite">
-                            <i class="fas fa-heart"></i>
-                            <p>Favourite</p>
+                            <div class="friend-option unfriend">
+                                <i class="fas fa-user-xmark"></i>
+                                <p>Unfriend</p>
+                            </div>
                         </div>
-
-                        <div class="friend-option follow-option">
-                            <i class="fas fa-square-minus"></i>
-<!--                            TODO Create a tag to delete friend.-->
-                            <p class="follow-text">Unfollow</p>
-                        </div>
-
-                        <div class="friend-option unfriend">
-                            <i class="fas fa-user-xmark"></i>
-                            <p>Unfriend</p>
-                        </div>
+                        <button class="add-friend">Add Friend</button>
                     </div>
-                    <button class="add-friend">Add Friend</button>
+                    {% endfor %}
+
                 </div>
-                {% endfor %}
             </div>
-        </div>
-        <script type="text/javascript" src="{% static 'profile.js' %}"></script>
-        <script type="text/javascript" src="{% static '/darkmode-other.js' %}"></script>
+        <script type="text/javascript" src="{% static 'profile-files/profile.js' %}"></script>
     </body>
 </html>

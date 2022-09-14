@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="index.css" rel="stylesheet" type="text/css">
+        <link href="{% static '/main-page/styles.css' %}" rel="stylesheet" type="text/css">
         <script src="https://kit.fontawesome.com/a18d53579f.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,14 +15,17 @@
         <main>
                 <header>
                     <h3><a href="/main-page/index.html">Fakebook</a></h3>
+                    <form action="search" method="POST">
+                    {% csrf_token %}
                     <input type="text" placeholder="Search fakebook" id="search"><label for="search"><i class="fas fa-magnifying-glass"></i></label>
-                    
+                    </form>
                     <!-- UPLOAD WINDOW -->
 
                     <button id="upload">Upload photo/video</button>
 
                     <div id="upload-files">
                         <form action="upload" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
                             <h4 id="show-hide-preview">Hide image preview</h4>
 
                             <div id="post-image-preview">
@@ -45,7 +49,8 @@
                                 <i class="fas fa-cloud-arrow-up"></i>
                                 <input id="photo-video" type="file" accept=".jpg, .mp4" name="image_upload" style="display: none" onchange="prevImage(this)">
                             </label>
-                            <textarea placeholder="Add caption..." style="resize: none;" onkeyup="changeCaption(this)" id="add-post-caption" maxlength="500"></textarea>
+<!--                            TODO take caption to database in post method-->
+                            <textarea name="caption" placeholder="Add caption..." style="resize: none;" onkeyup="changeCaption(this)" id="add-post-caption" maxlength="500"></textarea>
                             <button type="submit">Upload</button>
                         </form>
                     </div>
@@ -65,35 +70,37 @@
                                 <h2>Notifications</h2>
                                 <i id="close-notifications">+</i>      
 
-                                <div class="info-text">                                   
-                                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">
-                                    <p class="info-content">Charles has a birthday today.</p>
-                                    <i class="circle-notification"></i>
-                                </div>
+<!--                                <div class="info-text">                                   -->
+<!--                                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">-->
+<!--                                    <p class="info-content">Charles has a birthday today.</p>-->
+<!--                                    <i class="circle-notification"></i>-->
+<!--                                </div>-->
 
+                                {% for request in user_friend_requests.all %}
                                 <div class="info-text">                                   
-                                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">
-                                    <p class="info-content">Charles invited you to friends.</p>
-                                    <form class="user-request">
-                                        <input type="submit" class="confirm" name="user-friend-action" value="Confirm">
+                                    <img class="profile-wrapper" src="{{request.sender.profile.profile_img.url}}">
+                                    <p class="info-content">{{request.sender.username}} invited you to friends.</p>
+                                    <div class="user-request">
+                                        <a href="/add_or_remove_friend/{{request.sender.username}}/add"><input type="submit" class="confirm" name="user-friend-action" value="Confirm"></a>
                                         <span class="after-confirm">Invitation confirmed.</span>
-                                        <input type="submit" class="remove" name="user-friend-action" value="Remove">
+                                        <a href="/delete_request/{{request.sender.username}}/remove"><input type="submit" class="remove" name="user-friend-action" value="Remove"></a>
                                         <span class="after-remove">Invitation removed.</span>
-                                    </form>
+                                    </div>
                                     <i class="circle-notification"></i>
                                 </div>
-
-                                <div class="info-text">                                   
-                                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">
-                                    <p class="info-content">Charles invited you to a group.</p>
-                                    <form class="user-request">
-                                        <input type="submit" class="accept" name="user-group-action" value="Accept">
-                                        <span class="after-accept">Invitation accepted.</span>
-                                        <input type="submit" class="decline" name="user-group-action" value="Decline">
-                                        <span class="after-decline">Invitation declined.</span>
-                                    </form>
-                                    <i class="circle-notification"></i>
-                                </div>                               
+                                {% endfor %}
+<!--                                TODO group invitation -->
+<!--                                <div class="info-text">                                   -->
+<!--                                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">-->
+<!--                                    <p class="info-content">Charles invited you to a group.</p>-->
+<!--                                    <form class="user-request">-->
+<!--                                        <input type="submit" class="accept" name="user-group-action" value="Accept">-->
+<!--                                        <span class="after-accept">Invitation accepted.</span>-->
+<!--                                        <input type="submit" class="decline" name="user-group-action" value="Decline">-->
+<!--                                        <span class="after-decline">Invitation declined.</span>-->
+<!--                                    </form>-->
+<!--                                    <i class="circle-notification"></i>-->
+<!--                                </div>                               -->
                             </div>
                         </li>
 
@@ -111,21 +118,21 @@
                                 <i id="close-messages">+</i>
 
                                 <div class="message">
-                                    <img class="profile-wrapper" src="/images/pexels-andrea-piacquadio-837358.jpg">
+                                    <img class="profile-wrapper" src="{% static 'images/pexels-andrea-piacquadio-837358.jpg' %}">
                                     <h4>Andrea</h4>
                                     <p class="message-content">Hello, how are you?</p>
                                     <i class="circle-message"></i>
                                 </div>
 
                                 <div class="message">
-                                    <img class="profile-wrapper" src="/images/pexels-djordje-petrovic-2102416.jpg">
+                                    <img class="profile-wrapper" src="{% static 'images/pexels-andrea-piacquadio-837358.jpg' %}">
                                     <h4>Djorde</h4>
                                     <p class="message-content">What is your hobby?</p>
                                     <i class="circle-message"></i>
                                 </div>
 
                                 <div class="message">
-                                    <img class="profile-wrapper" src="/images/pexels-natalie-12502186.jpg">
+                                    <img class="profile-wrapper" src="{% static 'images/pexels-andrea-piacquadio-837358.jpg' %}">
                                     <h4>Natalie</h4>
                                     <p class="message-content">Are you interested in football?</p>
                                     <i class="circle-message"></i>
@@ -136,7 +143,7 @@
                         <!-- PROFILE -->
 
                         <li>
-                            <button id="other-pages-open"><img src="/images/Gryz-Szymon.jpeg"></button>
+                            <button id="other-pages-open"><img src="{{user_profile.profile.profile_img.url}}"></button>
                             <span id="hover-account">Account</span>
                         </li>
 
@@ -151,21 +158,21 @@
 
                     <div id="other-pages">
                         <i class="fas fa-caret-up"></i>
-                        <a href="/settings-page/settings.html">
+                        <a href="settings">
                             <div class="window" id="first-window">
                                 <i class='fas fa-gear'></i>
                                 <p>Settings</p>
                             </div>
                         </a>
 
-                        <a href="/profile-page/profile.html">
+                        <a href="/profile/{{user.username}}">
                             <div class="window">
                                 <i class="fas fa-user"></i>
                                 <p>Profile</p>
                             </div>
                         </a>
                         
-                        <a href="/login-register-page/login-register.html">
+                        <a href="logout">
                             <div class="window" id="last-window">
                                 <i class="fas fa-door-open"></i>
                                 <p>Log Out</p>
@@ -185,7 +192,7 @@
                     <hr>
 
                     <div class="user">
-                        <div class="photo-wrapper"><img src="/images/pexels-andrea-piacquadio-837358.jpg"></div>
+                        <div class="photo-wrapper"><img src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}"></div>
                         <p class="name">Andrea Piacquadio</p>
                         <p class="followers">105 Followers</p>
                         <button type="submit" class="add-friend">Add Friend</button>
@@ -194,7 +201,7 @@
                     <hr>
 
                     <div class="user">
-                        <div class="photo-wrapper"><img src="/images/pexels-charles-1851164.jpg"></div>
+                        <div class="photo-wrapper"><img src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}"></div>
                         <p class="name">Charles</p>
                         <p class="followers">1013 Followers</p>
                         <button type="submit" class="add-friend">Add Friend</button>
@@ -203,7 +210,7 @@
                     <hr>
 
                     <div class="user">
-                        <div class="photo-wrapper"><img src="/images/pexels-djordje-petrovic-2102416.jpg"></div>
+                        <div class="photo-wrapper"><img src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}"></div>
                         <p class="name">Djorde Petrovic</p>
                         <p class="followers">500003 Followers</p>
                         <button type="submit" class="add-friend">Add Friend</button>
@@ -212,7 +219,7 @@
                     <hr>
 
                     <div class="user">
-                        <div class="photo-wrapper"><img src="/images/pexels-natalie-12502186.jpg"></div>
+                        <div class="photo-wrapper"><img src="{% static '/images/pexels-andrea-piacquadio-837358.jpg' %}"></div>
                         <p class="name">Natalie White</p>
                         <p class="followers new">New User</p>
                         <button type="submit" class="add-friend">Add Friend</button>
@@ -229,12 +236,12 @@
             </div>
 
                 <div id="posts-container">
-
+                    {% for post in posts reversed %}
                     <div class="post">
 
                         <header>
-                            <div class="profile-wrapper"><img src="/images/pexels-natalie-12502186.jpg"></div>
-                            <p>Natalie White</p>
+                            <div class="profile-wrapper"><img src="{{post.profile.profile_img.url}}"></div>
+                            <p><a href="profile/{{post.user_id}}">{{post.user_id}}</a></p>
                             <button class="post-options-button"><i class="fas fa-ellipsis"></i></button>
                         </header>
 
@@ -244,16 +251,26 @@
                         </div>
 
                         <div class="caption">
+<!--                            TODO caption {{post.caption}}-->
                             <p class="caption-text">Summer time.</p>
                         </div>
 
                         <div class="image-wrapper">
-                            <img src="/images/pexels-natalie-12502186.jpg" id="first-image" alt="zdjęcie">
+                            {% if post.image %}
+                            <img src="{{post.image.url}}" id="first-image">
+                            {% endif %}
                         </div>
 
                         <div class="reactions">
-                            <p>Liked <span id="bold">name</span> and <span id="bold">111 others</span></p>
+                            {% if post.number_of_likes == 0 %}
+                            <p>Liked by <span id="bold">no one</span></p>
+                            {% elif post.number_of_likes == 1 %}
+                            <p>Liked by <span id="bold">{{post.number_of_likes}} person </span></p>
+                            {% elif post.number_of_likes > 1 %}
+                            <p>Liked by <span id="bold">{{post.number_of_likes}} people</span></p>
+                            {% endif %}
                             <div id="profiles-wrapper">
+<!--                                TODO show profile pictures from people who liked this post :)-->
                                 <div class="profile-wrapper"><img src="/images/Gryz-Szymon.jpeg"></div>
                                 <div class="profile-wrapper"><img src="/images/pexels-charles-1851164.jpg"></div>
                                 <div class="profile-wrapper"><img src="/images/pexels-djordje-petrovic-2102416.jpg"></div>
@@ -261,119 +278,41 @@
                         </div>
 
                         <div class="interactions">
-                            <i class="fas fa-thumbs-up"></i>
+                            <a href="/like_post?post_id={{post.id}}"><i class="fas fa-thumbs-up"></i></a>
                             <label for="comment-input"><i class="fas fa-message"></i></label>
                             <i class="fas fa-share"></i>
                         </div>
                         
                         <div class="comments">
-
                             <div class="comment-messages">
-
+                                {% for comment in post.comments.all %}
                                 <div class="comment">
                                     <div class="comment-content">
-                                        <div class="profile-wrapper"><img src="/images/pexels-charles-1851164.jpg"></div>
-                                        <p>💕</p>
+                                        <div class="profile-wrapper"><img src="{{comment.profile.profile_img.url}}"></div>
+                                        {% if comment %}
+                                        <p>{{comment.content}}</p>
+                                        {% else %}
+                                        <p>not working</p>
+                                        {% endif %}
                                     </div>
                                 </div>
-
-                                <div class="comment">
-                                    <div class="comment-content">
-                                        <div class="profile-wrapper"><img src="/images/Gryz-Szymon.jpeg"></div>
-                                        <p>😎</p>
-                                    </div>
-                                </div>
-
-                                <div class="comment">
-                                    <div class="comment-content">
-                                        <div class="profile-wrapper"><img src="/images/pexels-pixabay-39866.jpg"></div>
-                                        <p>Looks good!</p>
-                                    </div>
-                                </div>
-
+                                {% endfor %}
                             </div>
-
-                            <input type="text" placeholder="post a comment" id="comment-input">
-                            <input type="file" accept=".jpg" id="image">
-                            <input type="file" accept=".mp4" id="video">
-                            <label for="image"><i class="fas fa-image"></i></label>
-                            <label for="video"><i class="fas fa-video"></i></label>
-
+                            <form action="comment" method="POST">
+                                {% csrf_token %}
+                                <input name="text" type="text" placeholder="post a comment" id="comment-input">
+                                <input type="hidden" value="{{post.id}}" name="post_id">
+    <!--                            <input type="file" accept=".jpg" id="image">-->
+    <!--                            <input type="file" accept=".mp4" id="video">-->
+    <!--                            <label for="image"><i class="fas fa-image"></i></label>-->
+    <!--                            <label for="video"><i class="fas fa-video"></i></label>-->
+                            </form>
                         </div>
                     </div>
-
-                    <div class="post">
-
-                        <header>
-                            <div class="profile-wrapper"><img src="/images/pexels-djordje-petrovic-2102416.jpg"></div>
-                            <p class="name">Djorde Petrovic</p>
-                            <button class="post-options-button"><i class="fas fa-ellipsis"></i></button>
-                        </header>
-
-                        <div class="post-options">
-                            <i class="fas fa-play"></i>
-                            <button class="report">report post</button>
-                        </div>
-
-                        <div class="caption">
-                            <p class="caption-text">Work! 😎</p>
-                        </div>
-
-                        <div class="image-wrapper">
-                            <img src="/images/pexels-djordje-petrovic-2102416.jpg">
-                        </div>
-
-                        <div class="reactions">
-                            <p>Liked <span id="bold">name</span> and <span id="bold">111 others</span></p>
-                            <div id="profiles-wrapper">
-                                <div class="profile-wrapper"><img src="/images/Gryz-Szymon.jpeg"></div>
-                                <div class="profile-wrapper"><img src="/images/pexels-charles-1851164.jpg"></div>
-                                <div class="profile-wrapper"><img src="/images/pexels-djordje-petrovic-2102416.jpg"></div>
-                            </div>
-                        </div>
-
-                        <div class="interactions">
-                            <i class="fas fa-thumbs-up"></i>
-                            <label for="comment-input2"><i class="fas fa-message"></i></label>
-                            <i class="fas fa-share"></i>
-                        </div>
-
-                        <div class="comments">
-
-                            <div class="comment-messages">
-                                <div class="comment">
-                                    <div class="comment-content">
-                                        <div class="profile-wrapper"><img src="/images/pexels-natalie-12502186.jpg"></div>
-                                        <p>Nice!</p>
-                                    </div>
-                                </div>
-
-                                <div class="comment">
-                                    <div class="comment-content">
-                                        <div class="profile-wrapper"><img src="/images/Gryz-Szymon.jpeg"></div>
-                                        <p>🐱‍👤</p>
-                                    </div>
-                                </div>
-
-                                <div class="comment">
-                                    <div class="comment-content">
-                                        <div class="profile-wrapper"><img src="/images/pexels-pixabay-39866.jpg"></div>
-                                        <p>Cool!</p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <input type="text" placeholder="post a comment" id="comment-input2">
-                            <input type="file" accept=".jpg" id="image">
-                            <input type="file" accept=".mp4" id="video">
-                            <label for="image"><i class="fas fa-image"></i></label>
-                            <label for="video"><i class="fas fa-video"></i></label>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
         </main>
-        <script type="text/javascript" src="index.js"></script>
-        <script type="text/javascript" src="/darkmode.js"></script>
+        <script type="text/javascript" src="{% static '/main-page/script.js' %}"></script>
+        <script type="text/javascript" src="{% static '/darkmode.js' %}"></script>
     </body>
 </html>
