@@ -1,7 +1,7 @@
 # social-app
 
 Django webapp created for a Facebook or Instagram prototype depends on who likes what.
-- Responsbile for frontend is Blizni13 - His technology stack is HTML, CSS, JS
+- Responsible for frontend is Blizni13 - His technology stack is HTML, CSS, JS
 - Responsible for backend is Loobro (me) - My technology stack is Python, Django, MySQL
 
 We created functions like a:
