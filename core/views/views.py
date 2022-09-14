@@ -3,12 +3,13 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile, Post, Friends1, LikePost, Comment, FriendRequest
+from core.models import Profile, Post, Friends1, LikePost, Comment, FriendRequest
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordResetForm
 from itertools import chain
 import logging
+from ..forms import PostForm
 
 @login_required(login_url='signin')
 def index(request):
@@ -59,8 +60,16 @@ def delete_post(request, post_id):
 @login_required(login_url='signin')
 def upload(request):
     if request.method == 'POST':
+        # form = PostForm(request.FILES,
+        #                 Profile.objects.get(user=request.user),
+        #                 request.user.username)
+        # if form.is_valid():
+        #     new_post = form.save(commit=False)
+        #     new_post.save()
+
         user = request.user.username
         image = request.FILES.get('image_upload')
+
         # caption = request.POST['caption']
 
         new_post = Post.objects.create(user_id=user,

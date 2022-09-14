@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile, Post, Friends1, LikePost, Comment, FriendRequest
+from core.models import Profile, Post, Friends1, LikePost, Comment, FriendRequest
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 

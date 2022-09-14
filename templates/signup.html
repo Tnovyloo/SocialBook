@@ -19,7 +19,7 @@
         <main id="background">
             <fieldset>
                 <input type="checkbox" id="on-off">
-                <form action="" method="POST" id="registration-section">
+                <form action="signup" method="POST" id="registration-section">
                     {% csrf_token %}
                     <h1>Register</h1>
                     <input type="text" required minlength='4' maxlength="50" placeholder="Username" name="username">

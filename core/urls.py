@@ -1,11 +1,8 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib import admin
 from . import views
-from . import views_settings
-from . import views_friends
-from . import views_about
+from .views import views, views_friends, views_settings, views_about
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -18,7 +15,7 @@ urlpatterns = [
     path('like_post', views.like_post, name='like_post'),
     path('delete_post/<post_id>', views.delete_post, name='delete_post'),
     path('comment', views.comment, name='comment'),
-    # Settings paths. TODO change profile picture.
+    # Settings paths.
     path('settings', views_settings.settings, name='settings'),
     path('profile_basic_info', views_settings.profile_basic_info, name='profile_basic_info'),
     path('profile_location', views_settings.profile_location, name='profile_location'),
