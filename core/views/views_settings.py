@@ -31,17 +31,22 @@ def profile_basic_info(request):
     if request.method == 'POST':
         first_name = request.POST['firstname']
         last_name = request.POST['lastname']
-        gender = request.POST['gender']
+        # gender1 = request.POST['gender1']
+        # if request.POST['gender2']:
+        #     gender2 = request.POST['gender2']
         birthdate = request.POST['birthdate']
         profile_img = request.FILES.get('profile_image')
 
+        if 'gender' in request.POST:
+            gender = request.POST['gender']
+            user_profile.gender = gender
+        else:
+            user_profile.gender = ''
 
         if first_name is not None:
             user_profile.first_name = first_name
         if last_name is not None:
             user_profile.last_name = last_name
-        if gender is not None:
-            user_profile.gender = gender
 
         # if birthdate is not None:
         #     day = str(birthdate).split('-')[0:1]
