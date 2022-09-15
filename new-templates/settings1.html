@@ -31,6 +31,7 @@
             <!-- NOTIFICATION WINDOW -->
 
             <div id="info">
+<!--                TODO create -->
                 <h2>Notifications</h2>
                 <i id="close-notifications">+</i>     
 
@@ -40,29 +41,19 @@
                     <i class="circle-notification"></i>
                 </div>
 
-                <div class="info-text">                                   
-                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">
-                    <p class="info-content">Charles invited you to friends.</p>
-                    <form class="user-request">
-                        <input type="submit" class="confirm" name="user-friend-action" value="Confirm">
+                {% for request in user_friend_requests.all %}
+                <div class="info-text">
+                    <img class="profile-wrapper" src="{{request.sender.profile.profile_img.url}}">
+                    <p class="info-content">{{request.sender.username}} invited you to friends.</p>
+                    <div class="user-request">
+                        <a href="/add_or_remove_friend/{{request.sender.username}}/add"><input type="submit" class="confirm" name="user-friend-action" value="Confirm"></a>
                         <span class="after-confirm">Invitation confirmed.</span>
-                        <input type="submit" class="remove" name="user-friend-action" value="Remove">
+                        <a href="/delete_request/{{request.sender.username}}/remove"><input type="submit" class="remove" name="user-friend-action" value="Remove"></a>
                         <span class="after-remove">Invitation removed.</span>
-                    </form>
+                    </div>
                     <i class="circle-notification"></i>
                 </div>
-
-                <div class="info-text">                                   
-                    <img class="profile-wrapper" src="/images/pexels-charles-1851164.jpg">
-                    <p class="info-content">Charles invited you to a group.</p>
-                    <form class="user-request">
-                        <input type="submit" class="accept" name="user-group-action" value="Accept">
-                        <span class="after-accept">Invitation accepted.</span>
-                        <input type="submit" class="decline" name="user-group-action" value="Decline">
-                        <span class="after-decline">Invitation declined.</span>
-                    </form>
-                    <i class="circle-notification"></i>
-                </div>  
+                {% endfor %}
 
             </div>
 
@@ -70,21 +61,21 @@
 
             <div id="other-pages">
                 <i class="fas fa-caret-up"></i>
-                <a href="/main-page/index.html">
+                <a href="/">
                     <div class="window" id="first-window">
                         <i class='fas fa-house'></i>
                         <p>Home</p>
                     </div>
                 </a>
 
-                <a href="/profile-page/profile.html">
+                <a href="/profile/{{user.username}}">
                     <div class="window">
                         <i class="fas fa-user"></i>
                         <p>Profile</p>
                     </div>
                 </a>
 
-                <a href="/login-register-page/login-register.html">
+                <a href="logout">
                     <div class="window" id="last-window">
                         <i class="fas fa-door-open"></i>
                         <p>Log Out</p>
@@ -106,14 +97,15 @@
                 </div>
 
                 <div id="change-profile">
-                    <img src="/images/Gryz-Szymon.jpeg" class="profile">
+                    <img src="{{user_profile.profile_img.url}}" class="profile">
                     <div id="change-profile-info">
-                        <p>Szymon Gryz</p>
+                        <p>{{user.username}}</p>
                         <button id="change-profile-image-button">Change your profile image</button>
                     </div>
                 </div>
                 
-                    <form id="change-profile-image-window">
+                    <form id="change-profile-image-window" enctype="multipart/form-data" action="change_profile_image" method="POST">
+                        {% csrf_token %}
                         <h2 id="change-profile-title">Change your profile image</h2>
                         <div id="image-wrapper">
                             <p id="image-placeholder">
@@ -124,29 +116,31 @@
                         </div>
                         <label for="choose-image" id="choose-image-label">
                             <i class="fas fa-cloud-arrow-up" style="pointer-events: none"></i>
-                            <input type="file" accept="image/*" id="choose-image" onchange="showImage(event)" style="display: none">
+                            <input name="profile_image" type="file" accept="image/*" id="choose-image" onchange="showImage(event)" style="display: none">
                         </label>
                         <input type="submit" value="Upload" id="upload-image">
                     </form>
 
                     <div id="black-background"></div>
 
-                <form id="basic-info" class="forms">
+                <form id="basic-info" class="forms" action="profile_basic_info" method="POST">
 
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-basic'>First Name</p>
-                        <input type="text" placeholder="First name">
+                        <input type="text" name="firstname" placeholder="{{user_profile.first_name}}">
+<!--                        TODO create hidden input to check if user change value.-->
                     </div>
                     
                     <div class="info">
                         <p class='info-to-change-basic'>Last Name</p>
-                        <input type="text" placeholder="Last name">
+                        <input type="text" placeholder="{{user_profile.last_name}}" name="lastname">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-basic'>Gender</p>
                         <!-- <input type="text" placeholder="Gender"> -->
-                        <select>
+                        <select name="gender">
                             <option selected disabled>Choose your option</option>
                             <option>Male</option>
                             <option>Female</option>
@@ -156,67 +150,69 @@
 
                     <div class="info">
                         <p class='info-to-change-basic'>Birth date</p>
-                        <input type="date">
+                        <input type="date" placeholder="DD-MM-YYYY" name="birthdate">
                     </div>
 
                     <input type="submit" class="submit-button" value="Send">
 
                 </form>
 
-                <form id="live-places" class="forms">
-
+                <form id="live-places" class="forms" action="profile_location" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-places'>Live place</p>
-                        <input type="text" placeholder="Live place">
+                        <input type="text" placeholder="{{user_profile.current_location}}" name="liveplace">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-places'>From</p>
-                        <input type="text" placeholder="From">
+                        <input type="text" placeholder="{{user_profile.location}}" name="from">
                     </div>
 
                     <input type="submit" class="submit-button" value="Send">
 
                 </form>
 
-                <form id="hobby-education" class="forms">
-
+                <form id="hobby-education" class="forms" action="profile_hobby" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class='info-to-change-hobby-education'>Hobby</p>
-                        <input type="text" placeholder="Hobby">
+                        <input type="text" placeholder="{{user_profile.hobby}}" name="hobby">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-hobby-education'>School</p>
-                        <input type="text" placeholder="School">
+                        <input type="text" placeholder="{{user_profile.school}}" name="school">
                     </div>
 
                     <input type="submit" class="submit-button" value="Send">
 
                 </form>
 
-                <form id="contact" class="forms">
+                <form id="contact" class="forms" action="profile_contact" method="POST">
+                    {% csrf_token %}
 
                     <div class="info">
                         <p class='info-to-change-contact'>Number</p>
-                        <input type="number" placeholder="Number">
+                        <input type="number" placeholder="{{user_profile.number}}" name="number">
                     </div>
 
                     <div class="info">
                         <p class='info-to-change-contact'>E-mail</p>
-                        <input type="email" placeholder="E-mail">
+                        <input type="email" placeholder="{{user_profile.email}}" name="email">
                     </div>
 
                     <input type="submit" class="submit-button" value="Send">
 
                 </form>
                 
-                <form id="close-people" class="forms">
-                    
+                <form id="close-people" class="forms" action="profile_relationship"  method="POST">
+                    {% csrf_token %}
+
                     <div class="info">
                         <p class='info-to-change-people'>Relationship</p>
                         <!-- <input type="text" placeholder="Relationship"> -->
-                        <select>
+                        <select name="relationship">
                             <option selected disabled>Choose your option</option>
                             <option>Husband</option>
                             <option>Wife</option>
@@ -236,28 +232,29 @@
 
                     <div class="info">
                         <p class='info-to-change-people'>Family member</p>
-                        <input type="text" placeholder="Family member">
+<!--                        TODO create a relationship with person and show it on the profile.-->
+                        <input type="text" placeholder="Family member" name="person">
                     </div>
 
                     <input type="submit" class="submit-button" value="Send">
 
                 </form>
 
-                <form id="change-password" class="forms">
-
+                <form id="change-password" class="forms" action="profile_password" method="POST">
+                    {% csrf_token %}
                     <div class="info">
                         <p class="change-password-info">Old password</p>
-                        <input placeholder="Old password">
+                        <input placeholder="Old password" name="old_password">
                     </div>
                     
                     <div class="info">
                         <p class="change-password-info">New password</p>
-                        <input placeholder="New password" minlength = '6'>
+                        <input placeholder="New password" minlength = '6' name="new_password1">
                     </div>
 
                     <div class="info">
                         <p class="change-password-info">Repeat password</p>
-                        <input placeholder="Repeat password">
+                        <input placeholder="Repeat password" name="new_password2">
                     </div>
 
                     <input type="submit" class="submit-button" value="Change password">
@@ -266,7 +263,7 @@
             </div>
 
         </main>
-        <script type="text/javascript" src="settings.js"></script>
-        <script type="text/javascript" src="/darkmode-other.js"></script>
+        <script type="text/javascript" src="{% static 'settings-page/settings.js' %}"></script>
+        <script type="text/javascript" src="{% static 'darkmode-other.js' %}"></script>
     </body>
 </html>
