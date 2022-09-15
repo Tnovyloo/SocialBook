@@ -1,9 +1,9 @@
 let darkMode = localStorage.getItem('darkMode')
-let darkModeToggle = document.getElementById('darkmode-toggle')
+let darkModeToggle = document.getElementById('dark-mode-toggle')
 
 let enableDarkMode = () => {
-    // add class of darkmode to our file
-    document.body.classList.add('darkmode')
+    // add class of dark-mode to our file
+    document.body.classList.add('dark-mode')
     // change darkMode in local to enabled
     localStorage.setItem('darkMode', 'enabled')
     // change icon of darkMode toggle to sun
@@ -13,9 +13,9 @@ let enableDarkMode = () => {
 }
 
 let disableDarkMode = () => {
-    // remove class of darkmode from our file
-    document.body.classList.remove('darkmode')
-    // change darkmode in local to disabled
+    // remove class of dark-mode from our file
+    document.body.classList.remove('dark-mode')
+    // change dark-mode in local to disabled
     localStorage.setItem('darkMode', 'disabled')
     // change icon of darkMode toggle to moon
     darkModeToggle.classList.remove('fa-sun')

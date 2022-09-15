@@ -15,6 +15,7 @@
     --window-color: rgb(220, 220, 220);
     --window-element-hover-color: hsl(0, 0%, 82%);
     --text-color: black;
+    --add-txt-clr: rgb(120, 120, 120);
 
     --search-upload-color: rgb(220, 220, 220);
     --upload-elements-color: hsl(0, 0%, 92%);
@@ -26,6 +27,7 @@
     --add-button-before-color: white;
     --add-button-hover-first-shadow: hsl(0, 0%, 86%);
     --add-button-hover-second-shadow: hsl(0, 0%, 90%);
+    --add-shadow-color: black;
 
     --posts-border-bottom-color: hsl(0, 0%, 89%);
     --post-options-button-hover-color: hsl(0, 0%, 90%);
@@ -43,12 +45,13 @@
     --header-font: 'Kanit', sans-serif;
 }
 
-.darkmode {
+.dark-mode {
     --background-color: rgba(0, 0, 0, 0.9);
     --header-color: rgb(50, 50, 50);
     --window-color: rgb(40, 40, 40);
     --window-element-hover-color: rgb(30, 30, 30);
     --text-color: rgb(217, 217, 217);
+    --add-txt-clr: var(--text-color);
 
     --search-upload-color: rgb(35, 35, 35);
     --upload-elements-color: rgb(50, 50, 50);
@@ -60,6 +63,7 @@
     --add-button-before-color: rgb(70, 70, 70);
     --add-button-hover-first-shadow: rgb(40, 40, 40);
     --add-button-hover-second-shadow: rgb(47, 47, 47);
+    --add-shadow-color: rgb(70, 70, 70);
 
     --posts-border-bottom-color: rgb(37, 37, 37);
     --post-options-button-hover-color: rgb(44, 44, 44);
@@ -84,7 +88,7 @@ body {
     font-size: 5rem;
 }
 
-#bold {
+.bold {
     font-weight: bold;
 }
 
@@ -119,6 +123,7 @@ header input[type="text"] {
     color: var(--text-color);
     font-family: var(--header-font);
     margin-left: 22.7rem;
+    margin-bottom: -0.3rem;
 }
 
 header label[for="search"] {
@@ -128,12 +133,13 @@ header label[for="search"] {
     border-radius: 60px;
     cursor: default; 
     left: 25rem;
+    margin-bottom: -0.3rem;
 }
 
 header label[for="search"] i {
     position: absolute;
     left: 1.2rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-color);
@@ -158,7 +164,6 @@ header ul .fas {
 
 header h3 {
     position: absolute;
-    left: 3rem;
     font-size: 4.1rem;
     font-family: 'Poppins';
 }
@@ -179,6 +184,7 @@ header button[id="upload"] {
     cursor: pointer;
     border: none;
     transition-duration: 0.4s;
+    margin-bottom: -0.3rem;
 }
 
 header button[id="upload"]::after, header button[id="upload"]::before {
@@ -233,8 +239,8 @@ header #upload-files #show-hide-preview {
 
 /* class to toggle post-image-preview */
 
-.off {
-    display: none;
+.on {
+    display: block !important;
 }
 
 header #upload-files #post-image-preview {
@@ -243,6 +249,7 @@ header #upload-files #post-image-preview {
     max-width: 150px;
     width: 75%;
     height: 200px;
+    display: none;
 }
 
 header #upload-files #post-image-preview #post-image-preview-header {
@@ -576,7 +583,7 @@ header #info .info-text:hover, header #messages .message:hover {
 header ul #other-pages-open {
     position: relative;
     top: -1.3rem;
-    right: 2.6rem;
+    right: 2.1rem;
     border: none;
     cursor: pointer;
 }
@@ -597,7 +604,7 @@ header #other-pages {
     position: absolute;
     width: 130px;
     font-size: 1.75rem;
-    right: 14rem;
+    right: 13.6rem;
     top: 8rem;
     display: none;
 }
@@ -646,8 +653,13 @@ header #other-pages .window .fas.fa-door-open {
     margin-left: -0.15rem;
 }
 
-header #darkmode-toggle {
+header #dark-mode-toggle {
     width: 30px;
+    transition-duration: 0.75s;
+}
+
+header #dark-mode-toggle:hover {
+    transform: rotate(190deg)
 }
 
 /* ICONS TO INFORM WHAT WILL BE DISPLAYED */
@@ -676,15 +688,16 @@ header #hover-messages {
 }
 
 header #hover-account {
-    right: 12.4rem;
+    right: 11.9rem;
 }
 
 header #hover-dark-mode {
     right: 2.1rem;
 }
 
-header #notification-open:hover ~ #hover-notifications, header #message-open:hover ~ #hover-messages, header #other-pages-open:hover ~ #hover-account, header #darkmode-toggle:hover ~ #hover-dark-mode {
-    opacity: 1
+header #notification-open:hover ~ #hover-notifications, header #message-open:hover ~ #hover-messages, header #other-pages-open:hover ~ #hover-account, header #dark-mode-toggle:hover ~ #hover-dark-mode {
+    opacity: 1;
+    transition-delay: 0.25s;
 }
 
 /* ADD USERS SECTION */
@@ -698,7 +711,7 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     border-radius: 20px;
     padding: 1rem;
     left: 110rem;
-    box-shadow: 0px 0px 15px black;
+    box-shadow: 0px 0px 15px var(--add-shadow-color);
     font-family: 'Kanit', sans-serif;
     overflow: hidden;
 }
@@ -707,12 +720,11 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     position: relative;
     height: 50px;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0);
     top: -1rem;
 }
 
 #add-users header h3, #add-users header p {
-    color: var(--text-color)
+    color: var(--add-txt-clr)
 }
 
 #add-users header h3 {
@@ -866,6 +878,8 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     top: 50%;
     transform: translateY(-50%);
     left: -0.4rem;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 #posts-container .post header p {
@@ -1224,6 +1238,11 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
         margin-right: -3rem;
     }
 
+    header ul #dark-mode-toggle {
+        width: 25px;
+        margin-right: 5px;
+    }
+
     header input[type="text"] {
         font-size: 1.5rem;
         margin-left: 16.4rem;
@@ -1362,7 +1381,7 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     }
 
     header #other-pages {
-        right: 7.5rem;
+        right: 7rem;
         top: 7rem;
         width: 120px;
     }
@@ -1385,7 +1404,7 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     }
     
     header #hover-account {
-        right: 6.2rem;
+        right: 5.8rem;
     }
 
     header #hover-dark-mode {
@@ -1408,16 +1427,20 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
         height: 250px;
     }
 
+    #add-users header {
+        height: 43px;
+    }
+
     #add-users header h3 {
         font-size: 1.75rem;
         margin-left: -0.5rem;
-        margin-top: -0.5rem;
+        margin-top: 0rem;
     }
 
     #add-users header p {
         font-size: 1.6rem;
         right: 1.5rem;
-        top: 1.1rem
+        top: 1rem
     }
 
     #add-users #users-card {
@@ -1464,6 +1487,7 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
 
     header label[for="search"] {
         left: 15.7rem;
+        margin-bottom: -0.1rem;
     }
 
     header h3 {
@@ -1551,6 +1575,11 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
         height: 26px;
     }
 
+    header ul #dark-mode-toggle {
+        width: 22px;
+        margin-right: 8px;
+    }
+
     header #info {
         right: 14rem;
     }
@@ -1564,7 +1593,7 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     }
 
     header #other-pages {
-        right: 6.5rem;
+        right: 6rem;
         font-size: 1.5rem;
         width: 110px;
     }
@@ -1580,7 +1609,7 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     }
 
     header #hover-account {
-        right: 5.2rem;
+        right: 4.8rem;
     }
 
     header #hover-dark-mode {
@@ -1631,16 +1660,20 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
         height: 280px;
     }
 
-    #add-users #users-card {
-        height: 232px;
+    #add-users header {
+        height: 47px;
     }
 
     #add-users header p {
-        top: 1.2rem;
+        top: 1.1rem;
     }
 
     #add-users header h3 {
         margin-top: 0;
+    }
+
+    #add-users #users-card {
+        height: 232px;
     }
 
     #add-users #users-card .name {
@@ -1721,26 +1754,7 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     header #upload-files {
         right: 17.4rem;
     }
-
-    /* OTHER ELEMENTS IN HEADER SETTINGS */
-
-    header ul .fas {
-        font-size: 2.3rem;
-    }
-
-    header .notification-icon {
-        width: 13px;
-        height: 13px;
-        font-size: 1rem;
-        padding-right: 0.3rem;
-    }
-
-    header ul #other-pages-open {
-        width: 27px;
-        height: 27px;
-        top: -1.5rem;
-    }
-
+    
     /* HEADER OTHER PAGES WINDOW SETTINGS */
 
     header #other-pages .window p {
@@ -1760,7 +1774,7 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     }
 
     header #hover-account {
-        right: 5.6rem;
+        right: 5.2rem;
     }
 
     header #hover-dark-mode {
@@ -1771,13 +1785,9 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     /* FOLLOW SECTION HEADER */
 
     #add-users header h3 {
-        margin-left: -0.7rem;
+        margin-left: 0;
     }
 
-    #add-users header p {
-        right: 1.7rem;
-        top: 1.3rem;
-    }
 }
 
 @media screen and (max-width: 600px) {
@@ -1843,6 +1853,14 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
         right: 0.5rem;
     }
 
+    header #info .info-text .user-request .after-remove, 
+    header #info .info-text .user-request .after-confirm, 
+    header #info .info-text .user-request .after-accept, 
+    header #info .info-text .user-request .after-decline {
+        font-size: 1rem;
+        right: 3rem;
+    }
+
     header #messages {
         right: 8rem;
         width: 170px;
@@ -1881,23 +1899,16 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     header ul .fas {
         font-size: 2rem;
         top: -0.8rem;
-        right: 1.5rem;
+    }
+
+    header ul #dark-mode-toggle {
+        width: 20px;
         margin-right: 0rem;
     }
 
-    header ul #darkmode-toggle {
-        width: 21px;
-        margin-left: -2rem;
-        margin-right: 1rem;
-    }
-
     header ul {
-        gap: 2.7rem;
+        gap: 2rem;
         margin-right: -3rem;
-    }
-
-    header #other-pages-open {
-        margin-left: 0.8rem;
     }
 
     /* OTHER PAGES WINDOW SETTINGS */
@@ -1905,7 +1916,7 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     header #other-pages {
         font-size: 1.3rem;
         width: 100px;
-        right: 5.2rem;
+        right: 4.8rem;
         top: 6rem
     }
 
@@ -1923,16 +1934,16 @@ header #notification-open:hover ~ #hover-notifications, header #message-open:hov
     }
 
     header #hover-notifications {
-        right: 12.3rem;
+        right: 11.3rem;
     }
     
     header #hover-messages {
-        right: 8.6rem;
+        right: 8.3rem;
     }
     
     header #hover-account {
         padding-inline: 0.3rem;
-        right: 4.6rem;
+        right: 4.2rem;
     }
 
     header #hover-dark-mode {
