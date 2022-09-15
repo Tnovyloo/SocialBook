@@ -15,7 +15,7 @@ html {
     --text-color: black;
     --shadow-color: hsl(0, 0%, 80%);
 
-    --other-elements-color: rgb(230, 230, 230);
+    --other-elements-color: rgb(225, 225, 225);
     --other-elements-hover-color: rgb(220, 220, 220);
 
     --posts-border-bottom-color: hsl(0, 0%, 89%);
@@ -35,7 +35,7 @@ html {
     --brightness: 1;
 }
 
-.darkmode {
+.dark-mode {
     --clr-bg: rgba(0, 0, 0, 0.9);
     --main-elements-color: rgb(50, 50, 50);
     --window-color: rgb(40, 40, 40); 
@@ -218,7 +218,6 @@ body {
     right: 0.3rem;
     transform: rotate(90deg);
     color: gray;
-    background-color: rgba(0, 0, 0, 0.5);
     width: 39px;
     height: 39px;
     border-radius: 50%;
@@ -235,6 +234,10 @@ body {
 
 #first-header #informations .profile-friend:not(:first-of-type) {
     margin-left: -1rem;
+}
+
+#first-header #informations .profile-friend:last-of-type {
+    filter: brightness(0.5)
 }
 
 /* EDIT PROFILE BUTTON WITH TRANSITIONS IN FIRST HEADER */
@@ -387,8 +390,8 @@ body {
 #container-posts-section #additional-info-posts-section #user-info #user-input-info #user-input-text {
     width: 90%;
     margin-left: 2rem;
-    font-size: 2.3rem;
     overflow: hidden;
+    text-align: center;
 }
 
 #container-posts-section #additional-info-posts-section #user-info #user-input-info #add-bio-submit {
@@ -575,7 +578,7 @@ body {
     position: absolute;
     font-size: 1.5rem;
     left: 0.3rem;
-    top: 10.3rem;
+    top: 10.5rem;
     color: var(--text-color)
 }
 
@@ -668,7 +671,8 @@ body {
     height: 100%;
     position: absolute;
     border-radius: 50%;
-    filter: brightness(var(--brightness))
+    filter: brightness(var(--brightness));
+    cursor: pointer;
 }
 
 /* POSTS-SECTION IN CONTAINER POSTS SECTION */
@@ -1790,7 +1794,8 @@ body {
         position: unset;
         margin-left: 24rem;
         width: 500px;
-        margin-bottom: 7.5rem;
+        height: unset;
+        margin-bottom: 2rem;
     }
 
     #container-posts-section #additional-info-posts-section #user-info #user-input-info #bio-form #bio-cancel {
@@ -1806,7 +1811,7 @@ body {
     }
 
     #container-posts-section #additional-info-posts-section .friends-about-section {
-        position: unset;
+        position: static;
         margin-bottom: 0;
     }
 
@@ -1819,7 +1824,7 @@ body {
     }
 
     #container-posts-section #add-post {
-        position: unset;
+        position: static;
         width: 500px;
         margin-left: 24rem;
         margin-bottom: 2rem;

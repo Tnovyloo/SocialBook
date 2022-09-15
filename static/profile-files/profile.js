@@ -15,27 +15,6 @@ window.onresize = () => {
     if (innerWidth > 1150) {
         document.getElementById('container-posts-section').style.height = document.getElementById('posts-container').offsetHeight + document.getElementById('add-post').offsetHeight + 'px'
     }
-    if (innerWidth > 1000) {
-        document.getElementById('additional-info-posts-section').style.marginBottom = '0'
-    }
-    
-    if (innerWidth < 850) {
-        if (document.getElementById('user-input-text').offsetHeight > 50) {
-            document.getElementById('additional-info-posts-section').style.marginBottom = '2.5rem'
-        } else if (document.getElementById('user-input-text').offsetHeight > 20) {
-            document.getElementById('additional-info-posts-section').style.marginBottom = '-0.3rem'
-        } else {
-            document.getElementById('additional-info-posts-section').style.marginBottom = '1.8rem'
-        }
-    } else if (innerWidth < 1000) {
-        if (document.getElementById('user-input-text').offsetHeight > 50) {
-            document.getElementById('additional-info-posts-section').style.marginBottom = '8.5rem'
-        } else if (document.getElementById('user-input-text').offsetHeight > 20) {
-            document.getElementById('additional-info-posts-section').style.marginBottom = '6rem'
-        } else {
-            document.getElementById('additional-info-posts-section').style.marginBottom = '7.5rem'
-        }
-    }
 }
 
 // REPORT AND DELETE OPTION
@@ -328,11 +307,6 @@ addBioButton.addEventListener('click', () => {
     bioForm.style.display = 'grid'
     bioForm.style.marginTop = '10px'
     addBioButton.style.display = 'none'
-    if (innerWidth < 850) {
-        document.getElementById('additional-info-posts-section').style.marginBottom = '11rem'
-    } else if (innerWidth < 1000) {
-        document.getElementById('additional-info-posts-section').style.marginBottom = '16.8rem'
-    } 
 })
 
 saveBioTextButton.addEventListener('click', () => {
@@ -341,37 +315,15 @@ saveBioTextButton.addEventListener('click', () => {
         bioText.innerText = addBioText.value
         bioText.style.display = 'block'
         document.getElementById('user-input-info').style.borderBottom = '2px solid hsl(0, 0%, 86%)'
-        if (bioText.offsetHeight > 60) {
-            document.getElementById('additional-info-posts-section').style.top = '0.7rem' 
-            bioText.style.fontSize = '1.8rem'
-            document.getElementsByClassName("friends-about-section")[0].style.paddingBottom = '2.8rem'
-            if (innerWidth < 850) {
-                document.getElementById('additional-info-posts-section').style.marginBottom = '2.5rem'
-            } else if (innerWidth < 1000) {
-                document.getElementById('additional-info-posts-section').style.marginBottom = '8.5rem'
-            }
-        } else if (bioText.offsetHeight > 40){
-            document.getElementById('additional-info-posts-section').style.top = '0.6rem'
-            if (innerWidth < 850) {
-                document.getElementById('additional-info-posts-section').style.marginBottom = '2rem' //
-            } else if (innerWidth < 1000) {
-                document.getElementById('additional-info-posts-section').style.marginBottom = '8.5rem'
-            }
-        } else {
-            document.getElementById('additional-info-posts-section').style.top = '1.9rem'
-            if (innerWidth < 850) {
-                document.getElementById('additional-info-posts-section').style.marginBottom = '-0.3rem'
-            } else if (innerWidth < 1000) {
-                document.getElementById('additional-info-posts-section').style.marginBottom = '6rem'
-            }
-        }
+    }
+    if (bioText.offsetHeight > 60) {
+        bioText.style.maxHeight = '50px';
+        bioText.style.fontSize = '1.5rem';
+        document.getElementById('additional-info-posts-section').style.top = '1.5rem'
+    } else if (bioText.offsetHeight > 50) {
+        document.getElementById('additional-info-posts-section').style.top = '0.5rem'
     } else {
-        addBioButton.style.display = 'block'
-        if (innerWidth < 850) {
-            document.getElementById('additional-info-posts-section').style.marginBottom = '1.75rem' //
-        } else if (innerWidth < 1000) {
-            document.getElementById('additional-info-posts-section').style.marginBottom = '7.7rem'
-        }
+        document.getElementById('additional-info-posts-section').style.top = '1.8rem'
     }
 })
 
@@ -382,11 +334,6 @@ cancelBioTextButton.addEventListener('click', () => {
     } else {
         bioText.style.display = 'block'
         document.getElementById('user-input-info').style.borderBottom = '2px solid hsl(0, 0%, 86%)'
-    }
-    if (innerWidth < 850) {
-        document.getElementById('additional-info-posts-section').style.marginBottom = '1.8rem'
-    } else if (innerWidth < 1000) {
-        document.getElementById('additional-info-posts-section').style.marginBottom = '7.5rem'
     }
 })
 
@@ -485,12 +432,4 @@ for (let i = 0; i < friendOptionsButton.length; i++) {
     followOption[i].addEventListener('click', () => followText[i].innerText === 'Unfollow' ? followText[i].innerText = 'Follow' : followText[i].innerText = 'Unfollow')
     unfriendOption[i].addEventListener('click', () => {addFriendButton[i].style.display = 'block'; friendOptionsButton[i].style.opacity = 0})
     addFriendButton[i].addEventListener('click', () => addFriendButton[i].innerText === 'Cancel Request' ? addFriendButton[i].innerText = 'Add Friend' : addFriendButton[i].innerText = 'Cancel Request')
-}
-
-// LIKE ANIMATION
-
-const likesList = document.getElementsByClassName('fa-thumbs-up')
-
-for (let i = 0; i < likesList.length; i++) {
-    likesList[i].addEventListener('click', () => likesList[i].classList.toggle('animation-like'))
 }
