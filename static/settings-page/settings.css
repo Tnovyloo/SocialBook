@@ -28,7 +28,7 @@
     --win-clr: hsl(0, 0%, 90%);
 }
 
-.darkmode {
+.dark-mode {
     --main-parts-clr: rgb(40, 40, 40);
     --sec-clr-text: hsl(200, 100%, 39%);
     --sec-clr: hsl(200, 100%, 30%);

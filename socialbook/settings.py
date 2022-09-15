@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'socialbook',
         'USER': 'root',
-        'PASSWORD': '***REMOVED***',
+        'PASSWORD': 'szymon1',
         'HOST': 'localhost',
         'PORT': '3306'
     }

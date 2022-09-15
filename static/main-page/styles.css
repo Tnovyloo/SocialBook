@@ -123,7 +123,6 @@ header input[type="text"] {
     color: var(--text-color);
     font-family: var(--header-font);
     margin-left: 22.7rem;
-    margin-bottom: -0.3rem;
 }
 
 header label[for="search"] {
@@ -133,7 +132,6 @@ header label[for="search"] {
     border-radius: 60px;
     cursor: default; 
     left: 25rem;
-    margin-bottom: -0.3rem;
 }
 
 header label[for="search"] i {
