@@ -15,7 +15,7 @@ from ..forms import PostForm
 def index(request):
     user_object = User.objects.get(username=request.user.username)
     # user_profile = Profile.objects.get(user=user_object)
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('created_at')
     user_friend_requests = FriendRequest.objects.filter(receiver=user_object.id)
 
     context = {
@@ -179,9 +179,9 @@ def signup(request):
                 return redirect('settings')
         else:
             messages.info(request, "Password is not matching / First name and last name cannot be empty!")
-            return redirect('signup')
+            return redirect('login-register.html')
     else:
-        return render(request, 'signup.html')
+        return render(request, 'login-register.html')
 
 def signin(request):
     if request.method == "POST":
@@ -195,11 +195,11 @@ def signin(request):
             return redirect('/')
         else:
             messages.info(request, 'Credentials Invalid')
-            return redirect('signin')
+            return redirect('login-register.html')
     else:
-        return render(request, 'signin.html')
+        return render(request, 'login-register.html')
 
 @login_required(login_url='signin')
 def logout(request):
     auth.logout(request)
-    return redirect('signin')
+    return render(request, 'login-register.html')
